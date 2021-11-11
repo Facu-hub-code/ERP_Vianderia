@@ -4,23 +4,25 @@
  */
 package Interface;
 
+import Logica.LoginLogica;
 import java.awt.Color;
 import java.awt.Dimension;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author facul
  */
-public class Login extends javax.swing.JFrame {
+public class LoginInterface extends javax.swing.JFrame {
 
+    private static String user = "";
+    private static String password = "";
     /**
      * Creates new form Login
      */
-    public Login() {
+    public LoginInterface() {
         initComponents();
-        initFacuComponents();
-                
-        
+        initFacuComponents();        
     }
 
     /**
@@ -35,12 +37,11 @@ public class Login extends javax.swing.JFrame {
         img_login = new javax.swing.JLabel();
         jt_usuario = new javax.swing.JTextField();
         jt_pass = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        btn_ingresar = new javax.swing.JButton();
         img_logo_icon = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(49, 28, 28));
-        setPreferredSize(new java.awt.Dimension(1024, 768));
         setResizable(false);
         setSize(new java.awt.Dimension(1024, 768));
 
@@ -53,17 +54,33 @@ public class Login extends javax.swing.JFrame {
         jt_usuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_usuario.setText("Usuario");
         jt_usuario.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        jt_usuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_usuarioMouseClicked(evt);
+            }
+        });
 
         jt_pass.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jt_pass.setForeground(new java.awt.Color(0, 0, 0));
         jt_pass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_pass.setText("Contraseña");
         jt_pass.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        jt_pass.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_passMouseClicked(evt);
+            }
+        });
 
-        jButton1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Ingresar");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        btn_ingresar.setBackground(new java.awt.Color(255, 253, 118));
+        btn_ingresar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btn_ingresar.setForeground(new java.awt.Color(0, 0, 0));
+        btn_ingresar.setText("Ingresar");
+        btn_ingresar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        btn_ingresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ingresarActionPerformed(evt);
+            }
+        });
 
         img_logo_icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/logo_login.png"))); // NOI18N
 
@@ -83,7 +100,7 @@ public class Login extends javax.swing.JFrame {
                                 .addComponent(jt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(62, 62, 62))
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addContainerGap()))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(img_logo_icon)
@@ -102,7 +119,7 @@ public class Login extends javax.swing.JFrame {
                         .addGap(58, 58, 58)
                         .addComponent(jt_pass, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(63, 63, 63)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(img_login, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -112,7 +129,29 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void initFacuComponents(){
+    private void jt_usuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_usuarioMouseClicked
+        jt_usuario.setText("");
+    }//GEN-LAST:event_jt_usuarioMouseClicked
+
+    private void jt_passMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_passMouseClicked
+        jt_pass.setText("");
+    }//GEN-LAST:event_jt_passMouseClicked
+
+    private void btn_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarActionPerformed
+        user = jt_usuario.getText().toString();
+        password = String.valueOf(jt_pass.getPassword());
+        LoginLogica logica = new LoginLogica(user, password);
+        if(logica.validar()){
+            SistemaPrincipal sistemaPrincipal = new SistemaPrincipal();
+            sistemaPrincipal.setVisible(true);
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "Credenciales de acceso incorrecta."
+                        + "Por favor vuelva a intentar");
+        }
+    }//GEN-LAST:event_btn_ingresarActionPerformed
+
+    private void initFacuComponents(){
         
         Color bkgnd_frame = new Color(49, 28, 28);
         Color bkgnd_text_field = new Color(229, 229, 229);
@@ -122,10 +161,17 @@ public class Login extends javax.swing.JFrame {
         this.setPreferredSize(new Dimension(1024, 768));
         this.getContentPane().setBackground(bkgnd_frame);
         
+        //this.setLocation(null);
+        this.setResizable(false);
+        this.setTitle("Acceso al Sistema Nutritiva");
+        
         jt_usuario.setPreferredSize(text_field);
         jt_usuario.setBackground(bkgnd_text_field);
 
+        
     }
+    
+    
     
     /**
      * @param args the command line arguments
@@ -144,28 +190,27 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Login().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new LoginInterface().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_ingresar;
     private javax.swing.JLabel img_login;
     private javax.swing.JLabel img_logo_icon;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPasswordField jt_pass;
     private javax.swing.JTextField jt_usuario;
     // End of variables declaration//GEN-END:variables

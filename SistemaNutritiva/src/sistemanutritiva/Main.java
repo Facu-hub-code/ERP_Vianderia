@@ -5,7 +5,7 @@
  */
 package sistemanutritiva;
 
-import Interface.Login;
+import Interface.LoginInterface;
 
 /**
  *
@@ -17,7 +17,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Login login = new Login(); //La primer linea crea un login
+        LoginInterface login = new LoginInterface();
         login.setVisible(true);
     }
     
