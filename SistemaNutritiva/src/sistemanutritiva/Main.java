@@ -5,7 +5,8 @@
  */
 package sistemanutritiva;
 
-import Interface.LoginInterface;
+import Interface.GestionClientes;
+import Interface.LoginJF;
 
 /**
  *
@@ -17,8 +18,10 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        LoginInterface login = new LoginInterface();
-        login.setVisible(true);
+        //LoginJF login = new LoginJF();
+        //login.setVisible(true);
+        GestionClientes gestionClientes = new GestionClientes();
+        gestionClientes.setVisible(true);
     }
     
 }
