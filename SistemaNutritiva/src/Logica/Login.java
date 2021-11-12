@@ -17,12 +17,12 @@ import javax.swing.JOptionPane;
  *
  * @author facul
  */
-public class LoginLogica {
+public class Login {
        
     private static String user;
     private static String password;
     
-    public LoginLogica(String user, String password) {
+    public Login(String user, String password) {
         this.user = user;
         this.password = password;
     }
