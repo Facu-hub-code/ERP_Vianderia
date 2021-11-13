@@ -30,6 +30,7 @@ public class GestionCaja extends javax.swing.JFrame {
         initComponents();
         this.getContentPane().setBackground(new Color(49,28,28));
         actualizarTabla();
+        calcularSaldos();
     }
 
     /**
@@ -51,6 +52,8 @@ public class GestionCaja extends javax.swing.JFrame {
         jtable_caja = new javax.swing.JTable();
         jr_ingreso = new javax.swing.JRadioButton();
         jr_efectivo = new javax.swing.JRadioButton();
+        jl_Total = new javax.swing.JLabel();
+        jl_efectivo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(49, 28, 28));
@@ -131,6 +134,10 @@ public class GestionCaja extends javax.swing.JFrame {
 
         jr_efectivo.setText("Efectivo");
 
+        jl_Total.setText("Total:");
+
+        jl_efectivo.setText("Efectivo: ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -152,7 +159,12 @@ public class GestionCaja extends javax.swing.JFrame {
                         .addGap(85, 85, 85)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jl_efectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jl_Total, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(27, 27, 27))
         );
         layout.setVerticalGroup(
@@ -160,7 +172,7 @@ public class GestionCaja extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -177,12 +189,21 @@ public class GestionCaja extends javax.swing.JFrame {
                         .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
                         .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(43, 43, 43))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_Total, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_efectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void calcularSaldos(){
+        jl_Total.setText("Total: " + Movimiento.calcularTotal() + " $");
+        jl_efectivo.setText("Efectivo: " + Movimiento.calcularEfectivo() + " $");   
+    }
+    
     //Metodo que limpia los valores de los campos de texto
     private void limpiarCampos(){
         jt_monto.setText("Monto:");
@@ -290,6 +311,8 @@ public class GestionCaja extends javax.swing.JFrame {
     private javax.swing.JButton btn_modificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jl_Total;
+    private javax.swing.JLabel jl_efectivo;
     private javax.swing.JRadioButton jr_efectivo;
     private javax.swing.JRadioButton jr_ingreso;
     private javax.swing.JTextField jt_especificacion;

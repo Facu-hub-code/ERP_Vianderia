@@ -34,6 +34,46 @@ public class Movimiento {
     public Movimiento() {
     }
     
+    public static Double calcularTotal(){
+        double total = 0;
+        Connection cn = Conexion.conectar();
+        try {
+            PreparedStatement ps = cn.prepareStatement("SELECT * from caja");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                if ( rs.getBoolean("ingreso") ) //todo: revisar index = 3
+                    total += rs.getDouble("monto");
+                else
+                    total -= rs.getDouble("monto");
+            }
+            cn.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
+        return total;
+    }
+    
+    public static Double calcularEfectivo(){
+        double efectivo = 0;
+        Connection cn = Conexion.conectar();
+        try {
+            PreparedStatement ps = cn.prepareStatement("SELECT * from caja");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                if (rs.getBoolean("efectivo")) {
+                    if ( rs.getBoolean("efectivo") )
+                        efectivo += rs.getDouble("monto");
+                    else
+                        efectivo -= rs.getDouble("monto");
+                }
+            }
+            cn.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
+        return efectivo;
+    }
+    
     public static DefaultTableModel actualizarTabla(DefaultTableModel tabla){
         String[] datos = new String[5];  
         Connection cn = Conexion.conectar();
