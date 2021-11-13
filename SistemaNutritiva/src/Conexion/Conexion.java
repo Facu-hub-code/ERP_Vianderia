@@ -18,7 +18,8 @@ public class Conexion {
     //Conexión Local
     public static Connection conectar(){
         try {
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/bdd_sistema_nutritiva", "root", "");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://﻿localhost/sistema_nutritiva", "root", "");
+            //Connection cn = DriverManager.getConnection("jdbc:mysql://﻿localhost/sistema_nutritiva", "root", "");
             return cn;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,"Error de conexion: "+ e.toString());

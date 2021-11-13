@@ -18,3 +18,7 @@ Gestion clientes no es responsive
 preguntar como cerrrar y volver al sistema anterior, zanotti sabe
 seguir con la interface de clientes
 
+el color de los botones no cambia a amarillo, solucionar
+
+//todo: probar agregar, eliminar y modificar clientes tanto logica como interface
+

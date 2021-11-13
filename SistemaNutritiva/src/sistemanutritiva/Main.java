@@ -7,6 +7,7 @@ package sistemanutritiva;
 
 import Interface.GestionClientes;
 import Interface.LoginJF;
+import Interface.SistemaPrincipal;
 
 /**
  *
@@ -20,6 +21,8 @@ public class Main {
     public static void main(String[] args) {
         //LoginJF login = new LoginJF();
         //login.setVisible(true);
+        //SistemaPrincipal sistemaPrincipal = new SistemaPrincipal();
+        //sistemaPrincipal.setVisible(true);
         GestionClientes gestionClientes = new GestionClientes();
         gestionClientes.setVisible(true);
     }

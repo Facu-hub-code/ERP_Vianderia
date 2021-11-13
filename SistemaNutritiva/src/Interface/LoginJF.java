@@ -7,6 +7,7 @@ package Interface;
 import Logica.Login;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,12 +18,13 @@ public class LoginJF extends javax.swing.JFrame {
 
     private static String user = "";
     private static String password = "";
+
     /**
      * Creates new form Login
      */
     public LoginJF() {
         initComponents();
-        initFacuComponents();        
+        initFacuComponents();
     }
 
     /**
@@ -50,10 +52,9 @@ public class LoginJF extends javax.swing.JFrame {
         img_login.setAlignmentY(196.0F);
 
         jt_usuario.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jt_usuario.setForeground(new java.awt.Color(0, 0, 0));
         jt_usuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_usuario.setText("Usuario");
-        jt_usuario.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        jt_usuario.setBorder(javax.swing.BorderFactory.createBevelBorder(null, new java.awt.Color(0, 0, 0), null, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
         jt_usuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jt_usuarioMouseClicked(evt);
@@ -61,21 +62,24 @@ public class LoginJF extends javax.swing.JFrame {
         });
 
         jt_pass.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jt_pass.setForeground(new java.awt.Color(0, 0, 0));
         jt_pass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_pass.setText("Contraseña");
-        jt_pass.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        jt_pass.setBorder(javax.swing.BorderFactory.createBevelBorder(null, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         jt_pass.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jt_passMouseClicked(evt);
             }
         });
+        jt_pass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jt_passKeyPressed(evt);
+            }
+        });
 
         btn_ingresar.setBackground(new java.awt.Color(255, 253, 118));
         btn_ingresar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        btn_ingresar.setForeground(new java.awt.Color(0, 0, 0));
         btn_ingresar.setText("Ingresar");
-        btn_ingresar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        btn_ingresar.setBorder(javax.swing.BorderFactory.createBevelBorder(null, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         btn_ingresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_ingresarActionPerformed(evt);
@@ -127,10 +131,6 @@ public class LoginJF extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jt_usuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_usuarioMouseClicked
-        jt_usuario.setText("");
-    }//GEN-LAST:event_jt_usuarioMouseClicked
-
     private void jt_passMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_passMouseClicked
         jt_pass.setText("");
     }//GEN-LAST:event_jt_passMouseClicked
@@ -139,38 +139,56 @@ public class LoginJF extends javax.swing.JFrame {
         user = jt_usuario.getText().toString();
         password = String.valueOf(jt_pass.getPassword());
         Login logica = new Login(user, password);
-        if(logica.validar()){
+        if (logica.validar()) {
             SistemaPrincipal sistemaPrincipal = new SistemaPrincipal();
             sistemaPrincipal.setVisible(true);
             this.dispose();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Credenciales de acceso incorrecta."
-                        + "Por favor vuelva a intentar");
+                    + "Por favor vuelva a intentar");
         }
     }//GEN-LAST:event_btn_ingresarActionPerformed
 
-    private void initFacuComponents(){
-        
+    private void jt_passKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_passKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            user = jt_usuario.getText().toString();
+            password = String.valueOf(jt_pass.getPassword());
+            Login logica = new Login(user, password);
+            if (logica.validar()) {
+                SistemaPrincipal sistemaPrincipal = new SistemaPrincipal();
+                sistemaPrincipal.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Credenciales de acceso incorrecta."
+                        + "Por favor vuelva a intentar");
+            }
+        }
+    }//GEN-LAST:event_jt_passKeyPressed
+
+    private void jt_usuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_usuarioMouseClicked
+        jt_usuario.setText("");
+    }//GEN-LAST:event_jt_usuarioMouseClicked
+
+    private void initFacuComponents() {
+
         Color bkgnd_frame = new Color(49, 28, 28);
         Color bkgnd_text_field = new Color(229, 229, 229);
         Color yellow_nutritiva = new Color(255, 253, 118);
         Dimension text_field = new Dimension(294, 48);
-        
+
         this.setPreferredSize(new Dimension(1024, 768));
         this.getContentPane().setBackground(bkgnd_frame);
-        
+
         //this.setLocation(null);
         this.setResizable(false);
         this.setTitle("Acceso al Sistema Nutritiva");
-        
+
         jt_usuario.setPreferredSize(text_field);
         jt_usuario.setBackground(bkgnd_text_field);
+        btn_ingresar.setBackground(yellow_nutritiva); //Todo: poner el boton amarillo
 
-        
     }
-    
-    
-    
+
     /**
      * @param args the command line arguments
      */

@@ -27,7 +27,7 @@ public class GestionClientes extends javax.swing.JFrame {
     public GestionClientes() {
         initComponents();
         this.getContentPane().setBackground(new Color(49,28,28));
-        actualizarClientes();
+        actualizarTabla();
     }
 
     /**
@@ -63,7 +63,6 @@ public class GestionClientes extends javax.swing.JFrame {
 
         jt_telefono.setBackground(new java.awt.Color(243, 243, 194));
         jt_telefono.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jt_telefono.setForeground(new java.awt.Color(0, 0, 0));
         jt_telefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_telefono.setText("Telefono:");
         jt_telefono.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
@@ -75,7 +74,6 @@ public class GestionClientes extends javax.swing.JFrame {
 
         jt_nombre.setBackground(new java.awt.Color(243, 243, 194));
         jt_nombre.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jt_nombre.setForeground(new java.awt.Color(0, 0, 0));
         jt_nombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_nombre.setText("Nombre:");
         jt_nombre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
@@ -87,7 +85,6 @@ public class GestionClientes extends javax.swing.JFrame {
 
         jt_apellido.setBackground(new java.awt.Color(243, 243, 194));
         jt_apellido.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jt_apellido.setForeground(new java.awt.Color(0, 0, 0));
         jt_apellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_apellido.setText("Apellido:");
         jt_apellido.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
@@ -99,7 +96,6 @@ public class GestionClientes extends javax.swing.JFrame {
 
         jt_direccion.setBackground(new java.awt.Color(243, 243, 194));
         jt_direccion.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jt_direccion.setForeground(new java.awt.Color(0, 0, 0));
         jt_direccion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_direccion.setText("Direccion:");
         jt_direccion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
@@ -111,7 +107,6 @@ public class GestionClientes extends javax.swing.JFrame {
 
         jt_dni.setBackground(new java.awt.Color(243, 243, 194));
         jt_dni.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jt_dni.setForeground(new java.awt.Color(0, 0, 0));
         jt_dni.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_dni.setText("DNI:");
         jt_dni.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
@@ -123,7 +118,6 @@ public class GestionClientes extends javax.swing.JFrame {
 
         btn_agregar.setBackground(new java.awt.Color(255, 253, 118));
         btn_agregar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        btn_agregar.setForeground(new java.awt.Color(0, 0, 0));
         btn_agregar.setText("Agregar");
         btn_agregar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         btn_agregar.addActionListener(new java.awt.event.ActionListener() {
@@ -134,15 +128,23 @@ public class GestionClientes extends javax.swing.JFrame {
 
         btn_eliminar.setBackground(new java.awt.Color(255, 253, 118));
         btn_eliminar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        btn_eliminar.setForeground(new java.awt.Color(0, 0, 0));
         btn_eliminar.setText("Eliminar");
         btn_eliminar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarActionPerformed(evt);
+            }
+        });
 
         btn_modificar.setBackground(new java.awt.Color(255, 253, 118));
         btn_modificar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        btn_modificar.setForeground(new java.awt.Color(0, 0, 0));
         btn_modificar.setText("Modificar");
         btn_modificar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        btn_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modificarActionPerformed(evt);
+            }
+        });
 
         jtable_clientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -212,20 +214,34 @@ public class GestionClientes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Metodo que limpia los valores de los campos de texto
+    private void limpiarCampos(){
+        jt_nombre.setText("Nombre:");
+        jt_apellido.setText("Apellido");
+        jt_telefono.setText("Telefono:");
+        jt_direccion.setText("Direccion:");
+        jt_dni.setText("DNI:");
+    }
+    //Metodo que chequea que ningun campo de texto este vacio.
+    private boolean checkCampos(){
+        boolean flag = (jt_nombre.getText().equalsIgnoreCase("") ||
+                jt_apellido.getText().equalsIgnoreCase("") ||
+                jt_telefono.getText().equalsIgnoreCase("") ||
+                jt_direccion.getText().equalsIgnoreCase("") ||
+                jt_dni.getText().equalsIgnoreCase("") );
+        return flag;
+    }
     
-    private void actualizarClientes(){
-        //luego separar la logica de la table 
-        DefaultTableModel modelFacu = new DefaultTableModel();
-        modelFacu.addColumn("Nombre");
-        modelFacu.addColumn("Apellido");
-        modelFacu.addColumn("Telefono");
-        modelFacu.addColumn("Direccion");
-        modelFacu.addColumn("DNI");
-        
-        jtable_clientes.setModel(modelFacu);
-        
-        Cliente cliente = new Cliente();
-        jtable_clientes.setModel(cliente.actualizarTable(modelFacu));    
+    //Metodo que actualiza los valores de la tabla segun la base de datos
+    private void actualizarTabla(){
+        DefaultTableModel tabla = new DefaultTableModel();
+        tabla.addColumn("Nombre");
+        tabla.addColumn("Apellido");
+        tabla.addColumn("Telefono");
+        tabla.addColumn("Direccion");
+        tabla.addColumn("DNI");
+        jtable_clientes.setModel(tabla);
+        jtable_clientes.setModel(Cliente.actualizarTabla(tabla));
     }
     
     private void jt_telefonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_telefonoMouseClicked
@@ -249,9 +265,36 @@ public class GestionClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_jt_dniMouseClicked
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
-        //Cliente cliente = new Cliente(jt_nombre.getText(), jt_apellido.getText(),
-               // (int)jt_telefono.getText(), jt_direccion.getText(), (long)jt_dni.getText());
+        if(checkCampos()){ 
+            JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
+        }else{
+            Cliente cliente = new Cliente(jt_nombre.getText(), jt_apellido.getText()
+            ,Integer.valueOf(jt_telefono.getText()), jt_direccion.getText(), Long.valueOf(jt_telefono.getText()));
+            Cliente.agregarCliente(cliente);
+        }
     }//GEN-LAST:event_btn_agregarActionPerformed
+
+    private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
+        if(checkCampos()){
+            JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
+        }else{
+            Cliente cliente = new Cliente();
+            int dni = Integer.valueOf(jt_dni.getText());
+            int filaSelec = jtable_clientes.getSelectedRow(); //todo: revisar para que es la fila
+            String nombre = jt_nombre.getText();
+            
+            Cliente.eliminarCliente(cliente, filaSelec);
+        }
+    }//GEN-LAST:event_btn_eliminarActionPerformed
+
+    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
+        if (checkCampos()) {
+            JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
+        }else{
+            Cliente cliente = new Cliente(jt_nombre.getText(), jt_apellido.getText()
+            ,Integer.valueOf(jt_telefono.getText()), jt_direccion.getText(), Long.valueOf(jt_telefono.getText()));
+            Cliente.modificarCliente(cliente);
+    }//GEN-LAST:event_btn_modificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -281,10 +324,8 @@ public class GestionClientes extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GestionClientes().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new GestionClientes().setVisible(true);
         });
     }
 

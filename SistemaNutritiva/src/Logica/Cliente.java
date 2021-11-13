@@ -6,6 +6,7 @@
 package Logica;
 
 import Conexion.Conexion;
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -35,7 +36,65 @@ public class Cliente {
     public Cliente() {
     }
     
-    public DefaultTableModel actualizarTable(DefaultTableModel modelo){
+    //Metodo que modifica un cliente de la base de datos
+    public static void modificarCliente(Cliente cliente){
+        Connection cn = Conexion.conectar();
+        String sql = "UPDATE clientes SET "
+                    + "nombre = ?, apellido = ?, dni = ?, direccion = ?, telefono = ? "
+                + "WHERE dni ='" + cliente.getDni() + "'";
+        
+        try {
+            PreparedStatement ps = cn.prepareStatement(sql);
+            ps.setString(1, cliente.getNombre());
+            ps.setString(2, cliente.getApellido());
+            ps.setInt(3, cliente.getDni());
+            ps.setString(4, cliente.getDireccion());
+            ps.setLong(5, cliente.getTelefono());
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Modificacion exitosa");
+            cn.close();
+        } catch (HeadlessException | SQLException e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+        }        
+    }
+    
+    //Metodo que elimina un cliente de la base de datos
+    public static void eliminarCliente(Cliente cliente, int fila){
+        Connection cn = Conexion.conectar();
+        try {
+            String sql = "DELETE FROM clientes where dni ="+cliente.getDni();
+            PreparedStatement ps = cn.prepareStatement(sql);
+            if(ps.executeUpdate() >= 0 ){
+                JOptionPane.showMessageDialog(null, "Se elimino el cliente: "+cliente.getNombre()+" "+cliente.getApellido());
+            }else{
+                JOptionPane.showMessageDialog(null, "No se encontro el cliente a eliminar");
+            }
+            cn.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
+    }
+    
+    //Metodo que agrega un cliente a la base de datos
+    public static void agregarCliente(Cliente cliente){
+        Connection cn = Conexion.conectar();
+        String strPS = "INSERT INTO clientes VALUES(?,?,?,?,?)";
+        try {
+            PreparedStatement ps = cn.prepareStatement(strPS);
+            ps.setString(2, cliente.getNombre());
+            ps.setString(3, cliente.getApellido());
+            ps.setInt(4, cliente.getDni());
+            ps.setString(5, cliente.getDireccion());
+            ps.setLong(6, cliente.getTelefono());
+            JOptionPane.showMessageDialog(null, "Cliente agregado correctamente");
+            cn.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
+        
+    }
+    
+    public static DefaultTableModel actualizarTabla(DefaultTableModel tabla){
         String[] datos = new String[5];  
         Connection cn = Conexion.conectar();
         try {
@@ -47,13 +106,13 @@ public class Cliente {
                 datos[2] = rs.getInt(4)+""; //tomo el telefono
                 datos[3] = rs.getString(5); //tomo el direccion
                 datos[4] = rs.getString(6); //tomo el dni
-                modelo.addRow(datos);
+                tabla.addRow(datos);
             }
             cn.close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
-        return modelo;
+        return tabla;
     }
 
     public String getNombre() {
