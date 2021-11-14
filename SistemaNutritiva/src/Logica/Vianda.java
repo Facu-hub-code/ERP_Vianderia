@@ -21,12 +21,12 @@ import javax.swing.table.DefaultTableModel;
 public class Vianda {
     private String nombre;
     private double precio;
-    private char [] dias = new char[6]; //Arreglo que indica que indica los dias
+    private String dias;//Arreglo que indica que indica los dias
 
     public Vianda() {
     }
 
-    public Vianda(String nombre, double precio, char []dias) {
+    public Vianda(String nombre, double precio, String dias) {
         this.nombre = nombre;
         this.precio = precio;
         this.dias = dias;
@@ -70,13 +70,13 @@ public class Vianda {
         }   
     }
     
-    public static void eliminarViandaa(Vianda vianda){
+    public static void eliminarViandaa(String nombre){
         Connection cn = Conexion.conectar();
         try {
-            String sql = "DELETE FROM viandas where nombre ="+vianda.getNombre();
+            String sql = "DELETE FROM viandas where nombre ="+nombre;
             PreparedStatement ps = cn.prepareStatement(sql);
             if(ps.executeUpdate() >= 0 ){
-                JOptionPane.showMessageDialog(null, "Se elimino la vianda: "+vianda.getNombre());
+                JOptionPane.showMessageDialog(null, "Se elimino la vianda: "+nombre);
             }else{
                 JOptionPane.showMessageDialog(null, "No se encontro la vianda a eliminar");
             }
@@ -93,7 +93,7 @@ public class Vianda {
             PreparedStatement ps = cn.prepareStatement(strPS);
             ps.setString(2, vianda.getNombre());
             ps.setDouble(3, vianda.getPrecio());
-            ps.setString(4, vianda.getDias().toString());
+            ps.setString(4, vianda.getDias());
             
             JOptionPane.showMessageDialog(null, "Vianda agregada correctamente");
             cn.close();
@@ -118,11 +118,11 @@ public class Vianda {
         this.precio = precio;
     }
 
-    public char[] getDias() {
+    public String getDias() {
         return dias;
     }
 
-    public void setDias(char[] dias) {
+    public void setDias(String dias) {
         this.dias = dias;
     }
     

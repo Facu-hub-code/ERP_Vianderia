@@ -7,13 +7,7 @@ package Interface;
 
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import Conexion.Conexion;
-import Logica.Cliente;
 import Logica.Vianda;
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -188,8 +182,8 @@ public class ViandasJF extends javax.swing.JFrame {
     //Metodo que limpia los valores de los campos de texto
     private void limpiarCampos(){
         jt_nombre.setText("Nombre:");
-        jt_precio.setText("Apellido");
-        jt_dias.setText("Telefono:");
+        jt_precio.setText("Precio:");
+        jt_dias.setText("Dias:");
     }
     //Metodo que chequea que ningun campo de texto este vacio.
     private boolean checkCampos(){
@@ -227,7 +221,7 @@ public class ViandasJF extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
         }else{
             char [] cadena = new char[6];
-            Vianda vianda = new Vianda(jt_nombre.getText(), Double.valueOf(jt_precio.getText()), cadena);
+            Vianda vianda = new Vianda(jt_nombre.getText(), Double.valueOf(jt_precio.getText()), jt_dias.getText());
             Vianda.agregarVianda(vianda);
         }
     }//GEN-LAST:event_btn_agregarActionPerformed
@@ -236,8 +230,7 @@ public class ViandasJF extends javax.swing.JFrame {
         if(checkCampos()){
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
         }else{
-            Vianda vianda = new Vianda();
-            Vianda.eliminarViandaa(vianda);
+            Vianda.eliminarViandaa(jt_nombre.getText());
         }
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
@@ -245,8 +238,7 @@ public class ViandasJF extends javax.swing.JFrame {
         if (checkCampos()) {
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
         }else{
-            char [] cadena = {'A', 'B'};
-            Vianda vianda = new Vianda(jt_nombre.getText(), Double.valueOf(jt_precio.getText()), cadena); //todo modificar
+            Vianda vianda = new Vianda(jt_nombre.getText(), Double.valueOf(jt_precio.getText()), jt_dias.getText());
             Vianda.modificarVianda(vianda);
         }
     }//GEN-LAST:event_btn_modificarActionPerformed

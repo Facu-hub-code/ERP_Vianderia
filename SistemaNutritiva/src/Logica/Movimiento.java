@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -23,17 +24,20 @@ public class Movimiento {
     private String especificacion;
     private boolean ingreso;
     private boolean efectivo;
+    private Date fecha;
 
-    public Movimiento(double monto, String especificacion, boolean ingreso, boolean efectivo) {
+    public Movimiento(double monto, String especificacion, boolean ingreso, boolean efectivo, Date fechaDate) {
         this.monto = monto;
         this.especificacion = especificacion;
         this.ingreso = ingreso;
         this.efectivo = efectivo;
+        this.fecha = fecha;
     }
 
     public Movimiento() {
     }
     
+    //Metodo para calcular el dinero total del negocio
     public static Double calcularTotal(){
         double total = 0;
         Connection cn = Conexion.conectar();
@@ -53,6 +57,7 @@ public class Movimiento {
         return total;
     }
     
+    //Metodo para calcular el dinero en efectivo del negocio
     public static Double calcularEfectivo(){
         double efectivo = 0;
         Connection cn = Conexion.conectar();
@@ -74,24 +79,27 @@ public class Movimiento {
         return efectivo;
     }
     
+    //Metodo que actualiza los valores de la tabla interface
     public static DefaultTableModel actualizarTabla(DefaultTableModel tabla){
         String[] datos = new String[5];  
         Connection cn = Conexion.conectar();
-        try { //todo revisar
+        try {
             PreparedStatement ps = cn.prepareStatement("SELECT * from caja");
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                datos[0] = rs.getDouble(2)+""; //tomo el monto
-                datos[1] = rs.getString(3); //tomo la especificacion
-                if(rs.getBoolean(4)) //tomo si es ingreso
+                datos[0] = rs.getDouble("monto")+""; //tomo el monto
+                datos[1] = rs.getString("especificacion"); //tomo la especificacion
+                if(rs.getBoolean("ingreso")) //tomo si es ingreso
                     datos[2] = "Ingreso";
                 else
                     datos[2] = "Egreso";
-                if (rs.getBoolean(5)) //tomo si es efectivo
+                
+                if (rs.getBoolean("efectivo")) //tomo si es efectivo
                     datos[3] = "Efectivo";
                 else 
                     datos[3] = "Cuenta Banco";
-              
+                datos[4] = rs.getDate("fecha").toString();
+                
                 tabla.addRow(datos);
             }
             cn.close();
@@ -101,10 +109,11 @@ public class Movimiento {
         return tabla;
     }
     
+    //Metodo para modificar un movimiento de la tabla
     public static void modificarMovimiento(Movimiento movimiento, int id){
         Connection cn = Conexion.conectar();
         String sql = "UPDATE caja SET "
-                    + "monto = ?, especificacion = ?, ingreso = ?, efectivo = ? "
+                    + "monto = ?, especificacion = ?, ingreso = ?, efectivo = ?, fecha = ? "
                 + "WHERE id ='" + id + "'"; //revisar que sea el de la fila
         
         try {
@@ -113,6 +122,7 @@ public class Movimiento {
             ps.setString(2, movimiento.getEspecificacion());
             ps.setBoolean(3, movimiento.isIngreso());
             ps.setBoolean(4, movimiento.isEfectivo());
+            ps.setDate(5, (java.sql.Date) movimiento.getFecha());//todo: cuidado con el sql vs java
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Modificacion exitosa");
             cn.close();
@@ -121,7 +131,8 @@ public class Movimiento {
         }   
     }
     
-    public static void eliminarMovimiento(Movimiento movimiento, int fila){
+    //Metodo para elimianr un movimiento de la base de datos
+    public static void eliminarMovimiento(int fila){ //no se usa el movimiento, con algun identificador es suficiente
         Connection cn = Conexion.conectar();
         try {
             String sql = "DELETE FROM caja where id ="+fila; //todo: debuggear si este es el id
@@ -139,13 +150,14 @@ public class Movimiento {
     
     public static void agregarMovimiento(Movimiento movimiento){
         Connection cn = Conexion.conectar();
-        String strPS = "INSERT INTO caja VALUES(?,?,?,?)"; //todo revisar cantidad de valores
+        String strPS = "INSERT INTO caja VALUES(?,?,?,?,?)"; //todo revisar cantidad de valores
         try {
             PreparedStatement ps = cn.prepareStatement(strPS);
             ps.setDouble(2, movimiento.getMonto());
             ps.setString(3, movimiento.getEspecificacion());
             ps.setBoolean(4, movimiento.isIngreso());
             ps.setBoolean(5, movimiento.isEfectivo());
+            ps.setDate(6, (java.sql.Date) movimiento.getFecha());
             cn.close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.toString());
@@ -182,6 +194,14 @@ public class Movimiento {
 
     public void setEfectivo(boolean efectivo) {
         this.efectivo = efectivo;
+    }
+    
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
     
     

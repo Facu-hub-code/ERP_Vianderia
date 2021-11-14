@@ -278,12 +278,8 @@ public class GestionClientes extends javax.swing.JFrame {
         if(checkCampos()){
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
         }else{
-            Cliente cliente = new Cliente();
-            int dni = Integer.valueOf(jt_dni.getText());
-            int filaSelec = jtable_clientes.getSelectedRow(); //todo: revisar para que es la fila
-            String nombre = jt_nombre.getText();
-            
-            Cliente.eliminarCliente(cliente, filaSelec);
+            int id = jtable_clientes.getSelectedRow(); //todo: revisar para que es la fi
+            Cliente.eliminarCliente(id);
         }
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
@@ -294,6 +290,7 @@ public class GestionClientes extends javax.swing.JFrame {
             Cliente cliente = new Cliente(jt_nombre.getText(), jt_apellido.getText()
             ,Integer.valueOf(jt_telefono.getText()), jt_direccion.getText(), Long.valueOf(jt_telefono.getText()));
             Cliente.modificarCliente(cliente);
+        }
     }//GEN-LAST:event_btn_modificarActionPerformed
 
     /**

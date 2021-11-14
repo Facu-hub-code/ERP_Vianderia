@@ -15,6 +15,8 @@ import Logica.Cliente;
 import Logica.Movimiento;
 import Logica.Vianda;
 import java.sql.SQLException;
+import java.time.Instant;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -69,7 +71,7 @@ public class GestionCaja extends javax.swing.JFrame {
         jt_monto.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jt_monto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_monto.setText("Monto:");
-        jt_monto.setBorder(javax.swing.BorderFactory.createBevelBorder(null, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        jt_monto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         jt_monto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jt_montoMouseClicked(evt);
@@ -80,7 +82,7 @@ public class GestionCaja extends javax.swing.JFrame {
         jt_especificacion.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jt_especificacion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_especificacion.setText("Especificacion:");
-        jt_especificacion.setBorder(javax.swing.BorderFactory.createBevelBorder(null, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        jt_especificacion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         jt_especificacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jt_especificacionMouseClicked(evt);
@@ -90,7 +92,7 @@ public class GestionCaja extends javax.swing.JFrame {
         btn_agregar.setBackground(new java.awt.Color(255, 253, 118));
         btn_agregar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         btn_agregar.setText("Agregar");
-        btn_agregar.setBorder(javax.swing.BorderFactory.createBevelBorder(null, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        btn_agregar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         btn_agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_agregarActionPerformed(evt);
@@ -100,7 +102,7 @@ public class GestionCaja extends javax.swing.JFrame {
         btn_eliminar.setBackground(new java.awt.Color(255, 253, 118));
         btn_eliminar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         btn_eliminar.setText("Eliminar");
-        btn_eliminar.setBorder(javax.swing.BorderFactory.createBevelBorder(null, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        btn_eliminar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_eliminarActionPerformed(evt);
@@ -110,7 +112,7 @@ public class GestionCaja extends javax.swing.JFrame {
         btn_modificar.setBackground(new java.awt.Color(255, 253, 118));
         btn_modificar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         btn_modificar.setText("Modificar");
-        btn_modificar.setBorder(javax.swing.BorderFactory.createBevelBorder(null, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        btn_modificar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         btn_modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_modificarActionPerformed(evt);
@@ -130,8 +132,10 @@ public class GestionCaja extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jtable_caja);
 
+        jr_ingreso.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jr_ingreso.setText("Ingreso");
 
+        jr_efectivo.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jr_efectivo.setText("Efectivo");
 
         jl_Total.setText("Total:");
@@ -209,7 +213,7 @@ public class GestionCaja extends javax.swing.JFrame {
         jt_monto.setText("Monto:");
         jt_especificacion.setText("Especificacion");
         jr_efectivo.setSelected(false);
-        jr_ingreso.setSelected(false);//todo: revisar
+        jr_ingreso.setSelected(false); //todo: revisar
     }
     //Metodo que chequea que ningun campo de texto este vacio.
     private boolean checkCampos(){
@@ -225,6 +229,7 @@ public class GestionCaja extends javax.swing.JFrame {
         tabla.addColumn("Especificacion");
         tabla.addColumn("Ingreso/Egreso");
         tabla.addColumn("Efectivo/Banco");
+        tabla.addColumn("Fecha");
         jtable_caja.setModel(tabla);
         jtable_caja.setModel(Movimiento.actualizarTabla(tabla));
     }
@@ -242,7 +247,7 @@ public class GestionCaja extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
         }else{
             Movimiento movimiento = new Movimiento(Double.valueOf(jt_monto.getText()), jt_especificacion.getText()
-            , jr_ingreso.isSelected(), jr_efectivo.isSelected());
+            , jr_ingreso.isSelected(), jr_efectivo.isSelected(), Date.from(Instant.now())); //todo: revisar
             Movimiento.agregarMovimiento(movimiento);
         }
     }//GEN-LAST:event_btn_agregarActionPerformed
@@ -251,9 +256,8 @@ public class GestionCaja extends javax.swing.JFrame {
         if(checkCampos()){
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
         }else{
-            Movimiento movimiento = new Movimiento();
             int filaSelec = jtable_caja.getSelectedRow(); 
-            Movimiento.eliminarMovimiento(movimiento, filaSelec);
+            Movimiento.eliminarMovimiento(filaSelec);
            
         }
     }//GEN-LAST:event_btn_eliminarActionPerformed
@@ -263,7 +267,7 @@ public class GestionCaja extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
         }else{
             Movimiento movimiento = new Movimiento(Double.valueOf(jt_monto.getText()), jt_especificacion.getText()
-            , jr_ingreso.isSelected(), jr_efectivo.isSelected());
+            , jr_ingreso.isSelected(), jr_efectivo.isSelected(), Date.from(Instant.now()));
             int filaSelec = jtable_caja.getSelectedRow(); 
             Movimiento.modificarMovimiento(movimiento, filaSelec);
         }

@@ -59,13 +59,13 @@ public class Cliente {
     }
     
     //Metodo que elimina un cliente de la base de datos
-    public static void eliminarCliente(Cliente cliente, int fila){
+    public static void eliminarCliente(int id){
         Connection cn = Conexion.conectar();
         try {
-            String sql = "DELETE FROM clientes where dni ="+cliente.getDni();
+            String sql = "DELETE FROM clientes where id ="+id;
             PreparedStatement ps = cn.prepareStatement(sql);
             if(ps.executeUpdate() >= 0 ){
-                JOptionPane.showMessageDialog(null, "Se elimino el cliente: "+cliente.getNombre()+" "+cliente.getApellido());
+                JOptionPane.showMessageDialog(null, "Se elimino el cliente correctamente");
             }else{
                 JOptionPane.showMessageDialog(null, "No se encontro el cliente a eliminar");
             }
@@ -86,12 +86,11 @@ public class Cliente {
             ps.setInt(4, cliente.getDni());
             ps.setString(5, cliente.getDireccion());
             ps.setLong(6, cliente.getTelefono());
-            JOptionPane.showMessageDialog(null, "Cliente agregado correctamente");
+            JOptionPane.showMessageDialog(null, "Cliente "+cliente.getNombre()+" agregado correctamente");
             cn.close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.toString());
         }
-        
     }
     
     public static DefaultTableModel actualizarTabla(DefaultTableModel tabla){
