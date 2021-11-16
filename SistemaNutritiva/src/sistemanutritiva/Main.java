@@ -5,9 +5,9 @@
  */
 package sistemanutritiva;
 
-import Interface.GestionClientes;
-import Interface.LoginJF;
-import Interface.SistemaPrincipal;
+import FrontEnd.GestionClientes;
+import FrontEnd.LoginJF;
+import FrontEnd.SistemaPrincipal;
 
 /**
  *
@@ -19,12 +19,12 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //LoginJF login = new LoginJF();
-        //login.setVisible(true);
+        LoginJF login = new LoginJF();
+        login.setVisible(true);
         //SistemaPrincipal sistemaPrincipal = new SistemaPrincipal();
         //sistemaPrincipal.setVisible(true);
-        GestionClientes gestionClientes = new GestionClientes();
-        gestionClientes.setVisible(true);
+        //GestionClientes gestionClientes = new GestionClientes();
+        //gestionClientes.setVisible(true);
     }
     
 }
