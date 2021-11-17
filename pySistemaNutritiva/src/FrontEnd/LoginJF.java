@@ -161,6 +161,9 @@ public class LoginJF extends javax.swing.JFrame {
         jt_usuario.setText("");
     }//GEN-LAST:event_jt_usuarioMouseClicked
 
+    /*
+    Funcion para terminar detalles del FrontEnd.
+    */
     private void initFacuComponents() {
 
         Color bkgnd_frame = new Color(49, 28, 28);

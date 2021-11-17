@@ -5,7 +5,7 @@
  */
 package BackEnd;
 
-import Conexion.Conexion;
+import BackEnd.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,6 +17,9 @@ import java.sql.SQLException;
  */
 public class Login {
     
+    /*
+    Funcion para validar credenciales del login.
+    */
     public static boolean validar(String user, String password){
         boolean flag = false;
         try {
@@ -24,11 +27,13 @@ public class Login {
             PreparedStatement ps = cn.prepareStatement("SELECT * FROM usuarios"
                     + " WHERE user = '" + user + "' AND password = '" + password + "'");
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
+            if (rs.next()) { //si hay coincidencia, ingreso bien las credenciales.
                 flag = true;                
             }else{
             } 
-        }catch (SQLException e) {}//El catch no hace nada, solo sigue el programa
+        }catch (SQLException e) {
+            System.out.println(e.getErrorCode()+" "+e.getMessage());
+        }//El catch no hace nada, solo sigue el programa
         return flag;
     }
 }

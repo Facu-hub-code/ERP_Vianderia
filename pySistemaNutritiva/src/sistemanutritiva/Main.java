@@ -6,7 +6,7 @@
 package sistemanutritiva;
 
 import FrontEnd.LoginJF;
-import Conexion.Conexion;
+import BackEnd.Conexion;
 /**
  *
  * @author facul
@@ -18,8 +18,8 @@ public class Main {
      */
     public static void main(String[] args) {
         Conexion.conectar();
-        //LoginJF login = new LoginJF();
-        //login.setVisible(true);
+        LoginJF ljf = new LoginJF();
+        ljf.setVisible(true);
     }
     
 }
