@@ -6,28 +6,18 @@
 package BackEnd;
 
 import Conexion.Conexion;
-import FrontEnd.SistemaPrincipal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author facul
  */
 public class Login {
-       
-    private static String user;
-    private static String password;
     
-    public Login(String user, String password) {
-        this.user = user;
-        this.password = password;
-    }
-    
-    public boolean validar(){
+    public static boolean validar(String user, String password){
         boolean flag = false;
         try {
             Connection cn = Conexion.conectar();

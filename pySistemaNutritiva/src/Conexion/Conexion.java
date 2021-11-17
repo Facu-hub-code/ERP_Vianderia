@@ -16,13 +16,19 @@ import java.sql.SQLException;
 public class Conexion {
     
     public static Connection conectar(){
+<<<<<<< Updated upstream:pySistemaNutritiva/src/Conexion/Conexion.java
         String sql = "jdbc:mysql://localhost:3306/sakila";
         try {
             Connection conn = DriverManager.getConnection(sql, "root", "toor");
             return conn;
+=======
+        Connection cn = null;
+        try {
+            cn = DriverManager.getConnection("jdbc:mysql://﻿localhost/bdd_sistema_nutritiva", "root", "");
+>>>>>>> Stashed changes:SistemaNutritiva/src/Conexion/Conexion.java
         } catch (SQLException e) {
             System.out.println("Error: "+e.getErrorCode()+" "+e.getMessage());
         }
-        return (null);
+        return cn;
     }
 }

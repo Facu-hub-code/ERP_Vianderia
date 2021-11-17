@@ -16,9 +16,6 @@ import javax.swing.JOptionPane;
  */
 public class LoginJF extends javax.swing.JFrame {
 
-    private static String user = "";
-    private static String password = "";
-
     /**
      * Creates new form Login
      */
@@ -136,10 +133,8 @@ public class LoginJF extends javax.swing.JFrame {
     }//GEN-LAST:event_jt_passMouseClicked
 
     private void btn_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarActionPerformed
-        user = jt_usuario.getText().toString();
-        password = String.valueOf(jt_pass.getPassword());
-        Login logica = new Login(user, password);
-        if (logica.validar()) {
+        System.out.println(jt_pass.getText());
+        if (Login.validar(jt_usuario.getText(), jt_pass.getText())) {
             SistemaPrincipal sistemaPrincipal = new SistemaPrincipal();
             sistemaPrincipal.setVisible(true);
             this.dispose();
@@ -151,10 +146,7 @@ public class LoginJF extends javax.swing.JFrame {
 
     private void jt_passKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_passKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            user = jt_usuario.getText().toString();
-            password = String.valueOf(jt_pass.getPassword());
-            Login logica = new Login(user, password);
-            if (logica.validar()) {
+            if (Login.validar(jt_usuario.getText(), jt_pass.getText())) {
                 SistemaPrincipal sistemaPrincipal = new SistemaPrincipal();
                 sistemaPrincipal.setVisible(true);
                 this.dispose();
