@@ -125,6 +125,7 @@
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jt_telefonoMouseClicked"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jt_telefonoKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jt_nombre">
@@ -150,6 +151,7 @@
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jt_nombreMouseClicked"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jt_nombreKeyReleased"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jt_apellido">
@@ -175,6 +177,7 @@
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jt_apellidoMouseClicked"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jt_apellidoKeyReleased"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jt_direccion">
@@ -225,6 +228,7 @@
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jt_dniMouseClicked"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jt_dniKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btn_agregar">
@@ -318,6 +322,9 @@
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jtable_clientesMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

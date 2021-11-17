@@ -18,7 +18,7 @@ public class Conexion {
         String sql = "jdbc:mysql://localhost:3306/nutritiva";
         try {
             Connection conn = DriverManager.getConnection(sql, "root", "toor");
-            System.out.println("Conexion exitosa");
+            //System.out.println("Conexion exitosa");
             return conn;
         } catch (SQLException ex) {
             System.out.println(ex.toString());

@@ -7,12 +7,7 @@ package FrontEnd;
 
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import Conexion.Conexion;
 import BackEnd.Cliente;
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,12 +16,15 @@ import javax.swing.JOptionPane;
  */
 public class GestionClientes extends javax.swing.JFrame {
 
+    private int dni;
+    private String direccion;
+    private long telefono;
     /**
      * Constructor: - Creates new form GestionClientes
      */
     public GestionClientes() {
         initComponents();
-        this.getContentPane().setBackground(new Color(49,28,28));
+        this.getContentPane().setBackground(new Color(49, 28, 28));
         actualizarTabla();
     }
 
@@ -71,6 +69,11 @@ public class GestionClientes extends javax.swing.JFrame {
                 jt_telefonoMouseClicked(evt);
             }
         });
+        jt_telefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jt_telefonoKeyTyped(evt);
+            }
+        });
 
         jt_nombre.setBackground(new java.awt.Color(243, 243, 194));
         jt_nombre.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -82,6 +85,11 @@ public class GestionClientes extends javax.swing.JFrame {
                 jt_nombreMouseClicked(evt);
             }
         });
+        jt_nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jt_nombreKeyReleased(evt);
+            }
+        });
 
         jt_apellido.setBackground(new java.awt.Color(243, 243, 194));
         jt_apellido.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -91,6 +99,11 @@ public class GestionClientes extends javax.swing.JFrame {
         jt_apellido.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jt_apellidoMouseClicked(evt);
+            }
+        });
+        jt_apellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jt_apellidoKeyReleased(evt);
             }
         });
 
@@ -113,6 +126,11 @@ public class GestionClientes extends javax.swing.JFrame {
         jt_dni.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jt_dniMouseClicked(evt);
+            }
+        });
+        jt_dni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jt_dniKeyTyped(evt);
             }
         });
 
@@ -157,6 +175,11 @@ public class GestionClientes extends javax.swing.JFrame {
 
             }
         ));
+        jtable_clientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtable_clientesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtable_clientes);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -214,36 +237,44 @@ public class GestionClientes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void filtrarNombre(String valor) {
+        jtable_clientes.setModel(Cliente.filtrarNombre(valor));
+    }
+
+    private void filtrarApellido(String valor) {
+        jtable_clientes.setModel(Cliente.filtrarApellido(valor));
+    }
+
     //Metodo que limpia los valores de los campos de texto
-    private void limpiarCampos(){
+    private void limpiarCampos() {
         jt_nombre.setText("Nombre:");
         jt_apellido.setText("Apellido");
         jt_telefono.setText("Telefono:");
         jt_direccion.setText("Direccion:");
         jt_dni.setText("DNI:");
     }
+
     //Metodo que chequea que ningun campo de texto este vacio.
-    private boolean checkCampos(){
-        boolean flag = (jt_nombre.getText().equalsIgnoreCase("") ||
-                jt_apellido.getText().equalsIgnoreCase("") ||
-                jt_telefono.getText().equalsIgnoreCase("") ||
+    private boolean checkCampos() {
+        return !( jt_nombre.getText().equalsIgnoreCase("") || 
+                jt_apellido.getText().equalsIgnoreCase("") || 
+                jt_dni.getText().equalsIgnoreCase("") ||
                 jt_direccion.getText().equalsIgnoreCase("") ||
-                jt_dni.getText().equalsIgnoreCase("") );
-        return flag;
+                jt_telefono.getText().equalsIgnoreCase("")  ); 
     }
-    
+
     //Metodo que actualiza los valores de la tabla segun la base de datos
-    private void actualizarTabla(){
+    private void actualizarTabla() {
         DefaultTableModel tabla = new DefaultTableModel();
         tabla.addColumn("Nombre");
         tabla.addColumn("Apellido");
-        tabla.addColumn("Telefono");
-        tabla.addColumn("Direccion");
         tabla.addColumn("DNI");
+        tabla.addColumn("Direccion");
+        tabla.addColumn("Telefono");
         jtable_clientes.setModel(tabla);
         jtable_clientes.setModel(Cliente.actualizarTabla(tabla));
     }
-    
+
     private void jt_telefonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_telefonoMouseClicked
         jt_telefono.setText("");
     }//GEN-LAST:event_jt_telefonoMouseClicked
@@ -265,19 +296,20 @@ public class GestionClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_jt_dniMouseClicked
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
-        if(checkCampos()){ 
-            JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
-        }else{
-            Cliente cliente = new Cliente(jt_nombre.getText(), jt_apellido.getText()
-            ,Integer.valueOf(jt_telefono.getText()), jt_direccion.getText(), Long.valueOf(jt_telefono.getText()));
+        if(checkCampos()){
+            Cliente cliente = new Cliente(jt_nombre.getText(), jt_apellido.getText(), Integer.valueOf(jt_dni.getText()),
+                    jt_direccion.getText(), Long.valueOf(jt_telefono.getText()));
             Cliente.agregarCliente(cliente);
+            actualizarTabla();
+        }else{
+            JOptionPane.showMessageDialog(null, "Faltan campos de completar");
         }
     }//GEN-LAST:event_btn_agregarActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        if(checkCampos()){
+        if (checkCampos()) {
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
-        }else{
+        } else {
             int id = jtable_clientes.getSelectedRow(); //todo: revisar para que es la fi
             Cliente.eliminarCliente(id);
         }
@@ -286,12 +318,42 @@ public class GestionClientes extends javax.swing.JFrame {
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
         if (checkCampos()) {
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
-        }else{
-            Cliente cliente = new Cliente(jt_nombre.getText(), jt_apellido.getText()
-            ,Integer.valueOf(jt_telefono.getText()), jt_direccion.getText(), Long.valueOf(jt_telefono.getText()));
+        } else {
+            Cliente cliente = new Cliente(jt_nombre.getText(), jt_apellido.getText(),
+                     Integer.valueOf(jt_telefono.getText()), jt_direccion.getText(), Long.valueOf(jt_telefono.getText()));
             Cliente.modificarCliente(cliente);
         }
     }//GEN-LAST:event_btn_modificarActionPerformed
+
+    private void jtable_clientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_clientesMouseClicked
+        int filaSelec = jtable_clientes.rowAtPoint(evt.getPoint());
+        jt_nombre.setText(jtable_clientes.getValueAt(filaSelec, 0).toString());
+        jt_apellido.setText(jtable_clientes.getValueAt(filaSelec, 1).toString());
+        jt_dni.setText(jtable_clientes.getValueAt(filaSelec, 2).toString());
+        jt_direccion.setText(jtable_clientes.getValueAt(filaSelec, 3).toString());
+        jt_telefono.setText(jtable_clientes.getValueAt(filaSelec, 4).toString());
+
+    }//GEN-LAST:event_jtable_clientesMouseClicked
+
+    private void jt_nombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_nombreKeyReleased
+        this.filtrarNombre(jt_nombre.getText());
+    }//GEN-LAST:event_jt_nombreKeyReleased
+
+    private void jt_apellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_apellidoKeyReleased
+        this.filtrarApellido(jt_apellido.getText());
+    }//GEN-LAST:event_jt_apellidoKeyReleased
+
+    private void jt_dniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_dniKeyTyped
+        char c = evt.getKeyChar();
+        if (c < '0' || c > '9')
+            evt.consume();
+    }//GEN-LAST:event_jt_dniKeyTyped
+
+    private void jt_telefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_telefonoKeyTyped
+        char c = evt.getKeyChar();
+        if (c < '0' || c > '9')
+            evt.consume();
+    }//GEN-LAST:event_jt_telefonoKeyTyped
 
     /**
      * @param args the command line arguments

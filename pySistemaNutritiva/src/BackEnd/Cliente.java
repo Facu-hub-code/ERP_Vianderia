@@ -5,12 +5,14 @@
  */
 package BackEnd;
 
-import Conexion.Conexion;
+import BackEnd.Conexion;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,13 +30,20 @@ public class Cliente {
     public Cliente(String nombre, String apellido, int dni, String direccion, long telefono) {
         this.nombre = nombre;
         this.apellido = apellido;
-        this.dni = dni;
+        if(dni == 0)
+            dni = 0;
+        else
+            this.dni = dni;
+        
+        
         this.direccion = direccion;
         this.telefono = telefono;
     }
 
     public Cliente() {
     }
+    
+    //Metodo que chequea que ningun campo de texto este vacio.
     
     //Metodo que modifica un cliente de la base de datos
     public static void modificarCliente(Cliente cliente){
@@ -77,20 +86,80 @@ public class Cliente {
     
     //Metodo que agrega un cliente a la base de datos
     public static void agregarCliente(Cliente cliente){
+        //Establecer la conexion.
         Connection cn = Conexion.conectar();
-        String strPS = "INSERT INTO clientes VALUES(?,?,?,?,?)";
-        try {
-            PreparedStatement ps = cn.prepareStatement(strPS);
+        try {    
+            //Creamos el statement del tipo PreparedStatement(precompilado).
+            PreparedStatement ps = cn.prepareStatement("INSERT INTO clientes VALUES (?,?,?,?,?,?)");
+            ps.setInt(1, 0);
             ps.setString(2, cliente.getNombre());
             ps.setString(3, cliente.getApellido());
             ps.setInt(4, cliente.getDni());
             ps.setString(5, cliente.getDireccion());
             ps.setLong(6, cliente.getTelefono());
-            JOptionPane.showMessageDialog(null, "Cliente "+cliente.getNombre()+" agregado correctamente");
+            int filasAfectadas = ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Se agrego el cliente: "+cliente.getNombre()
+            +" " +cliente.getApellido());
             cn.close();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.toString());
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
         }
+    }
+    
+    /*
+    Filtra el apelldio de la busqueda sobre un campo de texto, para agilizarla.
+    */
+    public static DefaultTableModel filtrarApellido(String valor) {
+        Connection conn = Conexion.conectar();
+        String[] titulos = {"Nombre", "Apellido", "DNI", "Direccion", "Telefono"};
+        String[] registros = new String[5];
+        DefaultTableModel model = new DefaultTableModel(null, titulos);
+        String sql = "SELECT * FROM clientes WHERE apellido LIKE '%" + valor + "%'";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                registros[0] = rs.getString("nombre");
+                registros[1] = rs.getString("apellido");
+                registros[2] = rs.getInt("dni")+"";
+                registros[3] = rs.getString("direccion");
+                registros[4] = rs.getLong("telefono")+"";
+                model.addRow(registros);
+            }
+            conn.close();
+            return model;
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getErrorCode() + e.getMessage());
+        }
+        return (null);
+    }
+    
+    /**
+     * Filtra el nombre de la busqueda sobre un campo de texto, para agilizarla.
+     */
+    public static DefaultTableModel filtrarNombre(String valor) {
+        Connection conn = Conexion.conectar();
+        String[] titulos = {"Nombre", "Apellido", "DNI", "Direccion", "Telefono"};
+        String[] registros = new String[5];
+        DefaultTableModel model = new DefaultTableModel(null, titulos);
+        String sql = "SELECT * FROM clientes WHERE nombre LIKE '%" + valor + "%'";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                registros[0] = rs.getString("nombre");
+                registros[1] = rs.getString("apellido");
+                registros[2] = rs.getInt("dni")+"";
+                registros[3] = rs.getString("direccion");
+                registros[4] = rs.getLong("telefono")+"";
+                model.addRow(registros);
+            }
+            conn.close();
+            return model;
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getErrorCode() + e.getMessage());
+        }
+        return (null);
     }
     
     public static DefaultTableModel actualizarTabla(DefaultTableModel tabla){
@@ -100,11 +169,11 @@ public class Cliente {
             PreparedStatement ps = cn.prepareStatement("SELECT * from clientes");
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                datos[0] = rs.getString(2); //tomo el nombre
-                datos[1] = rs.getString(3); //tomo el apellido
-                datos[2] = rs.getInt(4)+""; //tomo el telefono
-                datos[3] = rs.getString(5); //tomo el direccion
-                datos[4] = rs.getString(6); //tomo el dni
+                datos[0] = rs.getString("nombre");
+                datos[1] = rs.getString("apellido");
+                datos[2] = rs.getInt("dni")+""; 
+                datos[3] = rs.getString("direccion");
+                datos[4] = rs.getString("telefono"); 
                 tabla.addRow(datos);
             }
             cn.close();
