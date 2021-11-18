@@ -5,7 +5,6 @@
  */
 package BackEnd;
 
-import BackEnd.Conexion;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,85 +19,110 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Vianda {
     private String nombre;
-    private double precio;
+    private float precio;
     private String dias;//Arreglo que indica que indica los dias
 
-    public Vianda() {
-    }
-
-    public Vianda(String nombre, double precio, String dias) {
+    
+    public Vianda(String nombre, float precio, String dias) {
         this.nombre = nombre;
         this.precio = precio;
         this.dias = dias;
     }
 
     public static DefaultTableModel actualizarTabla(DefaultTableModel tabla){
-        String[] datos = new String[5];  
-        Connection cn = Conexion.conectar();
-        try { //todo revisar
-            PreparedStatement ps = cn.prepareStatement("SELECT * from viandas");
+        String[] datos = new String[4]; //todo: revisar cantidad.  
+        Connection cn = Conexion.conectar(); //Establezco conexion
+        try {
+            PreparedStatement ps = cn.prepareStatement("SELECT * from viandas"); //Creo el statement del tipo PreparedStatement(Precompilado).
             ResultSet rs = ps.executeQuery();
-            while(rs.next()){
-                datos[0] = rs.getString(2); //tomo el nombre
-                datos[1] = rs.getDouble(3)+""; //tomo el precio
-                datos[2] = rs.getString(4); //tomo los dias
+            while(rs.next()){   //Analizo el Objeto tabla ResultSet.
+                datos[0] = rs.getInt("idviandas")+"";
+                datos[1] = rs.getString("nombre");
+                datos[2] = rs.getDouble("precio")+"";
+                datos[3] = rs.getString("dias");
                 tabla.addRow(datos);
             }
-            cn.close();
+            cn.close(); //Cierro la comunicacion
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
+            System.out.println(e.getMessage());
         }
         return tabla;
     }
     
-    public static void modificarVianda(Vianda vianda){
+        /*
+    Filtra el apelldio de la busqueda sobre un campo de texto, para agilizarla.
+    */
+    public static DefaultTableModel filtrarNombre(String valor) {
+        Connection conn = Conexion.conectar();
+        String[] titulos = {"Nombre", "Precio", "Dias"};
+        String[] registros = new String[3];
+        DefaultTableModel model = new DefaultTableModel(null, titulos);
+        String sql = "SELECT * FROM viandas WHERE nombre LIKE '%" + valor + "%'";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                registros[0] = rs.getString("nombre");
+                registros[1] = rs.getFloat("precio")+"";
+                registros[2] = rs.getString("dias");
+                model.addRow(registros);
+            }
+            conn.close();
+            return model;
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getErrorCode() + e.getMessage());
+        }
+        return (null);
+    }
+    
+    public static void modificarVianda(Vianda vianda, int id){
         Connection cn = Conexion.conectar();
         String sql = "UPDATE viandas SET "
-                    + "nombre = ?, precio = ?, dias = ? "
-                + "WHERE nombre ='" + vianda.getNombre() + "'";
-        
+                    + "nombre = ?, precio = ?, dias = ?"
+                + "WHERE idviandas ='" + id + "'";
         try {
             PreparedStatement ps = cn.prepareStatement(sql);
             ps.setString(1, vianda.getNombre());
-            ps.setDouble(2, vianda.getPrecio());
-            ps.setString(3, vianda.getDias().toString());
+            ps.setFloat(2, vianda.getPrecio());
+            ps.setString(3, vianda.getDias());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Modificacion exitosa");
             cn.close();
         } catch (HeadlessException | SQLException e) {
-            JOptionPane.showMessageDialog(null, e.toString());
+            System.out.println(e.toString());
         }   
     }
     
-    public static void eliminarViandaa(String nombre){
+    public static void eliminarVianda(int id){
         Connection cn = Conexion.conectar();
         try {
-            String sql = "DELETE FROM viandas where nombre ="+nombre;
+            String sql = "DELETE FROM viandas where idviandas ="+id;
             PreparedStatement ps = cn.prepareStatement(sql);
             if(ps.executeUpdate() >= 0 ){
-                JOptionPane.showMessageDialog(null, "Se elimino la vianda: "+nombre);
+                JOptionPane.showMessageDialog(null, "Se elimino correctamente");
             }else{
-                JOptionPane.showMessageDialog(null, "No se encontro la vianda a eliminar");
+                JOptionPane.showMessageDialog(null, "No se encontro la vianada");
             }
             cn.close();
-        } catch (Exception e) {
+        } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, e.toString());
         }
     }
     
     public static void agregarVianda(Vianda vianda){
         Connection cn = Conexion.conectar();
-        String strPS = "INSERT INTO viandas VALUES(?,?,?,?)";
-        try {
-            PreparedStatement ps = cn.prepareStatement(strPS);
+        try {    
+            //Creamos el statement del tipo PreparedStatement(precompilado).
+            PreparedStatement ps = cn.prepareStatement("INSERT INTO viandas VALUES (?,?,?,?)");
+            ps.setInt(1, 0);
             ps.setString(2, vianda.getNombre());
-            ps.setDouble(3, vianda.getPrecio());
+            ps.setFloat(3, vianda.getPrecio());
             ps.setString(4, vianda.getDias());
-            
-            JOptionPane.showMessageDialog(null, "Vianda agregada correctamente");
+            int filasAfectadas = ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Se agrego la vianda: "+vianda.getNombre());
             cn.close();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.toString());
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
         }
     }
     
@@ -110,11 +134,11 @@ public class Vianda {
         this.nombre = nombre;
     }
 
-    public double getPrecio() {
+    public float getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(float precio) {
         this.precio = precio;
     }
 

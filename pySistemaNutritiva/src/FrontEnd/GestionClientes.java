@@ -310,8 +310,8 @@ public class GestionClientes extends javax.swing.JFrame {
         if (checkCampos()) {
             int row = jtable_clientes.getSelectedRow(); //todo: revisar para que es la fi
             int dni = Integer.valueOf(jtable_clientes.getValueAt(row, 2).toString());
-            System.out.println(dni);
             Cliente.eliminarCliente(dni);
+            actualizarTabla();
         } else {
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
         }
@@ -322,6 +322,7 @@ public class GestionClientes extends javax.swing.JFrame {
             Cliente cliente = new Cliente(jt_nombre.getText(), jt_apellido.getText(),
                      Integer.valueOf(jt_dni.getText()), jt_direccion.getText(), Long.valueOf(jt_telefono.getText()));
             Cliente.modificarCliente(cliente);
+            actualizarTabla();
         } else {
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
         }

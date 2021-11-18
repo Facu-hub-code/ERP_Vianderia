@@ -5,6 +5,7 @@
  */
 package FrontEnd;
 
+import BackEnd.Cliente;
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
 import BackEnd.Vianda;
@@ -75,6 +76,11 @@ public class ViandasJF extends javax.swing.JFrame {
                 jt_nombreMouseClicked(evt);
             }
         });
+        jt_nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jt_nombreKeyReleased(evt);
+            }
+        });
 
         jt_precio.setBackground(new java.awt.Color(243, 243, 194));
         jt_precio.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -84,6 +90,11 @@ public class ViandasJF extends javax.swing.JFrame {
         jt_precio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jt_precioMouseClicked(evt);
+            }
+        });
+        jt_precio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jt_precioKeyTyped(evt);
             }
         });
 
@@ -128,6 +139,11 @@ public class ViandasJF extends javax.swing.JFrame {
 
             }
         ));
+        jtable_viandas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtable_viandasMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtable_viandas);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -179,6 +195,10 @@ public class ViandasJF extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void filtrarNombre(String nombre){
+        jtable_viandas.setModel(Vianda.filtrarNombre(nombre));
+    }
+    
     //Metodo que limpia los valores de los campos de texto
     private void limpiarCampos(){
         jt_nombre.setText("Nombre:");
@@ -187,16 +207,16 @@ public class ViandasJF extends javax.swing.JFrame {
     }
     //Metodo que chequea que ningun campo de texto este vacio.
     private boolean checkCampos(){
-        boolean flag = (jt_nombre.getText().equalsIgnoreCase("") ||
+        return !(jt_nombre.getText().equalsIgnoreCase("") || 
                 jt_precio.getText().equalsIgnoreCase("") ||
-                jt_dias.getText().equalsIgnoreCase("")  );
-        return flag;
+                jt_dias.getText().equalsIgnoreCase(""));
     }
     
     
     //Metodo que actualiza los valores de la tabla segun la base de datos
     private void actualizarTabla(){
         DefaultTableModel tabla = new DefaultTableModel();
+        tabla.addColumn("ID");
         tabla.addColumn("Nombre");
         tabla.addColumn("Precio");
         tabla.addColumn("Dias");
@@ -217,31 +237,54 @@ public class ViandasJF extends javax.swing.JFrame {
     }//GEN-LAST:event_jt_precioMouseClicked
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
-        if(checkCampos()){ 
-            JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
-        }else{
-            char [] cadena = new char[6];
-            Vianda vianda = new Vianda(jt_nombre.getText(), Double.valueOf(jt_precio.getText()), jt_dias.getText());
+        if(checkCampos()){
+            Vianda vianda = new Vianda(jt_nombre.getText(), Float.valueOf(jt_precio.getText()), jt_dias.getText());
             Vianda.agregarVianda(vianda);
+            actualizarTabla();
+        }else{
+            JOptionPane.showMessageDialog(null, "Faltan campos de completar");
         }
     }//GEN-LAST:event_btn_agregarActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        if(checkCampos()){
+        if (checkCampos()) {
+            int row = jtable_viandas.getSelectedRow();
+            int id = Integer.valueOf(jtable_viandas.getValueAt(row, 0).toString());
+            Vianda.eliminarVianda(id);
+            actualizarTabla();
+        } else {
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
-        }else{
-            Vianda.eliminarViandaa(jt_nombre.getText());
         }
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
         if (checkCampos()) {
+            Vianda vianda = new Vianda(jt_nombre.getText(), Float.valueOf(jt_precio.getText()), jt_dias.getText());
+            int row = jtable_viandas.getSelectedRow();
+            int id = Integer.valueOf(jtable_viandas.getValueAt(row, 0).toString());
+            Vianda.modificarVianda(vianda, id);
+            actualizarTabla();
+        } else {
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
-        }else{
-            Vianda vianda = new Vianda(jt_nombre.getText(), Double.valueOf(jt_precio.getText()), jt_dias.getText());
-            Vianda.modificarVianda(vianda);
         }
     }//GEN-LAST:event_btn_modificarActionPerformed
+
+    private void jtable_viandasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_viandasMouseClicked
+        int filaSelec = jtable_viandas.rowAtPoint(evt.getPoint());
+        jt_nombre.setText(jtable_viandas.getValueAt(filaSelec, 1).toString());
+        jt_precio.setText(jtable_viandas.getValueAt(filaSelec, 2).toString() + "$");
+        jt_dias.setText(jtable_viandas.getValueAt(filaSelec, 3).toString());
+    }//GEN-LAST:event_jtable_viandasMouseClicked
+
+    private void jt_precioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_precioKeyTyped
+        char c = evt.getKeyChar();
+        if (c < '0' || c > '9')
+            evt.consume();
+    }//GEN-LAST:event_jt_precioKeyTyped
+
+    private void jt_nombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_nombreKeyReleased
+        this.filtrarNombre(jt_nombre.getText());
+    }//GEN-LAST:event_jt_nombreKeyReleased
 
     /**
      * @param args the command line arguments
