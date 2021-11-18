@@ -11,7 +11,7 @@ import BackEnd.Cliente;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * @company FK-SOFT
  * @author facul
  */
 public class GestionClientes extends javax.swing.JFrame {
@@ -308,20 +308,22 @@ public class GestionClientes extends javax.swing.JFrame {
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         if (checkCampos()) {
-            JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
+            int row = jtable_clientes.getSelectedRow(); //todo: revisar para que es la fi
+            int dni = Integer.valueOf(jtable_clientes.getValueAt(row, 2).toString());
+            System.out.println(dni);
+            Cliente.eliminarCliente(dni);
         } else {
-            int id = jtable_clientes.getSelectedRow(); //todo: revisar para que es la fi
-            Cliente.eliminarCliente(id);
+            JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
         }
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
         if (checkCampos()) {
-            JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
-        } else {
             Cliente cliente = new Cliente(jt_nombre.getText(), jt_apellido.getText(),
-                     Integer.valueOf(jt_telefono.getText()), jt_direccion.getText(), Long.valueOf(jt_telefono.getText()));
+                     Integer.valueOf(jt_dni.getText()), jt_direccion.getText(), Long.valueOf(jt_telefono.getText()));
             Cliente.modificarCliente(cliente);
+        } else {
+            JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
         }
     }//GEN-LAST:event_btn_modificarActionPerformed
 

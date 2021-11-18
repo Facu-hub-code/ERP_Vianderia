@@ -7,14 +7,7 @@ package FrontEnd;
 
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import Conexion.Conexion;
-import BackEnd.Cliente;
 import BackEnd.Movimiento;
-import BackEnd.Vianda;
-import java.sql.SQLException;
 import java.time.Instant;
 import java.util.Date;
 import javax.swing.JOptionPane;

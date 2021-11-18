@@ -4,7 +4,7 @@
  */
 package BackEnd;
 
-import Conexion.Conexion;
+import BackEnd.Conexion;
 import java.awt.HeadlessException;
 import java.util.Date;
 import java.sql.Connection;

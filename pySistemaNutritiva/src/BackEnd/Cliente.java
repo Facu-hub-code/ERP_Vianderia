@@ -5,14 +5,12 @@
  */
 package BackEnd;
 
-import BackEnd.Conexion;
+//Imports
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -63,18 +61,18 @@ public class Cliente {
             JOptionPane.showMessageDialog(null, "Modificacion exitosa");
             cn.close();
         } catch (HeadlessException | SQLException e) {
-            JOptionPane.showMessageDialog(null, e.toString());
+            System.out.println(e.getMessage());
         }        
     }
     
     //Metodo que elimina un cliente de la base de datos
-    public static void eliminarCliente(int id){
+    public static void eliminarCliente(int dni){
         Connection cn = Conexion.conectar();
         try {
-            String sql = "DELETE FROM clientes where id ="+id;
+            String sql = "DELETE FROM clientes where dni ="+dni;
             PreparedStatement ps = cn.prepareStatement(sql);
             if(ps.executeUpdate() >= 0 ){
-                JOptionPane.showMessageDialog(null, "Se elimino el cliente correctamente");
+                JOptionPane.showMessageDialog(null, "Se elimino el cliente correctamente el cliente con dni: "+dni);
             }else{
                 JOptionPane.showMessageDialog(null, "No se encontro el cliente a eliminar");
             }
