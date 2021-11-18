@@ -70,6 +70,11 @@ public class GestionCaja extends javax.swing.JFrame {
                 jt_montoMouseClicked(evt);
             }
         });
+        jt_monto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jt_montoKeyTyped(evt);
+            }
+        });
 
         jt_especificacion.setBackground(new java.awt.Color(243, 243, 194));
         jt_especificacion.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -79,6 +84,11 @@ public class GestionCaja extends javax.swing.JFrame {
         jt_especificacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jt_especificacionMouseClicked(evt);
+            }
+        });
+        jt_especificacion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jt_especificacionKeyReleased(evt);
             }
         });
 
@@ -123,6 +133,11 @@ public class GestionCaja extends javax.swing.JFrame {
 
             }
         ));
+        jtable_caja.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtable_cajaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtable_caja);
 
         jr_ingreso.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
@@ -210,14 +225,13 @@ public class GestionCaja extends javax.swing.JFrame {
     }
     //Metodo que chequea que ningun campo de texto este vacio.
     private boolean checkCampos(){
-        boolean flag = (jt_monto.getText().equalsIgnoreCase("") ||
-                jt_especificacion.getText().equalsIgnoreCase("") );
-        return flag;
+        return !(jt_monto.getText().equalsIgnoreCase("") );
     }
     
     //Metodo que actualiza los valores de la tabla segun la base de datos
     private void actualizarTabla(){
         DefaultTableModel tabla = new DefaultTableModel();
+        tabla.addColumn("ID");
         tabla.addColumn("Monto");
         tabla.addColumn("Especificacion");
         tabla.addColumn("Ingreso/Egreso");
@@ -225,6 +239,10 @@ public class GestionCaja extends javax.swing.JFrame {
         tabla.addColumn("Fecha");
         jtable_caja.setModel(tabla);
         jtable_caja.setModel(Movimiento.actualizarTabla(tabla));
+    }
+    
+    private void filtrarEspecificacion(String especificacion){
+        jtable_caja.setModel(Movimiento.filtrarEspecificacion(especificacion));
     }
     
     private void jt_montoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_montoMouseClicked
@@ -236,12 +254,14 @@ public class GestionCaja extends javax.swing.JFrame {
     }//GEN-LAST:event_jt_especificacionMouseClicked
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
-        if(checkCampos()){ 
-            JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
-        }else{
-            Movimiento movimiento = new Movimiento(Double.valueOf(jt_monto.getText()), jt_especificacion.getText()
+        if(checkCampos()){
+            Movimiento movimiento = new Movimiento(Float.valueOf(jt_monto.getText()), jt_especificacion.getText()
             , jr_ingreso.isSelected(), jr_efectivo.isSelected(), Date.from(Instant.now())); //todo: revisar
             Movimiento.agregarMovimiento(movimiento);
+            actualizarTabla();
+        }else{
+            JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
+            
         }
     }//GEN-LAST:event_btn_agregarActionPerformed
 
@@ -259,12 +279,31 @@ public class GestionCaja extends javax.swing.JFrame {
         if (checkCampos()) {
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
         }else{
-            Movimiento movimiento = new Movimiento(Double.valueOf(jt_monto.getText()), jt_especificacion.getText()
+            Movimiento movimiento = new Movimiento(Float.valueOf(jt_monto.getText()), jt_especificacion.getText()
             , jr_ingreso.isSelected(), jr_efectivo.isSelected(), Date.from(Instant.now()));
             int filaSelec = jtable_caja.getSelectedRow(); 
             Movimiento.modificarMovimiento(movimiento, filaSelec);
         }
     }//GEN-LAST:event_btn_modificarActionPerformed
+
+    private void jtable_cajaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_cajaMouseClicked
+        int filaSelec = jtable_caja.rowAtPoint(evt.getPoint());
+        jt_monto.setText(jtable_caja.getValueAt(filaSelec, 1).toString());
+        jt_especificacion.setText(jtable_caja.getValueAt(filaSelec, 2).toString());
+        jr_ingreso.setSelected(jtable_caja.getValueAt(filaSelec, 3).toString().equals("Ingreso"));
+        jr_efectivo.setSelected(jtable_caja.getValueAt(filaSelec, 4).toString().equals("Efectivo"));
+    }//GEN-LAST:event_jtable_cajaMouseClicked
+
+    private void jt_especificacionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_especificacionKeyReleased
+        this.filtrarEspecificacion(jt_especificacion.getText());
+        
+    }//GEN-LAST:event_jt_especificacionKeyReleased
+
+    private void jt_montoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_montoKeyTyped
+        char c = evt.getKeyChar();
+        if ( (c != '.') && (c < '0' || c > '9'))
+            evt.consume();
+    }//GEN-LAST:event_jt_montoKeyTyped
 
     /**
      * @param args the command line arguments

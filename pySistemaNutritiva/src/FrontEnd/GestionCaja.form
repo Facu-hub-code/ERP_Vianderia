@@ -134,6 +134,7 @@
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jt_montoMouseClicked"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jt_montoKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jt_especificacion">
@@ -159,6 +160,7 @@
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jt_especificacionMouseClicked"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jt_especificacionKeyReleased"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btn_agregar">
@@ -252,6 +254,9 @@
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jtable_cajaMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

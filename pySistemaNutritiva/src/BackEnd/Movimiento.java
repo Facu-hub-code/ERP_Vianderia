@@ -5,7 +5,6 @@
  */
 package BackEnd;
 
-import BackEnd.Conexion;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,13 +19,13 @@ import javax.swing.table.DefaultTableModel;
  * @author facul
  */
 public class Movimiento {
-    private double monto;
+    private float monto;
     private String especificacion;
     private boolean ingreso;
     private boolean efectivo;
     private Date fecha;
 
-    public Movimiento(double monto, String especificacion, boolean ingreso, boolean efectivo, Date fechaDate) {
+    public Movimiento(float monto, String especificacion, boolean ingreso, boolean efectivo, Date fechaDate) {
         this.monto = monto;
         this.especificacion = especificacion;
         this.ingreso = ingreso;
@@ -42,7 +41,7 @@ public class Movimiento {
         double total = 0;
         Connection cn = Conexion.conectar();
         try {
-            PreparedStatement ps = cn.prepareStatement("SELECT * from caja");
+            PreparedStatement ps = cn.prepareStatement("SELECT * from movimientos");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 if ( rs.getBoolean("ingreso") ) //todo: revisar index = 3
@@ -62,7 +61,7 @@ public class Movimiento {
         double efectivo = 0;
         Connection cn = Conexion.conectar();
         try {
-            PreparedStatement ps = cn.prepareStatement("SELECT * from caja");
+            PreparedStatement ps = cn.prepareStatement("SELECT * from movimientos");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 if (rs.getBoolean("efectivo")) {
@@ -79,32 +78,68 @@ public class Movimiento {
         return efectivo;
     }
     
+    public static DefaultTableModel filtrarEspecificacion(String valor) {
+        Connection conn = Conexion.conectar();
+        String[] titulos = {"ID", "Monto", "Especificacion", "Ingreso/Egreso", "Efectivo/Otro", "Fecha"};
+        String[] registros = new String[6];
+        DefaultTableModel model = new DefaultTableModel(null, titulos);
+        String sql = "SELECT * FROM movimientos WHERE especificacion LIKE '%" + valor + "%'";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                registros[0] = rs.getInt("idmovimientos")+"";
+                registros[1] = rs.getFloat("monto")+"";
+                registros[2] = rs.getString("especificacion");
+                
+                if(rs.getBoolean("ingreso"))
+                    registros[3] = "Ingreso";
+                else
+                    registros[3] = "Egreso";
+                
+                if(rs.getBoolean("efectivo"))
+                    registros[4] = "Efectivo";
+                else
+                    registros[4] = "Otro";
+                
+                registros[5] = rs.getDate("fecha").toString();
+                
+                model.addRow(registros);
+            }
+            conn.close();
+            return model;
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getErrorCode() + e.getMessage());
+        }
+        return (null);
+    }
+    
     //Metodo que actualiza los valores de la tabla interface
     public static DefaultTableModel actualizarTabla(DefaultTableModel tabla){
-        String[] datos = new String[5];  
+        String[] datos = new String[6];  
         Connection cn = Conexion.conectar();
         try {
-            PreparedStatement ps = cn.prepareStatement("SELECT * from caja");
+            PreparedStatement ps = cn.prepareStatement("SELECT * from movimientos");
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                datos[0] = rs.getDouble("monto")+""; //tomo el monto
-                datos[1] = rs.getString("especificacion"); //tomo la especificacion
-                if(rs.getBoolean("ingreso")) //tomo si es ingreso
-                    datos[2] = "Ingreso";
+                datos[0] = rs.getInt("idmovimientos")+"";
+                datos[1] = rs.getDouble("monto")+""; //tomo el monto
+                datos[2] = rs.getString("especificacion"); //tomo la especificacion
+                if(rs.getBoolean("ingreso")) //si es ingreso
+                    datos[3] = "Ingreso";
                 else
-                    datos[2] = "Egreso";
-                
-                if (rs.getBoolean("efectivo")) //tomo si es efectivo
-                    datos[3] = "Efectivo";
+                    datos[3] = "Egreso";
+                if (rs.getBoolean("efectivo")) //si es efectivo
+                    datos[4] = "Efectivo";
                 else 
-                    datos[3] = "Cuenta Banco";
-                datos[4] = rs.getDate("fecha").toString();
-                
+                    datos[4] = "Otro";
+                datos[5] = rs.getDate("fecha").toString();
+ 
                 tabla.addRow(datos);
             }
             cn.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
+            System.out.println(e.toString());
         }
         return tabla;
     }
@@ -150,25 +185,26 @@ public class Movimiento {
     
     public static void agregarMovimiento(Movimiento movimiento){
         Connection cn = Conexion.conectar();
-        String strPS = "INSERT INTO caja VALUES(?,?,?,?,?)"; //todo revisar cantidad de valores
+        String strPS = "INSERT INTO movimientos VALUES(?,?,?,?,?,?)"; //todo revisar cantidad de valores
         try {
             PreparedStatement ps = cn.prepareStatement(strPS);
-            ps.setDouble(2, movimiento.getMonto());
+            ps.setInt(1, 0);
+            ps.setFloat(2, movimiento.getMonto());
             ps.setString(3, movimiento.getEspecificacion());
             ps.setBoolean(4, movimiento.isIngreso());
             ps.setBoolean(5, movimiento.isEfectivo());
             ps.setDate(6, (java.sql.Date) movimiento.getFecha());
             cn.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.toString());
+            System.out.println(e.toString());
         }
     }
 
-    public double getMonto() {
+    public float getMonto() {
         return monto;
     }
 
-    public void setMonto(double monto) {
+    public void setMonto(float monto) {
         this.monto = monto;
     }
 

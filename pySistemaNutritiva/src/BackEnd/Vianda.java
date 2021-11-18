@@ -30,7 +30,7 @@ public class Vianda {
     }
 
     public static DefaultTableModel actualizarTabla(DefaultTableModel tabla){
-        String[] datos = new String[4]; //todo: revisar cantidad.  
+        String[] datos = new String[4]; 
         Connection cn = Conexion.conectar(); //Establezco conexion
         try {
             PreparedStatement ps = cn.prepareStatement("SELECT * from viandas"); //Creo el statement del tipo PreparedStatement(Precompilado).
