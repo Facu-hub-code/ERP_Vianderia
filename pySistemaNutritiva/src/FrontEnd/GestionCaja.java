@@ -5,6 +5,7 @@
  */
 package FrontEnd;
 
+import BackEnd.Cliente;
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
 import BackEnd.Movimiento;
@@ -273,23 +274,29 @@ public class GestionCaja extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_agregarActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        if(checkCampos()){
+        if (checkCampos()) {
+            int row = jtable_caja.getSelectedRow(); 
+            int id = Integer.valueOf(jtable_caja.getValueAt(row, 0).toString());
+            Movimiento.eliminarMovimiento(id);
+            actualizar();
+        } else {
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
-        }else{
-            int filaSelec = jtable_caja.getSelectedRow(); 
-            Movimiento.eliminarMovimiento(filaSelec);
-           
         }
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
         if (checkCampos()) {
+            Date date = new Date();
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Movimiento movimiento = new Movimiento(Float.valueOf(jt_monto.getText()),
+                    jt_especificacion.getText(), simpleDateFormat.format(date), jr_ingreso.isSelected()
+                    ,jr_efectivo.isSelected());
+            int row = jtable_caja.getSelectedRow();
+            int id = Integer.valueOf(jtable_caja.getValueAt(row, 0).toString());
+            Movimiento.modificarMovimiento(movimiento, id);
+            actualizar();
+        } else {
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
-        }else{
-            //Movimiento movimiento = new Movimiento(Float.valueOf(jt_monto.getText()), jt_especificacion.getText()
-            //, jr_ingreso.isSelected(), jr_efectivo.isSelected(), Date.from(Instant.now()));
-            int filaSelec = jtable_caja.getSelectedRow(); 
-            //Movimiento.modificarMovimiento(movimiento, filaSelec);
         }
     }//GEN-LAST:event_btn_modificarActionPerformed
 

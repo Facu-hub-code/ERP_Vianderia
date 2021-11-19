@@ -78,7 +78,7 @@ public class Cliente {
             }
             cn.close();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.toString());
+            System.out.println(e.toString());
         }
     }
     

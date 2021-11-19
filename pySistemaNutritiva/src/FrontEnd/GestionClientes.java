@@ -308,7 +308,7 @@ public class GestionClientes extends javax.swing.JFrame {
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         if (checkCampos()) {
-            int row = jtable_clientes.getSelectedRow(); //todo: revisar para que es la fi
+            int row = jtable_clientes.getSelectedRow();
             int dni = Integer.valueOf(jtable_clientes.getValueAt(row, 2).toString());
             Cliente.eliminarCliente(dni);
             actualizarTabla();

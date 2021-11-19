@@ -143,9 +143,9 @@ public class Movimiento {
     //Metodo para modificar un movimiento de la tabla
     public static void modificarMovimiento(Movimiento movimiento, int id){
         Connection cn = Conexion.conectar();
-        String sql = "UPDATE caja SET "
+        String sql = "UPDATE movimientos SET "
                     + "monto = ?, especificacion = ?, ingreso = ?, efectivo = ?, fecha = ? "
-                + "WHERE id ='" + id + "'"; //revisar que sea el de la fila
+                + "WHERE idmovimientos ='" + id + "'"; //revisar que sea el de la fila
         
         try {
             PreparedStatement ps = cn.prepareStatement(sql);
@@ -153,20 +153,20 @@ public class Movimiento {
             ps.setString(2, movimiento.getEspecificacion());
             ps.setBoolean(3, movimiento.isIngreso());
             ps.setBoolean(4, movimiento.isEfectivo());
-            //ps.setDate(5, (java.sql.Date) movimiento.getFecha());//todo: cuidado con el sql vs java
+            ps.setString(5,movimiento.getFecha());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Modificacion exitosa");
             cn.close();
         } catch (HeadlessException | SQLException e) {
-            JOptionPane.showMessageDialog(null, e.toString());
+            System.out.println(e.toString());
         }   
     }
     
     //Metodo para elimianr un movimiento de la base de datos
-    public static void eliminarMovimiento(int fila){ //no se usa el movimiento, con algun identificador es suficiente
+    public static void eliminarMovimiento(int id){ //no se usa el movimiento, con algun identificador es suficiente
         Connection cn = Conexion.conectar();
         try {
-            String sql = "DELETE FROM caja where id ="+fila; //todo: debuggear si este es el id
+            String sql = "DELETE FROM movimientos where idmovimientos ="+id;
             PreparedStatement ps = cn.prepareStatement(sql);
             if(ps.executeUpdate() >= 0 ){
                 JOptionPane.showMessageDialog(null, "Se elimino correctamente.");
@@ -174,8 +174,8 @@ public class Movimiento {
                 JOptionPane.showMessageDialog(null, "Error al intentar eliminar dicho movimiento");
             }
             cn.close();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.toString());
+        } catch (HeadlessException | SQLException e) {
+            System.out.println(e.toString());
         }
     }
     
