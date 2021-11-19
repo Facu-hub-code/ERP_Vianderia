@@ -43,7 +43,6 @@
                           <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jt_monto" pref="256" max="32767" attributes="0"/>
                               <Component id="jt_especificacion" alignment="0" pref="256" max="32767" attributes="0"/>
-                              <Component id="jd_fecha" alignment="0" max="32767" attributes="0"/>
                               <Component id="jr_efectivo" alignment="0" max="32767" attributes="0"/>
                               <Component id="jr_ingreso" alignment="0" max="32767" attributes="0"/>
                           </Group>
@@ -83,8 +82,6 @@
                       <Component id="jr_ingreso" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jr_efectivo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="jd_fecha" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="btn_agregar" min="-2" pref="35" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
@@ -295,11 +292,6 @@
     <Component class="javax.swing.JLabel" name="jl_efectivo">
       <Properties>
         <Property name="text" type="java.lang.String" value="Efectivo: "/>
-      </Properties>
-    </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="jd_fecha">
-      <Properties>
-        <Property name="dateFormatString" type="java.lang.String" value="YYYY/"/>
       </Properties>
     </Component>
   </SubComponents>

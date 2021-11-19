@@ -10,9 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -24,17 +22,14 @@ public class Movimiento {
     private String especificacion;
     private boolean ingreso;
     private boolean efectivo;
-    private Date fecha;
+    private String fecha;
 
-    public Movimiento(float monto, String especificacion, boolean ingreso, boolean efectivo, Date fechaDate) {
+    public Movimiento(float monto, String especificacion, String fecha, boolean ingreso, boolean efectivo) {
         this.monto = monto;
         this.especificacion = especificacion;
+        this.fecha = fecha;
         this.ingreso = ingreso;
         this.efectivo = efectivo;
-        this.fecha = fecha;
-    }
-
-    public Movimiento() {
     }
     
     //Metodo para calcular el dinero total del negocio
@@ -158,7 +153,7 @@ public class Movimiento {
             ps.setString(2, movimiento.getEspecificacion());
             ps.setBoolean(3, movimiento.isIngreso());
             ps.setBoolean(4, movimiento.isEfectivo());
-            ps.setDate(5, (java.sql.Date) movimiento.getFecha());//todo: cuidado con el sql vs java
+            //ps.setDate(5, (java.sql.Date) movimiento.getFecha());//todo: cuidado con el sql vs java
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Modificacion exitosa");
             cn.close();
@@ -193,7 +188,7 @@ public class Movimiento {
             ps.setString(3, movimiento.getEspecificacion());
             ps.setBoolean(4, movimiento.isIngreso());
             ps.setBoolean(5, movimiento.isEfectivo());
-            ps.setString(6, movimiento.getFecha().toString());
+            ps.setString(6, movimiento.getFecha());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Se agrego el movimiento exitosamente");
             cn.close();
@@ -234,11 +229,11 @@ public class Movimiento {
         this.efectivo = efectivo;
     }
     
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
     
