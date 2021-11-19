@@ -9,8 +9,11 @@ import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
 import BackEnd.Movimiento;
 import java.time.Instant;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -22,10 +25,13 @@ public class GestionCaja extends javax.swing.JFrame {
      * Constructor: - Creates new form GestionClientes
      */
     public GestionCaja() {
+        //System.out.println(Date.from(Instant.now()));
         initComponents();
         this.getContentPane().setBackground(new Color(49,28,28));
-        actualizarTabla();
+        actualizar();
         calcularSaldos();
+        String s = ((JTextField) jd_fecha.getDateEditor().getUiComponent()).getText();
+        System.out.println(s);
     }
 
     /**
@@ -37,6 +43,8 @@ public class GestionCaja extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jCalendar1 = new com.toedter.calendar.JCalendar();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
         jt_monto = new javax.swing.JTextField();
         jt_especificacion = new javax.swing.JTextField();
@@ -49,6 +57,7 @@ public class GestionCaja extends javax.swing.JFrame {
         jr_efectivo = new javax.swing.JRadioButton();
         jl_Total = new javax.swing.JLabel();
         jl_efectivo = new javax.swing.JLabel();
+        jd_fecha = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(49, 28, 28));
@@ -142,13 +151,17 @@ public class GestionCaja extends javax.swing.JFrame {
 
         jr_ingreso.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jr_ingreso.setText("Ingreso");
+        jr_ingreso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         jr_efectivo.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jr_efectivo.setText("Efectivo");
+        jr_efectivo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         jl_Total.setText("Total:");
 
         jl_efectivo.setText("Efectivo: ");
+
+        jd_fecha.setDateFormatString("YYYY/");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -162,11 +175,12 @@ public class GestionCaja extends javax.swing.JFrame {
                             .addComponent(btn_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jt_monto, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jt_especificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jr_ingreso)
-                                .addComponent(jr_efectivo))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jt_monto, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+                                .addComponent(jt_especificacion, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+                                .addComponent(jd_fecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jr_efectivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jr_ingreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(85, 85, 85)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -195,6 +209,8 @@ public class GestionCaja extends javax.swing.JFrame {
                         .addComponent(jr_ingreso)
                         .addGap(18, 18, 18)
                         .addComponent(jr_efectivo)
+                        .addGap(28, 28, 28)
+                        .addComponent(jd_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
@@ -211,6 +227,8 @@ public class GestionCaja extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
     private void calcularSaldos(){
         jl_Total.setText("Total: " + Movimiento.calcularTotal() + " $");
         jl_efectivo.setText("Efectivo: " + Movimiento.calcularEfectivo() + " $");   
@@ -228,8 +246,14 @@ public class GestionCaja extends javax.swing.JFrame {
         return !(jt_monto.getText().equalsIgnoreCase("") );
     }
     
+    private void actualizarFecha(){
+        Calendar calendar = new GregorianCalendar();
+        jd_fecha.setCalendar(calendar);
+    }
+    
     //Metodo que actualiza los valores de la tabla segun la base de datos
-    private void actualizarTabla(){
+    private void actualizar(){
+        actualizarFecha();
         DefaultTableModel tabla = new DefaultTableModel();
         tabla.addColumn("ID");
         tabla.addColumn("Monto");
@@ -256,12 +280,12 @@ public class GestionCaja extends javax.swing.JFrame {
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
         if(checkCampos()){
             Movimiento movimiento = new Movimiento(Float.valueOf(jt_monto.getText()), jt_especificacion.getText()
-            , jr_ingreso.isSelected(), jr_efectivo.isSelected(), Date.from(Instant.now())); //todo: revisar
-            Movimiento.agregarMovimiento(movimiento);
-            actualizarTabla();
-        }else{
-            JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
+            , jr_ingreso.isSelected(), jr_efectivo.isSelected(), jd_fecha.getDate());
             
+            Movimiento.agregarMovimiento(movimiento);
+            actualizar();
+        }else{
+            JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");   
         }
     }//GEN-LAST:event_btn_agregarActionPerformed
 
@@ -345,8 +369,11 @@ public class GestionCaja extends javax.swing.JFrame {
     private javax.swing.JButton btn_agregar;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_modificar;
+    private com.toedter.calendar.JCalendar jCalendar1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private com.toedter.calendar.JDateChooser jd_fecha;
     private javax.swing.JLabel jl_Total;
     private javax.swing.JLabel jl_efectivo;
     private javax.swing.JRadioButton jr_efectivo;

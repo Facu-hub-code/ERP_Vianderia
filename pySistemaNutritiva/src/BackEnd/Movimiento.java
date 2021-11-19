@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -185,15 +186,16 @@ public class Movimiento {
     
     public static void agregarMovimiento(Movimiento movimiento){
         Connection cn = Conexion.conectar();
-        String strPS = "INSERT INTO movimientos VALUES(?,?,?,?,?,?)"; //todo revisar cantidad de valores
         try {
-            PreparedStatement ps = cn.prepareStatement(strPS);
+            PreparedStatement ps = cn.prepareStatement("INSERT INTO movimientos VALUES (?,?,?,?,?,?)");
             ps.setInt(1, 0);
             ps.setFloat(2, movimiento.getMonto());
             ps.setString(3, movimiento.getEspecificacion());
             ps.setBoolean(4, movimiento.isIngreso());
             ps.setBoolean(5, movimiento.isEfectivo());
-            ps.setDate(6, (java.sql.Date) movimiento.getFecha());
+            ps.setString(6, movimiento.getFecha().toString());
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Se agrego el movimiento exitosamente");
             cn.close();
         } catch (SQLException e) {
             System.out.println(e.toString());
