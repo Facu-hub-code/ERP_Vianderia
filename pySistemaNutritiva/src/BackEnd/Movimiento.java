@@ -75,7 +75,14 @@ public class Movimiento {
     }
     
     //Metodo que actualiza los valores de la tabla interface
-    public static DefaultTableModel actualizarTabla(DefaultTableModel tabla){
+    public static DefaultTableModel actualizarTabla(){
+        DefaultTableModel tabla = new DefaultTableModel();
+        tabla.addColumn("ID");
+        tabla.addColumn("Monto");
+        tabla.addColumn("Especificacion");
+        tabla.addColumn("Ingreso/Egreso");
+        tabla.addColumn("Efectivo/Banco");
+        tabla.addColumn("Fecha");
         String[] datos = new String[6];  
         Connection cn = Conexion.conectar();
         try {

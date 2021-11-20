@@ -215,13 +215,7 @@ public class ViandasJF extends javax.swing.JFrame {
     
     //Metodo que actualiza los valores de la tabla segun la base de datos
     private void actualizarTabla(){
-        DefaultTableModel tabla = new DefaultTableModel();
-        tabla.addColumn("ID");
-        tabla.addColumn("Nombre");
-        tabla.addColumn("Precio");
-        tabla.addColumn("Dias");
-        jtable_viandas.setModel(tabla);
-        jtable_viandas.setModel(Vianda.actualizarTabla(tabla));
+        jtable_viandas.setModel(Vianda.actualizarTabla());
     }
     
     private void jt_diasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_diasMouseClicked

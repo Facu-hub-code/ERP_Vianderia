@@ -160,7 +160,13 @@ public class Cliente {
         return (null);
     }
     
-    public static DefaultTableModel actualizarTabla(DefaultTableModel tabla){
+    public static DefaultTableModel actualizarTabla(){
+        DefaultTableModel tabla = new DefaultTableModel();
+        tabla.addColumn("Nombre");
+        tabla.addColumn("Apellido");
+        tabla.addColumn("DNI");
+        tabla.addColumn("Direccion");
+        tabla.addColumn("Telefono");
         String[] datos = new String[5];  
         Connection cn = Conexion.conectar();
         try {

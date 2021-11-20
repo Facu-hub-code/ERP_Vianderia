@@ -5,11 +5,12 @@
  */
 package FrontEnd;
 
-import java.awt.Color;
-import javax.swing.table.DefaultTableModel;
 import BackEnd.Cliente;
+import java.awt.Color;
 import BackEnd.Pedido;
+import BackEnd.Vianda;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -45,12 +46,16 @@ public class PedidosJF extends javax.swing.JFrame {
         btn_cancelar = new javax.swing.JButton();
         btn_modificar = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jt_lunes = new javax.swing.JTable();
-        jt_martes = new javax.swing.JTable();
-        jt_miercoles = new javax.swing.JTable();
-        jt_x = new javax.swing.JTable();
-        jt_jueves = new javax.swing.JTable();
-        jt_viernes = new javax.swing.JTable();
+        jtable_lunes = new javax.swing.JTable();
+        jtable_martes = new javax.swing.JTable();
+        jtable_miercoles_1 = new javax.swing.JTable();
+        jtable_miercoles_2 = new javax.swing.JTable();
+        jtable_jueves = new javax.swing.JTable();
+        jtable_viernes = new javax.swing.JTable();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtable_clientes = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jtable_viandas = new javax.swing.JTable();
         jt_id = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -73,6 +78,11 @@ public class PedidosJF extends javax.swing.JFrame {
                 jt_unidadesMouseClicked(evt);
             }
         });
+        jt_unidades.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jt_unidadesKeyTyped(evt);
+            }
+        });
 
         jt_cliente.setBackground(new java.awt.Color(243, 243, 194));
         jt_cliente.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -82,6 +92,11 @@ public class PedidosJF extends javax.swing.JFrame {
         jt_cliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jt_clienteMouseClicked(evt);
+            }
+        });
+        jt_cliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jt_clienteKeyReleased(evt);
             }
         });
 
@@ -95,7 +110,13 @@ public class PedidosJF extends javax.swing.JFrame {
                 jt_viandaMouseClicked(evt);
             }
         });
+        jt_vianda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jt_viandaKeyReleased(evt);
+            }
+        });
 
+        jt_precio.setEditable(false);
         jt_precio.setBackground(new java.awt.Color(243, 243, 194));
         jt_precio.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jt_precio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -104,6 +125,11 @@ public class PedidosJF extends javax.swing.JFrame {
         jt_precio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jt_precioMouseClicked(evt);
+            }
+        });
+        jt_precio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jt_precioKeyTyped(evt);
             }
         });
 
@@ -148,83 +174,99 @@ public class PedidosJF extends javax.swing.JFrame {
             }
         });
 
-        jt_lunes.setModel(new javax.swing.table.DefaultTableModel(
+        jtable_lunes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jTabbedPane1.addTab("Lun", jt_lunes);
 
-        jt_martes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTabbedPane1.addTab("Mar", jt_martes);
+        jTabbedPane1.addTab("Lunes", jtable_lunes);
 
-        jt_miercoles.setModel(new javax.swing.table.DefaultTableModel(
+        jtable_martes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jTabbedPane1.addTab("Mier", jt_miercoles);
 
-        jt_x.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTabbedPane1.addTab("X", jt_x);
+        jTabbedPane1.addTab("Martes", jtable_martes);
 
-        jt_jueves.setModel(new javax.swing.table.DefaultTableModel(
+        jtable_miercoles_1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jTabbedPane1.addTab("Juev", jt_jueves);
 
-        jt_viernes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTabbedPane1.addTab("Vier", jt_viernes);
+        jTabbedPane1.addTab("Miercoles1", jtable_miercoles_1);
+
+        jtable_miercoles_2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTabbedPane1.addTab("Miercoles2", jtable_miercoles_2);
+
+        jtable_jueves.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTabbedPane1.addTab("Jueves", jtable_jueves);
+
+        jtable_viernes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTabbedPane1.addTab("Viernes", jtable_viernes);
+
+        jtable_clientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jtable_clientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtable_clientesMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jtable_clientes);
+
+        jTabbedPane1.addTab("Clientes", jScrollPane1);
+
+        jtable_viandas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jtable_viandas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtable_viandasMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jtable_viandas);
+
+        jTabbedPane1.addTab("Viandas", jScrollPane2);
 
         jt_id.setBackground(new java.awt.Color(243, 243, 194));
         jt_id.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -304,22 +346,38 @@ public class PedidosJF extends javax.swing.JFrame {
         jt_dias.setText("Dias:");
         jt_id.setText("ID");
     }
+    
     //Metodo que chequea que ningun campo de texto este vacio.
     private boolean checkCampos(){
-        boolean flag = (jt_cliente.getText().equalsIgnoreCase("") ||
+        return (jt_cliente.getText().equalsIgnoreCase("") ||
                 jt_vianda.getText().equalsIgnoreCase("") ||
                 jt_unidades.getText().equalsIgnoreCase("") ||
                 jt_precio.getText().equalsIgnoreCase("") ||
-                jt_dias.getText().equalsIgnoreCase("") ||
-                jt_id.getText().equalsIgnoreCase("")); 
-        return flag;
+                jt_dias.getText().equalsIgnoreCase(""));
     }
     
     //Metodo que actualiza los valores de la tabla segun la base de datos
     private void actualizarTablas(){
-        //actualizarTablaLunes();
-        
+        jtable_clientes.setModel(Cliente.actualizarTabla());
+        jtable_viandas.setModel(Vianda.actualizarTabla());
+        jtable_lunes.setModel(Pedido.actualizarTabla("L"));
+        jtable_lunes.setModel(Pedido.actualizarTabla("MA"));
+        jtable_lunes.setModel(Pedido.actualizarTabla("M1"));
+        jtable_lunes.setModel(Pedido.actualizarTabla("J"));
+        jtable_lunes.setModel(Pedido.actualizarTabla("V"));
+        jtable_lunes.setModel(Pedido.actualizarTabla("M2"));
     }
+    
+    private void filtrarCliente(String nombre){
+        jtable_clientes.setModel(Cliente.filtrarNombre(nombre));
+    }
+    
+    private void filtrarVianda(String vianda){
+        jtable_viandas.setModel(Vianda.filtrarNombre(vianda));
+    }
+    
+    
+    
     
     
     
@@ -343,13 +401,21 @@ public class PedidosJF extends javax.swing.JFrame {
         jt_dias.setText("");
     }//GEN-LAST:event_jt_diasMouseClicked
 
+
+
+
+
+
+
+
     private void btn_encargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_encargarActionPerformed
-        if(checkCampos()){ 
-            JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
-        }else{
-            Pedido pedido = new Pedido(jt_cliente.getText(), jt_vianda.getText(), Integer.valueOf(jt_unidades.getText()) 
-            , Double.valueOf(jt_precio.getText()), jt_dias.getText(), Integer.valueOf(jt_id.getText()));
+        if(checkCampos()){
+            Pedido pedido = new Pedido(jt_cliente.getText(), jt_vianda.getText(),
+                    Integer.valueOf(jt_unidades.getText()), Float.valueOf(jt_precio.getText()), jt_dias.getText(),0);
             Pedido.agregarPedido(pedido);
+            actualizarTablas();
+        }else{
+            JOptionPane.showMessageDialog(null, "Faltan campos de completar");
         }
     }//GEN-LAST:event_btn_encargarActionPerformed
 
@@ -357,25 +423,65 @@ public class PedidosJF extends javax.swing.JFrame {
         if(checkCampos()){
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
         }else{
-            Pedido pedido = new Pedido();
             int id = Integer.valueOf(jt_id.getText());
             Pedido.cancelarPedido(id);
         }
     }//GEN-LAST:event_btn_cancelarActionPerformed
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
-        if (checkCampos()) {
-            JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
-        }else{
-            Pedido pedido = new Pedido(jt_cliente.getText(), jt_vianda.getText(), Integer.valueOf(jt_unidades.getText()), 
-            Double.valueOf(jt_precio.getText()), jt_dias.getText(), Integer.valueOf(jt_id.getText()));
-            Pedido.modificarPedido(pedido);
-        }
+        
     }//GEN-LAST:event_btn_modificarActionPerformed
 
+    
+    
+    
+    
+    
+    
+    
+    
     private void jt_idMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_idMouseClicked
         jt_id.setText("");
     }//GEN-LAST:event_jt_idMouseClicked
+
+    private void jt_clienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_clienteKeyReleased
+        this.filtrarCliente(jt_cliente.getText());
+    }//GEN-LAST:event_jt_clienteKeyReleased
+
+    private void jt_viandaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_viandaKeyReleased
+        this.filtrarVianda(jt_vianda.getText());
+    }//GEN-LAST:event_jt_viandaKeyReleased
+
+    private void jt_unidadesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_unidadesKeyTyped
+        char c = evt.getKeyChar();
+        if (c < '0' || c > '9')
+            evt.consume();
+        else{
+            int unidades = evt.getKeyChar();
+            int row = jtable_viandas.getSelectedRow();
+            float precio = Float.valueOf(jtable_viandas.getValueAt(row, 2).toString());
+            jt_precio.setText((unidades*precio) + "");
+        }
+    }//GEN-LAST:event_jt_unidadesKeyTyped
+
+    private void jt_precioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_precioKeyTyped
+        char c = evt.getKeyChar();
+        if ( (c != '.') && (c < '0' || c > '9'))
+            evt.consume();
+    }//GEN-LAST:event_jt_precioKeyTyped
+
+    private void jtable_clientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_clientesMouseClicked
+        int filaSeleccionada = jtable_clientes.rowAtPoint(evt.getPoint());
+        jt_cliente.setText(jtable_clientes.getValueAt(filaSeleccionada, 0).toString() + 
+                " " + jtable_clientes.getValueAt(filaSeleccionada, 1).toString());
+    }//GEN-LAST:event_jtable_clientesMouseClicked
+
+    private void jtable_viandasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_viandasMouseClicked
+        int filaSeleccionada = jtable_viandas.rowAtPoint(evt.getPoint());
+        jt_vianda.setText(jtable_viandas.getValueAt(filaSeleccionada, 1).toString());
+        jt_precio.setText(jtable_viandas.getValueAt(filaSeleccionada, 2).toString());
+        jt_dias.setText(jtable_viandas.getValueAt(filaSeleccionada, 3).toString());
+    }//GEN-LAST:event_jtable_viandasMouseClicked
 
     /**
      * @param args the command line arguments
@@ -416,18 +522,22 @@ public class PedidosJF extends javax.swing.JFrame {
     private javax.swing.JButton btn_encargar;
     private javax.swing.JButton btn_modificar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jt_cliente;
     private javax.swing.JTextField jt_dias;
     private javax.swing.JTextField jt_id;
-    private javax.swing.JTable jt_jueves;
-    private javax.swing.JTable jt_lunes;
-    private javax.swing.JTable jt_martes;
-    private javax.swing.JTable jt_miercoles;
     private javax.swing.JTextField jt_precio;
     private javax.swing.JTextField jt_unidades;
     private javax.swing.JTextField jt_vianda;
-    private javax.swing.JTable jt_viernes;
-    private javax.swing.JTable jt_x;
+    private javax.swing.JTable jtable_clientes;
+    private javax.swing.JTable jtable_jueves;
+    private javax.swing.JTable jtable_lunes;
+    private javax.swing.JTable jtable_martes;
+    private javax.swing.JTable jtable_miercoles_1;
+    private javax.swing.JTable jtable_miercoles_2;
+    private javax.swing.JTable jtable_viandas;
+    private javax.swing.JTable jtable_viernes;
     // End of variables declaration//GEN-END:variables
 }

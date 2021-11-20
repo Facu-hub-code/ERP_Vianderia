@@ -265,14 +265,9 @@ public class GestionClientes extends javax.swing.JFrame {
 
     //Metodo que actualiza los valores de la tabla segun la base de datos
     private void actualizarTabla() {
-        DefaultTableModel tabla = new DefaultTableModel();
-        tabla.addColumn("Nombre");
-        tabla.addColumn("Apellido");
-        tabla.addColumn("DNI");
-        tabla.addColumn("Direccion");
-        tabla.addColumn("Telefono");
-        jtable_clientes.setModel(tabla);
-        jtable_clientes.setModel(Cliente.actualizarTabla(tabla));
+        
+        //jtable_clientes.setModel(tabla);
+        jtable_clientes.setModel(Cliente.actualizarTabla());
     }
 
     private void jt_telefonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_telefonoMouseClicked

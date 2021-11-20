@@ -5,7 +5,6 @@
  */
 package FrontEnd;
 
-import BackEnd.Cliente;
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
 import BackEnd.Movimiento;
@@ -236,15 +235,7 @@ public class GestionCaja extends javax.swing.JFrame {
     
     //Metodo que actualiza los valores de la tabla segun la base de datos
     private void actualizar(){
-        DefaultTableModel tabla = new DefaultTableModel();
-        tabla.addColumn("ID");
-        tabla.addColumn("Monto");
-        tabla.addColumn("Especificacion");
-        tabla.addColumn("Ingreso/Egreso");
-        tabla.addColumn("Efectivo/Banco");
-        tabla.addColumn("Fecha");
-        jtable_caja.setModel(tabla);
-        jtable_caja.setModel(Movimiento.actualizarTabla(tabla));
+        jtable_caja.setModel(Movimiento.actualizarTabla());
     }
     
     private void jt_montoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_montoMouseClicked

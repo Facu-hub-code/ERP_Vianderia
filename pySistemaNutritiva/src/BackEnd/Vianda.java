@@ -29,7 +29,12 @@ public class Vianda {
         this.dias = dias;
     }
 
-    public static DefaultTableModel actualizarTabla(DefaultTableModel tabla){
+    public static DefaultTableModel actualizarTabla(){
+        DefaultTableModel tabla = new DefaultTableModel();
+        tabla.addColumn("ID");
+        tabla.addColumn("Nombre");
+        tabla.addColumn("Precio");
+        tabla.addColumn("Dias");
         String[] datos = new String[4]; 
         Connection cn = Conexion.conectar(); //Establezco conexion
         try {
