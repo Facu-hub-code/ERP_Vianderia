@@ -74,42 +74,6 @@ public class Movimiento {
         return efectivo;
     }
     
-    public static DefaultTableModel filtrarEspecificacion(String valor) {
-        Connection conn = Conexion.conectar();
-        String[] titulos = {"ID", "Monto", "Especificacion", "Ingreso/Egreso", "Efectivo/Otro", "Fecha"};
-        String[] registros = new String[6];
-        DefaultTableModel model = new DefaultTableModel(null, titulos);
-        String sql = "SELECT * FROM movimientos WHERE especificacion LIKE '%" + valor + "%'";
-        try {
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                registros[0] = rs.getInt("idmovimientos")+"";
-                registros[1] = rs.getFloat("monto")+"";
-                registros[2] = rs.getString("especificacion");
-                
-                if(rs.getBoolean("ingreso"))
-                    registros[3] = "Ingreso";
-                else
-                    registros[3] = "Egreso";
-                
-                if(rs.getBoolean("efectivo"))
-                    registros[4] = "Efectivo";
-                else
-                    registros[4] = "Otro";
-                
-                registros[5] = rs.getDate("fecha").toString();
-                
-                model.addRow(registros);
-            }
-            conn.close();
-            return model;
-        } catch (SQLException e) {
-            System.out.println("Error: " + e.getErrorCode() + e.getMessage());
-        }
-        return (null);
-    }
-    
     //Metodo que actualiza los valores de la tabla interface
     public static DefaultTableModel actualizarTabla(DefaultTableModel tabla){
         String[] datos = new String[6];  

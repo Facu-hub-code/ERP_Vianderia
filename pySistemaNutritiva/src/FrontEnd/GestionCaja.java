@@ -247,10 +247,6 @@ public class GestionCaja extends javax.swing.JFrame {
         jtable_caja.setModel(Movimiento.actualizarTabla(tabla));
     }
     
-    private void filtrarEspecificacion(String especificacion){
-        jtable_caja.setModel(Movimiento.filtrarEspecificacion(especificacion));
-    }
-    
     private void jt_montoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_montoMouseClicked
         jt_monto.setText("");
     }//GEN-LAST:event_jt_montoMouseClicked
@@ -309,7 +305,7 @@ public class GestionCaja extends javax.swing.JFrame {
     }//GEN-LAST:event_jtable_cajaMouseClicked
 
     private void jt_especificacionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_especificacionKeyReleased
-        this.filtrarEspecificacion(jt_especificacion.getText());
+        //this.filtrarEspecificacion(jt_especificacion.getText());
         
     }//GEN-LAST:event_jt_especificacionKeyReleased
 
