@@ -6,8 +6,8 @@
 package FrontEnd;
 
 import java.awt.Color;
-import javax.swing.table.DefaultTableModel;
-import BackEnd.Cliente;
+import BackEnd.ClienteBackEnd;
+import Entidad.ClienteEntidad;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,9 +16,6 @@ import javax.swing.JOptionPane;
  */
 public class GestionClientes extends javax.swing.JFrame {
 
-    private int dni;
-    private String direccion;
-    private long telefono;
     /**
      * Constructor: - Creates new form GestionClientes
      */
@@ -48,6 +45,11 @@ public class GestionClientes extends javax.swing.JFrame {
         btn_modificar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtable_clientes = new javax.swing.JTable();
+        jl_unidades1 = new javax.swing.JLabel();
+        jl_unidades2 = new javax.swing.JLabel();
+        jl_unidades3 = new javax.swing.JLabel();
+        jl_unidades4 = new javax.swing.JLabel();
+        jl_unidades5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(49, 28, 28));
@@ -62,13 +64,7 @@ public class GestionClientes extends javax.swing.JFrame {
         jt_telefono.setBackground(new java.awt.Color(243, 243, 194));
         jt_telefono.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jt_telefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jt_telefono.setText("Telefono:");
         jt_telefono.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        jt_telefono.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jt_telefonoMouseClicked(evt);
-            }
-        });
         jt_telefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jt_telefonoKeyTyped(evt);
@@ -78,13 +74,7 @@ public class GestionClientes extends javax.swing.JFrame {
         jt_nombre.setBackground(new java.awt.Color(243, 243, 194));
         jt_nombre.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jt_nombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jt_nombre.setText("Nombre:");
         jt_nombre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        jt_nombre.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jt_nombreMouseClicked(evt);
-            }
-        });
         jt_nombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jt_nombreKeyReleased(evt);
@@ -94,13 +84,7 @@ public class GestionClientes extends javax.swing.JFrame {
         jt_apellido.setBackground(new java.awt.Color(243, 243, 194));
         jt_apellido.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jt_apellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jt_apellido.setText("Apellido:");
         jt_apellido.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        jt_apellido.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jt_apellidoMouseClicked(evt);
-            }
-        });
         jt_apellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jt_apellidoKeyReleased(evt);
@@ -110,24 +94,12 @@ public class GestionClientes extends javax.swing.JFrame {
         jt_direccion.setBackground(new java.awt.Color(243, 243, 194));
         jt_direccion.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jt_direccion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jt_direccion.setText("Direccion:");
         jt_direccion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        jt_direccion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jt_direccionMouseClicked(evt);
-            }
-        });
 
         jt_dni.setBackground(new java.awt.Color(243, 243, 194));
         jt_dni.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jt_dni.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jt_dni.setText("DNI:");
         jt_dni.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        jt_dni.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jt_dniMouseClicked(evt);
-            }
-        });
         jt_dni.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jt_dniKeyTyped(evt);
@@ -182,6 +154,36 @@ public class GestionClientes extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jtable_clientes);
 
+        jl_unidades1.setBackground(new java.awt.Color(243, 243, 194));
+        jl_unidades1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl_unidades1.setForeground(new java.awt.Color(243, 243, 194));
+        jl_unidades1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_unidades1.setText("Nombre:");
+
+        jl_unidades2.setBackground(new java.awt.Color(243, 243, 194));
+        jl_unidades2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl_unidades2.setForeground(new java.awt.Color(243, 243, 194));
+        jl_unidades2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_unidades2.setText("Direccion:");
+
+        jl_unidades3.setBackground(new java.awt.Color(243, 243, 194));
+        jl_unidades3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl_unidades3.setForeground(new java.awt.Color(243, 243, 194));
+        jl_unidades3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_unidades3.setText("Apellido:");
+
+        jl_unidades4.setBackground(new java.awt.Color(243, 243, 194));
+        jl_unidades4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl_unidades4.setForeground(new java.awt.Color(243, 243, 194));
+        jl_unidades4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_unidades4.setText("DNI:");
+
+        jl_unidades5.setBackground(new java.awt.Color(243, 243, 194));
+        jl_unidades5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl_unidades5.setForeground(new java.awt.Color(243, 243, 194));
+        jl_unidades5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_unidades5.setText("Telefono:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -189,21 +191,33 @@ public class GestionClientes extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(85, 85, 85)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jl_unidades2)
+                                    .addComponent(jl_unidades5, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jl_unidades3, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jl_unidades1, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jl_unidades4, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jt_telefono, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                                    .addComponent(jt_apellido)
+                                    .addComponent(jt_nombre, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jt_direccion)
+                                    .addComponent(jt_dni))))
+                        .addGap(22, 22, 22))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(44, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btn_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jt_dni, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jt_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                            .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
         );
@@ -216,15 +230,25 @@ public class GestionClientes extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_unidades1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jt_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jt_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_unidades3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_unidades5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_unidades2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jt_dni, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jt_dni, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_unidades4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
                         .addComponent(btn_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
@@ -238,20 +262,11 @@ public class GestionClientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void filtrarNombre(String valor) {
-        jtable_clientes.setModel(Cliente.filtrarNombre(valor));
+        jtable_clientes.setModel(ClienteBackEnd.filtrarNombre(valor));
     }
 
     private void filtrarApellido(String valor) {
-        jtable_clientes.setModel(Cliente.filtrarApellido(valor));
-    }
-
-    //Metodo que limpia los valores de los campos de texto
-    private void limpiarCampos() {
-        jt_nombre.setText("Nombre:");
-        jt_apellido.setText("Apellido");
-        jt_telefono.setText("Telefono:");
-        jt_direccion.setText("Direccion:");
-        jt_dni.setText("DNI:");
+        jtable_clientes.setModel(ClienteBackEnd.filtrarApellido(valor));
     }
 
     //Metodo que chequea que ningun campo de texto este vacio.
@@ -265,36 +280,14 @@ public class GestionClientes extends javax.swing.JFrame {
 
     //Metodo que actualiza los valores de la tabla segun la base de datos
     private void actualizarTabla() {
-        
-        //jtable_clientes.setModel(tabla);
-        jtable_clientes.setModel(Cliente.actualizarTabla());
+        jtable_clientes.setModel(ClienteBackEnd.actualizarTabla());
     }
-
-    private void jt_telefonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_telefonoMouseClicked
-        jt_telefono.setText("");
-    }//GEN-LAST:event_jt_telefonoMouseClicked
-
-    private void jt_nombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_nombreMouseClicked
-        jt_nombre.setText("");
-    }//GEN-LAST:event_jt_nombreMouseClicked
-
-    private void jt_apellidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_apellidoMouseClicked
-        jt_apellido.setText("");
-    }//GEN-LAST:event_jt_apellidoMouseClicked
-
-    private void jt_direccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_direccionMouseClicked
-        jt_direccion.setText("");
-    }//GEN-LAST:event_jt_direccionMouseClicked
-
-    private void jt_dniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_dniMouseClicked
-        jt_dni.setText("");
-    }//GEN-LAST:event_jt_dniMouseClicked
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
         if(checkCampos()){
-            Cliente cliente = new Cliente(jt_nombre.getText(), jt_apellido.getText(), Integer.valueOf(jt_dni.getText()),
+            ClienteEntidad cliente = new ClienteEntidad(jt_nombre.getText(), jt_apellido.getText(), Integer.valueOf(jt_dni.getText()),
                     jt_direccion.getText(), Long.valueOf(jt_telefono.getText()));
-            Cliente.agregarCliente(cliente);
+            ClienteBackEnd.agregarCliente(cliente);
             actualizarTabla();
         }else{
             JOptionPane.showMessageDialog(null, "Faltan campos de completar");
@@ -305,7 +298,7 @@ public class GestionClientes extends javax.swing.JFrame {
         if (checkCampos()) {
             int row = jtable_clientes.getSelectedRow();
             int dni = Integer.valueOf(jtable_clientes.getValueAt(row, 2).toString());
-            Cliente.eliminarCliente(dni);
+            ClienteBackEnd.eliminarCliente(dni);
             actualizarTabla();
         } else {
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
@@ -314,9 +307,9 @@ public class GestionClientes extends javax.swing.JFrame {
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
         if (checkCampos()) {
-            Cliente cliente = new Cliente(jt_nombre.getText(), jt_apellido.getText(),
+            ClienteEntidad cliente = new ClienteEntidad(jt_nombre.getText(), jt_apellido.getText(),
                      Integer.valueOf(jt_dni.getText()), jt_direccion.getText(), Long.valueOf(jt_telefono.getText()));
-            Cliente.modificarCliente(cliente);
+            ClienteBackEnd.modificarCliente(cliente);
             actualizarTabla();
         } else {
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
@@ -392,6 +385,11 @@ public class GestionClientes extends javax.swing.JFrame {
     private javax.swing.JButton btn_modificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jl_unidades1;
+    private javax.swing.JLabel jl_unidades2;
+    private javax.swing.JLabel jl_unidades3;
+    private javax.swing.JLabel jl_unidades4;
+    private javax.swing.JLabel jl_unidades5;
     private javax.swing.JTextField jt_apellido;
     private javax.swing.JTextField jt_direccion;
     private javax.swing.JTextField jt_dni;

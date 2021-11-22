@@ -6,6 +6,7 @@
 package BackEnd;
 
 //Imports
+import Entidad.ClienteEntidad;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,33 +19,9 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author facul
  */
-public class Cliente {
-    private String nombre;
-    private String apellido;
-    private int dni;
-    private String direccion;
-    private long telefono;
-
-    public Cliente(String nombre, String apellido, int dni, String direccion, long telefono) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        if(dni == 0)
-            dni = 0;
-        else
-            this.dni = dni;
-        
-        
-        this.direccion = direccion;
-        this.telefono = telefono;
-    }
-
-    public Cliente() {
-    }
+public class ClienteBackEnd {
     
-    //Metodo que chequea que ningun campo de texto este vacio.
-    
-    //Metodo que modifica un cliente de la base de datos
-    public static void modificarCliente(Cliente cliente){
+    public static void modificarCliente(ClienteEntidad cliente){
         Connection cn = Conexion.conectar();
         String sql = "UPDATE clientes SET "
                     + "nombre = ?, apellido = ?, dni = ?, direccion = ?, telefono = ? "
@@ -65,7 +42,6 @@ public class Cliente {
         }        
     }
     
-    //Metodo que elimina un cliente de la base de datos
     public static void eliminarCliente(int dni){
         Connection cn = Conexion.conectar();
         try {
@@ -77,13 +53,12 @@ public class Cliente {
                 JOptionPane.showMessageDialog(null, "No se encontro el cliente a eliminar");
             }
             cn.close();
-        } catch (Exception e) {
+        } catch (HeadlessException | SQLException e) {
             System.out.println(e.toString());
         }
     }
     
-    //Metodo que agrega un cliente a la base de datos
-    public static void agregarCliente(Cliente cliente){
+    public static void agregarCliente(ClienteEntidad cliente){
         //Establecer la conexion.
         Connection cn = Conexion.conectar();
         try {    
@@ -104,9 +79,6 @@ public class Cliente {
         }
     }
     
-    /*
-    Filtra el apelldio de la busqueda sobre un campo de texto, para agilizarla.
-    */
     public static DefaultTableModel filtrarApellido(String valor) {
         Connection conn = Conexion.conectar();
         String[] titulos = {"Nombre", "Apellido", "DNI", "Direccion", "Telefono"};
@@ -132,9 +104,6 @@ public class Cliente {
         return (null);
     }
     
-    /**
-     * Filtra el nombre de la busqueda sobre un campo de texto, para agilizarla.
-     */
     public static DefaultTableModel filtrarNombre(String valor) {
         Connection conn = Conexion.conectar();
         String[] titulos = {"Nombre", "Apellido", "DNI", "Direccion", "Telefono"};
@@ -182,50 +151,8 @@ public class Cliente {
             }
             cn.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
+            System.out.println(e.toString());
         }
         return tabla;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public int getDni() {
-        return dni;
-    }
-
-    public void setDni(int dni) {
-        this.dni = dni;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public long getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(long telefono) {
-        this.telefono = telefono;
-    }
-    
-    
+    }    
 }

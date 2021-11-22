@@ -5,10 +5,10 @@
  */
 package FrontEnd;
 
-import BackEnd.Cliente;
+import BackEnd.ClienteBackEnd;
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
-import BackEnd.Vianda;
+import BackEnd.ViandaBackEnd;
 import javax.swing.JOptionPane;
 
 /**
@@ -44,6 +44,9 @@ public class ViandasJF extends javax.swing.JFrame {
         btn_modificar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtable_viandas = new javax.swing.JTable();
+        jl_unidades1 = new javax.swing.JLabel();
+        jl_unidades2 = new javax.swing.JLabel();
+        jl_unidades3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(49, 28, 28));
@@ -58,7 +61,6 @@ public class ViandasJF extends javax.swing.JFrame {
         jt_dias.setBackground(new java.awt.Color(243, 243, 194));
         jt_dias.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jt_dias.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jt_dias.setText("Dias:");
         jt_dias.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         jt_dias.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -69,7 +71,6 @@ public class ViandasJF extends javax.swing.JFrame {
         jt_nombre.setBackground(new java.awt.Color(243, 243, 194));
         jt_nombre.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jt_nombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jt_nombre.setText("Nombre:");
         jt_nombre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         jt_nombre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -85,7 +86,6 @@ public class ViandasJF extends javax.swing.JFrame {
         jt_precio.setBackground(new java.awt.Color(243, 243, 194));
         jt_precio.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jt_precio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jt_precio.setText("Precio:");
         jt_precio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         jt_precio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -146,6 +146,24 @@ public class ViandasJF extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jtable_viandas);
 
+        jl_unidades1.setBackground(new java.awt.Color(243, 243, 194));
+        jl_unidades1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl_unidades1.setForeground(new java.awt.Color(243, 243, 194));
+        jl_unidades1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_unidades1.setText("Nombre:");
+
+        jl_unidades2.setBackground(new java.awt.Color(243, 243, 194));
+        jl_unidades2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl_unidades2.setForeground(new java.awt.Color(243, 243, 194));
+        jl_unidades2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_unidades2.setText("Dias:");
+
+        jl_unidades3.setBackground(new java.awt.Color(243, 243, 194));
+        jl_unidades3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl_unidades3.setForeground(new java.awt.Color(243, 243, 194));
+        jl_unidades3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_unidades3.setText("Precio:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -158,14 +176,21 @@ public class ViandasJF extends javax.swing.JFrame {
                             .addComponent(btn_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jt_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jt_dias, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jl_unidades1)
+                                    .addComponent(jl_unidades3, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jl_unidades2, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jt_dias, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                                    .addComponent(jt_precio, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jt_nombre, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
         );
@@ -176,13 +201,20 @@ public class ViandasJF extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_unidades1))
                         .addGap(18, 18, 18)
-                        .addComponent(jt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jt_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_unidades3))
                         .addGap(18, 18, 18)
-                        .addComponent(jt_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jt_dias, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jt_dias, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_unidades2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
@@ -196,7 +228,7 @@ public class ViandasJF extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void filtrarNombre(String nombre){
-        jtable_viandas.setModel(Vianda.filtrarNombre(nombre));
+        jtable_viandas.setModel(ViandaBackEnd.filtrarNombre(nombre));
     }
     
     //Metodo que limpia los valores de los campos de texto
@@ -215,7 +247,7 @@ public class ViandasJF extends javax.swing.JFrame {
     
     //Metodo que actualiza los valores de la tabla segun la base de datos
     private void actualizarTabla(){
-        jtable_viandas.setModel(Vianda.actualizarTabla());
+        jtable_viandas.setModel(ViandaBackEnd.actualizarTabla());
     }
     
     private void jt_diasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_diasMouseClicked
@@ -232,8 +264,8 @@ public class ViandasJF extends javax.swing.JFrame {
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
         if(checkCampos()){
-            Vianda vianda = new Vianda(jt_nombre.getText(), Float.valueOf(jt_precio.getText()), jt_dias.getText());
-            Vianda.agregarVianda(vianda);
+            ViandaBackEnd vianda = new ViandaBackEnd(jt_nombre.getText(), Float.valueOf(jt_precio.getText()), jt_dias.getText());
+            ViandaBackEnd.agregarVianda(vianda);
             actualizarTabla();
         }else{
             JOptionPane.showMessageDialog(null, "Faltan campos de completar");
@@ -244,7 +276,7 @@ public class ViandasJF extends javax.swing.JFrame {
         if (checkCampos()) {
             int row = jtable_viandas.getSelectedRow();
             int id = Integer.valueOf(jtable_viandas.getValueAt(row, 0).toString());
-            Vianda.eliminarVianda(id);
+            ViandaBackEnd.eliminarVianda(id);
             actualizarTabla();
         } else {
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
@@ -253,10 +285,10 @@ public class ViandasJF extends javax.swing.JFrame {
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
         if (checkCampos()) {
-            Vianda vianda = new Vianda(jt_nombre.getText(), Float.valueOf(jt_precio.getText()), jt_dias.getText());
+            ViandaBackEnd vianda = new ViandaBackEnd(jt_nombre.getText(), Float.valueOf(jt_precio.getText()), jt_dias.getText());
             int row = jtable_viandas.getSelectedRow();
             int id = Integer.valueOf(jtable_viandas.getValueAt(row, 0).toString());
-            Vianda.modificarVianda(vianda, id);
+            ViandaBackEnd.modificarVianda(vianda, id);
             actualizarTabla();
         } else {
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
@@ -322,6 +354,9 @@ public class ViandasJF extends javax.swing.JFrame {
     private javax.swing.JButton btn_modificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jl_unidades1;
+    private javax.swing.JLabel jl_unidades2;
+    private javax.swing.JLabel jl_unidades3;
     private javax.swing.JTextField jt_dias;
     private javax.swing.JTextField jt_nombre;
     private javax.swing.JTextField jt_precio;

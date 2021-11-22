@@ -5,6 +5,7 @@
  */
 package BackEnd;
 
+import Entidad.MovimientoEntidad;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,22 +18,8 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author facul
  */
-public class Movimiento {
-    private float monto;
-    private String especificacion;
-    private boolean ingreso;
-    private boolean efectivo;
-    private String fecha;
-
-    public Movimiento(float monto, String especificacion, String fecha, boolean ingreso, boolean efectivo) {
-        this.monto = monto;
-        this.especificacion = especificacion;
-        this.fecha = fecha;
-        this.ingreso = ingreso;
-        this.efectivo = efectivo;
-    }
+public class MovimientoBackEnd {
     
-    //Metodo para calcular el dinero total del negocio
     public static Double calcularTotal(){
         double total = 0;
         Connection cn = Conexion.conectar();
@@ -47,12 +34,11 @@ public class Movimiento {
             }
             cn.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.toString());
+            System.out.println(e.toString());
         }
         return total;
     }
     
-    //Metodo para calcular el dinero en efectivo del negocio
     public static Double calcularEfectivo(){
         double efectivo = 0;
         Connection cn = Conexion.conectar();
@@ -69,12 +55,10 @@ public class Movimiento {
             }
             cn.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.toString());
-        }
+            System.out.println(e.toString());        }
         return efectivo;
     }
     
-    //Metodo que actualiza los valores de la tabla interface
     public static DefaultTableModel actualizarTabla(){
         DefaultTableModel tabla = new DefaultTableModel();
         tabla.addColumn("ID");
@@ -112,7 +96,7 @@ public class Movimiento {
     }
     
     //Metodo para modificar un movimiento de la tabla
-    public static void modificarMovimiento(Movimiento movimiento, int id){
+    public static void modificarMovimiento(MovimientoEntidad movimiento, int id){
         Connection cn = Conexion.conectar();
         String sql = "UPDATE movimientos SET "
                     + "monto = ?, especificacion = ?, ingreso = ?, efectivo = ?, fecha = ? "
@@ -133,7 +117,6 @@ public class Movimiento {
         }   
     }
     
-    //Metodo para elimianr un movimiento de la base de datos
     public static void eliminarMovimiento(int id){ //no se usa el movimiento, con algun identificador es suficiente
         Connection cn = Conexion.conectar();
         try {
@@ -150,7 +133,7 @@ public class Movimiento {
         }
     }
     
-    public static void agregarMovimiento(Movimiento movimiento){
+    public static void agregarMovimiento(MovimientoEntidad movimiento){
         Connection cn = Conexion.conectar();
         try {
             PreparedStatement ps = cn.prepareStatement("INSERT INTO movimientos VALUES (?,?,?,?,?,?)");
@@ -166,47 +149,5 @@ public class Movimiento {
         } catch (SQLException e) {
             System.out.println(e.toString());
         }
-    }
-
-    public float getMonto() {
-        return monto;
-    }
-
-    public void setMonto(float monto) {
-        this.monto = monto;
-    }
-
-    public String getEspecificacion() {
-        return especificacion;
-    }
-
-    public void setEspecificacion(String especificacion) {
-        this.especificacion = especificacion;
-    }
-
-    public boolean isIngreso() {
-        return ingreso;
-    }
-
-    public void setIngreso(boolean ingreso) {
-        this.ingreso = ingreso;
-    }
-
-    public boolean isEfectivo() {
-        return efectivo;
-    }
-
-    public void setEfectivo(boolean efectivo) {
-        this.efectivo = efectivo;
-    }
-    
-    public String getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
-    
-    
+    }    
 }

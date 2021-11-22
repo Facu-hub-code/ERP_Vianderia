@@ -7,8 +7,8 @@ package FrontEnd;
 
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
-import BackEnd.Cliente;
-import BackEnd.Venta;
+import BackEnd.ClienteBackEnd;
+import BackEnd.VentaBackEnd;
 import java.time.Instant;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -239,7 +239,7 @@ public class VentasJF extends javax.swing.JFrame {
         tabla.addColumn("Precio");
         tabla.addColumn("Fecha");
         jtable_ventas.setModel(tabla);
-        jtable_ventas.setModel(Cliente.actualizarTabla(tabla));
+        jtable_ventas.setModel(ClienteBackEnd.actualizarTabla(tabla));
     }
     
     private void jt_unidadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_unidadesMouseClicked
@@ -266,9 +266,9 @@ public class VentasJF extends javax.swing.JFrame {
         if(checkCampos()){ 
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
         }else{
-            Venta venta = new Venta(jt_cliente.getText(), jt_vianda.getText(), Integer.valueOf(jt_unidades.getText())
+            VentaBackEnd venta = new VentaBackEnd(jt_cliente.getText(), jt_vianda.getText(), Integer.valueOf(jt_unidades.getText())
             ,Double.valueOf(jt_precio.getText()), Date.from(Instant.now()), Integer.valueOf(jt_id.getText()));
-            Venta.agregarVenta(venta);
+            VentaBackEnd.agregarVenta(venta);
         }
     }//GEN-LAST:event_btn_venderActionPerformed
 
@@ -277,7 +277,7 @@ public class VentasJF extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
         }else{
             int id = jtable_ventas.getSelectedRow(); //todo: revisar para que es la fi
-            Venta.eliminarVenta(id);
+            VentaBackEnd.eliminarVenta(id);
         }
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
@@ -285,9 +285,9 @@ public class VentasJF extends javax.swing.JFrame {
         if (checkCampos()) {
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
         }else{
-            Venta venta = new Venta(jt_cliente.getText(), jt_vianda.getText(), Integer.valueOf(jt_unidades.getText())
+            VentaBackEnd venta = new VentaBackEnd(jt_cliente.getText(), jt_vianda.getText(), Integer.valueOf(jt_unidades.getText())
             ,Double.valueOf(jt_precio.getText()), Date.from(Instant.now()), Integer.valueOf(jt_id.getText()));
-            Venta.modificarVenta(venta);
+            VentaBackEnd.modificarVenta(venta);
         }
     }//GEN-LAST:event_btn_modificarActionPerformed
 

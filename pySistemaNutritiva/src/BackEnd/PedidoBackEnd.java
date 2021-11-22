@@ -5,6 +5,7 @@
  */
 package BackEnd;
 
+import Entidad.PedidoEntidad;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,24 +18,9 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author facul
  */
-public class Pedido {
-    private String cliente;
-    private String vianda;
-    private int unidades;
-    private float precio;
-    private String dias;
-    private int id;
-
-    public Pedido(String cliente, String vianda, int unidades, float precio, String dias, int id) {
-        this.cliente = cliente;
-        this.vianda = vianda;
-        this.unidades = unidades;
-        this.precio = precio;
-        this.dias = dias;
-        this.id = id;
-    }
+public class PedidoBackEnd {
     
-    public static void modificarPedido(Pedido pedido){
+    public static void modificarPedido(PedidoEntidad pedido){
         Connection cn = Conexion.conectar();
         String sql = "UPDATE pedidos SET "
                     + "cliente = ?, vianda = ?, unidades = ?, precio = ?, dias = ? "
@@ -56,7 +42,7 @@ public class Pedido {
         } 
     }
     
-    public static void agregarPedido(Pedido pedido){
+    public static void agregarPedido(PedidoEntidad pedido){
         Connection cn = Conexion.conectar();
         String strPS = "INSERT INTO pedidos VALUES(?,?,?,?,?,?)";
         try {
@@ -117,56 +103,5 @@ public class Pedido {
             System.out.println(e.toString());
         }
         return tabla;
-    }
-
-    public String getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(String cliente) {
-        this.cliente = cliente;
-    }
-
-    public String getVianda() {
-        return vianda;
-    }
-
-    public void setVianda(String vianda) {
-        this.vianda = vianda;
-    }
-
-    public int getUnidades() {
-        return unidades;
-    }
-
-    public void setUnidades(int unidades) {
-        this.unidades = unidades;
-    }
-
-    public float getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(float precio) {
-        this.precio = precio;
-    }
-
-    public String getDias() {
-        return dias;
-    }
-
-    public void setDias(String dias) {
-        this.dias = dias;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-    
-    
-    
+    }    
 }

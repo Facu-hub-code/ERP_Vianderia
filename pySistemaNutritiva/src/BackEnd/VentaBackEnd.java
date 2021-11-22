@@ -4,38 +4,21 @@
  */
 package BackEnd;
 
-import BackEnd.Conexion;
+import Entidad.VentaEntidad;
 import java.awt.HeadlessException;
 import java.util.Date;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.Instant;
-import java.time.LocalDate;
 import javax.swing.JOptionPane;
 /**
  *
  * @author facundolorenzo
  */
-public class Venta {
-    private String cliente;
-    private String vianda;
-    private int unidades;
-    private double precio;
-    private Date fecha;
-    private int id;
-
-    public Venta(String cliente, String vianda, int unidades, double precio, Date fecha, int id) {
-        this.cliente = cliente;
-        this.vianda = vianda;
-        this.unidades = unidades;
-        this.precio = precio;
-        this.fecha = fecha;
-        this.id = id;
-    }
+public class VentaBackEnd {
     
-    public static void modificarVenta(Venta venta){
+    public static void modificarVenta(VentaEntidad venta){
         Connection cn = Conexion.conectar();
         String sql = "UPDATE ventas SET "
                     + "cliente = ?, vianda = ?, unidades = ?, precio = ?, fecha = ? "
@@ -52,11 +35,11 @@ public class Venta {
             JOptionPane.showMessageDialog(null, "Modificacion exitosa");
             cn.close();
         } catch (HeadlessException | SQLException e) {
-            JOptionPane.showMessageDialog(null, e.toString());
+            System.out.println(e.toString());
         } 
     }
 
-    public static void agregarVenta(Venta venta){
+    public static void agregarVenta(VentaEntidad venta){
         Connection cn = Conexion.conectar();
         String strPS = "INSERT INTO ventas VALUES(?,?,?,?,?,?)"; //todo revisar cantidad de valores
         try {
@@ -65,10 +48,10 @@ public class Venta {
             ps.setString(3, venta.getVianda());
             ps.setInt(4, venta.getUnidades());
             ps.setDouble(5, venta.getPrecio());
-            ps.setDate(6, (java.sql.Date) venta.getFecha());
+            ps.setString(5, venta.getFecha());
             cn.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.toString());
+            System.out.println(e.toString());
         }
     }
     
@@ -83,58 +66,9 @@ public class Venta {
                 JOptionPane.showMessageDialog(null, "Error al intentar eliminar dicho movimiento");
             }
             cn.close();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.toString());
+        } catch (HeadlessException | SQLException e) {
+            System.out.println(e.toString());
         }
     }
-    
-    public String getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(String cliente) {
-        this.cliente = cliente;
-    }
-
-    public String getVianda() {
-        return vianda;
-    }
-
-    public void setVianda(String vianda) {
-        this.vianda = vianda;
-    }
-
-    public int getUnidades() {
-        return unidades;
-    }
-
-    public void setUnidades(int unidades) {
-        this.unidades = unidades;
-    }
-
-    public double getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(double precio) {
-        this.precio = precio;
-    }
-
-    public Date getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-    
-    
+       
 }

@@ -7,7 +7,7 @@ package FrontEnd;
 
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
-import BackEnd.Movimiento;
+import BackEnd.MovimientoBackEnd;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import java.util.Date;
@@ -217,8 +217,8 @@ public class GestionCaja extends javax.swing.JFrame {
     
     
     private void calcularSaldos(){
-        jl_Total.setText("Total: " + Movimiento.calcularTotal() + " $");
-        jl_efectivo.setText("Efectivo: " + Movimiento.calcularEfectivo() + " $");   
+        jl_Total.setText("Total: " + MovimientoBackEnd.calcularTotal() + " $");
+        jl_efectivo.setText("Efectivo: " + MovimientoBackEnd.calcularEfectivo() + " $");   
     }
     
     //Metodo que limpia los valores de los campos de texto
@@ -235,7 +235,7 @@ public class GestionCaja extends javax.swing.JFrame {
     
     //Metodo que actualiza los valores de la tabla segun la base de datos
     private void actualizar(){
-        jtable_caja.setModel(Movimiento.actualizarTabla());
+        jtable_caja.setModel(MovimientoBackEnd.actualizarTabla());
     }
     
     private void jt_montoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_montoMouseClicked
@@ -250,10 +250,10 @@ public class GestionCaja extends javax.swing.JFrame {
         if(checkCampos()){
             Date date = new Date();
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");     
-            Movimiento movimiento; 
-            movimiento = new Movimiento(Float.valueOf(jt_monto.getText()),jt_especificacion.getText(), 
+            MovimientoBackEnd movimiento; 
+            movimiento = new MovimientoBackEnd(Float.valueOf(jt_monto.getText()),jt_especificacion.getText(), 
                     simpleDateFormat.format(date), jr_ingreso.isSelected(), jr_efectivo.isSelected());
-            Movimiento.agregarMovimiento(movimiento);
+            MovimientoBackEnd.agregarMovimiento(movimiento);
             actualizar();
         }else{
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");   
@@ -264,7 +264,7 @@ public class GestionCaja extends javax.swing.JFrame {
         if (checkCampos()) {
             int row = jtable_caja.getSelectedRow(); 
             int id = Integer.valueOf(jtable_caja.getValueAt(row, 0).toString());
-            Movimiento.eliminarMovimiento(id);
+            MovimientoBackEnd.eliminarMovimiento(id);
             actualizar();
         } else {
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
@@ -275,12 +275,12 @@ public class GestionCaja extends javax.swing.JFrame {
         if (checkCampos()) {
             Date date = new Date();
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            Movimiento movimiento = new Movimiento(Float.valueOf(jt_monto.getText()),
+            MovimientoBackEnd movimiento = new MovimientoBackEnd(Float.valueOf(jt_monto.getText()),
                     jt_especificacion.getText(), simpleDateFormat.format(date), jr_ingreso.isSelected()
                     ,jr_efectivo.isSelected());
             int row = jtable_caja.getSelectedRow();
             int id = Integer.valueOf(jtable_caja.getValueAt(row, 0).toString());
-            Movimiento.modificarMovimiento(movimiento, id);
+            MovimientoBackEnd.modificarMovimiento(movimiento, id);
             actualizar();
         } else {
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
