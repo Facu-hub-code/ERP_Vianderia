@@ -32,7 +32,7 @@ public class ViandaBackEnd {
             PreparedStatement ps = cn.prepareStatement("SELECT * from viandas"); //Creo el statement del tipo PreparedStatement(Precompilado).
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {   //Analizo el Objeto tabla ResultSet.
-                datos[0] = rs.getInt("idviandas") + "";
+                datos[0] = rs.getInt("idvianda") + "";
                 datos[1] = rs.getString("nombre");
                 datos[2] = rs.getDouble("precio") + "";
                 datos[3] = rs.getString("dias");
@@ -72,7 +72,7 @@ public class ViandaBackEnd {
         Connection cn = Conexion.conectar();
         String sql = "UPDATE viandas SET "
                 + "nombre = ?, precio = ?, dias = ?"
-                + "WHERE idviandas ='" + id + "'";
+                + "WHERE idvianda ='" + id + "'";
         try {
             PreparedStatement ps = cn.prepareStatement(sql);
             ps.setString(1, vianda.getNombre());
@@ -89,7 +89,7 @@ public class ViandaBackEnd {
     public static void eliminarVianda(int id) {
         Connection cn = Conexion.conectar();
         try {
-            String sql = "DELETE FROM viandas where idviandas =" + id;
+            String sql = "DELETE FROM viandas where idvianda =" + id;
             PreparedStatement ps = cn.prepareStatement(sql);
             if (ps.executeUpdate() >= 0) {
                 JOptionPane.showMessageDialog(null, "Se elimino correctamente");
