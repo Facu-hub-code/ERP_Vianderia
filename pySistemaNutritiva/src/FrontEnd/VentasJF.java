@@ -6,12 +6,6 @@
 package FrontEnd;
 
 import java.awt.Color;
-import javax.swing.table.DefaultTableModel;
-import BackEnd.ClienteBackEnd;
-import BackEnd.VentaBackEnd;
-import java.time.Instant;
-import java.util.Date;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,8 +18,8 @@ public class VentasJF extends javax.swing.JFrame {
      */
     public VentasJF() {
         initComponents();
-        this.getContentPane().setBackground(new Color(49,28,28));
-        actualizarTabla();
+        this.getContentPane().setBackground(new Color(49, 28, 28));
+        actualizarTablas();
     }
 
     /**
@@ -174,6 +168,11 @@ public class VentasJF extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jtable_pedidos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtable_pedidosMouseClicked(evt);
+            }
+        });
         jTabbedPane1.addTab("Pedidos", jtable_pedidos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -254,36 +253,40 @@ public class VentasJF extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     //Metodo que chequea que ningun campo de texto este vacio.
-    private boolean checkCampos(){
-        return! (jt_cliente.getText().equalsIgnoreCase("") ||
-                jt_vianda.getText().equalsIgnoreCase("") ||
-                jt_unidades.getText().equalsIgnoreCase("") ||
-                jt_precio.getText().equalsIgnoreCase("") ||
-                jt_id.getText().equalsIgnoreCase("") );
+    private boolean checkCampos() {
+        return !(jt_cliente.getText().equalsIgnoreCase("")
+                || jt_vianda.getText().equalsIgnoreCase("")
+                || jt_unidades.getText().equalsIgnoreCase("")
+                || jt_precio.getText().equalsIgnoreCase("")
+                || jt_id.getText().equalsIgnoreCase(""));
     }
-    
+
     //Metodo que actualiza los valores de la tabla segun la base de datos
-    private void actualizarTabla(){
-        //jtable_ventas.setModel(VentasBackEnd.actualizarTabla());
+    private void actualizarTablas() {
+        //jtable_ventas.setModel(VentasBackEnd.actualizarTablas());
     }
-    
+
     private void btn_venderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_venderActionPerformed
-        
+
     }//GEN-LAST:event_btn_venderActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        
+
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
-        
+
     }//GEN-LAST:event_btn_modificarActionPerformed
 
     private void jtable_ventasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_ventasMouseClicked
         int filaSeleccionada = jtable_ventas.rowAtPoint(evt.getPoint());
-        jt_cliente.setText(jtable_ventas.getValueAt(filaSeleccionada, 0).toString() +
-            " " + jtable_ventas.getValueAt(filaSeleccionada, 1).toString());
+        jt_cliente.setText(jtable_ventas.getValueAt(filaSeleccionada, 0).toString()
+                + " " + jtable_ventas.getValueAt(filaSeleccionada, 1).toString());
     }//GEN-LAST:event_jtable_ventasMouseClicked
+
+    private void jtable_pedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_pedidosMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtable_pedidosMouseClicked
 
     /**
      * @param args the command line arguments

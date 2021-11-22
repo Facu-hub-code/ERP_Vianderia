@@ -87,11 +87,6 @@ public class GestionCaja extends javax.swing.JFrame {
         jt_especificacion.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jt_especificacion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_especificacion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        jt_especificacion.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jt_especificacionKeyReleased(evt);
-            }
-        });
 
         btn_agregar.setBackground(new java.awt.Color(255, 253, 118));
         btn_agregar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -260,11 +255,11 @@ public class GestionCaja extends javax.swing.JFrame {
                         .addGap(40, 40, 40)
                         .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jl_Total, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                    .addComponent(jl_unidades6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jl_efectivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jl_unidades4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jl_unidades4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jl_unidades6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -333,11 +328,6 @@ public class GestionCaja extends javax.swing.JFrame {
         jr_ingreso.setSelected(jtable_caja.getValueAt(filaSelec, 3).toString().equals("Ingreso"));
         jr_efectivo.setSelected(jtable_caja.getValueAt(filaSelec, 4).toString().equals("Efectivo"));
     }//GEN-LAST:event_jtable_cajaMouseClicked
-
-    private void jt_especificacionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_especificacionKeyReleased
-        //this.filtrarEspecificacion(jt_especificacion.getText());
-        
-    }//GEN-LAST:event_jt_especificacionKeyReleased
 
     private void jt_montoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_montoKeyTyped
         char c = evt.getKeyChar();
