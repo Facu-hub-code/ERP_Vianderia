@@ -35,43 +35,77 @@ public class PedidosJF extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jt_cliente = new javax.swing.JTextField();
-        jt_vianda = new javax.swing.JTextField();
-        jt_precio = new javax.swing.JTextField();
-        jt_dias = new javax.swing.JTextField();
-        btn_encargar = new javax.swing.JButton();
-        btn_cancelar = new javax.swing.JButton();
-        btn_modificar = new javax.swing.JButton();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jtable_lunes = new javax.swing.JTable();
-        jtable_martes = new javax.swing.JTable();
-        jtable_miercoles_1 = new javax.swing.JTable();
-        jtable_miercoles_2 = new javax.swing.JTable();
-        jtable_jueves = new javax.swing.JTable();
-        jtable_viernes = new javax.swing.JTable();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jtable_clientes = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jtable_viandas = new javax.swing.JTable();
-        jt_id = new javax.swing.JTextField();
-        js_unidades = new javax.swing.JSpinner();
+        jl_Titulo = new javax.swing.JLabel();
         jl_unidades1 = new javax.swing.JLabel();
         jl_unidades2 = new javax.swing.JLabel();
         jl_unidades3 = new javax.swing.JLabel();
         jl_unidades4 = new javax.swing.JLabel();
         jl_unidades5 = new javax.swing.JLabel();
         jl_unidades6 = new javax.swing.JLabel();
+        jt_cliente = new javax.swing.JTextField();
+        jt_id = new javax.swing.JTextField();
+        jt_vianda = new javax.swing.JTextField();
+        jt_precio = new javax.swing.JTextField();
+        jt_dias = new javax.swing.JTextField();
+        js_unidades = new javax.swing.JSpinner();
+        btn_encargar = new javax.swing.JButton();
+        btn_cancelar = new javax.swing.JButton();
+        btn_modificar = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jtable_clientes = new javax.swing.JTable();
+        jtable_viandas = new javax.swing.JTable();
+        jtable_lunes = new javax.swing.JTable();
+        jtable_martes = new javax.swing.JTable();
+        jtable_miercoles_1 = new javax.swing.JTable();
+        jtable_miercoles_2 = new javax.swing.JTable();
+        jtable_jueves = new javax.swing.JTable();
+        jtable_viernes = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(49, 28, 28));
 
-        jLabel1.setBackground(new java.awt.Color(49, 28, 28));
-        jLabel1.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 253, 118));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("PEDIDOS");
-        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jl_Titulo.setBackground(new java.awt.Color(49, 28, 28));
+        jl_Titulo.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
+        jl_Titulo.setForeground(new java.awt.Color(255, 253, 118));
+        jl_Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jl_Titulo.setText("PEDIDOS");
+        jl_Titulo.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jl_unidades1.setBackground(new java.awt.Color(243, 243, 194));
+        jl_unidades1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl_unidades1.setForeground(new java.awt.Color(243, 243, 194));
+        jl_unidades1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_unidades1.setText("ID:");
+
+        jl_unidades2.setBackground(new java.awt.Color(243, 243, 194));
+        jl_unidades2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl_unidades2.setForeground(new java.awt.Color(243, 243, 194));
+        jl_unidades2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_unidades2.setText("Cliente:");
+
+        jl_unidades3.setBackground(new java.awt.Color(243, 243, 194));
+        jl_unidades3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl_unidades3.setForeground(new java.awt.Color(243, 243, 194));
+        jl_unidades3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_unidades3.setText("Vianda:");
+
+        jl_unidades4.setBackground(new java.awt.Color(243, 243, 194));
+        jl_unidades4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl_unidades4.setForeground(new java.awt.Color(243, 243, 194));
+        jl_unidades4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_unidades4.setText("Dias:");
+
+        jl_unidades5.setBackground(new java.awt.Color(243, 243, 194));
+        jl_unidades5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl_unidades5.setForeground(new java.awt.Color(243, 243, 194));
+        jl_unidades5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_unidades5.setText("Precio:");
+
+        jl_unidades6.setBackground(new java.awt.Color(243, 243, 194));
+        jl_unidades6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl_unidades6.setForeground(new java.awt.Color(243, 243, 194));
+        jl_unidades6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_unidades6.setText("Unidades:");
 
         jt_cliente.setBackground(new java.awt.Color(243, 243, 194));
         jt_cliente.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -82,6 +116,11 @@ public class PedidosJF extends javax.swing.JFrame {
                 jt_clienteKeyReleased(evt);
             }
         });
+
+        jt_id.setBackground(new java.awt.Color(243, 243, 194));
+        jt_id.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jt_id.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jt_id.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
 
         jt_vianda.setBackground(new java.awt.Color(243, 243, 194));
         jt_vianda.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -138,6 +177,36 @@ public class PedidosJF extends javax.swing.JFrame {
                 btn_modificarActionPerformed(evt);
             }
         });
+
+        jtable_clientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jtable_clientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtable_clientesMouseClicked(evt);
+            }
+        });
+        jTabbedPane1.addTab("Clientes", jtable_clientes);
+
+        jtable_viandas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jtable_viandas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtable_viandasMouseClicked(evt);
+            }
+        });
+        jTabbedPane1.addTab("Viandas", jtable_viandas);
 
         jtable_lunes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -199,81 +268,6 @@ public class PedidosJF extends javax.swing.JFrame {
         ));
         jTabbedPane1.addTab("Viernes", jtable_viernes);
 
-        jtable_clientes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jtable_clientes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jtable_clientesMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jtable_clientes);
-
-        jTabbedPane1.addTab("Clientes", jScrollPane1);
-
-        jtable_viandas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jtable_viandas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jtable_viandasMouseClicked(evt);
-            }
-        });
-        jScrollPane2.setViewportView(jtable_viandas);
-
-        jTabbedPane1.addTab("Viandas", jScrollPane2);
-
-        jt_id.setBackground(new java.awt.Color(243, 243, 194));
-        jt_id.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jt_id.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jt_id.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-
-        jl_unidades1.setBackground(new java.awt.Color(243, 243, 194));
-        jl_unidades1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jl_unidades1.setForeground(new java.awt.Color(243, 243, 194));
-        jl_unidades1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_unidades1.setText("ID:");
-
-        jl_unidades2.setBackground(new java.awt.Color(243, 243, 194));
-        jl_unidades2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jl_unidades2.setForeground(new java.awt.Color(243, 243, 194));
-        jl_unidades2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_unidades2.setText("Cliente:");
-
-        jl_unidades3.setBackground(new java.awt.Color(243, 243, 194));
-        jl_unidades3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jl_unidades3.setForeground(new java.awt.Color(243, 243, 194));
-        jl_unidades3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_unidades3.setText("Vianda:");
-
-        jl_unidades4.setBackground(new java.awt.Color(243, 243, 194));
-        jl_unidades4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jl_unidades4.setForeground(new java.awt.Color(243, 243, 194));
-        jl_unidades4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_unidades4.setText("Dias:");
-
-        jl_unidades5.setBackground(new java.awt.Color(243, 243, 194));
-        jl_unidades5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jl_unidades5.setForeground(new java.awt.Color(243, 243, 194));
-        jl_unidades5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_unidades5.setText("Precio:");
-
-        jl_unidades6.setBackground(new java.awt.Color(243, 243, 194));
-        jl_unidades6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jl_unidades6.setForeground(new java.awt.Color(243, 243, 194));
-        jl_unidades6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_unidades6.setText("Unidades:");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -282,7 +276,7 @@ public class PedidosJF extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(85, 85, 85)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jl_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -321,7 +315,7 @@ public class PedidosJF extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTabbedPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jl_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jt_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -482,10 +476,8 @@ public class PedidosJF extends javax.swing.JFrame {
     private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_encargar;
     private javax.swing.JButton btn_modificar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel jl_Titulo;
     private javax.swing.JLabel jl_unidades1;
     private javax.swing.JLabel jl_unidades2;
     private javax.swing.JLabel jl_unidades3;

@@ -6,8 +6,8 @@
 package FrontEnd;
 
 import java.awt.Color;
-import javax.swing.table.DefaultTableModel;
 import BackEnd.MovimientoBackEnd;
+import Entidad.MovimientoEntidad;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import java.util.Date;
@@ -23,7 +23,7 @@ public class GestionCaja extends javax.swing.JFrame {
     public GestionCaja() {
         initComponents();
         this.getContentPane().setBackground(new Color(49,28,28));
-        actualizar();
+        actualizarTabla();
         calcularSaldos();
     }
 
@@ -38,7 +38,11 @@ public class GestionCaja extends javax.swing.JFrame {
 
         jCalendar1 = new com.toedter.calendar.JCalendar();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jLabel1 = new javax.swing.JLabel();
+        jl_titulo = new javax.swing.JLabel();
+        jr_ingreso = new javax.swing.JRadioButton();
+        jr_efectivo = new javax.swing.JRadioButton();
+        jl_Total = new javax.swing.JLabel();
+        jl_efectivo = new javax.swing.JLabel();
         jt_monto = new javax.swing.JTextField();
         jt_especificacion = new javax.swing.JTextField();
         btn_agregar = new javax.swing.JButton();
@@ -46,31 +50,33 @@ public class GestionCaja extends javax.swing.JFrame {
         btn_modificar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtable_caja = new javax.swing.JTable();
-        jr_ingreso = new javax.swing.JRadioButton();
-        jr_efectivo = new javax.swing.JRadioButton();
-        jl_Total = new javax.swing.JLabel();
-        jl_efectivo = new javax.swing.JLabel();
+        jl_unidades1 = new javax.swing.JLabel();
+        jl_unidades2 = new javax.swing.JLabel();
+        jl_unidades3 = new javax.swing.JLabel();
+        jl_unidades4 = new javax.swing.JLabel();
+        jl_unidades5 = new javax.swing.JLabel();
+        jl_unidades6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(49, 28, 28));
 
-        jLabel1.setBackground(new java.awt.Color(49, 28, 28));
-        jLabel1.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 253, 118));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("CAJA");
-        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jl_titulo.setBackground(new java.awt.Color(49, 28, 28));
+        jl_titulo.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
+        jl_titulo.setForeground(new java.awt.Color(255, 253, 118));
+        jl_titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jl_titulo.setText("CAJA");
+        jl_titulo.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jr_ingreso.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jr_ingreso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        jr_efectivo.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jr_efectivo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         jt_monto.setBackground(new java.awt.Color(243, 243, 194));
         jt_monto.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jt_monto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jt_monto.setText("Monto:");
         jt_monto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        jt_monto.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jt_montoMouseClicked(evt);
-            }
-        });
         jt_monto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jt_montoKeyTyped(evt);
@@ -80,13 +86,7 @@ public class GestionCaja extends javax.swing.JFrame {
         jt_especificacion.setBackground(new java.awt.Color(243, 243, 194));
         jt_especificacion.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jt_especificacion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jt_especificacion.setText("Especificacion:");
         jt_especificacion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        jt_especificacion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jt_especificacionMouseClicked(evt);
-            }
-        });
         jt_especificacion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jt_especificacionKeyReleased(evt);
@@ -141,17 +141,41 @@ public class GestionCaja extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jtable_caja);
 
-        jr_ingreso.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jr_ingreso.setText("Ingreso");
-        jr_ingreso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jl_unidades1.setBackground(new java.awt.Color(243, 243, 194));
+        jl_unidades1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl_unidades1.setForeground(new java.awt.Color(243, 243, 194));
+        jl_unidades1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_unidades1.setText("Ingreso:");
 
-        jr_efectivo.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jr_efectivo.setText("Efectivo");
-        jr_efectivo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jl_unidades2.setBackground(new java.awt.Color(243, 243, 194));
+        jl_unidades2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl_unidades2.setForeground(new java.awt.Color(243, 243, 194));
+        jl_unidades2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_unidades2.setText("Monto:");
 
-        jl_Total.setText("Total:");
+        jl_unidades3.setBackground(new java.awt.Color(243, 243, 194));
+        jl_unidades3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl_unidades3.setForeground(new java.awt.Color(243, 243, 194));
+        jl_unidades3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_unidades3.setText("Especificacion:");
 
-        jl_efectivo.setText("Efectivo: ");
+        jl_unidades4.setBackground(new java.awt.Color(243, 243, 194));
+        jl_unidades4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl_unidades4.setForeground(new java.awt.Color(243, 243, 194));
+        jl_unidades4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_unidades4.setText("Efectivo:");
+
+        jl_unidades5.setBackground(new java.awt.Color(243, 243, 194));
+        jl_unidades5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl_unidades5.setForeground(new java.awt.Color(243, 243, 194));
+        jl_unidades5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_unidades5.setText("Efectivo:");
+
+        jl_unidades6.setBackground(new java.awt.Color(243, 243, 194));
+        jl_unidades6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl_unidades6.setForeground(new java.awt.Color(243, 243, 194));
+        jl_unidades6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_unidades6.setText("Total:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -160,27 +184,50 @@ public class GestionCaja extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btn_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jt_monto, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
-                                .addComponent(jt_especificacion, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
-                                .addComponent(jr_efectivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jr_ingreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jl_unidades2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jl_unidades3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jt_especificacion)
+                                        .addComponent(jt_monto, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(btn_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jl_unidades1)
+                                        .addGap(74, 74, 74))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jl_unidades5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jr_ingreso, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                                    .addComponent(jr_efectivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(0, 110, Short.MAX_VALUE)))))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jl_unidades4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jl_efectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(84, 84, 84)
+                        .addComponent(jl_unidades6, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jl_Total, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(155, 155, 155))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jl_efectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jl_Total, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(27, 27, 27))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,15 +236,23 @@ public class GestionCaja extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jt_monto, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jt_monto, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_unidades2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jt_especificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jt_especificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_unidades3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jr_ingreso)
-                        .addGap(18, 18, 18)
-                        .addComponent(jr_efectivo)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jl_unidades1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jr_ingreso))
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jl_unidades5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jr_efectivo))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
@@ -206,57 +261,41 @@ public class GestionCaja extends javax.swing.JFrame {
                         .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jl_Total, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jl_efectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jl_Total, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                    .addComponent(jl_unidades6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_efectivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jl_unidades4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    private boolean checkCampos(){
+        return !(jt_monto.getText().equalsIgnoreCase(""));
+    }
     
     private void calcularSaldos(){
-        jl_Total.setText("Total: " + MovimientoBackEnd.calcularTotal() + " $");
-        jl_efectivo.setText("Efectivo: " + MovimientoBackEnd.calcularEfectivo() + " $");   
+        jl_Total.setText(MovimientoBackEnd.calcularTotal() + " $");
+        jl_efectivo.setText(MovimientoBackEnd.calcularEfectivo() + " $");   
     }
     
-    //Metodo que limpia los valores de los campos de texto
-    private void limpiarCampos(){
-        jt_monto.setText("Monto:");
-        jt_especificacion.setText("Especificacion");
-        jr_efectivo.setSelected(false);
-        jr_ingreso.setSelected(false); //todo: revisar
-    }
-    //Metodo que chequea que ningun campo de texto este vacio.
-    private boolean checkCampos(){
-        return !(jt_monto.getText().equalsIgnoreCase("") );
-    }
     
     //Metodo que actualiza los valores de la tabla segun la base de datos
-    private void actualizar(){
+    private void actualizarTabla(){
         jtable_caja.setModel(MovimientoBackEnd.actualizarTabla());
     }
     
-    private void jt_montoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_montoMouseClicked
-        jt_monto.setText("");
-    }//GEN-LAST:event_jt_montoMouseClicked
-
-    private void jt_especificacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_especificacionMouseClicked
-        jt_especificacion.setText("");
-    }//GEN-LAST:event_jt_especificacionMouseClicked
-
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
         if(checkCampos()){
             Date date = new Date();
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");     
-            MovimientoBackEnd movimiento; 
-            movimiento = new MovimientoBackEnd(Float.valueOf(jt_monto.getText()),jt_especificacion.getText(), 
-                    simpleDateFormat.format(date), jr_ingreso.isSelected(), jr_efectivo.isSelected());
+            MovimientoEntidad movimiento = new MovimientoEntidad(Float.valueOf(jt_monto.getText()),jt_especificacion.getText(), 
+                jr_ingreso.isSelected(), jr_efectivo.isSelected(), simpleDateFormat.format(date));
             MovimientoBackEnd.agregarMovimiento(movimiento);
-            actualizar();
+            actualizarTabla();
         }else{
-            JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");   
+            JOptionPane.showMessageDialog(null, "El monto es un campo obligatorio.");   
         }
     }//GEN-LAST:event_btn_agregarActionPerformed
 
@@ -265,9 +304,9 @@ public class GestionCaja extends javax.swing.JFrame {
             int row = jtable_caja.getSelectedRow(); 
             int id = Integer.valueOf(jtable_caja.getValueAt(row, 0).toString());
             MovimientoBackEnd.eliminarMovimiento(id);
-            actualizar();
+            actualizarTabla();
         } else {
-            JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
+            JOptionPane.showMessageDialog(null, "El monto es un campo obligatorio");
         }
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
@@ -275,15 +314,15 @@ public class GestionCaja extends javax.swing.JFrame {
         if (checkCampos()) {
             Date date = new Date();
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            MovimientoBackEnd movimiento = new MovimientoBackEnd(Float.valueOf(jt_monto.getText()),
-                    jt_especificacion.getText(), simpleDateFormat.format(date), jr_ingreso.isSelected()
-                    ,jr_efectivo.isSelected());
+            MovimientoEntidad movimiento = new MovimientoEntidad(Float.valueOf(jt_monto.getText()),
+                    jt_especificacion.getText(), jr_ingreso.isSelected()
+                    ,jr_efectivo.isSelected(), simpleDateFormat.format(date));
             int row = jtable_caja.getSelectedRow();
             int id = Integer.valueOf(jtable_caja.getValueAt(row, 0).toString());
             MovimientoBackEnd.modificarMovimiento(movimiento, id);
-            actualizar();
+            actualizarTabla();
         } else {
-            JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
+            JOptionPane.showMessageDialog(null, "El monto es un campo obligatorio");
         }
     }//GEN-LAST:event_btn_modificarActionPerformed
 
@@ -348,10 +387,16 @@ public class GestionCaja extends javax.swing.JFrame {
     private javax.swing.JButton btn_modificar;
     private com.toedter.calendar.JCalendar jCalendar1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jl_Total;
     private javax.swing.JLabel jl_efectivo;
+    private javax.swing.JLabel jl_titulo;
+    private javax.swing.JLabel jl_unidades1;
+    private javax.swing.JLabel jl_unidades2;
+    private javax.swing.JLabel jl_unidades3;
+    private javax.swing.JLabel jl_unidades4;
+    private javax.swing.JLabel jl_unidades5;
+    private javax.swing.JLabel jl_unidades6;
     private javax.swing.JRadioButton jr_efectivo;
     private javax.swing.JRadioButton jr_ingreso;
     private javax.swing.JTextField jt_especificacion;
