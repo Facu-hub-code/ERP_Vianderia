@@ -166,6 +166,7 @@ public class LoginJF extends javax.swing.JFrame {
     */
     private void initFacuComponents() {
 
+        this.setLocationRelativeTo(null);
         Color bkgnd_frame = new Color(49, 28, 28);
         Color bkgnd_text_field = new Color(229, 229, 229);
         Color yellow_nutritiva = new Color(255, 253, 118);
@@ -176,7 +177,7 @@ public class LoginJF extends javax.swing.JFrame {
 
         //this.setLocation(null);
         this.setResizable(false);
-        this.setTitle("Acceso al Sistema Nutritiva");
+        this.setTitle("Login");
 
         jt_usuario.setPreferredSize(text_field);
         jt_usuario.setBackground(bkgnd_text_field);

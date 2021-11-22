@@ -23,6 +23,8 @@ public class PedidosJF extends javax.swing.JFrame {
     public PedidosJF() {
         initComponents();
         this.getContentPane().setBackground(new Color(49,28,28));
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
         actualizarTablas();
     }
 

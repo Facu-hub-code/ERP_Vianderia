@@ -60,24 +60,44 @@ public class SistemaPrincipal extends javax.swing.JFrame {
         btn_viandas.setForeground(new java.awt.Color(0, 0, 0));
         btn_viandas.setText("Viandas");
         btn_viandas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        btn_viandas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viandasActionPerformed(evt);
+            }
+        });
 
         btn_pedidos.setBackground(new java.awt.Color(255, 253, 118));
         btn_pedidos.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         btn_pedidos.setForeground(new java.awt.Color(0, 0, 0));
         btn_pedidos.setText("Pedidos");
         btn_pedidos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        btn_pedidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_pedidosActionPerformed(evt);
+            }
+        });
 
         btn_ventas.setBackground(new java.awt.Color(255, 253, 118));
         btn_ventas.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         btn_ventas.setForeground(new java.awt.Color(0, 0, 0));
         btn_ventas.setText("Ventas");
         btn_ventas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        btn_ventas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ventasActionPerformed(evt);
+            }
+        });
 
         btn_Caja.setBackground(new java.awt.Color(255, 253, 118));
         btn_Caja.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         btn_Caja.setForeground(new java.awt.Color(0, 0, 0));
         btn_Caja.setText("Caja");
         btn_Caja.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        btn_Caja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_CajaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -121,8 +141,30 @@ public class SistemaPrincipal extends javax.swing.JFrame {
         gestionClientes.setVisible(true);
     }//GEN-LAST:event_btn_clientesActionPerformed
 
+    private void btn_pedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pedidosActionPerformed
+        PedidosJF pedidosJF = new PedidosJF();
+        pedidosJF.setVisible(true);
+    }//GEN-LAST:event_btn_pedidosActionPerformed
+
+    private void btn_ventasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ventasActionPerformed
+        VentasJF ventasJF = new VentasJF();
+        ventasJF.setVisible(true);
+    }//GEN-LAST:event_btn_ventasActionPerformed
+
+    private void btn_CajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CajaActionPerformed
+        GestionCaja gestionCaja = new GestionCaja();
+        gestionCaja.setVisible(true);
+    }//GEN-LAST:event_btn_CajaActionPerformed
+
+    private void btn_viandasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viandasActionPerformed
+        ViandasJF viandasJF = new ViandasJF();
+        viandasJF.setVisible(true);
+    }//GEN-LAST:event_btn_viandasActionPerformed
+
     
     private void initComponentsFacu(){
+        
+        this.setLocationRelativeTo(null);
         Color bkgnd_frame = new Color(49, 28, 28);
         Color bkgnd_text_field = new Color(229, 229, 229);
         Color yellow_nutritiva = new Color(255, 253, 118);
@@ -131,7 +173,6 @@ public class SistemaPrincipal extends javax.swing.JFrame {
         this.setPreferredSize(new Dimension(1024, 768));
         this.getContentPane().setBackground(bkgnd_frame);
         
-        //this.setLocation(null);
         this.setResizable(false);
         this.setTitle("Sistema Nutritiva");
     }

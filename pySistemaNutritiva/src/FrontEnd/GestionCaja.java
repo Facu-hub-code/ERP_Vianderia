@@ -23,6 +23,8 @@ public class GestionCaja extends javax.swing.JFrame {
     public GestionCaja() {
         initComponents();
         this.getContentPane().setBackground(new Color(49,28,28));
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
         actualizarTabla();
         calcularSaldos();
     }

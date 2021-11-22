@@ -22,6 +22,8 @@ public class ViandasJF extends javax.swing.JFrame {
     public ViandasJF() {
         initComponents();
         this.getContentPane().setBackground(new Color(49,28,28));
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
         actualizarTabla();
     }
 
