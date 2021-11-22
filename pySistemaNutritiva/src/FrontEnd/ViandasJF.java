@@ -5,10 +5,9 @@
  */
 package FrontEnd;
 
-import BackEnd.ClienteBackEnd;
 import java.awt.Color;
-import javax.swing.table.DefaultTableModel;
 import BackEnd.ViandaBackEnd;
+import Entidad.ViandaEntidad;
 import javax.swing.JOptionPane;
 
 /**
@@ -62,21 +61,11 @@ public class ViandasJF extends javax.swing.JFrame {
         jt_dias.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jt_dias.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_dias.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        jt_dias.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jt_diasMouseClicked(evt);
-            }
-        });
 
         jt_nombre.setBackground(new java.awt.Color(243, 243, 194));
         jt_nombre.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jt_nombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_nombre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        jt_nombre.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jt_nombreMouseClicked(evt);
-            }
-        });
         jt_nombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jt_nombreKeyReleased(evt);
@@ -87,11 +76,6 @@ public class ViandasJF extends javax.swing.JFrame {
         jt_precio.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jt_precio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_precio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        jt_precio.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jt_precioMouseClicked(evt);
-            }
-        });
         jt_precio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jt_precioKeyTyped(evt);
@@ -230,13 +214,7 @@ public class ViandasJF extends javax.swing.JFrame {
     private void filtrarNombre(String nombre){
         jtable_viandas.setModel(ViandaBackEnd.filtrarNombre(nombre));
     }
-    
-    //Metodo que limpia los valores de los campos de texto
-    private void limpiarCampos(){
-        jt_nombre.setText("Nombre:");
-        jt_precio.setText("Precio:");
-        jt_dias.setText("Dias:");
-    }
+
     //Metodo que chequea que ningun campo de texto este vacio.
     private boolean checkCampos(){
         return !(jt_nombre.getText().equalsIgnoreCase("") || 
@@ -250,21 +228,9 @@ public class ViandasJF extends javax.swing.JFrame {
         jtable_viandas.setModel(ViandaBackEnd.actualizarTabla());
     }
     
-    private void jt_diasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_diasMouseClicked
-        jt_dias.setText("");
-    }//GEN-LAST:event_jt_diasMouseClicked
-
-    private void jt_nombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_nombreMouseClicked
-        jt_nombre.setText("");
-    }//GEN-LAST:event_jt_nombreMouseClicked
-
-    private void jt_precioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_precioMouseClicked
-        jt_precio.setText("");
-    }//GEN-LAST:event_jt_precioMouseClicked
-
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
         if(checkCampos()){
-            ViandaBackEnd vianda = new ViandaBackEnd(jt_nombre.getText(), Float.valueOf(jt_precio.getText()), jt_dias.getText());
+            ViandaEntidad vianda = new ViandaEntidad(jt_nombre.getText(), Float.valueOf(jt_precio.getText()), jt_dias.getText());
             ViandaBackEnd.agregarVianda(vianda);
             actualizarTabla();
         }else{
@@ -285,7 +251,7 @@ public class ViandasJF extends javax.swing.JFrame {
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
         if (checkCampos()) {
-            ViandaBackEnd vianda = new ViandaBackEnd(jt_nombre.getText(), Float.valueOf(jt_precio.getText()), jt_dias.getText());
+            ViandaEntidad vianda = new ViandaEntidad(jt_nombre.getText(), Float.valueOf(jt_precio.getText()), jt_dias.getText());
             int row = jtable_viandas.getSelectedRow();
             int id = Integer.valueOf(jtable_viandas.getValueAt(row, 0).toString());
             ViandaBackEnd.modificarVianda(vianda, id);

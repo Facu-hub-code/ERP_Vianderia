@@ -9,6 +9,7 @@ import BackEnd.ClienteBackEnd;
 import java.awt.Color;
 import BackEnd.PedidoBackEnd;
 import BackEnd.ViandaBackEnd;
+import Entidad.PedidoEntidad;
 import javax.swing.JOptionPane;
 /**
  *
@@ -56,6 +57,11 @@ public class PedidosJF extends javax.swing.JFrame {
         jt_id = new javax.swing.JTextField();
         js_unidades = new javax.swing.JSpinner();
         jl_unidades1 = new javax.swing.JLabel();
+        jl_unidades2 = new javax.swing.JLabel();
+        jl_unidades3 = new javax.swing.JLabel();
+        jl_unidades4 = new javax.swing.JLabel();
+        jl_unidades5 = new javax.swing.JLabel();
+        jl_unidades6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(49, 28, 28));
@@ -70,13 +76,7 @@ public class PedidosJF extends javax.swing.JFrame {
         jt_cliente.setBackground(new java.awt.Color(243, 243, 194));
         jt_cliente.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jt_cliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jt_cliente.setText("Cliente:");
         jt_cliente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        jt_cliente.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jt_clienteMouseClicked(evt);
-            }
-        });
         jt_cliente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jt_clienteKeyReleased(evt);
@@ -86,13 +86,7 @@ public class PedidosJF extends javax.swing.JFrame {
         jt_vianda.setBackground(new java.awt.Color(243, 243, 194));
         jt_vianda.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jt_vianda.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jt_vianda.setText("Vianda:");
         jt_vianda.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        jt_vianda.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jt_viandaMouseClicked(evt);
-            }
-        });
         jt_vianda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jt_viandaKeyReleased(evt);
@@ -103,13 +97,7 @@ public class PedidosJF extends javax.swing.JFrame {
         jt_precio.setBackground(new java.awt.Color(243, 243, 194));
         jt_precio.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jt_precio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jt_precio.setText("Precio:");
         jt_precio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        jt_precio.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jt_precioMouseClicked(evt);
-            }
-        });
         jt_precio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jt_precioKeyTyped(evt);
@@ -119,13 +107,7 @@ public class PedidosJF extends javax.swing.JFrame {
         jt_dias.setBackground(new java.awt.Color(243, 243, 194));
         jt_dias.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jt_dias.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jt_dias.setText("Dias:");
         jt_dias.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        jt_dias.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jt_diasMouseClicked(evt);
-            }
-        });
 
         btn_encargar.setBackground(new java.awt.Color(255, 253, 118));
         btn_encargar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -254,19 +236,43 @@ public class PedidosJF extends javax.swing.JFrame {
         jt_id.setBackground(new java.awt.Color(243, 243, 194));
         jt_id.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jt_id.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jt_id.setText("ID:");
         jt_id.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        jt_id.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jt_idMouseClicked(evt);
-            }
-        });
 
         jl_unidades1.setBackground(new java.awt.Color(243, 243, 194));
         jl_unidades1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jl_unidades1.setForeground(new java.awt.Color(243, 243, 194));
         jl_unidades1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_unidades1.setText("Nombre:");
+        jl_unidades1.setText("ID:");
+
+        jl_unidades2.setBackground(new java.awt.Color(243, 243, 194));
+        jl_unidades2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl_unidades2.setForeground(new java.awt.Color(243, 243, 194));
+        jl_unidades2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_unidades2.setText("Cliente:");
+
+        jl_unidades3.setBackground(new java.awt.Color(243, 243, 194));
+        jl_unidades3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl_unidades3.setForeground(new java.awt.Color(243, 243, 194));
+        jl_unidades3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_unidades3.setText("Vianda:");
+
+        jl_unidades4.setBackground(new java.awt.Color(243, 243, 194));
+        jl_unidades4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl_unidades4.setForeground(new java.awt.Color(243, 243, 194));
+        jl_unidades4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_unidades4.setText("Dias:");
+
+        jl_unidades5.setBackground(new java.awt.Color(243, 243, 194));
+        jl_unidades5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl_unidades5.setForeground(new java.awt.Color(243, 243, 194));
+        jl_unidades5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_unidades5.setText("Precio:");
+
+        jl_unidades6.setBackground(new java.awt.Color(243, 243, 194));
+        jl_unidades6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl_unidades6.setForeground(new java.awt.Color(243, 243, 194));
+        jl_unidades6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_unidades6.setText("Unidades:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -275,33 +281,38 @@ public class PedidosJF extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(85, 85, 85)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(85, 85, 85)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGap(4, 4, 4)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jl_unidades6)
+                                    .addComponent(jl_unidades4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jl_unidades5)
+                                    .addComponent(jl_unidades3)
+                                    .addComponent(jl_unidades2))
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(js_unidades, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                                    .addComponent(jt_cliente)
+                                    .addComponent(jt_vianda)
+                                    .addComponent(jt_precio)
+                                    .addComponent(jt_dias)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jl_unidades1)
+                                    .addGap(86, 86, 86)
+                                    .addComponent(jt_id))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(btn_encargar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jt_dias, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
-                                        .addComponent(jt_precio, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
-                                        .addComponent(jt_id, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jl_unidades1)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(jt_cliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
-                                                .addComponent(jt_vianda, javax.swing.GroupLayout.Alignment.TRAILING)))))))
-                        .addGap(19, 19, 19))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(js_unidades, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
+                                    .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(18, 18, 18)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 699, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -314,18 +325,28 @@ public class PedidosJF extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jt_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_unidades2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jt_vianda, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_unidades3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jt_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_unidades5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jt_dias, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_unidades4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(js_unidades, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_unidades6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jl_unidades1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jt_vianda, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23)
-                        .addComponent(js_unidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jt_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jt_dias, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
                         .addComponent(btn_encargar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
                         .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -337,21 +358,12 @@ public class PedidosJF extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    //Metodo que limpia los valores de los campos de texto
-    private void limpiarCampos(){
-        jt_cliente.setText("Cliente:");
-        jt_vianda.setText("Vianda:");
-        jt_unidades.setText("Unidades:");
-        jt_precio.setText("Precio:");
-        jt_dias.setText("Dias:");
-        jt_id.setText("ID");
-    }
     
     //Metodo que chequea que ningun campo de texto este vacio.
     private boolean checkCampos(){
-        return !(jt_cliente.getText().equalsIgnoreCase("") ||
-                jt_vianda.getText().equalsIgnoreCase("") ||
-                jt_unidades.getText().equalsIgnoreCase("") ||
+        return !(((Integer)js_unidades.getValue() == 0) ||
+                jt_cliente.getText().equalsIgnoreCase("") ||
+                jt_vianda.getText().equalsIgnoreCase("") || 
                 jt_precio.getText().equalsIgnoreCase("") ||
                 jt_dias.getText().equalsIgnoreCase(""));
     }
@@ -368,28 +380,6 @@ public class PedidosJF extends javax.swing.JFrame {
         jtable_lunes.setModel(PedidoBackEnd.actualizarTabla("M2"));
     }
 
-    private void jt_clienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_clienteMouseClicked
-        jt_cliente.setText("");
-    }//GEN-LAST:event_jt_clienteMouseClicked
-
-    private void jt_viandaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_viandaMouseClicked
-        jt_vianda.setText("");
-    }//GEN-LAST:event_jt_viandaMouseClicked
-
-    private void jt_precioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_precioMouseClicked
-        jt_precio.setText("");
-    }//GEN-LAST:event_jt_precioMouseClicked
-
-    private void jt_diasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_diasMouseClicked
-        jt_dias.setText("");
-    }//GEN-LAST:event_jt_diasMouseClicked
-
-
-
-
-
-
-
     private void filtrarCliente(String nombre){
         jtable_clientes.setModel(ClienteBackEnd.filtrarNombre(nombre));
     }
@@ -400,8 +390,8 @@ public class PedidosJF extends javax.swing.JFrame {
     
     private void btn_encargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_encargarActionPerformed
         if(checkCampos()){
-            PedidoBackEnd pedido = new PedidoBackEnd(jt_cliente.getText(), jt_vianda.getText(),
-                    Integer.valueOf(jt_unidades.getText()), Float.valueOf(jt_precio.getText()), jt_dias.getText(),0);
+            PedidoEntidad pedido = new PedidoEntidad(jt_cliente.getText(), jt_vianda.getText(),
+                    (Integer)js_unidades.getValue(), Float.valueOf(jt_precio.getText()), jt_dias.getText(),0);
             PedidoBackEnd.agregarPedido(pedido);
             actualizarTablas();
         }else{
@@ -410,16 +400,13 @@ public class PedidosJF extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_encargarActionPerformed
 
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
-        if(checkCampos()){
-            JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
-        }else{
-            int id = Integer.valueOf(jt_id.getText());
-            PedidoBackEnd.cancelarPedido(id);
-        }
+        
     }//GEN-LAST:event_btn_cancelarActionPerformed
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
-        
+        if(checkCampos()){
+            
+        }
     }//GEN-LAST:event_btn_modificarActionPerformed
 
     
@@ -430,10 +417,6 @@ public class PedidosJF extends javax.swing.JFrame {
     
     
     
-    private void jt_idMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_idMouseClicked
-        jt_id.setText("");
-    }//GEN-LAST:event_jt_idMouseClicked
-
     private void jt_clienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_clienteKeyReleased
         this.filtrarCliente(jt_cliente.getText());
     }//GEN-LAST:event_jt_clienteKeyReleased
@@ -504,6 +487,11 @@ public class PedidosJF extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel jl_unidades1;
+    private javax.swing.JLabel jl_unidades2;
+    private javax.swing.JLabel jl_unidades3;
+    private javax.swing.JLabel jl_unidades4;
+    private javax.swing.JLabel jl_unidades5;
+    private javax.swing.JLabel jl_unidades6;
     private javax.swing.JSpinner js_unidades;
     private javax.swing.JTextField jt_cliente;
     private javax.swing.JTextField jt_dias;
