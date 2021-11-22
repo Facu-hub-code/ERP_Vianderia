@@ -62,6 +62,7 @@ public class PedidosJF extends javax.swing.JFrame {
         jtable_miercoles_2 = new javax.swing.JTable();
         jtable_jueves = new javax.swing.JTable();
         jtable_viernes = new javax.swing.JTable();
+        btn_limpiar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(49, 28, 28));
@@ -119,6 +120,7 @@ public class PedidosJF extends javax.swing.JFrame {
             }
         });
 
+        jt_id.setEditable(false);
         jt_id.setBackground(new java.awt.Color(243, 243, 194));
         jt_id.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jt_id.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -270,6 +272,16 @@ public class PedidosJF extends javax.swing.JFrame {
         ));
         jTabbedPane1.addTab("Viernes", jtable_viernes);
 
+        btn_limpiar.setBackground(new java.awt.Color(255, 253, 118));
+        btn_limpiar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btn_limpiar.setText("Limpiar");
+        btn_limpiar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_limpiarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -292,22 +304,23 @@ public class PedidosJF extends javax.swing.JFrame {
                                     .addComponent(jl_unidades2))
                                 .addGap(27, 27, 27)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(js_unidades, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
-                                    .addComponent(jt_cliente)
-                                    .addComponent(jt_vianda)
-                                    .addComponent(jt_precio)
-                                    .addComponent(jt_dias)))
+                                    .addComponent(js_unidades, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jt_vianda, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jt_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jt_dias, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jt_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addComponent(jl_unidades1)
                                     .addGap(86, 86, 86)
-                                    .addComponent(jt_id))
+                                    .addComponent(jt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(btn_encargar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addComponent(btn_limpiar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 699, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 699, Short.MAX_VALUE)
                 .addGap(15, 15, 15))
         );
         layout.setVerticalGroup(
@@ -342,7 +355,9 @@ public class PedidosJF extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jl_unidades1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_limpiar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
                         .addComponent(btn_encargar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
                         .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -354,8 +369,14 @@ public class PedidosJF extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void limpiarCampos(){
+        jt_cliente.setText("");
+        jt_vianda.setText("");
+        js_unidades.setValue((Integer)0);
+        jt_precio.setText("");
+        jt_dias.setText("");
+    }
     
-    //Metodo que chequea que ningun campo de texto este vacio.
     private boolean checkCampos(){
         return !(((Integer)js_unidades.getValue() == 0) ||
                 jt_cliente.getText().equalsIgnoreCase("") ||
@@ -364,16 +385,11 @@ public class PedidosJF extends javax.swing.JFrame {
                 jt_dias.getText().equalsIgnoreCase(""));
     }
     
-    //Metodo que actualiza los valores de la tabla segun la base de datos
+    //todo: revisar
     private void actualizarTablas(){
         jtable_clientes.setModel(ClienteBackEnd.actualizarTabla());
         jtable_viandas.setModel(ViandaBackEnd.actualizarTabla());
         jtable_lunes.setModel(PedidoBackEnd.actualizarTabla("L"));
-        jtable_lunes.setModel(PedidoBackEnd.actualizarTabla("MA"));
-        jtable_lunes.setModel(PedidoBackEnd.actualizarTabla("M1"));
-        jtable_lunes.setModel(PedidoBackEnd.actualizarTabla("J"));
-        jtable_lunes.setModel(PedidoBackEnd.actualizarTabla("V"));
-        jtable_lunes.setModel(PedidoBackEnd.actualizarTabla("M2"));
     }
 
     private void filtrarCliente(String nombre){
@@ -405,14 +421,6 @@ public class PedidosJF extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_modificarActionPerformed
 
-    
-    
-    
-    
-    
-    
-    
-    
     private void jt_clienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_clienteKeyReleased
         this.filtrarCliente(jt_cliente.getText());
     }//GEN-LAST:event_jt_clienteKeyReleased
@@ -435,10 +443,15 @@ public class PedidosJF extends javax.swing.JFrame {
 
     private void jtable_viandasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_viandasMouseClicked
         int filaSeleccionada = jtable_viandas.rowAtPoint(evt.getPoint());
-        jt_vianda.setText(jtable_viandas.getValueAt(filaSeleccionada, 1).toString());
-        jt_precio.setText(jtable_viandas.getValueAt(filaSeleccionada, 2).toString());
-        jt_dias.setText(jtable_viandas.getValueAt(filaSeleccionada, 3).toString());
+        jt_vianda.setText(jtable_viandas.getValueAt(filaSeleccionada, 0).toString());
+        jt_precio.setText(jtable_viandas.getValueAt(filaSeleccionada, 1).toString());
+        jt_dias.setText(jtable_viandas.getValueAt(filaSeleccionada, 2).toString());
     }//GEN-LAST:event_jtable_viandasMouseClicked
+
+    private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
+        limpiarCampos();
+        actualizarTablas();
+    }//GEN-LAST:event_btn_limpiarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -477,6 +490,7 @@ public class PedidosJF extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_encargar;
+    private javax.swing.JButton btn_limpiar;
     private javax.swing.JButton btn_modificar;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel jl_Titulo;

@@ -24,7 +24,7 @@ public class PedidoBackEnd {
         Connection cn = Conexion.conectar();
         String sql = "UPDATE pedidos SET "
                     + "cliente = ?, vianda = ?, unidades = ?, precio = ?, dias = ? "
-                + "WHERE id ='" + pedido.getId() + "'"; //revisar que sea el de la fila
+                + "WHERE idpedido ='" + pedido.getId() + "'"; //revisar que sea el de la fila
    
         try {
             PreparedStatement ps = cn.prepareStatement(sql);
@@ -63,7 +63,7 @@ public class PedidoBackEnd {
     public static void cancelarPedido(int id){
         Connection cn = Conexion.conectar();
         try {
-            String sql = "DELETE FROM pedidos where id =" + id;
+            String sql = "DELETE FROM pedidos where idpedidos =" + id;
             PreparedStatement ps = cn.prepareStatement(sql);
             if(ps.executeUpdate() >= 0 ){
                 JOptionPane.showMessageDialog(null, "Se elimino correctamente.");
@@ -77,31 +77,28 @@ public class PedidoBackEnd {
     }
     
     public static DefaultTableModel actualizarTabla(String dia){
-        DefaultTableModel tabla = new DefaultTableModel();
-        tabla.addColumn("ID");
-        tabla.addColumn("Cliente");
-        tabla.addColumn("Vianda");
-        tabla.addColumn("Unidades");
-        tabla.addColumn("Precio");
-        tabla.addColumn("Dias");
-        String[] datos = new String[6];  
         Connection cn = Conexion.conectar();
+        String[] titulos = {"ID", "Cliente", "Vianda", "Unidades", "Precio", "Dias"};
+        String[] registros = new String[6];
+        DefaultTableModel model = new DefaultTableModel(null, titulos);
+        String sql = "SELECT * FROM pedidos WHERE dias LIKE '%" + dia + "%'";
         try {
-            PreparedStatement ps = cn.prepareStatement("SELECT * FROM pedidos WHERE dias LIKE '%" + dia + "%'");
+            PreparedStatement ps = cn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                datos[0] = rs.getInt("id")+"";
-                datos[1] = rs.getString("cliente");
-                datos[2] = rs.getString("vianda"); 
-                datos[3] = rs.getInt("unidades")+"";
-                datos[4] = rs.getFloat("precio")+""; 
-                datos[5] = rs.getString("dias");
-                tabla.addRow(datos);
+                registros[0] = rs.getInt("idpedido")+"";
+                registros[1] = rs.getString("cliente");
+                registros[2] = rs.getString("vianda");
+                registros[3] = rs.getInt("unidades")+"";
+                registros[4] = rs.getFloat("precio")+"";
+                registros[5] = rs.getString("dias");
+                model.addRow(registros);
             }
             cn.close();
+            return model;
         } catch (SQLException e) {
             System.out.println(e.toString());
         }
-        return tabla;
+        return null;
     }    
 }
