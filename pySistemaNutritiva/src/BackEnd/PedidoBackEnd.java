@@ -23,17 +23,17 @@ public class PedidoBackEnd {
     public static void modificarPedido(PedidoEntidad pedido){
         Connection cn = Conexion.conectar();
         String sql = "UPDATE pedidos SET "
-                    + "cliente = ?, vianda = ?, unidades = ?, precio = ?, dias = ? "
+                    + "cliente = ?, vianda = ?, unidades = ?, precio = ?, dias = ? , tipo = ? "
                 + "WHERE idpedido ='" + pedido.getId() + "'"; //revisar que sea el de la fila
    
         try {
             PreparedStatement ps = cn.prepareStatement(sql);
-            ps.setInt(1, 0);
-            ps.setString(2, pedido.getCliente());
-            ps.setString(3, pedido.getVianda());
-            ps.setInt(4, pedido.getUnidades());
-            ps.setDouble(5, pedido.getPrecio());
-            ps.setString(6, pedido.getDias());
+            ps.setString(1, pedido.getCliente());
+            ps.setString(2, pedido.getVianda());
+            ps.setInt(3, pedido.getUnidades());
+            ps.setDouble(4, pedido.getPrecio());
+            ps.setString(5, pedido.getDias());
+            ps.setString(6, pedido.getTipo().toString());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Modificacion exitosa");
             cn.close();
@@ -64,7 +64,7 @@ public class PedidoBackEnd {
     public static void cancelarPedido(int id){
         Connection cn = Conexion.conectar();
         try {
-            String sql = "DELETE FROM pedidos where idpedidos =" + id;
+            String sql = "DELETE FROM pedidos where idpedido =" + id;
             PreparedStatement ps = cn.prepareStatement(sql);
             if(ps.executeUpdate() >= 0 ){
                 JOptionPane.showMessageDialog(null, "Se elimino correctamente.");
