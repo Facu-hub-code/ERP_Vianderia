@@ -611,25 +611,25 @@ public class PedidosJF extends javax.swing.JFrame {
         int filaSeleccionada = jtable_lunes.rowAtPoint(evt.getPoint());        
         jt_cliente.setText(jtable_lunes.getValueAt(filaSeleccionada, 1).toString());
         jt_vianda.setText(jtable_lunes.getValueAt(filaSeleccionada, 2).toString());
-        js_unidades.setValue(jtable_lunes.getValueAt(filaSeleccionada, 3));
+        js_unidades.setValue(Integer.valueOf(jtable_lunes.getValueAt(filaSeleccionada, 3).toString()));
         jt_precio.setText(jtable_lunes.getValueAt(filaSeleccionada, 4).toString()); 
         
-        if(jtable_lunes.getValueAt(filaSeleccionada, 5).toString().equalsIgnoreCase("Almuerzo"))
+        if(jtable_lunes.getValueAt(filaSeleccionada, 6).toString().equalsIgnoreCase("Almuerzo"))
             jcheck_almuerzo.setSelected(true);                   
-        if(jtable_lunes.getValueAt(filaSeleccionada, 5).toString().equalsIgnoreCase("Cena"))                   
+        if(jtable_lunes.getValueAt(filaSeleccionada, 6).toString().equalsIgnoreCase("Cena"))                   
             jcheck_cena.setSelected(true);
         
-        if(jtable_lunes.getValueAt(filaSeleccionada, 6).toString().equalsIgnoreCase("Lunes"))
+        if(jtable_lunes.getValueAt(filaSeleccionada, 5).toString().contains("Lunes"))
             jcheck_lunes.setSelected(true);
-        if(jtable_lunes.getValueAt(filaSeleccionada, 6).toString().equalsIgnoreCase("Martes"))
+        if(jtable_lunes.getValueAt(filaSeleccionada, 5).toString().contains("Martes"))
             jcheck_martes.setSelected(true);
-        if(jtable_lunes.getValueAt(filaSeleccionada, 6).toString().equalsIgnoreCase("Miercoles Carne"))
+        if(jtable_lunes.getValueAt(filaSeleccionada, 5).toString().contains("Miercoles Carne"))
             jcheck_miercoles_carne.setSelected(true);
-        if(jtable_lunes.getValueAt(filaSeleccionada, 6).toString().equalsIgnoreCase("Miercoles Pescado"))
+        if(jtable_lunes.getValueAt(filaSeleccionada, 5).toString().contains("Miercoles Pescado"))
             jcheck_miercoles_pescado.setSelected(true);
-        if(jtable_lunes.getValueAt(filaSeleccionada, 6).toString().equalsIgnoreCase("Jueves"))
+        if(jtable_lunes.getValueAt(filaSeleccionada, 5).toString().contains("Jueves"))
             jcheck_jueves.setSelected(true);
-        if(jtable_lunes.getValueAt(filaSeleccionada, 6).toString().equalsIgnoreCase("Viernes"))
+        if(jtable_lunes.getValueAt(filaSeleccionada, 5).toString().contains("Viernes"))
             jcheck_viernes.setSelected(true);                               
     }//GEN-LAST:event_jtable_lunesMouseClicked
 
