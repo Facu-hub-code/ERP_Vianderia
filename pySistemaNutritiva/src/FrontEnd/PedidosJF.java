@@ -205,6 +205,11 @@ public class PedidosJF extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jtable_lunes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtable_lunesMouseClicked(evt);
+            }
+        });
         jtab_panel_general.addTab("Lunes", jtable_lunes);
 
         jtable_martes.setModel(new javax.swing.table.DefaultTableModel(
@@ -215,6 +220,11 @@ public class PedidosJF extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jtable_martes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtable_martesMouseClicked(evt);
+            }
+        });
         jtab_panel_general.addTab("Martes", jtable_martes);
 
         jtable_miercoles_carne.setModel(new javax.swing.table.DefaultTableModel(
@@ -225,6 +235,11 @@ public class PedidosJF extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jtable_miercoles_carne.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtable_miercoles_carneMouseClicked(evt);
+            }
+        });
         jtab_panel_general.addTab("Miercoles Carne", jtable_miercoles_carne);
 
         jtable_miercoles_pescado.setModel(new javax.swing.table.DefaultTableModel(
@@ -235,6 +250,11 @@ public class PedidosJF extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jtable_miercoles_pescado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtable_miercoles_pescadoMouseClicked(evt);
+            }
+        });
         jtab_panel_general.addTab("Miercoles Pescado", jtable_miercoles_pescado);
 
         jtable_jueves.setModel(new javax.swing.table.DefaultTableModel(
@@ -245,6 +265,11 @@ public class PedidosJF extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jtable_jueves.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtable_juevesMouseClicked(evt);
+            }
+        });
         jtab_panel_general.addTab("Jueves", jtable_jueves);
 
         jtable_viernes.setModel(new javax.swing.table.DefaultTableModel(
@@ -255,6 +280,11 @@ public class PedidosJF extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jtable_viernes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtable_viernesMouseClicked(evt);
+            }
+        });
         jtab_panel_general.addTab("Viernes", jtable_viernes);
 
         btn_limpiar.setBackground(new java.awt.Color(255, 253, 118));
@@ -450,8 +480,8 @@ public class PedidosJF extends javax.swing.JFrame {
                 || jt_cliente.getText().equalsIgnoreCase("")
                 || jt_vianda.getText().equalsIgnoreCase("")
                 || jt_precio.getText().equalsIgnoreCase("")
-                || (jcheck_almuerzo.isSelected() || jcheck_cena.isSelected())
-                || (jcheck_lunes.isSelected() || jcheck_martes.isSelected()
+                || !(jcheck_almuerzo.isSelected() || jcheck_cena.isSelected())
+                || !(jcheck_lunes.isSelected() || jcheck_martes.isSelected()
                 || jcheck_miercoles_carne.isSelected() || jcheck_miercoles_pescado.isSelected()
                 || jcheck_jueves.isSelected() || jcheck_viernes.isSelected()));
     }
@@ -497,21 +527,21 @@ public class PedidosJF extends javax.swing.JFrame {
         }
         return str;
     }
-
-    
+  
     private TipoComida tomarTipo(){
         if(jcheck_almuerzo.isSelected())
             return TipoComida.Almuerzo;
         else
             return TipoComida.Cena;
     }
+    
     private void btn_encargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_encargarActionPerformed
-        if (checkCampos()) {
-            StringBuilder dias = tomarDias();
-            TipoComida tipo = tomarTipo();
+        Float precio = PedidoBackEnd.calcularPrecio((Integer)js_unidades.getValue(), jt_vianda.getText());
+        jt_precio.setText(precio.toString());
+        if (checkCampos()) {          
             PedidoEntidad pedido = new PedidoEntidad(jt_cliente.getText(), jt_vianda.getText(),
                     (Integer) js_unidades.getValue(), Float.valueOf(jt_precio.getText())
-                    , dias.toString(), 0, tipo);
+                    , tomarDias().toString(), 0, tomarTipo());
 
             PedidoBackEnd.agregarPedido(pedido);
             actualizarTablas();
@@ -556,9 +586,7 @@ public class PedidosJF extends javax.swing.JFrame {
 
     private void jtable_viandasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_viandasMouseClicked
         int filaSeleccionada = jtable_viandas.rowAtPoint(evt.getPoint());
-        jt_vianda.setText(jtable_viandas.getValueAt(filaSeleccionada, 0).toString());
-        jt_precio.setText(jtable_viandas.getValueAt(filaSeleccionada, 1).toString());
-        
+        jt_vianda.setText(jtable_viandas.getValueAt(filaSeleccionada, 1).toString());        
     }//GEN-LAST:event_jtable_viandasMouseClicked
 
     private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
@@ -578,6 +606,57 @@ public class PedidosJF extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
         }
     }//GEN-LAST:event_btn_cancelarActionPerformed
+
+    private void jtable_lunesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_lunesMouseClicked
+        int filaSeleccionada = jtable_lunes.rowAtPoint(evt.getPoint());        
+        jt_cliente.setText(jtable_lunes.getValueAt(filaSeleccionada, 1).toString());
+        jt_vianda.setText(jtable_lunes.getValueAt(filaSeleccionada, 2).toString());
+        js_unidades.setValue(jtable_lunes.getValueAt(filaSeleccionada, 3));
+        jt_precio.setText(jtable_lunes.getValueAt(filaSeleccionada, 4).toString()); 
+        
+        if(jtable_lunes.getValueAt(filaSeleccionada, 5).toString().equalsIgnoreCase("Almuerzo"))
+            jcheck_almuerzo.setSelected(true);                   
+        if(jtable_lunes.getValueAt(filaSeleccionada, 5).toString().equalsIgnoreCase("Cena"))                   
+            jcheck_cena.setSelected(true);
+        
+        if(jtable_lunes.getValueAt(filaSeleccionada, 6).toString().equalsIgnoreCase("Lunes"))
+            jcheck_lunes.setSelected(true);
+        if(jtable_lunes.getValueAt(filaSeleccionada, 6).toString().equalsIgnoreCase("Martes"))
+            jcheck_martes.setSelected(true);
+        if(jtable_lunes.getValueAt(filaSeleccionada, 6).toString().equalsIgnoreCase("Miercoles Carne"))
+            jcheck_miercoles_carne.setSelected(true);
+        if(jtable_lunes.getValueAt(filaSeleccionada, 6).toString().equalsIgnoreCase("Miercoles Pescado"))
+            jcheck_miercoles_pescado.setSelected(true);
+        if(jtable_lunes.getValueAt(filaSeleccionada, 6).toString().equalsIgnoreCase("Jueves"))
+            jcheck_jueves.setSelected(true);
+        if(jtable_lunes.getValueAt(filaSeleccionada, 6).toString().equalsIgnoreCase("Viernes"))
+            jcheck_viernes.setSelected(true);                               
+    }//GEN-LAST:event_jtable_lunesMouseClicked
+
+    private void jtable_martesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_martesMouseClicked
+        int filaSeleccionada = jtable_martes.rowAtPoint(evt.getPoint());
+        jt_precio.setText(jtable_martes.getValueAt(filaSeleccionada, 4).toString());      
+    }//GEN-LAST:event_jtable_martesMouseClicked
+
+    private void jtable_miercoles_carneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_miercoles_carneMouseClicked
+        int filaSeleccionada = jtable_miercoles_carne.rowAtPoint(evt.getPoint());
+        jt_precio.setText(jtable_miercoles_carne.getValueAt(filaSeleccionada, 4).toString());      
+    }//GEN-LAST:event_jtable_miercoles_carneMouseClicked
+
+    private void jtable_miercoles_pescadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_miercoles_pescadoMouseClicked
+        int filaSeleccionada = jtable_miercoles_pescado.rowAtPoint(evt.getPoint());
+        jt_precio.setText(jtable_miercoles_pescado.getValueAt(filaSeleccionada, 4).toString());      
+    }//GEN-LAST:event_jtable_miercoles_pescadoMouseClicked
+
+    private void jtable_juevesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_juevesMouseClicked
+        int filaSeleccionada = jtable_jueves.rowAtPoint(evt.getPoint());
+        jt_precio.setText(jtable_jueves.getValueAt(filaSeleccionada, 4).toString());      
+    }//GEN-LAST:event_jtable_juevesMouseClicked
+
+    private void jtable_viernesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_viernesMouseClicked
+        int filaSeleccionada = jtable_viernes.rowAtPoint(evt.getPoint());
+        jt_precio.setText(jtable_viernes.getValueAt(filaSeleccionada, 4).toString());      
+    }//GEN-LAST:event_jtable_viernesMouseClicked
 
     /**
      * @param args the command line arguments

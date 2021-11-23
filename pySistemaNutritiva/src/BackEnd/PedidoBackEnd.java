@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -44,9 +46,8 @@ public class PedidoBackEnd {
     
     public static void agregarPedido(PedidoEntidad pedido){
         Connection cn = Conexion.conectar();
-        String strPS = "INSERT INTO pedidos VALUES(?,?,?,?,?,?,?)";
         try {
-            PreparedStatement ps = cn.prepareStatement(strPS);
+            PreparedStatement ps = cn.prepareStatement("INSERT INTO pedidos VALUES(?,?,?,?,?,?,?)");
             ps.setInt(1, 0);
             ps.setString(2, pedido.getCliente());
             ps.setString(3, pedido.getVianda());
@@ -54,6 +55,7 @@ public class PedidoBackEnd {
             ps.setFloat(5, pedido.getPrecio());
             ps.setString(6, pedido.getDias());
             ps.setString(7, pedido.getTipo().toString());
+            ps.execute();
             JOptionPane.showMessageDialog(null, "Se agrego el pedido de: "+pedido.getCliente());
             cn.close();
         } catch (SQLException e) {
@@ -103,4 +105,23 @@ public class PedidoBackEnd {
         }
         return null;
     }    
+    
+    public static float calcularPrecio(int unidades, String nombreVianda){
+        float precio = 0;
+        Connection cn = Conexion.conectar();
+        try {            
+            
+            PreparedStatement ps = cn.prepareStatement("SELECT precio FROM viandas "
+                    + "WHERE nombre = '"+nombreVianda+"'");
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                precio = unidades * rs.getFloat("precio");
+                return precio;
+            }
+                
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        }
+        return 0;
+    }
 }
