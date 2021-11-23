@@ -19,7 +19,11 @@ public class Problems {
     public static Connection conectar(){
         Connection cn = null;
         try {
+<<<<<<< Updated upstream:problems/src/problems/Problems.java
             cn = DriverManager.getConnection("jdbc:mysql://﻿localhost:3306/bdd_sistema_nutritiva", "root", "");
+=======
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/bdd_sistema_nutritiva", "root", "");
+>>>>>>> Stashed changes:SistemaNutritiva/src/Conexion/Conexion.java
             return cn;
         } catch (SQLException e) {
             System.out.println(e.toString());
