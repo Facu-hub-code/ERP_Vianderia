@@ -37,26 +37,26 @@
                       <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jl_unidades7" min="-2" max="-2" attributes="0"/>
+                              <Component id="jl5" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jcheck_almuerzo" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                              <Component id="jl_unidades8" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jl6" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="jcheck_cena" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jl_unidades5" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jl_unidades3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jl_unidades2" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jl3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jl2" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jl1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jl_unidades6" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jl4" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -67,7 +67,7 @@
                                   <Component id="jt_cliente" alignment="0" min="-2" pref="154" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="jl_unidades9" min="-2" max="-2" attributes="0"/>
+                          <Component id="jl9" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -89,7 +89,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jtab_panel_general" pref="711" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Component id="btn_limpiar" min="-2" pref="109" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -104,63 +104,64 @@
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="jtab_panel_general" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btn_limpiar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="jl_Titulo" min="-2" pref="56" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jt_cliente" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="jl_unidades2" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jt_vianda" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="jl_unidades3" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jt_precio" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="jl_unidades5" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="js_unidades" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="jl_unidades6" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                                  <Component id="jcheck_cena" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="jl_Titulo" min="-2" pref="56" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jt_cliente" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Component id="jl1" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jl_unidades7" alignment="1" min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="jl_unidades8" alignment="1" min="-2" pref="31" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jt_vianda" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Component id="jl2" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jt_precio" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Component id="jl3" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="js_unidades" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Component id="jl4" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jl5" alignment="1" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Component id="jl6" alignment="1" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Component id="jcheck_almuerzo" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Component id="jcheck_almuerzo" min="-2" max="-2" attributes="0"/>
+                          <Component id="jcheck_cena" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jl_unidades9" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="jl9" min="-2" pref="31" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jcheck_lunes" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jcheck_martes" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jcheck_miercoles_carne" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="8" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jcheck_miercoles_pescado" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jcheck_jueves" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jcheck_viernes" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                      <EmptySpace pref="59" max="32767" attributes="0"/>
                       <Component id="btn_encargar" min="-2" pref="35" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btn_modificar" min="-2" pref="35" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btn_cancelar" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btn_cancelar" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="btn_limpiar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
@@ -185,7 +186,7 @@
         <Property name="verticalAlignment" type="int" value="3"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jl_unidades2">
+    <Component class="javax.swing.JLabel" name="jl1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="c2" green="f3" red="f3" type="rgb"/>
@@ -200,7 +201,7 @@
         <Property name="text" type="java.lang.String" value="Cliente:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jl_unidades3">
+    <Component class="javax.swing.JLabel" name="jl2">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="c2" green="f3" red="f3" type="rgb"/>
@@ -215,7 +216,7 @@
         <Property name="text" type="java.lang.String" value="Vianda:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jl_unidades5">
+    <Component class="javax.swing.JLabel" name="jl3">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="c2" green="f3" red="f3" type="rgb"/>
@@ -230,7 +231,7 @@
         <Property name="text" type="java.lang.String" value="Precio:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jl_unidades6">
+    <Component class="javax.swing.JLabel" name="jl4">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="c2" green="f3" red="f3" type="rgb"/>
@@ -534,7 +535,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JTable" name="jtable_miercoles_1">
+        <Component class="javax.swing.JTable" name="jtable_miercoles_carne">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="0">
@@ -580,7 +581,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JTable" name="jtable_miercoles_2">
+        <Component class="javax.swing.JTable" name="jtable_miercoles_pescado">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="0">
@@ -744,7 +745,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_limpiarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jl_unidades7">
+    <Component class="javax.swing.JLabel" name="jl5">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="c2" green="f3" red="f3" type="rgb"/>
@@ -759,7 +760,7 @@
         <Property name="text" type="java.lang.String" value="Almuerzo:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jl_unidades8">
+    <Component class="javax.swing.JLabel" name="jl6">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="c2" green="f3" red="f3" type="rgb"/>
@@ -780,35 +781,53 @@
     </Component>
     <Component class="javax.swing.JCheckBox" name="jcheck_lunes">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="c2" green="f3" red="f3" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Lunes"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="jcheck_martes">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="c2" green="f3" red="f3" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Martes"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="jcheck_miercoles_pescado">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="c2" green="f3" red="f3" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Miercoles Pescado"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="jcheck_jueves">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="c2" green="f3" red="f3" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Jueves"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="jcheck_viernes">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="c2" green="f3" red="f3" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Viernes"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="jcheck_miercoles_carne">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="c2" green="f3" red="f3" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Miercoles Carne"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jl_unidades9">
+    <Component class="javax.swing.JLabel" name="jl9">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="c2" green="f3" red="f3" type="rgb"/>

@@ -39,10 +39,10 @@ public class PedidosJF extends javax.swing.JFrame {
     private void initComponents() {
 
         jl_Titulo = new javax.swing.JLabel();
-        jl_unidades2 = new javax.swing.JLabel();
-        jl_unidades3 = new javax.swing.JLabel();
-        jl_unidades5 = new javax.swing.JLabel();
-        jl_unidades6 = new javax.swing.JLabel();
+        jl1 = new javax.swing.JLabel();
+        jl2 = new javax.swing.JLabel();
+        jl3 = new javax.swing.JLabel();
+        jl4 = new javax.swing.JLabel();
         jt_cliente = new javax.swing.JTextField();
         jt_vianda = new javax.swing.JTextField();
         jt_precio = new javax.swing.JTextField();
@@ -55,13 +55,13 @@ public class PedidosJF extends javax.swing.JFrame {
         jtable_viandas = new javax.swing.JTable();
         jtable_lunes = new javax.swing.JTable();
         jtable_martes = new javax.swing.JTable();
-        jtable_miercoles_1 = new javax.swing.JTable();
-        jtable_miercoles_2 = new javax.swing.JTable();
+        jtable_miercoles_carne = new javax.swing.JTable();
+        jtable_miercoles_pescado = new javax.swing.JTable();
         jtable_jueves = new javax.swing.JTable();
         jtable_viernes = new javax.swing.JTable();
         btn_limpiar = new javax.swing.JButton();
-        jl_unidades7 = new javax.swing.JLabel();
-        jl_unidades8 = new javax.swing.JLabel();
+        jl5 = new javax.swing.JLabel();
+        jl6 = new javax.swing.JLabel();
         jcheck_almuerzo = new javax.swing.JCheckBox();
         jcheck_cena = new javax.swing.JCheckBox();
         jcheck_lunes = new javax.swing.JCheckBox();
@@ -70,7 +70,7 @@ public class PedidosJF extends javax.swing.JFrame {
         jcheck_jueves = new javax.swing.JCheckBox();
         jcheck_viernes = new javax.swing.JCheckBox();
         jcheck_miercoles_carne = new javax.swing.JCheckBox();
-        jl_unidades9 = new javax.swing.JLabel();
+        jl9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(49, 28, 28));
@@ -82,29 +82,29 @@ public class PedidosJF extends javax.swing.JFrame {
         jl_Titulo.setText("PEDIDOS");
         jl_Titulo.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
-        jl_unidades2.setBackground(new java.awt.Color(243, 243, 194));
-        jl_unidades2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jl_unidades2.setForeground(new java.awt.Color(243, 243, 194));
-        jl_unidades2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_unidades2.setText("Cliente:");
+        jl1.setBackground(new java.awt.Color(243, 243, 194));
+        jl1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl1.setForeground(new java.awt.Color(243, 243, 194));
+        jl1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl1.setText("Cliente:");
 
-        jl_unidades3.setBackground(new java.awt.Color(243, 243, 194));
-        jl_unidades3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jl_unidades3.setForeground(new java.awt.Color(243, 243, 194));
-        jl_unidades3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_unidades3.setText("Vianda:");
+        jl2.setBackground(new java.awt.Color(243, 243, 194));
+        jl2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl2.setForeground(new java.awt.Color(243, 243, 194));
+        jl2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl2.setText("Vianda:");
 
-        jl_unidades5.setBackground(new java.awt.Color(243, 243, 194));
-        jl_unidades5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jl_unidades5.setForeground(new java.awt.Color(243, 243, 194));
-        jl_unidades5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_unidades5.setText("Precio:");
+        jl3.setBackground(new java.awt.Color(243, 243, 194));
+        jl3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl3.setForeground(new java.awt.Color(243, 243, 194));
+        jl3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl3.setText("Precio:");
 
-        jl_unidades6.setBackground(new java.awt.Color(243, 243, 194));
-        jl_unidades6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jl_unidades6.setForeground(new java.awt.Color(243, 243, 194));
-        jl_unidades6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_unidades6.setText("Unidades:");
+        jl4.setBackground(new java.awt.Color(243, 243, 194));
+        jl4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl4.setForeground(new java.awt.Color(243, 243, 194));
+        jl4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl4.setText("Unidades:");
 
         jt_cliente.setBackground(new java.awt.Color(243, 243, 194));
         jt_cliente.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -217,7 +217,7 @@ public class PedidosJF extends javax.swing.JFrame {
         ));
         jtab_panel_general.addTab("Martes", jtable_martes);
 
-        jtable_miercoles_1.setModel(new javax.swing.table.DefaultTableModel(
+        jtable_miercoles_carne.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -225,9 +225,9 @@ public class PedidosJF extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jtab_panel_general.addTab("Miercoles Carne", jtable_miercoles_1);
+        jtab_panel_general.addTab("Miercoles Carne", jtable_miercoles_carne);
 
-        jtable_miercoles_2.setModel(new javax.swing.table.DefaultTableModel(
+        jtable_miercoles_pescado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -235,7 +235,7 @@ public class PedidosJF extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jtab_panel_general.addTab("Miercoles Pescado", jtable_miercoles_2);
+        jtab_panel_general.addTab("Miercoles Pescado", jtable_miercoles_pescado);
 
         jtable_jueves.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -267,35 +267,41 @@ public class PedidosJF extends javax.swing.JFrame {
             }
         });
 
-        jl_unidades7.setBackground(new java.awt.Color(243, 243, 194));
-        jl_unidades7.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jl_unidades7.setForeground(new java.awt.Color(243, 243, 194));
-        jl_unidades7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_unidades7.setText("Almuerzo:");
+        jl5.setBackground(new java.awt.Color(243, 243, 194));
+        jl5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl5.setForeground(new java.awt.Color(243, 243, 194));
+        jl5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl5.setText("Almuerzo:");
 
-        jl_unidades8.setBackground(new java.awt.Color(243, 243, 194));
-        jl_unidades8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jl_unidades8.setForeground(new java.awt.Color(243, 243, 194));
-        jl_unidades8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_unidades8.setText("Cena:");
+        jl6.setBackground(new java.awt.Color(243, 243, 194));
+        jl6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl6.setForeground(new java.awt.Color(243, 243, 194));
+        jl6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl6.setText("Cena:");
 
+        jcheck_lunes.setForeground(new java.awt.Color(243, 243, 194));
         jcheck_lunes.setText("Lunes");
 
+        jcheck_martes.setForeground(new java.awt.Color(243, 243, 194));
         jcheck_martes.setText("Martes");
 
+        jcheck_miercoles_pescado.setForeground(new java.awt.Color(243, 243, 194));
         jcheck_miercoles_pescado.setText("Miercoles Pescado");
 
+        jcheck_jueves.setForeground(new java.awt.Color(243, 243, 194));
         jcheck_jueves.setText("Jueves");
 
+        jcheck_viernes.setForeground(new java.awt.Color(243, 243, 194));
         jcheck_viernes.setText("Viernes");
 
+        jcheck_miercoles_carne.setForeground(new java.awt.Color(243, 243, 194));
         jcheck_miercoles_carne.setText("Miercoles Carne");
 
-        jl_unidades9.setBackground(new java.awt.Color(243, 243, 194));
-        jl_unidades9.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jl_unidades9.setForeground(new java.awt.Color(243, 243, 194));
-        jl_unidades9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_unidades9.setText("Dias:");
+        jl9.setBackground(new java.awt.Color(243, 243, 194));
+        jl9.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl9.setForeground(new java.awt.Color(243, 243, 194));
+        jl9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl9.setText("Dias:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -311,30 +317,30 @@ public class PedidosJF extends javax.swing.JFrame {
                         .addGap(9, 9, 9)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jl_unidades7)
+                                .addComponent(jl5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jcheck_almuerzo)
-                                .addGap(57, 57, 57)
-                                .addComponent(jl_unidades8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(18, 18, 18)
+                                .addComponent(jl6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jcheck_cena))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jl_unidades5)
-                                            .addComponent(jl_unidades3)
-                                            .addComponent(jl_unidades2))
+                                            .addComponent(jl3)
+                                            .addComponent(jl2)
+                                            .addComponent(jl1))
                                         .addGap(47, 47, 47))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jl_unidades6)
+                                        .addComponent(jl4)
                                         .addGap(27, 27, 27)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(js_unidades, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jt_vianda, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jt_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jt_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jl_unidades9)
+                            .addComponent(jl9)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(19, 19, 19)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -351,7 +357,7 @@ public class PedidosJF extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jtab_panel_general, javax.swing.GroupLayout.DEFAULT_SIZE, 711, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(15, 15, 15))
         );
@@ -362,55 +368,55 @@ public class PedidosJF extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jtab_panel_general)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_limpiar))
+                        .addGap(34, 34, 34))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jl_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jt_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_unidades2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jt_vianda, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_unidades3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jt_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_unidades5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(js_unidades, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_unidades6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(7, 7, 7)
-                                    .addComponent(jcheck_cena))
-                                .addComponent(jl_unidades7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jl_unidades8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jcheck_almuerzo))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jl_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jt_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jl1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jt_vianda, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jl2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jt_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jl3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(js_unidades, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jl4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jl5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jl6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jcheck_almuerzo)))
+                            .addComponent(jcheck_cena))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jl_unidades9, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jl9, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jcheck_lunes)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jcheck_martes)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jcheck_miercoles_carne)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jcheck_miercoles_pescado)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jcheck_jueves)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jcheck_viernes)
-                        .addGap(53, 53, 53)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                         .addComponent(btn_encargar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_limpiar))))
                 .addGap(7, 7, 7))
         );
 
@@ -436,10 +442,11 @@ public class PedidosJF extends javax.swing.JFrame {
         jcheck_miercoles_pescado.setSelected(false);
         jcheck_jueves.setSelected(false);
         jcheck_viernes.setSelected(false);
+        actualizarTablas();
     }
 
-    private boolean checkCampos() {
-        return !(((Integer) js_unidades.getValue() == 0)
+    private boolean checkCampos() { //logica:campos obligatorios + algun tipo + algun dia tienen que estar seleccionados
+        return !(((Integer) js_unidades.getValue() <= 0)
                 || jt_cliente.getText().equalsIgnoreCase("")
                 || jt_vianda.getText().equalsIgnoreCase("")
                 || jt_precio.getText().equalsIgnoreCase("")
@@ -449,14 +456,13 @@ public class PedidosJF extends javax.swing.JFrame {
                 || jcheck_jueves.isSelected() || jcheck_viernes.isSelected()));
     }
 
-    //todo: revisar
     private void actualizarTablas() {
         jtable_clientes.setModel(ClienteBackEnd.actualizarTabla());
         jtable_viandas.setModel(ViandaBackEnd.actualizarTabla());
         jtable_lunes.setModel(PedidoBackEnd.actualizarTabla("Lunes"));
         jtable_martes.setModel(PedidoBackEnd.actualizarTabla("Martes"));
-        jtable_miercoles_1.setModel(PedidoBackEnd.actualizarTabla("Miercoles Carne"));
-        jtable_miercoles_2.setModel(PedidoBackEnd.actualizarTabla("Miercoles Pescado"));
+        jtable_miercoles_carne.setModel(PedidoBackEnd.actualizarTabla("Miercoles Carne"));
+        jtable_miercoles_pescado.setModel(PedidoBackEnd.actualizarTabla("Miercoles Pescado"));
         jtable_jueves.setModel(PedidoBackEnd.actualizarTabla("Jueves"));
         jtable_viernes.setModel(PedidoBackEnd.actualizarTabla("Viernes"));
     }
@@ -475,19 +481,19 @@ public class PedidosJF extends javax.swing.JFrame {
             str.append("Lunes ");
         }
         if (jcheck_martes.isSelected()) {
-            str.append("Martes");
+            str.append("Martes ");
         }
         if (jcheck_miercoles_carne.isSelected()) {
-            str.append("Miercoles Carne");
+            str.append("Miercoles Carne ");
         }
         if (jcheck_miercoles_pescado.isSelected()) {
-            str.append("Miercoles Pescado");
+            str.append("Miercoles Pescado ");
         }
         if (jcheck_jueves.isSelected()) {
-            str.append("Jueves");
+            str.append("Jueves ");
         }
         if (jcheck_viernes.isSelected()) {
-            str.append("viernes");
+            str.append("Viernes ");
         }
         return str;
     }
@@ -620,14 +626,14 @@ public class PedidosJF extends javax.swing.JFrame {
     private javax.swing.JCheckBox jcheck_miercoles_carne;
     private javax.swing.JCheckBox jcheck_miercoles_pescado;
     private javax.swing.JCheckBox jcheck_viernes;
+    private javax.swing.JLabel jl1;
+    private javax.swing.JLabel jl2;
+    private javax.swing.JLabel jl3;
+    private javax.swing.JLabel jl4;
+    private javax.swing.JLabel jl5;
+    private javax.swing.JLabel jl6;
+    private javax.swing.JLabel jl9;
     private javax.swing.JLabel jl_Titulo;
-    private javax.swing.JLabel jl_unidades2;
-    private javax.swing.JLabel jl_unidades3;
-    private javax.swing.JLabel jl_unidades5;
-    private javax.swing.JLabel jl_unidades6;
-    private javax.swing.JLabel jl_unidades7;
-    private javax.swing.JLabel jl_unidades8;
-    private javax.swing.JLabel jl_unidades9;
     private javax.swing.JSpinner js_unidades;
     private javax.swing.JTextField jt_cliente;
     private javax.swing.JTextField jt_precio;
@@ -637,8 +643,8 @@ public class PedidosJF extends javax.swing.JFrame {
     private javax.swing.JTable jtable_jueves;
     private javax.swing.JTable jtable_lunes;
     private javax.swing.JTable jtable_martes;
-    private javax.swing.JTable jtable_miercoles_1;
-    private javax.swing.JTable jtable_miercoles_2;
+    private javax.swing.JTable jtable_miercoles_carne;
+    private javax.swing.JTable jtable_miercoles_pescado;
     private javax.swing.JTable jtable_viandas;
     private javax.swing.JTable jtable_viernes;
     // End of variables declaration//GEN-END:variables
