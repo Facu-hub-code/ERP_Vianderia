@@ -44,7 +44,7 @@ public class PedidoBackEnd {
     
     public static void agregarPedido(PedidoEntidad pedido){
         Connection cn = Conexion.conectar();
-        String strPS = "INSERT INTO pedidos VALUES(?,?,?,?,?,?)";
+        String strPS = "INSERT INTO pedidos VALUES(?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = cn.prepareStatement(strPS);
             ps.setInt(1, 0);
@@ -53,6 +53,7 @@ public class PedidoBackEnd {
             ps.setInt(4, pedido.getUnidades());
             ps.setFloat(5, pedido.getPrecio());
             ps.setString(6, pedido.getDias());
+            ps.setString(7, pedido.getTipo().toString());
             JOptionPane.showMessageDialog(null, "Se agrego el pedido de: "+pedido.getCliente());
             cn.close();
         } catch (SQLException e) {
@@ -78,8 +79,8 @@ public class PedidoBackEnd {
     
     public static DefaultTableModel actualizarTabla(String dia){
         Connection cn = Conexion.conectar();
-        String[] titulos = {"ID", "Cliente", "Vianda", "Unidades", "Precio", "Dias"};
-        String[] registros = new String[6];
+        String[] titulos = {"ID", "Cliente", "Vianda", "Unidades", "Precio", "Dias", "Tipo"};
+        String[] registros = new String[7];
         DefaultTableModel model = new DefaultTableModel(null, titulos);
         String sql = "SELECT * FROM pedidos WHERE dias LIKE '%" + dia + "%'";
         try {
@@ -92,6 +93,7 @@ public class PedidoBackEnd {
                 registros[3] = rs.getInt("unidades")+"";
                 registros[4] = rs.getFloat("precio")+"";
                 registros[5] = rs.getString("dias");
+                registros[6] = rs.getString("tipo");
                 model.addRow(registros);
             }
             cn.close();

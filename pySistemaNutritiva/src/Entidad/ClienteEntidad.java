@@ -16,7 +16,7 @@ public class ClienteEntidad {
     private int dni;
     private String direccion;
     private long telefono;
-
+    
     public ClienteEntidad(String nombre, String apellido, int dni, String direccion, long telefono) {
         this.nombre = nombre;
         this.apellido = apellido;

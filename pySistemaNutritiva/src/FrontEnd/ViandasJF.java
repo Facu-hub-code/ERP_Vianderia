@@ -20,13 +20,18 @@ public class ViandasJF extends javax.swing.JFrame {
      * Constructor: - Creates new form GestionClientes
      */
     public ViandasJF() {
+
         initComponents();
-        this.getContentPane().setBackground(new Color(49,28,28));
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(HIDE_ON_CLOSE);
+        initComponentsFacu();
         actualizarTabla();
     }
 
+    private void initComponentsFacu() {
+        getContentPane().setBackground(new Color(49, 28, 28));
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
+            
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,9 +43,7 @@ public class ViandasJF extends javax.swing.JFrame {
 
         lj_TITULO = new javax.swing.JLabel();
         jl_unidades1 = new javax.swing.JLabel();
-        jl_unidades2 = new javax.swing.JLabel();
         jl_unidades3 = new javax.swing.JLabel();
-        jt_dias = new javax.swing.JTextField();
         jt_nombre = new javax.swing.JTextField();
         jt_precio = new javax.swing.JTextField();
         btn_agregar = new javax.swing.JButton();
@@ -66,22 +69,11 @@ public class ViandasJF extends javax.swing.JFrame {
         jl_unidades1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jl_unidades1.setText("Nombre:");
 
-        jl_unidades2.setBackground(new java.awt.Color(243, 243, 194));
-        jl_unidades2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jl_unidades2.setForeground(new java.awt.Color(243, 243, 194));
-        jl_unidades2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_unidades2.setText("Dias:");
-
         jl_unidades3.setBackground(new java.awt.Color(243, 243, 194));
         jl_unidades3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jl_unidades3.setForeground(new java.awt.Color(243, 243, 194));
         jl_unidades3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jl_unidades3.setText("Precio:");
-
-        jt_dias.setBackground(new java.awt.Color(243, 243, 194));
-        jt_dias.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jt_dias.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jt_dias.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
 
         jt_nombre.setBackground(new java.awt.Color(243, 243, 194));
         jt_nombre.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -165,31 +157,33 @@ public class ViandasJF extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lj_TITULO, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(69, 69, 69))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btn_agregar1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btn_agregar1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lj_TITULO, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(69, 69, 69))
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jl_unidades1)
-                                    .addComponent(jl_unidades3, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jl_unidades2, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jt_dias, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                                    .addComponent(jt_precio, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jt_nombre, javax.swing.GroupLayout.Alignment.TRAILING))))
-                        .addGap(18, 18, 18)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
+                                    .addComponent(btn_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jl_unidades3)
+                                            .addComponent(jl_unidades1))
+                                        .addGap(28, 28, 28)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jt_precio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                                            .addComponent(jt_nombre, javax.swing.GroupLayout.Alignment.TRAILING))))
+                                .addGap(18, 18, 18)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)))
                 .addGap(27, 27, 27))
         );
         layout.setVerticalGroup(
@@ -209,53 +203,46 @@ public class ViandasJF extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jt_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jl_unidades3))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jt_dias, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_unidades2))
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_agregar1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
                         .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
                         .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(43, 43, 43))
+                .addGap(9, 9, 9)
+                .addComponent(btn_agregar1)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void limpiarCampos(){
+    private void limpiarCampos() {
         jt_nombre.setText("");
         jt_precio.setText("");
-        jt_dias.setText("");
     }
-    
-    private void filtrarNombre(String nombre){
+
+    private void filtrarNombre(String nombre) {
         jtable_viandas.setModel(ViandaBackEnd.filtrarNombre(nombre));
     }
 
     //Metodo que chequea que ningun campo de texto este vacio.
-    private boolean checkCampos(){
-        return !(jt_nombre.getText().equalsIgnoreCase("") || 
-                jt_precio.getText().equalsIgnoreCase("") ||
-                jt_dias.getText().equalsIgnoreCase(""));
+    private boolean checkCampos() {
+        return !(jt_nombre.getText().equalsIgnoreCase("")
+                || jt_precio.getText().equalsIgnoreCase(""));
     }
-    
-    
+
     //Metodo que actualiza los valores de la tabla segun la base de datos
-    private void actualizarTabla(){
+    private void actualizarTabla() {
         jtable_viandas.setModel(ViandaBackEnd.actualizarTabla());
     }
-    
+
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
-        if(checkCampos()){
-            ViandaEntidad vianda = new ViandaEntidad(jt_nombre.getText(), Float.valueOf(jt_precio.getText()), jt_dias.getText());
+        if (checkCampos()) {
+            ViandaEntidad vianda = new ViandaEntidad(jt_nombre.getText(), Float.valueOf(jt_precio.getText()));
             ViandaBackEnd.agregarVianda(vianda);
             actualizarTabla();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Faltan campos de completar");
         }
     }//GEN-LAST:event_btn_agregarActionPerformed
@@ -273,7 +260,7 @@ public class ViandasJF extends javax.swing.JFrame {
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
         if (checkCampos()) {
-            ViandaEntidad vianda = new ViandaEntidad(jt_nombre.getText(), Float.valueOf(jt_precio.getText()), jt_dias.getText());
+            ViandaEntidad vianda = new ViandaEntidad(jt_nombre.getText(), Float.valueOf(jt_precio.getText()));
             int row = jtable_viandas.getSelectedRow();
             int id = Integer.valueOf(jtable_viandas.getValueAt(row, 0).toString());
             ViandaBackEnd.modificarVianda(vianda, id);
@@ -287,7 +274,6 @@ public class ViandasJF extends javax.swing.JFrame {
         int filaSelec = jtable_viandas.rowAtPoint(evt.getPoint());
         jt_nombre.setText(jtable_viandas.getValueAt(filaSelec, 1).toString());
         jt_precio.setText(jtable_viandas.getValueAt(filaSelec, 2).toString() + "$");
-        jt_dias.setText(jtable_viandas.getValueAt(filaSelec, 3).toString());
     }//GEN-LAST:event_jtable_viandasMouseClicked
 
     private void jt_precioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_precioKeyTyped
@@ -348,9 +334,7 @@ public class ViandasJF extends javax.swing.JFrame {
     private javax.swing.JButton btn_modificar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jl_unidades1;
-    private javax.swing.JLabel jl_unidades2;
     private javax.swing.JLabel jl_unidades3;
-    private javax.swing.JTextField jt_dias;
     private javax.swing.JTextField jt_nombre;
     private javax.swing.JTextField jt_precio;
     private javax.swing.JTable jtable_viandas;

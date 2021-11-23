@@ -122,7 +122,7 @@
                           <Component id="jl_unidades1" min="-2" pref="31" max="-2" attributes="0"/>
                           <Component id="jr_ingreso" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jl_unidades5" min="-2" pref="31" max="-2" attributes="0"/>
                           <Component id="jr_efectivo" min="-2" max="-2" attributes="0"/>

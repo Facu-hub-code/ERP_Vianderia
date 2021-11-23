@@ -10,14 +10,14 @@ package Entidad;
  * @author facul
  */
 public class ViandaEntidad {
+
     private String nombre;
     private float precio;
     private String dias;
 
-    public ViandaEntidad(String nombre, float precio, String dias) {
+    public ViandaEntidad(String nombre, float precio) {
         this.nombre = nombre;
         this.precio = precio;
-        this.dias = dias;
     }
 
     public String getNombre() {
@@ -35,14 +35,4 @@ public class ViandaEntidad {
     public void setPrecio(float precio) {
         this.precio = precio;
     }
-
-    public String getDias() {
-        return dias;
-    }
-
-    public void setDias(String dias) {
-        this.dias = dias;
-    }
-    
-    
 }

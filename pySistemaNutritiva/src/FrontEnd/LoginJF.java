@@ -21,7 +21,7 @@ public class LoginJF extends javax.swing.JFrame {
      */
     public LoginJF() {
         initComponents();
-        initFacuComponents();
+        initFacuComponents(); //todo hacer logo redondo
     }
 
     /**
