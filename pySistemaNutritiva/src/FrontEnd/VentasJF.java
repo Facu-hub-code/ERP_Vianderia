@@ -13,7 +13,6 @@ import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 
 /**
  *
@@ -58,6 +57,7 @@ public class VentasJF extends javax.swing.JFrame {
         jtable_pedidos = new javax.swing.JTable();
         tipo = new javax.swing.JLabel();
         jt_tipoComida = new javax.swing.JTextField();
+        btn_vender1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(49, 28, 28));
@@ -196,6 +196,16 @@ public class VentasJF extends javax.swing.JFrame {
         jt_tipoComida.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_tipoComida.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
 
+        btn_vender1.setBackground(new java.awt.Color(255, 253, 118));
+        btn_vender1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btn_vender1.setText("Limpiar");
+        btn_vender1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        btn_vender1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_vender1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -219,19 +229,24 @@ public class VentasJF extends javax.swing.JFrame {
                                 .addComponent(precio, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jt_id)
-                                .addComponent(jt_precio)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jt_cliente, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                                 .addComponent(jt_vianda)
                                 .addComponent(jt_unidades)
-                                .addComponent(jt_cliente)
+                                .addComponent(jt_precio)
+                                .addComponent(jt_id)
                                 .addComponent(jt_tipoComida, javax.swing.GroupLayout.Alignment.LEADING))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(85, 85, 85)
                         .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(30, 30, 30)
-                .addComponent(jpanel_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 699, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btn_vender1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jpanel_principal, javax.swing.GroupLayout.DEFAULT_SIZE, 699, Short.MAX_VALUE)
+                        .addGap(39, 39, 39))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -267,13 +282,15 @@ public class VentasJF extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jt_tipoComida, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(74, 74, 74)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                         .addComponent(btn_vender, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
                         .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
                         .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(43, 43, 43))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_vender1)
+                .addGap(9, 9, 9))
         );
 
         pack();
@@ -285,6 +302,15 @@ public class VentasJF extends javax.swing.JFrame {
         setDefaultCloseOperation(HIDE_ON_CLOSE);
     }
 
+    private void limpiarCampos(){
+        jt_cliente.setText("");
+        jt_vianda.setText("");
+        jt_unidades.setText("");
+        jt_precio.setText("");
+        jt_id.setText("");
+        jt_tipoComida.setText("");
+    }
+    
     private boolean checkCampos() {
         return !(jt_cliente.getText().equalsIgnoreCase("")
                 || jt_vianda.getText().equalsIgnoreCase("")
@@ -358,6 +384,10 @@ public class VentasJF extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jtable_pedidosMouseClicked
 
+    private void btn_vender1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vender1ActionPerformed
+        limpiarCampos();
+    }//GEN-LAST:event_btn_vender1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -398,6 +428,7 @@ public class VentasJF extends javax.swing.JFrame {
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_modificar;
     private javax.swing.JButton btn_vender;
+    private javax.swing.JButton btn_vender1;
     private javax.swing.JLabel cliente;
     private javax.swing.JLabel id;
     private javax.swing.JTabbedPane jpanel_principal;
