@@ -61,15 +61,15 @@ public class PedidoBackEnd {
         }
     }
     
-    public static void cancelarPedido(int id){
+    public static void eliminarPedido(int id){
         Connection cn = Conexion.conectar();
         try {
             String sql = "DELETE FROM pedidos where idpedido =" + id;
             PreparedStatement ps = cn.prepareStatement(sql);
             if(ps.executeUpdate() >= 0 ){
-                JOptionPane.showMessageDialog(null, "Se elimino correctamente.");
+                JOptionPane.showMessageDialog(null, "Se elimino correctamente el pedido.");
             }else{
-                JOptionPane.showMessageDialog(null, "Error al intentar eliminar dicho movimiento");
+                JOptionPane.showMessageDialog(null, "Error al intentar eliminar dicho pedido");
             }
             cn.close();
         } catch (HeadlessException | SQLException e) {

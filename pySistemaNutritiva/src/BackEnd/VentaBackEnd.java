@@ -6,6 +6,7 @@ package BackEnd;
 
 import Entidad.VentaEntidad;
 import java.awt.HeadlessException;
+import java.awt.MediaTracker;
 import java.util.Date;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,12 +24,12 @@ public class VentaBackEnd {
     public static DefaultTableModel actualizarTable(){
         Connection cn = Conexion.conectar();
         
-        String[] titulos = {"ID", "Cliente", "Vianda" ,"Unidades", "Precio", "Fecha", "Dia", "Tipo"};
+        String[] titulos = {"ID", "Cliente", "Vianda" ,"Unidades", "Precio", "Fecha", "Tipo"};
         DefaultTableModel model = new DefaultTableModel(); //haces una tabla
         for (String titulo : titulos) //le pones los titulos
             model.addColumn(titulo);                    
         
-        String[] registros = new String[8];        
+        String[] registros = new String[7];
         try {
             PreparedStatement ps = cn.prepareStatement("SELECT * FROM ventas");
             ResultSet rs = ps.executeQuery();
@@ -39,8 +40,7 @@ public class VentaBackEnd {
                 registros[3] = rs.getInt("unidades")+"";
                 registros[4] = rs.getFloat("precio")+"";
                 registros[5] = rs.getDate("fecha").toString();
-                registros[6] = rs.getString("dia");
-                registros[7] = rs.getString("tipo");
+                registros[6] = rs.getString("tipo");
                 model.addRow(registros);
             }           
             cn.close();
@@ -54,16 +54,17 @@ public class VentaBackEnd {
     public static void modificarVenta(VentaEntidad venta){
         Connection cn = Conexion.conectar();
         String sql = "UPDATE ventas SET "
-                    + "cliente = ?, vianda = ?, unidades = ?, precio = ?, fecha = ? "
-                + "WHERE id ='" + venta.getId() + "'"; //revisar que sea el de la fila
+                    + "cliente = ?, vianda = ?, unidades = ?, precio = ?, fecha = ?, tipo = ?"
+                + "WHERE idventa ='" + venta.getId() + "'"; 
    
         try {
             PreparedStatement ps = cn.prepareStatement(sql);
-            ps.setString(2, venta.getCliente());
-            ps.setString(3, venta.getVianda());
-            ps.setInt(4, venta.getId());
-            ps.setDouble(5, venta.getPrecio());
-            ps.setDate(6, (java.sql.Date) Date.from(Instant.now()));
+            ps.setString(1, venta.getCliente());
+            ps.setString(2, venta.getVianda());
+            ps.setInt(3, venta.getUnidades());
+            ps.setDouble(4, venta.getPrecio());
+            ps.setString(5,venta.getFecha());
+            ps.setString(6, venta.getTipo().toString());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Modificacion exitosa");
             cn.close();
@@ -74,14 +75,17 @@ public class VentaBackEnd {
 
     public static void agregarVenta(VentaEntidad venta){
         Connection cn = Conexion.conectar();
-        String strPS = "INSERT INTO ventas VALUES(?,?,?,?,?,?)"; //todo revisar cantidad de valores
         try {
-            PreparedStatement ps = cn.prepareStatement(strPS);
+            PreparedStatement ps = cn.prepareStatement("INSERT INTO ventas VALUES(?,?,?,?,?,?,?)"); 
+            ps.setInt(1, 0); //todo cambiar
             ps.setString(2, venta.getCliente());
             ps.setString(3, venta.getVianda());
             ps.setInt(4, venta.getUnidades());
             ps.setDouble(5, venta.getPrecio());
-            ps.setString(5, venta.getFecha());
+            ps.setString(6, venta.getFecha());
+            ps.setString(7, venta.getTipo().toString());
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Venta exitosa...");
             cn.close();
         } catch (SQLException e) {
             System.out.println(e.toString());
@@ -91,12 +95,12 @@ public class VentaBackEnd {
     public static void eliminarVenta(int id){
         Connection cn = Conexion.conectar();
         try {
-            String sql = "DELETE FROM ventas where id =" + id; //todo: debuggear si este es el id
+            String sql = "DELETE FROM ventas where idventa =" + id;
             PreparedStatement ps = cn.prepareStatement(sql);
             if(ps.executeUpdate() >= 0 ){
-                JOptionPane.showMessageDialog(null, "Se elimino correctamente.");
+                JOptionPane.showMessageDialog(null, "Se elimino correctamente la venta.");
             }else{
-                JOptionPane.showMessageDialog(null, "Error al intentar eliminar dicho movimiento");
+                JOptionPane.showMessageDialog(null, "Error al intentar eliminar dicha venta");
             }
             cn.close();
         } catch (HeadlessException | SQLException e) {

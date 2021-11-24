@@ -640,7 +640,7 @@ public class PedidosJF extends javax.swing.JFrame {
             JTable table = (JTable) (jtab_panel_general.getSelectedComponent());
             int row = table.getSelectedRow();
             int id = Integer.valueOf(table.getValueAt(row, 0).toString());
-            PedidoBackEnd.cancelarPedido(id);
+            PedidoBackEnd.eliminarPedido(id);
             actualizarTablas();
         } else {
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");

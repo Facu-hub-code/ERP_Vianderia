@@ -22,9 +22,7 @@ public class GestionCaja extends javax.swing.JFrame {
      */
     public GestionCaja() {
         initComponents();
-        this.getContentPane().setBackground(new Color(49,28,28));
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(HIDE_ON_CLOSE);
+        initComponentsFacu();
         actualizarTabla();
         calcularSaldos();
     }
@@ -268,6 +266,12 @@ public class GestionCaja extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void initComponentsFacu(){        
+        this.getContentPane().setBackground(new Color(49,28,28));
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
+    }
+    
     private boolean checkCampos(){
         return !(jt_monto.getText().equalsIgnoreCase(""));
     }

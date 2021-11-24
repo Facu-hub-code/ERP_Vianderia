@@ -16,14 +16,17 @@ public class VentaEntidad {
     private float precio;
     private String fecha;
     private int id;
-
-    public VentaEntidad(String cliente, String vianda, int unidades, float precio, String fecha, int id) {
+    private TipoComida tipo;
+    
+    public VentaEntidad(String cliente, String vianda, int unidades, float precio
+            , String fecha, int id, TipoComida tipo) {
         this.cliente = cliente;
         this.vianda = vianda;
         this.unidades = unidades;
         this.precio = precio;
         this.fecha = fecha;
         this.id = id;
+        this.tipo = tipo;
     }
 
     public String getCliente() {
@@ -73,6 +76,15 @@ public class VentaEntidad {
     public void setId(int id) {
         this.id = id;
     }
+
+    public TipoComida getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoComida tipo) {
+        this.tipo = tipo;
+    }
+
     
     
 }

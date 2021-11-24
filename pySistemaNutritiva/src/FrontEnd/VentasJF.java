@@ -7,7 +7,13 @@ package FrontEnd;
 
 import BackEnd.PedidoBackEnd;
 import BackEnd.VentaBackEnd;
+import Entidad.TipoComida;
+import Entidad.VentaEntidad;
 import java.awt.Color;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 /**
  *
@@ -50,6 +56,8 @@ public class VentasJF extends javax.swing.JFrame {
         jpanel_principal = new javax.swing.JTabbedPane();
         jtable_ventas = new javax.swing.JTable();
         jtable_pedidos = new javax.swing.JTable();
+        tipo = new javax.swing.JLabel();
+        jt_tipoComida = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(49, 28, 28));
@@ -177,6 +185,17 @@ public class VentasJF extends javax.swing.JFrame {
         });
         jpanel_principal.addTab("Pedidos", jtable_pedidos);
 
+        tipo.setBackground(new java.awt.Color(243, 243, 194));
+        tipo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        tipo.setForeground(new java.awt.Color(243, 243, 194));
+        tipo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        tipo.setText("Tipo:");
+
+        jt_tipoComida.setBackground(new java.awt.Color(243, 243, 194));
+        jt_tipoComida.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jt_tipoComida.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jt_tipoComida.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -197,14 +216,16 @@ public class VentasJF extends javax.swing.JFrame {
                                 .addComponent(cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(unidades, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(precio, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(precio, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jt_id)
                                 .addComponent(jt_precio)
                                 .addComponent(jt_vianda)
                                 .addComponent(jt_unidades)
-                                .addComponent(jt_cliente))))
+                                .addComponent(jt_cliente)
+                                .addComponent(jt_tipoComida, javax.swing.GroupLayout.Alignment.LEADING))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(85, 85, 85)
                         .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -218,7 +239,7 @@ public class VentasJF extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jpanel_principal, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE))
+                        .addComponent(jpanel_principal))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -242,7 +263,11 @@ public class VentasJF extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(id, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jt_tipoComida, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(74, 74, 74)
                         .addComponent(btn_vender, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
                         .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -275,15 +300,40 @@ public class VentasJF extends javax.swing.JFrame {
     }
 
     private void btn_venderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_venderActionPerformed
-
+        if (checkCampos() && (jpanel_principal.getSelectedComponent() == jtable_pedidos)) {
+            Date date = new Date();
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            VentaEntidad venta = new VentaEntidad(jt_cliente.getText(), jt_vianda.getText(),
+                    Integer.valueOf(jt_unidades.getText()), Float.valueOf(jt_precio.getText()),
+                    simpleDateFormat.format(date), Integer.valueOf(jt_id.getText()),
+                    TipoComida.valueOf(jt_tipoComida.getText().toString()));
+            VentaBackEnd.agregarVenta(venta);
+            PedidoBackEnd.eliminarPedido(venta.getId());
+            actualizarTablas();
+        } else {
+            JOptionPane.showMessageDialog(null, "Faltan campos de seleccionar.\n "
+                    + "o quiza esta seleccionando una venta");
+        }
     }//GEN-LAST:event_btn_venderActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-
+        if (checkCampos() && (jpanel_principal.getSelectedComponent() == jtable_ventas) ) {
+            VentaBackEnd.eliminarVenta(Integer.valueOf(jt_id.getText()));
+            actualizarTablas();
+        }
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
-
+        if(checkCampos()){
+            Date date =  new Date();
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            VentaEntidad venta = new VentaEntidad(jt_cliente.getText(), jt_vianda.getText(),Integer.valueOf(jt_unidades.getText()),
+                    Float.valueOf(jt_precio.getText()), simpleDateFormat.format(date),Integer.valueOf(jt_id.getText()), TipoComida.valueOf(jt_tipoComida.getText()));
+            VentaBackEnd.modificarVenta(venta);
+            actualizarTablas();
+        }else{
+            JOptionPane.showMessageDialog(null, "Modificacion exitosa");
+        }
     }//GEN-LAST:event_btn_modificarActionPerformed
 
     private void jtable_ventasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_ventasMouseClicked
@@ -293,6 +343,7 @@ public class VentasJF extends javax.swing.JFrame {
         jt_vianda.setText(jtable_ventas.getValueAt(filaSeleccionada, 2).toString());
         jt_unidades.setText(jtable_ventas.getValueAt(filaSeleccionada, 3).toString());
         jt_precio.setText(jtable_ventas.getValueAt(filaSeleccionada, 4).toString());
+        jt_tipoComida.setText(jtable_ventas.getValueAt(filaSeleccionada, 6).toString());
 
     }//GEN-LAST:event_jtable_ventasMouseClicked
 
@@ -303,6 +354,8 @@ public class VentasJF extends javax.swing.JFrame {
         jt_vianda.setText(jtable_pedidos.getValueAt(filaSeleccionada, 2).toString());
         jt_unidades.setText(jtable_pedidos.getValueAt(filaSeleccionada, 3).toString());
         jt_precio.setText(jtable_pedidos.getValueAt(filaSeleccionada, 4).toString());
+        jt_tipoComida.setText(jtable_pedidos.getValueAt(filaSeleccionada, 6).toString());
+
     }//GEN-LAST:event_jtable_pedidosMouseClicked
 
     /**
@@ -351,11 +404,13 @@ public class VentasJF extends javax.swing.JFrame {
     private javax.swing.JTextField jt_cliente;
     private javax.swing.JTextField jt_id;
     private javax.swing.JTextField jt_precio;
+    private javax.swing.JTextField jt_tipoComida;
     private javax.swing.JTextField jt_unidades;
     private javax.swing.JTextField jt_vianda;
     private javax.swing.JTable jtable_pedidos;
     private javax.swing.JTable jtable_ventas;
     private javax.swing.JLabel precio;
+    private javax.swing.JLabel tipo;
     private javax.swing.JLabel titulo;
     private javax.swing.JLabel unidades;
     private javax.swing.JLabel viandas;
