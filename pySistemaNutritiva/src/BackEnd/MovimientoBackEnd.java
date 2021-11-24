@@ -61,26 +61,24 @@ public class MovimientoBackEnd {
     
     public static DefaultTableModel actualizarTabla(){
         DefaultTableModel tabla = new DefaultTableModel();
-        tabla.addColumn("ID");
-        tabla.addColumn("Monto");
-        tabla.addColumn("Especificacion");
-        tabla.addColumn("Ingreso/Egreso");
-        tabla.addColumn("Efectivo/Banco");
-        tabla.addColumn("Fecha");
+        String[] titulos = {"ID", "Monto", "Especificacion", "Ingreso/Egreso", "Efectivo/Banco", "Fecha"};
+        for (String titulo : titulos) 
+            tabla.addColumn(titulo);
+        
         String[] datos = new String[6];  
         Connection cn = Conexion.conectar();
         try {
             PreparedStatement ps = cn.prepareStatement("SELECT * from movimientos");
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                datos[0] = rs.getInt("idmovimientos")+"";
-                datos[1] = rs.getDouble("monto")+""; //tomo el monto
-                datos[2] = rs.getString("especificacion"); //tomo la especificacion
-                if(rs.getBoolean("ingreso")) //si es ingreso
+                datos[0] = rs.getInt("idmovimiento")+"";
+                datos[1] = rs.getDouble("monto")+""; 
+                datos[2] = rs.getString("especificacion"); 
+                if(rs.getBoolean("ingreso")) 
                     datos[3] = "Ingreso";
                 else
                     datos[3] = "Egreso";
-                if (rs.getBoolean("efectivo")) //si es efectivo
+                if (rs.getBoolean("efectivo")) 
                     datos[4] = "Efectivo";
                 else 
                     datos[4] = "Otro";
@@ -100,7 +98,7 @@ public class MovimientoBackEnd {
         Connection cn = Conexion.conectar();
         String sql = "UPDATE movimientos SET "
                     + "monto = ?, especificacion = ?, ingreso = ?, efectivo = ?, fecha = ? "
-                + "WHERE idmovimientos ='" + id + "'"; //revisar que sea el de la fila
+                + "WHERE idmovimiento ='" + id + "'";
         
         try {
             PreparedStatement ps = cn.prepareStatement(sql);
@@ -120,7 +118,7 @@ public class MovimientoBackEnd {
     public static void eliminarMovimiento(int id){ //no se usa el movimiento, con algun identificador es suficiente
         Connection cn = Conexion.conectar();
         try {
-            String sql = "DELETE FROM movimientos where idmovimientos ="+id;
+            String sql = "DELETE FROM movimientos where idmovimiento ="+id;
             PreparedStatement ps = cn.prepareStatement(sql);
             if(ps.executeUpdate() >= 0 ){
                 JOptionPane.showMessageDialog(null, "Se elimino correctamente.");

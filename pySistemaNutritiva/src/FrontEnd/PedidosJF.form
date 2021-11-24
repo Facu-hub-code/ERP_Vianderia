@@ -796,6 +796,9 @@
     </Component>
     <Component class="javax.swing.JCheckBox" name="jcheck_lunes">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="1c" green="1c" red="31" type="rgb"/>
+        </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="c2" green="f3" red="f3" type="rgb"/>
         </Property>
@@ -804,6 +807,9 @@
     </Component>
     <Component class="javax.swing.JCheckBox" name="jcheck_martes">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="1c" green="1c" red="31" type="rgb"/>
+        </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="c2" green="f3" red="f3" type="rgb"/>
         </Property>
@@ -812,6 +818,9 @@
     </Component>
     <Component class="javax.swing.JCheckBox" name="jcheck_miercoles_pescado">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="1c" green="1c" red="31" type="rgb"/>
+        </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="c2" green="f3" red="f3" type="rgb"/>
         </Property>
@@ -820,6 +829,9 @@
     </Component>
     <Component class="javax.swing.JCheckBox" name="jcheck_jueves">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="1c" green="1c" red="31" type="rgb"/>
+        </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="c2" green="f3" red="f3" type="rgb"/>
         </Property>
@@ -828,6 +840,9 @@
     </Component>
     <Component class="javax.swing.JCheckBox" name="jcheck_viernes">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="1c" green="1c" red="31" type="rgb"/>
+        </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="c2" green="f3" red="f3" type="rgb"/>
         </Property>
@@ -836,6 +851,9 @@
     </Component>
     <Component class="javax.swing.JCheckBox" name="jcheck_miercoles_carne">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="1c" green="1c" red="31" type="rgb"/>
+        </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="c2" green="f3" red="f3" type="rgb"/>
         </Property>

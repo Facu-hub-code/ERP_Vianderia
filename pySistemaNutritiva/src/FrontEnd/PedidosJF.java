@@ -305,21 +305,27 @@ public class PedidosJF extends javax.swing.JFrame {
         jl6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jl6.setText("Cena:");
 
+        jcheck_lunes.setBackground(new java.awt.Color(49, 28, 28));
         jcheck_lunes.setForeground(new java.awt.Color(243, 243, 194));
         jcheck_lunes.setText("Lunes");
 
+        jcheck_martes.setBackground(new java.awt.Color(49, 28, 28));
         jcheck_martes.setForeground(new java.awt.Color(243, 243, 194));
         jcheck_martes.setText("Martes");
 
+        jcheck_miercoles_pescado.setBackground(new java.awt.Color(49, 28, 28));
         jcheck_miercoles_pescado.setForeground(new java.awt.Color(243, 243, 194));
         jcheck_miercoles_pescado.setText("Miercoles Pescado");
 
+        jcheck_jueves.setBackground(new java.awt.Color(49, 28, 28));
         jcheck_jueves.setForeground(new java.awt.Color(243, 243, 194));
         jcheck_jueves.setText("Jueves");
 
+        jcheck_viernes.setBackground(new java.awt.Color(49, 28, 28));
         jcheck_viernes.setForeground(new java.awt.Color(243, 243, 194));
         jcheck_viernes.setText("Viernes");
 
+        jcheck_miercoles_carne.setBackground(new java.awt.Color(49, 28, 28));
         jcheck_miercoles_carne.setForeground(new java.awt.Color(243, 243, 194));
         jcheck_miercoles_carne.setText("Miercoles Carne");
 
