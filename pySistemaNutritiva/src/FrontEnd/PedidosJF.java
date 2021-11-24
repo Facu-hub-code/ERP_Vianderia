@@ -486,12 +486,12 @@ public class PedidosJF extends javax.swing.JFrame {
     private void actualizarTablas() {
         jtable_clientes.setModel(ClienteBackEnd.actualizarTabla());
         jtable_viandas.setModel(ViandaBackEnd.actualizarTabla());
-        jtable_lunes.setModel(PedidoBackEnd.actualizarTabla("Lunes"));
-        jtable_martes.setModel(PedidoBackEnd.actualizarTabla("Martes"));
-        jtable_miercoles_carne.setModel(PedidoBackEnd.actualizarTabla("Miercoles Carne"));
-        jtable_miercoles_pescado.setModel(PedidoBackEnd.actualizarTabla("Miercoles Pescado"));
-        jtable_jueves.setModel(PedidoBackEnd.actualizarTabla("Jueves"));
-        jtable_viernes.setModel(PedidoBackEnd.actualizarTabla("Viernes"));
+        jtable_lunes.setModel(PedidoBackEnd.actualizarTablas("Lunes"));
+        jtable_martes.setModel(PedidoBackEnd.actualizarTablas("Martes"));
+        jtable_miercoles_carne.setModel(PedidoBackEnd.actualizarTablas("Miercoles Carne"));
+        jtable_miercoles_pescado.setModel(PedidoBackEnd.actualizarTablas("Miercoles Pescado"));
+        jtable_jueves.setModel(PedidoBackEnd.actualizarTablas("Jueves"));
+        jtable_viernes.setModel(PedidoBackEnd.actualizarTablas("Viernes"));
     }
 
     private void filtrarCliente(String nombre) {

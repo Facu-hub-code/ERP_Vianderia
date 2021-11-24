@@ -9,14 +9,47 @@ import java.awt.HeadlessException;
 import java.util.Date;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.Instant;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author facundolorenzo
  */
 public class VentaBackEnd {
+    
+    public static DefaultTableModel actualizarTable(){
+        Connection cn = Conexion.conectar();
+        
+        String[] titulos = {"ID", "Cliente", "Vianda" ,"Unidades", "Precio", "Fecha", "Dia", "Tipo"};
+        DefaultTableModel model = new DefaultTableModel(); //haces una tabla
+        for (String titulo : titulos) //le pones los titulos
+            model.addColumn(titulo);                    
+        
+        String[] registros = new String[8];        
+        try {
+            PreparedStatement ps = cn.prepareStatement("SELECT * FROM ventas");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){           
+                registros[0] = rs.getInt("idventa")+"";
+                registros[1] = rs.getString("cliente");
+                registros[2] = rs.getString("vianda");
+                registros[3] = rs.getInt("unidades")+"";
+                registros[4] = rs.getFloat("precio")+"";
+                registros[5] = rs.getDate("fecha").toString();
+                registros[6] = rs.getString("dia");
+                registros[7] = rs.getString("tipo");
+                model.addRow(registros);
+            }           
+            cn.close();
+            return model;
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return null;
+    }
     
     public static void modificarVenta(VentaEntidad venta){
         Connection cn = Conexion.conectar();

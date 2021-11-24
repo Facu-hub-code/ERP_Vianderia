@@ -77,7 +77,37 @@ public class PedidoBackEnd {
         }
     }
     
-    public static DefaultTableModel actualizarTabla(String dia){
+    public static DefaultTableModel actualizarTable(){
+        Connection cn = Conexion.conectar();
+        String[] registros = new String[7];
+        String[] titulos = {"ID", "Cliente", "Vianda" ,"Unidades", "Precio", "Dias", "Tipo"};
+        DefaultTableModel model = new DefaultTableModel();
+        
+        for (String titulo : titulos)
+            model.addColumn(titulo);                    
+                
+        try {
+            PreparedStatement ps = cn.prepareStatement("SELECT * FROM pedidos");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){           
+                registros[0] = rs.getInt("idpedido")+"";
+                registros[1] = rs.getString("cliente");
+                registros[2] = rs.getString("vianda");
+                registros[3] = rs.getInt("unidades")+"";
+                registros[4] = rs.getFloat("precio")+"";
+                registros[5] = rs.getString("dias");
+                registros[6] = rs.getString("tipo");
+                model.addRow(registros);
+            }
+            cn.close();
+            return model;
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return null;
+    }
+    
+    public static DefaultTableModel actualizarTablas(String dia){
         Connection cn = Conexion.conectar();
         String[] titulos = {"ID", "Cliente", "Vianda", "Unidades", "Precio", "Dias", "Tipo"};
         String[] registros = new String[7];
