@@ -46,6 +46,7 @@
                               <Component id="id" min="-2" pref="98" max="-2" attributes="0"/>
                               <Component id="precio" min="-2" pref="98" max="-2" attributes="0"/>
                               <Component id="tipo" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
+                              <Component id="efectivo" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -55,6 +56,7 @@
                               <Component id="jt_precio" alignment="1" max="32767" attributes="0"/>
                               <Component id="jt_id" alignment="1" max="32767" attributes="0"/>
                               <Component id="jt_tipoComida" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jcheck_efectivo" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -118,7 +120,12 @@
                           <Component id="tipo" alignment="3" max="32767" attributes="0"/>
                           <Component id="jt_tipoComida" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="74" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="efectivo" alignment="3" max="32767" attributes="0"/>
+                          <Component id="jcheck_efectivo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="btn_vender" min="-2" pref="35" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Component id="btn_eliminar" min="-2" pref="35" max="-2" attributes="0"/>
@@ -513,6 +520,23 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_vender1ActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="efectivo">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="c2" green="f3" red="f3" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="18" style="0"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="c2" green="f3" red="f3" type="rgb"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="2"/>
+        <Property name="text" type="java.lang.String" value="Efectivo:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="jcheck_efectivo">
     </Component>
   </SubComponents>
 </Form>

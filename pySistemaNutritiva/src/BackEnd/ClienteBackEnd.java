@@ -21,11 +21,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ClienteBackEnd {
     
-    public static void modificarCliente(ClienteEntidad cliente){
+    public static boolean modificarCliente(ClienteEntidad cliente, int id){
         Connection cn = Conexion.conectar();
-        String sql = "UPDATE clientes SET "
-                    + "nombre = ?, apellido = ?, dni = ?, direccion = ?, telefono = ? "
-                + "WHERE dni ='" + cliente.getDni() + "'";
+        String sql = "UPDATE clientes SET "+ "nombre = ?, apellido = ?, dni = ?,"
+                + " direccion = ?, telefono = ? "+ "WHERE idcliente ='" + id + "'";
         
         try {
             PreparedStatement ps = cn.prepareStatement(sql);
@@ -35,30 +34,29 @@ public class ClienteBackEnd {
             ps.setString(4, cliente.getDireccion());
             ps.setLong(5, cliente.getTelefono());
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Modificacion exitosa");
             cn.close();
+            return true;
         } catch (HeadlessException | SQLException e) {
             System.out.println(e.getMessage());
         }        
+        return false;
     }
     
-    public static void eliminarCliente(int dni){
+    public static boolean eliminarCliente(int id){
         Connection cn = Conexion.conectar();
         try {
-            String sql = "DELETE FROM clientes where dni ="+dni;
-            PreparedStatement ps = cn.prepareStatement(sql);
-            if(ps.executeUpdate() >= 0 ){
-                JOptionPane.showMessageDialog(null, "Se elimino el cliente correctamente el cliente con dni: "+dni);
-            }else{
-                JOptionPane.showMessageDialog(null, "No se encontro el cliente a eliminar");
-            }
+            PreparedStatement ps = cn.prepareStatement("DELETE FROM clientes where idcliente ="+id);
+            int filasAfectadas = ps.executeUpdate();
             cn.close();
+            
+            return filasAfectadas >= 0;                       
         } catch (HeadlessException | SQLException e) {
             System.out.println(e.toString());
         }
+        return false; //para que compile
     }
     
-    public static void agregarCliente(ClienteEntidad cliente){
+    public static boolean agregarCliente(ClienteEntidad cliente){
         //Establecer la conexion.
         Connection cn = Conexion.conectar();
         try {    
@@ -70,13 +68,13 @@ public class ClienteBackEnd {
             ps.setInt(4, cliente.getDni());
             ps.setString(5, cliente.getDireccion());
             ps.setLong(6, cliente.getTelefono());
-            int filasAfectadas = ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Se agrego el cliente: "+cliente.getNombre()
-            +" " +cliente.getApellido());
+            ps.executeUpdate();
             cn.close();
+            return true;
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
+        return false;
     }
     
     public static DefaultTableModel filtrarApellido(String valor) {
@@ -131,22 +129,22 @@ public class ClienteBackEnd {
     
     public static DefaultTableModel actualizarTabla(){
         DefaultTableModel tabla = new DefaultTableModel();
-        tabla.addColumn("Nombre");
-        tabla.addColumn("Apellido");
-        tabla.addColumn("DNI");
-        tabla.addColumn("Direccion");
-        tabla.addColumn("Telefono");
-        String[] datos = new String[5];  
+        String[] titulos = {"ID", "Nombre", "Apellido", "DNI", "Direccion", "Telefono" };
+        for(String titulo: titulos)
+            tabla.addColumn(titulo);
+
+        String[] datos = new String[6];  
         Connection cn = Conexion.conectar();
         try {
             PreparedStatement ps = cn.prepareStatement("SELECT * from clientes");
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                datos[0] = rs.getString("nombre");
-                datos[1] = rs.getString("apellido");
-                datos[2] = rs.getInt("dni")+""; 
-                datos[3] = rs.getString("direccion");
-                datos[4] = rs.getString("telefono"); 
+                datos[0] = rs.getInt("idcliente")+"";
+                datos[1] = rs.getString("nombre");
+                datos[2] = rs.getString("apellido");
+                datos[3] = rs.getInt("dni")+""; 
+                datos[4] = rs.getString("direccion");
+                datos[5] = rs.getString("telefono"); 
                 tabla.addRow(datos);
             }
             cn.close();

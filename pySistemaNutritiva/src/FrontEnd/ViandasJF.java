@@ -29,8 +29,7 @@ public class ViandasJF extends javax.swing.JFrame {
     private void initComponentsFacu() {
         getContentPane().setBackground(new Color(49, 28, 28));
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(HIDE_ON_CLOSE);
-            
+        setDefaultCloseOperation(HIDE_ON_CLOSE);            
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,7 +51,6 @@ public class ViandasJF extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtable_viandas = new javax.swing.JTable();
         btn_agregar1 = new javax.swing.JButton();
-        jl_unidades4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(49, 28, 28));
@@ -74,7 +72,7 @@ public class ViandasJF extends javax.swing.JFrame {
         jl_unidades3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jl_unidades3.setForeground(new java.awt.Color(243, 243, 194));
         jl_unidades3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_unidades3.setText("Precio:");
+        jl_unidades3.setText("Precio: $");
 
         jt_nombre.setBackground(new java.awt.Color(243, 243, 194));
         jt_nombre.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -154,12 +152,6 @@ public class ViandasJF extends javax.swing.JFrame {
             }
         });
 
-        jl_unidades4.setBackground(new java.awt.Color(243, 243, 194));
-        jl_unidades4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jl_unidades4.setForeground(new java.awt.Color(243, 243, 194));
-        jl_unidades4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_unidades4.setText("$");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -189,10 +181,8 @@ public class ViandasJF extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jt_precio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
                                             .addComponent(jt_nombre, javax.swing.GroupLayout.Alignment.TRAILING))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jl_unidades4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)))
+                                .addGap(22, 22, 22)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 683, Short.MAX_VALUE)))
                 .addGap(27, 27, 27))
         );
         layout.setVerticalGroup(
@@ -211,8 +201,7 @@ public class ViandasJF extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jt_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_unidades3)
-                            .addComponent(jl_unidades4))
+                            .addComponent(jl_unidades3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
@@ -345,7 +334,6 @@ public class ViandasJF extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jl_unidades1;
     private javax.swing.JLabel jl_unidades3;
-    private javax.swing.JLabel jl_unidades4;
     private javax.swing.JTextField jt_nombre;
     private javax.swing.JTextField jt_precio;
     private javax.swing.JTable jtable_viandas;

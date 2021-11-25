@@ -5,8 +5,10 @@
  */
 package FrontEnd;
 
+import BackEnd.MovimientoBackEnd;
 import BackEnd.PedidoBackEnd;
 import BackEnd.VentaBackEnd;
+import Entidad.MovimientoEntidad;
 import Entidad.TipoComida;
 import Entidad.VentaEntidad;
 import java.awt.Color;
@@ -58,6 +60,8 @@ public class VentasJF extends javax.swing.JFrame {
         tipo = new javax.swing.JLabel();
         jt_tipoComida = new javax.swing.JTextField();
         btn_vender1 = new javax.swing.JButton();
+        efectivo = new javax.swing.JLabel();
+        jcheck_efectivo = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(49, 28, 28));
@@ -206,6 +210,12 @@ public class VentasJF extends javax.swing.JFrame {
             }
         });
 
+        efectivo.setBackground(new java.awt.Color(243, 243, 194));
+        efectivo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        efectivo.setForeground(new java.awt.Color(243, 243, 194));
+        efectivo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        efectivo.setText("Efectivo:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -227,7 +237,8 @@ public class VentasJF extends javax.swing.JFrame {
                                 .addComponent(unidades, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(precio, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(efectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jt_cliente, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
@@ -235,7 +246,8 @@ public class VentasJF extends javax.swing.JFrame {
                                 .addComponent(jt_unidades)
                                 .addComponent(jt_precio)
                                 .addComponent(jt_id)
-                                .addComponent(jt_tipoComida, javax.swing.GroupLayout.Alignment.LEADING))))
+                                .addComponent(jt_tipoComida, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jcheck_efectivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(85, 85, 85)
                         .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -282,7 +294,11 @@ public class VentasJF extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jt_tipoComida, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(efectivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jcheck_efectivo))
+                        .addGap(30, 30, 30)
                         .addComponent(btn_vender, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
                         .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -309,6 +325,7 @@ public class VentasJF extends javax.swing.JFrame {
         jt_precio.setText("");
         jt_id.setText("");
         jt_tipoComida.setText("");
+        actualizarTablas();
     }
     
     private boolean checkCampos() {
@@ -329,12 +346,17 @@ public class VentasJF extends javax.swing.JFrame {
         if (checkCampos() && (jpanel_principal.getSelectedComponent() == jtable_pedidos)) {
             Date date = new Date();
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            
             VentaEntidad venta = new VentaEntidad(jt_cliente.getText(), jt_vianda.getText(),
                     Integer.valueOf(jt_unidades.getText()), Float.valueOf(jt_precio.getText()),
                     simpleDateFormat.format(date), Integer.valueOf(jt_id.getText()),
                     TipoComida.valueOf(jt_tipoComida.getText().toString()));
+            
             VentaBackEnd.agregarVenta(venta);
             PedidoBackEnd.eliminarPedido(venta.getId());
+            MovimientoBackEnd.agregarMovimiento(new MovimientoEntidad(Float.valueOf(jt_precio.getText()),
+                    jt_vianda.getText(), true, jcheck_efectivo.isSelected(), simpleDateFormat.format(date)));
+            
             actualizarTablas();
         } else {
             JOptionPane.showMessageDialog(null, "Faltan campos de seleccionar.\n "
@@ -430,7 +452,9 @@ public class VentasJF extends javax.swing.JFrame {
     private javax.swing.JButton btn_vender;
     private javax.swing.JButton btn_vender1;
     private javax.swing.JLabel cliente;
+    private javax.swing.JLabel efectivo;
     private javax.swing.JLabel id;
+    private javax.swing.JCheckBox jcheck_efectivo;
     private javax.swing.JTabbedPane jpanel_principal;
     private javax.swing.JTextField jt_cliente;
     private javax.swing.JTextField jt_id;

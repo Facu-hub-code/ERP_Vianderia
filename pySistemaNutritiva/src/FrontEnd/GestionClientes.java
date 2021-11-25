@@ -21,9 +21,7 @@ public class GestionClientes extends javax.swing.JFrame {
      */
     public GestionClientes() {
         initComponents();
-        this.getContentPane().setBackground(new Color(49, 28, 28));
-        this.setLocationRelativeTo(null);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        initComponentsFacu();
         actualizarTabla();
     }
 
@@ -53,6 +51,8 @@ public class GestionClientes extends javax.swing.JFrame {
         jl_unidades4 = new javax.swing.JLabel();
         jl_unidades5 = new javax.swing.JLabel();
         btn_agregar1 = new javax.swing.JButton();
+        jl_unidades6 = new javax.swing.JLabel();
+        jt_id = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(49, 28, 28));
@@ -197,6 +197,18 @@ public class GestionClientes extends javax.swing.JFrame {
             }
         });
 
+        jl_unidades6.setBackground(new java.awt.Color(243, 243, 194));
+        jl_unidades6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl_unidades6.setForeground(new java.awt.Color(243, 243, 194));
+        jl_unidades6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_unidades6.setText("ID:");
+
+        jt_id.setEditable(false);
+        jt_id.setBackground(new java.awt.Color(243, 243, 194));
+        jt_id.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jt_id.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jt_id.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -218,14 +230,16 @@ public class GestionClientes extends javax.swing.JFrame {
                                     .addComponent(jl_unidades5, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jl_unidades3, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jl_unidades1, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jl_unidades4, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(jl_unidades4, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jl_unidades6, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jt_telefono, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
                                     .addComponent(jt_apellido)
                                     .addComponent(jt_nombre, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jt_direccion)
-                                    .addComponent(jt_dni)))
+                                    .addComponent(jt_dni)
+                                    .addComponent(jt_id, javax.swing.GroupLayout.Alignment.TRAILING)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(44, 44, 44)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -264,7 +278,11 @@ public class GestionClientes extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jt_dni, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jl_unidades4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jl_unidades6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
                         .addComponent(btn_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
                         .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -278,12 +296,20 @@ public class GestionClientes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void initComponentsFacu(){
+        this.getContentPane().setBackground(new Color(49, 28, 28));
+        this.setLocationRelativeTo(null);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    }
+    
     private void limpiarCampos(){
         jt_nombre.setText("");
         jt_apellido.setText("");
         jt_dni.setText("");
         jt_direccion.setText("");
         jt_telefono.setText("");
+        jt_id.setText("");
+        actualizarTabla();
     }
     
     private void filtrarNombre(String valor) {
@@ -293,7 +319,6 @@ public class GestionClientes extends javax.swing.JFrame {
     private void filtrarApellido(String valor) {
         jtable_clientes.setModel(ClienteBackEnd.filtrarApellido(valor));
     }
-
     
     private boolean checkCampos() {
         return !( jt_nombre.getText().equalsIgnoreCase("") || 
@@ -311,18 +336,23 @@ public class GestionClientes extends javax.swing.JFrame {
         if(checkCampos()){
             ClienteEntidad cliente = new ClienteEntidad(jt_nombre.getText(), jt_apellido.getText(), Integer.valueOf(jt_dni.getText()),
                     jt_direccion.getText(), Long.valueOf(jt_telefono.getText()));
-            ClienteBackEnd.agregarCliente(cliente);
+            if(ClienteBackEnd.agregarCliente(cliente))
+                JOptionPane.showMessageDialog(null, "Se agrego el cliente: "+cliente.getNombre()+" " +cliente.getApellido());
+            
             actualizarTabla();
-        }else{
+        }else
             JOptionPane.showMessageDialog(null, "Faltan campos de completar");
-        }
+        
     }//GEN-LAST:event_btn_agregarActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         if (checkCampos()) {
             int row = jtable_clientes.getSelectedRow();
-            int dni = Integer.valueOf(jtable_clientes.getValueAt(row, 2).toString());
-            ClienteBackEnd.eliminarCliente(dni);
+            int id = Integer.valueOf(jtable_clientes.getValueAt(row, 0).toString());
+            if(ClienteBackEnd.eliminarCliente(id))
+                JOptionPane.showMessageDialog(null, "Se elimino el cliente correctamente el cliente");
+            else
+                JOptionPane.showMessageDialog(null, "No se pudo eliminar al cliente");
             actualizarTabla();
         } else {
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
@@ -331,9 +361,12 @@ public class GestionClientes extends javax.swing.JFrame {
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
         if (checkCampos()) {
+            int rowSelected = jtable_clientes.getSelectedRow();
+            int id = Integer.valueOf(jtable_clientes.getValueAt(rowSelected, 0).toString());
             ClienteEntidad cliente = new ClienteEntidad(jt_nombre.getText(), jt_apellido.getText(),
                      Integer.valueOf(jt_dni.getText()), jt_direccion.getText(), Long.valueOf(jt_telefono.getText()));
-            ClienteBackEnd.modificarCliente(cliente);
+            if(ClienteBackEnd.modificarCliente(cliente, id))
+                JOptionPane.showMessageDialog(null, "Modificacion exitosa");
             actualizarTabla();
         } else {
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
@@ -342,11 +375,12 @@ public class GestionClientes extends javax.swing.JFrame {
 
     private void jtable_clientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_clientesMouseClicked
         int filaSelec = jtable_clientes.rowAtPoint(evt.getPoint());
-        jt_nombre.setText(jtable_clientes.getValueAt(filaSelec, 0).toString());
-        jt_apellido.setText(jtable_clientes.getValueAt(filaSelec, 1).toString());
-        jt_dni.setText(jtable_clientes.getValueAt(filaSelec, 2).toString());
-        jt_direccion.setText(jtable_clientes.getValueAt(filaSelec, 3).toString());
-        jt_telefono.setText(jtable_clientes.getValueAt(filaSelec, 4).toString());
+        jt_id.setText(jtable_clientes.getValueAt(filaSelec, 0).toString());
+        jt_nombre.setText(jtable_clientes.getValueAt(filaSelec, 1).toString());
+        jt_apellido.setText(jtable_clientes.getValueAt(filaSelec, 2).toString());
+        jt_dni.setText(jtable_clientes.getValueAt(filaSelec, 3).toString());
+        jt_direccion.setText(jtable_clientes.getValueAt(filaSelec, 4).toString());
+        jt_telefono.setText(jtable_clientes.getValueAt(filaSelec, 5).toString());
 
     }//GEN-LAST:event_jtable_clientesMouseClicked
 
@@ -420,9 +454,11 @@ public class GestionClientes extends javax.swing.JFrame {
     private javax.swing.JLabel jl_unidades3;
     private javax.swing.JLabel jl_unidades4;
     private javax.swing.JLabel jl_unidades5;
+    private javax.swing.JLabel jl_unidades6;
     private javax.swing.JTextField jt_apellido;
     private javax.swing.JTextField jt_direccion;
     private javax.swing.JTextField jt_dni;
+    private javax.swing.JTextField jt_id;
     private javax.swing.JTextField jt_nombre;
     private javax.swing.JTextField jt_telefono;
     private javax.swing.JTable jtable_clientes;
