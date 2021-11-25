@@ -338,7 +338,8 @@ public class GestionClientes extends javax.swing.JFrame {
                     jt_direccion.getText(), Long.valueOf(jt_telefono.getText()));
             if(ClienteBackEnd.agregarCliente(cliente))
                 JOptionPane.showMessageDialog(null, "Se agrego el cliente: "+cliente.getNombre()+" " +cliente.getApellido());
-            
+            else
+                JOptionPane.showMessageDialog(null, "Error al agregar el cliente"+cliente.getNombre()+" " +cliente.getApellido());
             actualizarTabla();
         }else
             JOptionPane.showMessageDialog(null, "Faltan campos de completar");
@@ -350,9 +351,11 @@ public class GestionClientes extends javax.swing.JFrame {
             int row = jtable_clientes.getSelectedRow();
             int id = Integer.valueOf(jtable_clientes.getValueAt(row, 0).toString());
             if(ClienteBackEnd.eliminarCliente(id))
-                JOptionPane.showMessageDialog(null, "Se elimino el cliente correctamente el cliente");
+                JOptionPane.showMessageDialog(null, "Se elimino el cliente correctamente el cliente: "
+                        +jt_nombre.getText()+ " "+jt_apellido.getText());
             else
-                JOptionPane.showMessageDialog(null, "No se pudo eliminar al cliente");
+                JOptionPane.showMessageDialog(null, "No se pudo eliminar al cliente"
+                        +jt_nombre.getText()+ " "+jt_apellido.getText());
             actualizarTabla();
         } else {
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
@@ -367,6 +370,8 @@ public class GestionClientes extends javax.swing.JFrame {
                      Integer.valueOf(jt_dni.getText()), jt_direccion.getText(), Long.valueOf(jt_telefono.getText()));
             if(ClienteBackEnd.modificarCliente(cliente, id))
                 JOptionPane.showMessageDialog(null, "Modificacion exitosa");
+            else
+                JOptionPane.showMessageDialog(null, "Error al intentar modificar el cliente");
             actualizarTabla();
         } else {
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");

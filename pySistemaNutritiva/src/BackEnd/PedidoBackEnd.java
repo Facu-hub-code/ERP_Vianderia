@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PedidoBackEnd {
     
-    public static void modificarPedido(PedidoEntidad pedido){
+    public static boolean modificarPedido(PedidoEntidad pedido){
         Connection cn = Conexion.conectar();
         String sql = "UPDATE pedidos SET "
                     + "cliente = ?, vianda = ?, unidades = ?, precio = ?, dias = ? , tipo = ? "
@@ -35,14 +35,15 @@ public class PedidoBackEnd {
             ps.setString(5, pedido.getDias());
             ps.setString(6, pedido.getTipo().toString());
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Modificacion exitosa");
             cn.close();
+            return true;
         } catch (HeadlessException | SQLException e) {
             System.out.println(e.toString());
         } 
+        return false;
     }
     
-    public static void agregarPedido(PedidoEntidad pedido){
+    public static boolean agregarPedido(PedidoEntidad pedido){
         Connection cn = Conexion.conectar();
         try {
             PreparedStatement ps = cn.prepareStatement("INSERT INTO pedidos VALUES(?,?,?,?,?,?,?)");
@@ -54,27 +55,28 @@ public class PedidoBackEnd {
             ps.setString(6, pedido.getDias());
             ps.setString(7, pedido.getTipo().toString());
             ps.execute();
-            JOptionPane.showMessageDialog(null, "Se agrego el pedido de: "+pedido.getCliente());
             cn.close();
+            return true;
         } catch (SQLException e) {
             System.out.println(e.toString());
         }
+        return false;
     }
     
-    public static void eliminarPedido(int id){
+    public static boolean eliminarPedido(int id){
+        boolean flagPedido = false;
         Connection cn = Conexion.conectar();
         try {
             String sql = "DELETE FROM pedidos where idpedido =" + id;
             PreparedStatement ps = cn.prepareStatement(sql);
-            if(ps.executeUpdate() >= 0 ){
-                JOptionPane.showMessageDialog(null, "Se elimino correctamente el pedido.");
-            }else{
-                JOptionPane.showMessageDialog(null, "Error al intentar eliminar dicho pedido");
-            }
+            if(ps.executeUpdate() >= 0 )
+                flagPedido = true;
             cn.close();
+            
         } catch (HeadlessException | SQLException e) {
             System.out.println(e.toString());
         }
+        return flagPedido;
     }
     
     public static DefaultTableModel actualizarTable(){

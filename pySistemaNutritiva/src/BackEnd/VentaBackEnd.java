@@ -48,7 +48,7 @@ public class VentaBackEnd {
         return null;
     }
     
-    public static void modificarVenta(VentaEntidad venta){
+    public static boolean modificarVenta(VentaEntidad venta){
         Connection cn = Conexion.conectar();
         String sql = "UPDATE ventas SET "
                     + "cliente = ?, vianda = ?, unidades = ?, precio = ?, fecha = ?, tipo = ?"
@@ -65,12 +65,14 @@ public class VentaBackEnd {
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Modificacion exitosa");
             cn.close();
+            return true;
         } catch (HeadlessException | SQLException e) {
             System.out.println(e.toString());
         } 
+        return false;
     }
 
-    public static void agregarVenta(VentaEntidad venta){
+    public static boolean agregarVenta(VentaEntidad venta){
         Connection cn = Conexion.conectar();
         try {
             PreparedStatement ps = cn.prepareStatement("INSERT INTO ventas VALUES(?,?,?,?,?,?,?)"); 
@@ -84,25 +86,25 @@ public class VentaBackEnd {
             ps.execute();
             JOptionPane.showMessageDialog(null, "Venta exitosa...");
             cn.close();
+            return true;
         } catch (SQLException e) {
             System.out.println(e.toString());
         }
+        return false;
     }
     
-    public static void eliminarVenta(int id){
+    public static boolean eliminarVenta(int id){
         Connection cn = Conexion.conectar();
         try {
             String sql = "DELETE FROM ventas where idventa =" + id;
             PreparedStatement ps = cn.prepareStatement(sql);
-            if(ps.executeUpdate() >= 0 ){
-                JOptionPane.showMessageDialog(null, "Se elimino correctamente la venta.");
-            }else{
-                JOptionPane.showMessageDialog(null, "Error al intentar eliminar dicha venta");
-            }
+            int filasAfectadas = ps.executeUpdate();
             cn.close();
+            return filasAfectadas >= 0;
         } catch (HeadlessException | SQLException e) {
             System.out.println(e.toString());
         }
+        return false; //para que compile
     }
        
 }

@@ -298,7 +298,7 @@ public class VentasJF extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(efectivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jcheck_efectivo))
-                        .addGap(30, 30, 30)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                         .addComponent(btn_vender, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
                         .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -343,30 +343,44 @@ public class VentasJF extends javax.swing.JFrame {
     }
 
     private void btn_venderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_venderActionPerformed
-        if (checkCampos() && (jpanel_principal.getSelectedComponent() == jtable_pedidos)) {
+        boolean flagCampos = checkCampos();
+        boolean flagTabla = jpanel_principal.getSelectedComponent() == jtable_ventas;
+        if (flagCampos && flagTabla) {
             Date date = new Date();
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
             
             VentaEntidad venta = new VentaEntidad(jt_cliente.getText(), jt_vianda.getText(),
                     Integer.valueOf(jt_unidades.getText()), Float.valueOf(jt_precio.getText()),
                     simpleDateFormat.format(date), Integer.valueOf(jt_id.getText()),
-                    TipoComida.valueOf(jt_tipoComida.getText().toString()));
+                    TipoComida.valueOf(jt_tipoComida.getText()));
+            MovimientoEntidad movimiento = new MovimientoEntidad(Float.valueOf(jt_precio.getText()),
+                    jt_vianda.getText(), true, jcheck_efectivo.isSelected(), simpleDateFormat.format(date));
             
-            VentaBackEnd.agregarVenta(venta);
-            PedidoBackEnd.eliminarPedido(venta.getId());
-            MovimientoBackEnd.agregarMovimiento(new MovimientoEntidad(Float.valueOf(jt_precio.getText()),
-                    jt_vianda.getText(), true, jcheck_efectivo.isSelected(), simpleDateFormat.format(date)));
+            boolean flagVenta = VentaBackEnd.agregarVenta(venta);
+            boolean flagPedido = PedidoBackEnd.eliminarPedido(venta.getId());
+            boolean flagMovimiento = MovimientoBackEnd.agregarMovimiento(movimiento);
+            
+            if(flagCampos && flagPedido && flagMovimiento)
+                JOptionPane.showMessageDialog(null, "Venta agregada con exito");
+            else
+                JOptionPane.showMessageDialog(null, "Ocurrio un error al intentar agregar la venta del pedido seleccionado");
             
             actualizarTablas();
         } else {
-            JOptionPane.showMessageDialog(null, "Faltan campos de seleccionar.\n "
-                    + "o quiza esta seleccionando una venta");
+            if(flagCampos)
+                JOptionPane.showMessageDialog(null, "Error: Campos incompletos.");
+            if(flagTabla)
+                JOptionPane.showMessageDialog(null, "Tabla ventas seleccionada");
         }
     }//GEN-LAST:event_btn_venderActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         if (checkCampos() && (jpanel_principal.getSelectedComponent() == jtable_ventas) ) {
-            VentaBackEnd.eliminarVenta(Integer.valueOf(jt_id.getText()));
+            int id = Integer.valueOf(jt_id.getText());
+            if(VentaBackEnd.eliminarVenta(id))
+                JOptionPane.showMessageDialog(null, "Venta eliminada con exito");
+            else
+                JOptionPane.showMessageDialog(null, "Error al intentar eliminar la venta.");
             actualizarTablas();
         }
     }//GEN-LAST:event_btn_eliminarActionPerformed
@@ -377,7 +391,10 @@ public class VentasJF extends javax.swing.JFrame {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
             VentaEntidad venta = new VentaEntidad(jt_cliente.getText(), jt_vianda.getText(),Integer.valueOf(jt_unidades.getText()),
                     Float.valueOf(jt_precio.getText()), simpleDateFormat.format(date),Integer.valueOf(jt_id.getText()), TipoComida.valueOf(jt_tipoComida.getText()));
-            VentaBackEnd.modificarVenta(venta);
+            if(VentaBackEnd.modificarVenta(venta))
+                JOptionPane.showMessageDialog(null, "Modificacion exitosa");
+            else 
+                JOptionPane.showMessageDialog(null, "Error: al intentar modificar la venta seleccionada");
             actualizarTablas();
         }else{
             JOptionPane.showMessageDialog(null, "Modificacion exitosa");

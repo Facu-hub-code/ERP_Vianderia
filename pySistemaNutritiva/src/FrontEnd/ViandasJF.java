@@ -239,7 +239,10 @@ public class ViandasJF extends javax.swing.JFrame {
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
         if (checkCampos()) {
             ViandaEntidad vianda = new ViandaEntidad(jt_nombre.getText(), Float.valueOf(jt_precio.getText()));
-            ViandaBackEnd.agregarVianda(vianda);
+            if(ViandaBackEnd.agregarVianda(vianda))
+                JOptionPane.showMessageDialog(null, "Vianda "+jt_nombre.getText()+" agregada correctamente");
+            else
+                JOptionPane.showMessageDialog(null, "Error al intentar agregar la vianda: "+jt_nombre.getText());
             actualizarTabla();
         } else {
             JOptionPane.showMessageDialog(null, "Faltan campos de completar");
@@ -250,7 +253,10 @@ public class ViandasJF extends javax.swing.JFrame {
         if (checkCampos()) {
             int row = jtable_viandas.getSelectedRow();
             int id = Integer.valueOf(jtable_viandas.getValueAt(row, 0).toString());
-            ViandaBackEnd.eliminarVianda(id);
+            if(ViandaBackEnd.eliminarVianda(id))
+                JOptionPane.showMessageDialog(null, "Vianda eliminada correctamente");
+            else
+                JOptionPane.showMessageDialog(null, "Error: al intentar eliminar la vianda");
             actualizarTabla();
         } else {
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
@@ -262,7 +268,10 @@ public class ViandasJF extends javax.swing.JFrame {
             ViandaEntidad vianda = new ViandaEntidad(jt_nombre.getText(), Float.valueOf(jt_precio.getText()));
             int row = jtable_viandas.getSelectedRow();
             int id = Integer.valueOf(jtable_viandas.getValueAt(row, 0).toString());
-            ViandaBackEnd.modificarVianda(vianda, id);
+            if(ViandaBackEnd.modificarVianda(vianda, id))
+                JOptionPane.showConfirmDialog(null, "Modificacion exitosa");
+            else
+                JOptionPane.showMessageDialog(null, "Error: al intentar modificar la vianda");
             actualizarTabla();
         } else {
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");

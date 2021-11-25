@@ -323,7 +323,10 @@ public class GestionCaja extends javax.swing.JFrame {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");     
             MovimientoEntidad movimiento = new MovimientoEntidad(Float.valueOf(jt_monto.getText()),jt_especificacion.getText(), 
                 jr_ingreso.isSelected(), jr_efectivo.isSelected(), simpleDateFormat.format(date));
-            MovimientoBackEnd.agregarMovimiento(movimiento);
+            if(MovimientoBackEnd.agregarMovimiento(movimiento))
+                JOptionPane.showMessageDialog(null, "Movimiento agregado con exito");
+            else
+                JOptionPane.showMessageDialog(null, "Error: al intentar agregar el movimiento");
             actualizarTabla();
         }else{
             JOptionPane.showMessageDialog(null, "El monto es un campo obligatorio.");   
@@ -334,7 +337,10 @@ public class GestionCaja extends javax.swing.JFrame {
         if (checkCampos()) {
             int row = jtable_caja.getSelectedRow(); 
             int id = Integer.valueOf(jtable_caja.getValueAt(row, 0).toString());
-            MovimientoBackEnd.eliminarMovimiento(id);
+            if(MovimientoBackEnd.eliminarMovimiento(id))
+                JOptionPane.showMessageDialog(null, "Venta eliminada con exito");
+            else
+                JOptionPane.showMessageDialog(null, "Error: al intentar eliminar la venta");
             actualizarTabla();
         } else {
             JOptionPane.showMessageDialog(null, "El monto es un campo obligatorio");
@@ -350,7 +356,11 @@ public class GestionCaja extends javax.swing.JFrame {
                     ,jr_efectivo.isSelected(), simpleDateFormat.format(date));
             int row = jtable_caja.getSelectedRow();
             int id = Integer.valueOf(jtable_caja.getValueAt(row, 0).toString());
-            MovimientoBackEnd.modificarMovimiento(movimiento, id);
+            
+            if(MovimientoBackEnd.modificarMovimiento(movimiento, id))
+                JOptionPane.showMessageDialog(null, "Modificacion exitosa");
+            else
+                JOptionPane.showMessageDialog(null, "Error: al intentar modificar el movimiento seleccionado");
             actualizarTabla();
         } else {
             JOptionPane.showMessageDialog(null, "El monto es un campo obligatorio");

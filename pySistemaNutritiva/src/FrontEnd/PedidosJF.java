@@ -588,7 +588,10 @@ public class PedidosJF extends javax.swing.JFrame {
                     (Integer) js_unidades.getValue(), Float.valueOf(jt_precio.getText()),
                     tomarDias().toString(), 0, tomarTipo());
 
-            PedidoBackEnd.agregarPedido(pedido);
+            if(PedidoBackEnd.agregarPedido(pedido))
+                JOptionPane.showMessageDialog(null, "Pedido encargado con exito.");
+            else
+                JOptionPane.showMessageDialog(null, "Error: al intentar encargar el pedido");
             actualizarTablas();
         } else {
             JOptionPane.showMessageDialog(null, "Faltan algunos campos obligatorios de completar");
@@ -604,7 +607,10 @@ public class PedidosJF extends javax.swing.JFrame {
             int id = Integer.valueOf(table.getValueAt(table.getSelectedRow(), 0).toString());
             PedidoEntidad pedido = new PedidoEntidad(jt_cliente.getText(), jt_vianda.getText(), (Integer) js_unidades.getValue(),
                     Float.valueOf(jt_precio.getText()), tomarDias().toString(), id, tomarTipo());
-            PedidoBackEnd.modificarPedido(pedido);
+            if(PedidoBackEnd.modificarPedido(pedido))
+                JOptionPane.showMessageDialog(null, "Modificacion exitosa");
+            else
+                JOptionPane.showMessageDialog(null, "Error: al intentar modificar el pedido.");
             actualizarTablas();
         } else {
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
@@ -627,8 +633,8 @@ public class PedidosJF extends javax.swing.JFrame {
 
     private void jtable_clientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_clientesMouseClicked
         int filaSeleccionada = jtable_clientes.rowAtPoint(evt.getPoint());
-        jt_cliente.setText(jtable_clientes.getValueAt(filaSeleccionada, 0).toString()
-                + " " + jtable_clientes.getValueAt(filaSeleccionada, 1).toString());
+        jt_cliente.setText(jtable_clientes.getValueAt(filaSeleccionada, 1).toString()
+                + " " + jtable_clientes.getValueAt(filaSeleccionada, 2).toString());
     }//GEN-LAST:event_jtable_clientesMouseClicked
 
     private void jtable_viandasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_viandasMouseClicked
@@ -645,11 +651,11 @@ public class PedidosJF extends javax.swing.JFrame {
             JTable table = (JTable) (jtab_panel_general.getSelectedComponent());
             int row = table.getSelectedRow();
             int id = Integer.valueOf(table.getValueAt(row, 0).toString());
-            PedidoBackEnd.eliminarPedido(id);
+            if(PedidoBackEnd.eliminarPedido(id))
+                JOptionPane.showMessageDialog(null, "Se elimino el pedido correctamente");
             actualizarTablas();
-        } else {
+        } else 
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
-        }
     }//GEN-LAST:event_btn_cancelarActionPerformed
 
     private void jtable_lunesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_lunesMouseClicked

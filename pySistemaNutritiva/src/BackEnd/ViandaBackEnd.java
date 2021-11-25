@@ -66,7 +66,7 @@ public class ViandaBackEnd {
         return (null);
     }
 
-    public static void modificarVianda(ViandaEntidad vianda, int id) {
+    public static boolean modificarVianda(ViandaEntidad vianda, int id) {
         Connection cn = Conexion.conectar();
         String sql = "UPDATE viandas SET "
                 + "nombre = ?, precio = ?"
@@ -76,30 +76,29 @@ public class ViandaBackEnd {
             ps.setString(1, vianda.getNombre());
             ps.setFloat(2, vianda.getPrecio());
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Modificacion exitosa");
             cn.close();
+            return true;
         } catch (HeadlessException | SQLException e) {
             System.out.println(e.toString());
         }
+        return false;
     }
 
-    public static void eliminarVianda(int id) {
+    public static boolean eliminarVianda(int id) {
         Connection cn = Conexion.conectar();
         try {
             String sql = "DELETE FROM viandas where idvianda =" + id;
             PreparedStatement ps = cn.prepareStatement(sql);
-            if (ps.executeUpdate() >= 0) {
-                JOptionPane.showMessageDialog(null, "Se elimino correctamente");
-            } else {
-                JOptionPane.showMessageDialog(null, "No se encontro la vianada");
-            }
+            int filasAfectadas = ps.executeUpdate();
             cn.close();
+            return filasAfectadas >= 0;
         } catch (HeadlessException | SQLException e) {
             System.out.println(e.toString());
         }
+        return false; //para que compile
     }
 
-    public static void agregarVianda(ViandaEntidad vianda) {
+    public static boolean agregarVianda(ViandaEntidad vianda) {
         Connection cn = Conexion.conectar();
         try {
             //Creamos el statement del tipo PreparedStatement(precompilado).
@@ -110,8 +109,10 @@ public class ViandaBackEnd {
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Se agrego la vianda: " + vianda.getNombre());
             cn.close();
+            return true;
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
+        return false;
     }
 }

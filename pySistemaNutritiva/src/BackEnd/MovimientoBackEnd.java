@@ -94,7 +94,7 @@ public class MovimientoBackEnd {
     }
     
     //Metodo para modificar un movimiento de la tabla
-    public static void modificarMovimiento(MovimientoEntidad movimiento, int id){
+    public static boolean modificarMovimiento(MovimientoEntidad movimiento, int id){
         Connection cn = Conexion.conectar();
         String sql = "UPDATE movimientos SET "
                     + "monto = ?, especificacion = ?, ingreso = ?, efectivo = ?, fecha = ? "
@@ -108,30 +108,29 @@ public class MovimientoBackEnd {
             ps.setBoolean(4, movimiento.isEfectivo());
             ps.setString(5,movimiento.getFecha());
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Modificacion exitosa");
             cn.close();
+            return true;
         } catch (HeadlessException | SQLException e) {
             System.out.println(e.toString());
         }   
+        return false;
     }
     
-    public static void eliminarMovimiento(int id){ //no se usa el movimiento, con algun identificador es suficiente
+    public static boolean eliminarMovimiento(int id){ //no se usa el movimiento, con algun identificador es suficiente
         Connection cn = Conexion.conectar();
         try {
             String sql = "DELETE FROM movimientos where idmovimiento ="+id;
             PreparedStatement ps = cn.prepareStatement(sql);
-            if(ps.executeUpdate() >= 0 ){
-                JOptionPane.showMessageDialog(null, "Se elimino correctamente.");
-            }else{
-                JOptionPane.showMessageDialog(null, "Error al intentar eliminar dicho movimiento");
-            }
+            int filasAfectadas = ps.executeUpdate();            
             cn.close();
+            return filasAfectadas >= 0;
         } catch (HeadlessException | SQLException e) {
             System.out.println(e.toString());
         }
+        return false; //para que compile
     }
     
-    public static void agregarMovimiento(MovimientoEntidad movimiento){
+    public static boolean agregarMovimiento(MovimientoEntidad movimiento){
         Connection cn = Conexion.conectar();
         try {
             PreparedStatement ps = cn.prepareStatement("INSERT INTO movimientos VALUES (?,?,?,?,?,?)");
@@ -142,10 +141,11 @@ public class MovimientoBackEnd {
             ps.setBoolean(5, movimiento.isEfectivo());
             ps.setString(6, movimiento.getFecha());
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Se agrego el movimiento exitosamente");
             cn.close();
+            return true;
         } catch (SQLException e) {
             System.out.println(e.toString());
         }
+        return false;
     }    
 }
