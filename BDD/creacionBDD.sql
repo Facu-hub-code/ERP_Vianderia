@@ -25,14 +25,14 @@ DROP TABLE IF EXISTS `clientes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `clientes` (
-  `idclientes` int NOT NULL AUTO_INCREMENT,
+  `idcliente` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) NOT NULL,
   `apellido` varchar(45) NOT NULL,
   `dni` int DEFAULT NULL,
   `direccion` varchar(45) DEFAULT NULL,
   `telefono` bigint DEFAULT NULL,
-  PRIMARY KEY (`idclientes`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`idcliente`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,6 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES (1,'Facundo','Lorenzo',41411627,'Bv 9 de Julio 485',3585098671);
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -53,13 +52,13 @@ DROP TABLE IF EXISTS `movimientos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `movimientos` (
-  `idmovimientos` int NOT NULL,
+  `idmovimiento` int NOT NULL AUTO_INCREMENT,
   `monto` float NOT NULL,
-  `especificacion` varchar(45) DEFAULT NULL,
+  `especificacion` varchar(200) NOT NULL,
   `ingreso` tinyint NOT NULL,
   `efectivo` tinyint NOT NULL,
   `fecha` date NOT NULL,
-  PRIMARY KEY (`idmovimientos`)
+  PRIMARY KEY (`idmovimiento`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -80,13 +79,14 @@ DROP TABLE IF EXISTS `pedidos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pedidos` (
-  `id` int NOT NULL,
+  `idpedido` int NOT NULL AUTO_INCREMENT,
   `cliente` varchar(45) NOT NULL,
   `vianda` varchar(45) NOT NULL,
   `unidades` int NOT NULL,
   `precio` float NOT NULL,
-  `dias` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `dias` varchar(200) NOT NULL,
+  `tipo` enum('Almuerzo','Cena') NOT NULL,
+  PRIMARY KEY (`idpedido`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -111,7 +111,7 @@ CREATE TABLE `usuarios` (
   `user` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   PRIMARY KEY (`idusuarios`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,7 +120,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'Juan','Lavini'),(2,'root','toor');
+INSERT INTO `usuarios` VALUES (1,'admin','admin'),(2,'root','toor'),(3,'Juani','Lavini');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -132,13 +132,14 @@ DROP TABLE IF EXISTS `ventas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ventas` (
-  `id` int NOT NULL,
+  `idventa` int NOT NULL AUTO_INCREMENT,
   `cliente` varchar(45) NOT NULL,
   `vianda` varchar(45) NOT NULL,
-  `unidades` int DEFAULT NULL,
+  `unidades` int NOT NULL,
   `precio` float NOT NULL,
   `fecha` date NOT NULL,
-  PRIMARY KEY (`id`)
+  `tipo` enum('Almuerzo','Cena') NOT NULL,
+  PRIMARY KEY (`idventa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -159,11 +160,10 @@ DROP TABLE IF EXISTS `viandas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `viandas` (
-  `idviandas` int NOT NULL,
+  `idvianda` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) NOT NULL,
   `precio` float NOT NULL,
-  `dias` varchar(45) NOT NULL,
-  PRIMARY KEY (`idviandas`)
+  PRIMARY KEY (`idvianda`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -185,4 +185,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-17 16:06:17
+-- Dump completed on 2021-11-28 10:29:38
