@@ -11,7 +11,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -107,7 +106,6 @@ public class ViandaBackEnd {
             ps.setString(2, vianda.getNombre());
             ps.setFloat(3, vianda.getPrecio());
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Se agrego la vianda: " + vianda.getNombre());
             cn.close();
             return true;
         } catch (SQLException ex) {
