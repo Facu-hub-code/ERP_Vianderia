@@ -344,8 +344,8 @@ public class VentasJF extends javax.swing.JFrame {
 
     private void btn_venderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_venderActionPerformed
         boolean flagCampos = checkCampos();
-        boolean flagTabla = jpanel_principal.getSelectedComponent() == jtable_ventas;
-        if (flagCampos && flagTabla) {
+        boolean flagTablaVenta = jpanel_principal.getSelectedComponent() == jtable_ventas;
+        if (flagCampos && !flagTablaVenta) {
             Date date = new Date();
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
             
@@ -367,9 +367,9 @@ public class VentasJF extends javax.swing.JFrame {
             
             actualizarTablas();
         } else {
-            if(flagCampos)
+            if(!flagCampos)
                 JOptionPane.showMessageDialog(null, "Error: Campos incompletos.");
-            if(flagTabla)
+            if(flagTablaVenta)
                 JOptionPane.showMessageDialog(null, "Tabla ventas seleccionada");
         }
     }//GEN-LAST:event_btn_venderActionPerformed

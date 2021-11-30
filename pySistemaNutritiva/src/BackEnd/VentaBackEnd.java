@@ -63,7 +63,6 @@ public class VentaBackEnd {
             ps.setString(5,venta.getFecha());
             ps.setString(6, venta.getTipo().toString());
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Modificacion exitosa");
             cn.close();
             return true;
         } catch (HeadlessException | SQLException e) {
@@ -84,7 +83,6 @@ public class VentaBackEnd {
             ps.setString(6, venta.getFecha());
             ps.setString(7, venta.getTipo().toString());
             ps.execute();
-            JOptionPane.showMessageDialog(null, "Venta exitosa...");
             cn.close();
             return true;
         } catch (SQLException e) {
