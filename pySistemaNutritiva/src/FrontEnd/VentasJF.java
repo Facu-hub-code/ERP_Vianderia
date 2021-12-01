@@ -290,6 +290,11 @@ public class VentasJF extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jtable_viernes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtable_viernesMouseClicked(evt);
+            }
+        });
         jtab_panel_general.addTab("Viernes", jtable_viernes);
 
         btn_vender2.setBackground(new java.awt.Color(255, 253, 118));
@@ -550,8 +555,19 @@ public class VentasJF extends javax.swing.JFrame {
     }//GEN-LAST:event_jtable_juevesMouseClicked
 
     private void btn_vender2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vender2ActionPerformed
-        // TODO add your handling code here:
+        jt_cliente.setText("");
+        jt_vianda.setText("");
+        jt_unidades.setText("");
+        jt_precio.setText("");
+        jt_id.setText("");
+        jt_tipoComida.setText("");
+        jcheck_efectivo.setSelected(false);
     }//GEN-LAST:event_btn_vender2ActionPerformed
+
+    private void jtable_viernesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_viernesMouseClicked
+        int filaSeleccionada = jtable_viernes.getSelectedRow();
+        mouseClickFacu((JTable) jtab_panel_general.getSelectedComponent(), filaSeleccionada);
+    }//GEN-LAST:event_jtable_viernesMouseClicked
 
     /**
      * @param args the command line arguments

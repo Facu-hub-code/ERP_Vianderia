@@ -121,7 +121,7 @@ public class ViandasJF extends javax.swing.JFrame {
 
         btn_modificar.setBackground(new java.awt.Color(255, 253, 118));
         btn_modificar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        btn_modificar.setText("Modificar");
+        btn_modificar.setText("Modificar Precio");
         btn_modificar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         btn_modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -274,7 +274,7 @@ public class ViandasJF extends javax.swing.JFrame {
             int row = jtable_viandas.getSelectedRow();
             int id = Integer.valueOf(jtable_viandas.getValueAt(row, 0).toString());
             if(ViandaBackEnd.modificarVianda(vianda, id))
-                JOptionPane.showConfirmDialog(null, "Modificacion exitosa");
+                JOptionPane.showMessageDialog(null, "Modificacion exitosa");
             else
                 JOptionPane.showMessageDialog(null, "Error: al intentar modificar la vianda");
             actualizarTabla();
