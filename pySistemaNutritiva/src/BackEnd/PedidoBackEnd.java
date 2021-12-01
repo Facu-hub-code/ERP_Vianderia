@@ -11,7 +11,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -32,7 +31,7 @@ public class PedidoBackEnd {
             ps.setString(2, pedido.getVianda());
             ps.setInt(3, pedido.getUnidades());
             ps.setDouble(4, pedido.getPrecio());
-            ps.setString(5, pedido.getDias());
+            ps.setString(5, pedido.getDias().toString());
             ps.setString(6, pedido.getTipo().toString());
             ps.executeUpdate();
             cn.close();
@@ -52,7 +51,7 @@ public class PedidoBackEnd {
             ps.setString(3, pedido.getVianda());
             ps.setInt(4, pedido.getUnidades());
             ps.setFloat(5, pedido.getPrecio());
-            ps.setString(6, pedido.getDias());
+            ps.setString(6, pedido.getDias().toString());
             ps.setString(7, pedido.getTipo().toString());
             ps.execute();
             cn.close();
@@ -136,17 +135,14 @@ public class PedidoBackEnd {
         return null;
     }    
     
-    public static float calcularPrecio(int unidades, String nombreVianda){
-        float precio = 0;
+    public static float getPrecioVianda(String nombreVianda){
         Connection cn = Conexion.conectar();
-        try {            
-            
+        try {                        
             PreparedStatement ps = cn.prepareStatement("SELECT precio FROM viandas "
                     + "WHERE nombre = '"+nombreVianda+"'");
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
-                precio = unidades * rs.getFloat("precio");
-                return precio;
+                return rs.getFloat("precio");                
             }
                 
         } catch (SQLException ex) {

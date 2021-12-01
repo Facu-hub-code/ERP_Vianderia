@@ -14,16 +14,16 @@ public class PedidoEntidad {
     private String vianda;
     private int unidades;
     private float precio;
-    private String dias;
+    private Dia dia;
     private int id;
     private TipoComida tipo;
 
-    public PedidoEntidad(String cliente, String vianda, int unidades, float precio, String dias, int id, TipoComida tipo) {
+    public PedidoEntidad(String cliente, String vianda, int unidades, float precio, Dia dia, int id, TipoComida tipo) {
         this.cliente = cliente;
         this.vianda = vianda;
         this.unidades = unidades;
         this.precio = precio;
-        this.dias = dias;
+        this.dia = dia;
         this.id = id;
         this.tipo = tipo;
     }
@@ -60,12 +60,12 @@ public class PedidoEntidad {
         this.precio = precio;
     }
 
-    public String getDias() {
-        return dias;
+    public Dia getDias() {
+        return dia;
     }
 
-    public void setDias(String dias) {
-        this.dias = dias;
+    public void setDias(Dia dias) {
+        this.dia = dias;
     }
 
     public int getId() {
