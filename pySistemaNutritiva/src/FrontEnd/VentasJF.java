@@ -15,6 +15,7 @@ import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 /**
  *
@@ -54,14 +55,21 @@ public class VentasJF extends javax.swing.JFrame {
         btn_vender = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
         btn_modificar = new javax.swing.JButton();
-        jpanel_principal = new javax.swing.JTabbedPane();
-        jtable_ventas = new javax.swing.JTable();
-        jtable_pedidos = new javax.swing.JTable();
         tipo = new javax.swing.JLabel();
         jt_tipoComida = new javax.swing.JTextField();
-        btn_vender1 = new javax.swing.JButton();
+        btn_borrarVentas = new javax.swing.JButton();
         efectivo = new javax.swing.JLabel();
         jcheck_efectivo = new javax.swing.JCheckBox();
+        jscrollPane_ventas = new javax.swing.JScrollPane();
+        jtable_ventas = new javax.swing.JTable();
+        jtab_panel_general = new javax.swing.JTabbedPane();
+        jtable_lunes = new javax.swing.JTable();
+        jtable_martes = new javax.swing.JTable();
+        jtable_miercoles_carne = new javax.swing.JTable();
+        jtable_miercoles_pescado = new javax.swing.JTable();
+        jtable_jueves = new javax.swing.JTable();
+        jtable_viernes = new javax.swing.JTable();
+        btn_vender2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(49, 28, 28));
@@ -159,36 +167,6 @@ public class VentasJF extends javax.swing.JFrame {
             }
         });
 
-        jtable_ventas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jtable_ventas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jtable_ventasMouseClicked(evt);
-            }
-        });
-        jpanel_principal.addTab("Ventas", jtable_ventas);
-
-        jtable_pedidos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jtable_pedidos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jtable_pedidosMouseClicked(evt);
-            }
-        });
-        jpanel_principal.addTab("Pedidos", jtable_pedidos);
-
         tipo.setBackground(new java.awt.Color(243, 243, 194));
         tipo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         tipo.setForeground(new java.awt.Color(243, 243, 194));
@@ -200,13 +178,13 @@ public class VentasJF extends javax.swing.JFrame {
         jt_tipoComida.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_tipoComida.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
 
-        btn_vender1.setBackground(new java.awt.Color(255, 253, 118));
-        btn_vender1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        btn_vender1.setText("Limpiar");
-        btn_vender1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        btn_vender1.addActionListener(new java.awt.event.ActionListener() {
+        btn_borrarVentas.setBackground(new java.awt.Color(255, 253, 118));
+        btn_borrarVentas.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btn_borrarVentas.setText("Borrar registro de ventas");
+        btn_borrarVentas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        btn_borrarVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_vender1ActionPerformed(evt);
+                btn_borrarVentasActionPerformed(evt);
             }
         });
 
@@ -215,6 +193,114 @@ public class VentasJF extends javax.swing.JFrame {
         efectivo.setForeground(new java.awt.Color(243, 243, 194));
         efectivo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         efectivo.setText("Efectivo:");
+
+        jtable_ventas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jscrollPane_ventas.setViewportView(jtable_ventas);
+
+        jtable_lunes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jtable_lunes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtable_lunesMouseClicked(evt);
+            }
+        });
+        jtab_panel_general.addTab("Lunes", jtable_lunes);
+
+        jtable_martes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jtable_martes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtable_martesMouseClicked(evt);
+            }
+        });
+        jtab_panel_general.addTab("Martes", jtable_martes);
+
+        jtable_miercoles_carne.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jtable_miercoles_carne.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtable_miercoles_carneMouseClicked(evt);
+            }
+        });
+        jtab_panel_general.addTab("Miercoles Carne", jtable_miercoles_carne);
+
+        jtable_miercoles_pescado.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jtable_miercoles_pescado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtable_miercoles_pescadoMouseClicked(evt);
+            }
+        });
+        jtab_panel_general.addTab("Miercoles Pescado", jtable_miercoles_pescado);
+
+        jtable_jueves.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jtable_jueves.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtable_juevesMouseClicked(evt);
+            }
+        });
+        jtab_panel_general.addTab("Jueves", jtable_jueves);
+
+        jtable_viernes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jtab_panel_general.addTab("Viernes", jtable_viernes);
+
+        btn_vender2.setBackground(new java.awt.Color(255, 253, 118));
+        btn_vender2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btn_vender2.setText("Limpiar");
+        btn_vender2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        btn_vender2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_vender2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -253,20 +339,23 @@ public class VentasJF extends javax.swing.JFrame {
                         .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn_vender1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jpanel_principal, javax.swing.GroupLayout.DEFAULT_SIZE, 699, Short.MAX_VALUE)
-                        .addGap(39, 39, 39))))
+                    .addComponent(jscrollPane_ventas)
+                    .addComponent(jtab_panel_general, javax.swing.GroupLayout.DEFAULT_SIZE, 732, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(460, 460, 460)
+                .addComponent(btn_borrarVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(331, 331, 331)
+                    .addComponent(btn_vender2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(628, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jpanel_principal))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -289,8 +378,13 @@ public class VentasJF extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(id, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
+                            .addComponent(id, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jscrollPane_ventas, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jt_tipoComida, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -303,10 +397,18 @@ public class VentasJF extends javax.swing.JFrame {
                         .addGap(40, 40, 40)
                         .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
-                        .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_vender1)
-                .addGap(9, 9, 9))
+                        .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jtab_panel_general, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(9, 9, 9)
+                .addComponent(btn_borrarVentas)
+                .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(662, Short.MAX_VALUE)
+                    .addComponent(btn_vender2)
+                    .addContainerGap()))
         );
 
         pack();
@@ -318,7 +420,7 @@ public class VentasJF extends javax.swing.JFrame {
         setDefaultCloseOperation(HIDE_ON_CLOSE);
     }
 
-    private void limpiarCampos(){
+    private void limpiarCampos() {
         jt_cliente.setText("");
         jt_vianda.setText("");
         jt_unidades.setText("");
@@ -327,7 +429,7 @@ public class VentasJF extends javax.swing.JFrame {
         jt_tipoComida.setText("");
         actualizarTablas();
     }
-    
+
     private boolean checkCampos() {
         return !(jt_cliente.getText().equalsIgnoreCase("")
                 || jt_vianda.getText().equalsIgnoreCase("")
@@ -336,96 +438,120 @@ public class VentasJF extends javax.swing.JFrame {
                 || jt_id.getText().equalsIgnoreCase(""));
     }
 
-    //Metodo que actualiza los valores de la tabla segun la base de datos
     private void actualizarTablas() {
-        jtable_pedidos.setModel(PedidoBackEnd.actualizarTable());
+        jtable_lunes.setModel(PedidoBackEnd.actualizarTablas("Lunes"));
+        jtable_martes.setModel(PedidoBackEnd.actualizarTablas("Martes"));
+        jtable_miercoles_carne.setModel(PedidoBackEnd.actualizarTablas("MiercolesC"));
+        jtable_miercoles_pescado.setModel(PedidoBackEnd.actualizarTablas("MiercolesP"));
+        jtable_jueves.setModel(PedidoBackEnd.actualizarTablas("Jueves"));
+        jtable_viernes.setModel(PedidoBackEnd.actualizarTablas("Viernes"));
         jtable_ventas.setModel(VentaBackEnd.actualizarTable());
     }
 
     private void btn_venderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_venderActionPerformed
-        boolean flagCampos = checkCampos();
-        boolean flagTablaVenta = jpanel_principal.getSelectedComponent() == jtable_ventas;
-        if (flagCampos && !flagTablaVenta) {
+        if (checkCampos()) {
             Date date = new Date();
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            
+
             VentaEntidad venta = new VentaEntidad(jt_cliente.getText(), jt_vianda.getText(),
                     Integer.valueOf(jt_unidades.getText()), Float.valueOf(jt_precio.getText()),
                     simpleDateFormat.format(date), Integer.valueOf(jt_id.getText()),
                     TipoComida.valueOf(jt_tipoComida.getText()));
             MovimientoEntidad movimiento = new MovimientoEntidad(Float.valueOf(jt_precio.getText()),
                     jt_vianda.getText(), true, jcheck_efectivo.isSelected(), simpleDateFormat.format(date));
-            
+
             boolean flagVenta = VentaBackEnd.agregarVenta(venta);
             boolean flagPedido = PedidoBackEnd.eliminarPedido(venta.getId());
             boolean flagMovimiento = MovimientoBackEnd.agregarMovimiento(movimiento);
-            
-            if(flagCampos && flagPedido && flagMovimiento)
+
+            if (flagVenta && flagPedido && flagMovimiento) {
                 JOptionPane.showMessageDialog(null, "Venta agregada con exito");
-            else
+            } else {
                 JOptionPane.showMessageDialog(null, "Ocurrio un error al intentar agregar la venta del pedido seleccionado");
-            
+            }
+
             actualizarTablas();
         } else {
-            if(!flagCampos)
-                JOptionPane.showMessageDialog(null, "Error: Campos incompletos.");
-            if(flagTablaVenta)
-                JOptionPane.showMessageDialog(null, "Tabla ventas seleccionada");
+            JOptionPane.showMessageDialog(null, "Error: Campos incompletos.");
         }
     }//GEN-LAST:event_btn_venderActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        if (checkCampos() && (jpanel_principal.getSelectedComponent() == jtable_ventas) ) {
+        if (checkCampos()) {
             int id = Integer.valueOf(jt_id.getText());
-            if(VentaBackEnd.eliminarVenta(id))
+            if (VentaBackEnd.eliminarVenta(id)) {
                 JOptionPane.showMessageDialog(null, "Venta eliminada con exito");
-            else
+            } else {
                 JOptionPane.showMessageDialog(null, "Error al intentar eliminar la venta.");
+            }
             actualizarTablas();
-        }
+        } else
+            JOptionPane.showMessageDialog(null, "Error al intentar eliminar la venta");
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
-        if(checkCampos()){
-            Date date =  new Date();
+        if (checkCampos()) {
+            Date date = new Date();
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            VentaEntidad venta = new VentaEntidad(jt_cliente.getText(), jt_vianda.getText(),Integer.valueOf(jt_unidades.getText()),
-                    Float.valueOf(jt_precio.getText()), simpleDateFormat.format(date),Integer.valueOf(jt_id.getText()), TipoComida.valueOf(jt_tipoComida.getText()));
-            if(VentaBackEnd.modificarVenta(venta))
+            VentaEntidad venta = new VentaEntidad(jt_cliente.getText(), jt_vianda.getText(), Integer.valueOf(jt_unidades.getText()),
+                    Float.valueOf(jt_precio.getText()), simpleDateFormat.format(date), Integer.valueOf(jt_id.getText()), TipoComida.valueOf(jt_tipoComida.getText()));
+            if (VentaBackEnd.modificarVenta(venta)) {
                 JOptionPane.showMessageDialog(null, "Modificacion exitosa");
-            else 
+            } else {
                 JOptionPane.showMessageDialog(null, "Error: al intentar modificar la venta seleccionada");
+            }
             actualizarTablas();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Modificacion exitosa");
         }
     }//GEN-LAST:event_btn_modificarActionPerformed
 
-    private void jtable_ventasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_ventasMouseClicked
-        int filaSeleccionada = jtable_ventas.rowAtPoint(evt.getPoint());
-        jt_id.setText(jtable_ventas.getValueAt(filaSeleccionada, 0).toString());
-        jt_cliente.setText(jtable_ventas.getValueAt(filaSeleccionada, 1).toString());
-        jt_vianda.setText(jtable_ventas.getValueAt(filaSeleccionada, 2).toString());
-        jt_unidades.setText(jtable_ventas.getValueAt(filaSeleccionada, 3).toString());
-        jt_precio.setText(jtable_ventas.getValueAt(filaSeleccionada, 4).toString());
-        jt_tipoComida.setText(jtable_ventas.getValueAt(filaSeleccionada, 6).toString());
+    private void btn_borrarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarVentasActionPerformed
+        int result = JOptionPane.showConfirmDialog(null, "Confirmar");
+        if (result == JOptionPane.YES_OPTION) {
+            if(VentaBackEnd.eliminarRegistros())
+                JOptionPane.showMessageDialog(null, "Se borraron los registros hasta la fecha");
+        }
+        actualizarTablas();
+    }//GEN-LAST:event_btn_borrarVentasActionPerformed
 
-    }//GEN-LAST:event_jtable_ventasMouseClicked
+    private void mouseClickFacu(JTable tabla, int filaSeleccionada) {
+        jt_id.setText(tabla.getValueAt(filaSeleccionada, 0).toString());
+        jt_cliente.setText(tabla.getValueAt(filaSeleccionada, 1).toString());
+        jt_vianda.setText(tabla.getValueAt(filaSeleccionada, 2).toString());
+        jt_unidades.setText(tabla.getValueAt(filaSeleccionada, 3).toString());
+        jt_precio.setText(tabla.getValueAt(filaSeleccionada, 4).toString());
+        jt_tipoComida.setText(tabla.getValueAt(filaSeleccionada, 6).toString());                    
+    }
 
-    private void jtable_pedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_pedidosMouseClicked
-        int filaSeleccionada = jtable_pedidos.rowAtPoint(evt.getPoint());
-        jt_id.setText(jtable_pedidos.getValueAt(filaSeleccionada, 0).toString());
-        jt_cliente.setText(jtable_pedidos.getValueAt(filaSeleccionada, 1).toString());
-        jt_vianda.setText(jtable_pedidos.getValueAt(filaSeleccionada, 2).toString());
-        jt_unidades.setText(jtable_pedidos.getValueAt(filaSeleccionada, 3).toString());
-        jt_precio.setText(jtable_pedidos.getValueAt(filaSeleccionada, 4).toString());
-        jt_tipoComida.setText(jtable_pedidos.getValueAt(filaSeleccionada, 6).toString());
+    private void jtable_lunesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_lunesMouseClicked
+        int filaSeleccionada = jtable_lunes.rowAtPoint(evt.getPoint());
+        mouseClickFacu((JTable) jtab_panel_general.getSelectedComponent(), filaSeleccionada);
+    }//GEN-LAST:event_jtable_lunesMouseClicked
 
-    }//GEN-LAST:event_jtable_pedidosMouseClicked
+    private void jtable_martesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_martesMouseClicked
+        int filaSeleccionada = jtable_martes.getSelectedRow();
+        mouseClickFacu((JTable) jtab_panel_general.getSelectedComponent(), filaSeleccionada);
+    }//GEN-LAST:event_jtable_martesMouseClicked
 
-    private void btn_vender1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vender1ActionPerformed
-        limpiarCampos();
-    }//GEN-LAST:event_btn_vender1ActionPerformed
+    private void jtable_miercoles_carneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_miercoles_carneMouseClicked
+        int filaSeleccionada = jtable_miercoles_carne.getSelectedRow();
+        mouseClickFacu((JTable) jtab_panel_general.getSelectedComponent(), filaSeleccionada);
+    }//GEN-LAST:event_jtable_miercoles_carneMouseClicked
+
+    private void jtable_miercoles_pescadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_miercoles_pescadoMouseClicked
+        int filaSeleccionada = jtable_miercoles_pescado.getSelectedRow();
+        mouseClickFacu((JTable) jtab_panel_general.getSelectedComponent(), filaSeleccionada);
+    }//GEN-LAST:event_jtable_miercoles_pescadoMouseClicked
+
+    private void jtable_juevesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_juevesMouseClicked
+        int filaSeleccionada = jtable_jueves.getSelectedRow();
+        mouseClickFacu((JTable) jtab_panel_general.getSelectedComponent(), filaSeleccionada);
+    }//GEN-LAST:event_jtable_juevesMouseClicked
+
+    private void btn_vender2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vender2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_vender2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -464,23 +590,30 @@ public class VentasJF extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_borrarVentas;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_modificar;
     private javax.swing.JButton btn_vender;
-    private javax.swing.JButton btn_vender1;
+    private javax.swing.JButton btn_vender2;
     private javax.swing.JLabel cliente;
     private javax.swing.JLabel efectivo;
     private javax.swing.JLabel id;
     private javax.swing.JCheckBox jcheck_efectivo;
-    private javax.swing.JTabbedPane jpanel_principal;
+    private javax.swing.JScrollPane jscrollPane_ventas;
     private javax.swing.JTextField jt_cliente;
     private javax.swing.JTextField jt_id;
     private javax.swing.JTextField jt_precio;
     private javax.swing.JTextField jt_tipoComida;
     private javax.swing.JTextField jt_unidades;
     private javax.swing.JTextField jt_vianda;
-    private javax.swing.JTable jtable_pedidos;
+    private javax.swing.JTabbedPane jtab_panel_general;
+    private javax.swing.JTable jtable_jueves;
+    private javax.swing.JTable jtable_lunes;
+    private javax.swing.JTable jtable_martes;
+    private javax.swing.JTable jtable_miercoles_carne;
+    private javax.swing.JTable jtable_miercoles_pescado;
     private javax.swing.JTable jtable_ventas;
+    private javax.swing.JTable jtable_viernes;
     private javax.swing.JLabel precio;
     private javax.swing.JLabel tipo;
     private javax.swing.JLabel titulo;

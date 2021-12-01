@@ -543,10 +543,10 @@ public class PedidosJF extends javax.swing.JFrame {
 
 
     private TipoComida tomarTipo() {
-        if (jcheck_almuerzo.isSelected()) {
-            return TipoComida.Almuerzo;
-        } else if (jcheck_almuerzo.isSelected() && jcheck_cena.isSelected()) {
+        if (jcheck_almuerzo.isSelected() && jcheck_cena.isSelected()) {
             return TipoComida.AyC;
+        } else if (jcheck_almuerzo.isSelected() ) {
+            return TipoComida.Almuerzo;
         } else {
             return TipoComida.Cena;
         }

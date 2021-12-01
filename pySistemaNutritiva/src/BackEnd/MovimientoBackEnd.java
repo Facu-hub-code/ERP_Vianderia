@@ -19,6 +19,19 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MovimientoBackEnd {
     
+    public static boolean eliminarRegistros(){
+        Connection cn = Conexion.conectar();
+        boolean flag = false;
+        try {
+            PreparedStatement ps = cn.prepareStatement("TRUNCATE TABLE movimientos");
+            flag = ps.execute();
+            cn.close();
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return flag;
+    }
+    
     public static Double calcularTotal(){
         double total = 0;
         Connection cn = Conexion.conectar();

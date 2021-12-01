@@ -10,13 +10,25 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author facundolorenzo
  */
 public class VentaBackEnd {
+    
+    public static boolean eliminarRegistros(){
+        Connection cn = Conexion.conectar();
+        boolean flag = false;
+        try {
+            PreparedStatement ps = cn.prepareStatement("TRUNCATE TABLE ventas");
+            flag = ps.execute();
+            cn.close();
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return flag;
+    }
     
     public static DefaultTableModel actualizarTable(){
         Connection cn = Conexion.conectar();
