@@ -14,10 +14,8 @@ import Entidad.PedidoEntidad;
 import Entidad.TipoComida;
 import java.awt.Dimension;
 import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.tools.Diagnostic;
 
 /**
  *
@@ -31,7 +29,7 @@ public class PedidosJF extends javax.swing.JFrame {
     public PedidosJF() {
         initComponents();
         initComponentsFacu();
-        actualizarTablas();
+        actualizar();                
     }
 
     /**
@@ -55,7 +53,7 @@ public class PedidosJF extends javax.swing.JFrame {
         btn_encargar = new javax.swing.JButton();
         btn_cancelar = new javax.swing.JButton();
         btn_limpiar = new javax.swing.JButton();
-        jl5 = new javax.swing.JLabel();
+        jl_almuerzosCount = new javax.swing.JLabel();
         jl6 = new javax.swing.JLabel();
         jcheck_almuerzo = new javax.swing.JCheckBox();
         jcheck_cena = new javax.swing.JCheckBox();
@@ -77,6 +75,8 @@ public class PedidosJF extends javax.swing.JFrame {
         jtable_clientes = new javax.swing.JTable();
         jscrollPanel_viandas = new javax.swing.JScrollPane();
         jtable_viandas = new javax.swing.JTable();
+        jl7 = new javax.swing.JLabel();
+        jl_cenasCount = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(49, 28, 28));
@@ -173,11 +173,11 @@ public class PedidosJF extends javax.swing.JFrame {
             }
         });
 
-        jl5.setBackground(new java.awt.Color(243, 243, 194));
-        jl5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jl5.setForeground(new java.awt.Color(243, 243, 194));
-        jl5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl5.setText("Almuerzo:");
+        jl_almuerzosCount.setBackground(new java.awt.Color(243, 243, 194));
+        jl_almuerzosCount.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl_almuerzosCount.setForeground(new java.awt.Color(243, 243, 194));
+        jl_almuerzosCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_almuerzosCount.setText("Almuerzos:");
 
         jl6.setBackground(new java.awt.Color(243, 243, 194));
         jl6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -330,11 +330,23 @@ public class PedidosJF extends javax.swing.JFrame {
         });
         jscrollPanel_viandas.setViewportView(jtable_viandas);
 
+        jl7.setBackground(new java.awt.Color(243, 243, 194));
+        jl7.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl7.setForeground(new java.awt.Color(243, 243, 194));
+        jl7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl7.setText("Almuerzo:");
+
+        jl_cenasCount.setBackground(new java.awt.Color(243, 243, 194));
+        jl_cenasCount.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl_cenasCount.setForeground(new java.awt.Color(243, 243, 194));
+        jl_cenasCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_cenasCount.setText("Cenas:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(85, 85, 85)
@@ -343,8 +355,7 @@ public class PedidosJF extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jl5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(84, 84, 84)
                                 .addComponent(jcheck_almuerzo)
                                 .addGap(18, 18, 18)
                                 .addComponent(jl6)
@@ -383,20 +394,36 @@ public class PedidosJF extends javax.swing.JFrame {
                             .addComponent(btn_encargar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtab_panel_general, javax.swing.GroupLayout.DEFAULT_SIZE, 711, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(6, 602, Short.MAX_VALUE)
-                        .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jscrollPanel_clientes)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jscrollPanel_viandas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                .addGap(15, 15, 15))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtab_panel_general, javax.swing.GroupLayout.DEFAULT_SIZE, 711, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(6, 602, Short.MAX_VALUE)
+                                .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jscrollPanel_clientes)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jscrollPanel_viandas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addGap(15, 15, 15))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jl_almuerzosCount, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jl_cenasCount, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(40, 40, 40)
+                    .addComponent(jl7)
+                    .addContainerGap(906, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_almuerzosCount, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_cenasCount, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jl_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -423,7 +450,6 @@ public class PedidosJF extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jcheck_cena)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jl5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jl6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jcheck_almuerzo, javax.swing.GroupLayout.Alignment.TRAILING)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -449,6 +475,11 @@ public class PedidosJF extends javax.swing.JFrame {
                 .addGap(9, 9, 9)
                 .addComponent(btn_limpiar)
                 .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(328, 328, 328)
+                    .addComponent(jl7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(414, Short.MAX_VALUE)))
         );
 
         pack();
@@ -475,7 +506,7 @@ public class PedidosJF extends javax.swing.JFrame {
         jcheck_miercoles_pescado.setSelected(false);
         jcheck_jueves.setSelected(false);
         jcheck_viernes.setSelected(false);
-        actualizarTablas();
+        actualizar();
     }
 
     private boolean checkCampos() { //logica:campos obligatorios + algun tipo + algun dia tienen que estar seleccionados
@@ -488,7 +519,7 @@ public class PedidosJF extends javax.swing.JFrame {
                 || jcheck_jueves.isSelected() || jcheck_viernes.isSelected()));
     }
 
-    private void actualizarTablas() {
+    private void actualizar() {
         jtable_clientes.setModel(ClienteBackEnd.actualizarTabla());
         jtable_viandas.setModel(ViandaBackEnd.actualizarTabla());
         jtable_lunes.setModel(PedidoBackEnd.actualizarTablas("Lunes"));
@@ -497,6 +528,9 @@ public class PedidosJF extends javax.swing.JFrame {
         jtable_miercoles_pescado.setModel(PedidoBackEnd.actualizarTablas("Miercoles Pescado"));
         jtable_jueves.setModel(PedidoBackEnd.actualizarTablas("Jueves"));
         jtable_viernes.setModel(PedidoBackEnd.actualizarTablas("Viernes"));
+        jl_almuerzosCount.setText("Almuerzos: " + PedidoBackEnd.calcularAlmuerzosHoy());
+        jl_cenasCount.setText("Cenas: " + PedidoBackEnd.calcularCenasHoy());
+        
     }
 
     private void filtrarCliente(String nombre) {
@@ -507,28 +541,7 @@ public class PedidosJF extends javax.swing.JFrame {
         jtable_viandas.setModel(ViandaBackEnd.filtrarNombre(vianda));
     }
 
-//    private StringBuilder tomarDias() {
-//        StringBuilder str = new StringBuilder();
-//        if (jcheck_lunes.isSelected()) {
-//            str.append("Lunes ");
-//        }
-//        if (jcheck_martes.isSelected()) {
-//            str.append("Martes ");
-//        }
-//        if (jcheck_miercoles_carne.isSelected()) {
-//            str.append("Miercoles Carne ");
-//        }
-//        if (jcheck_miercoles_pescado.isSelected()) {
-//            str.append("Miercoles Pescado ");
-//        }
-//        if (jcheck_jueves.isSelected()) {
-//            str.append("Jueves ");
-//        }
-//        if (jcheck_viernes.isSelected()) {
-//            str.append("Viernes ");
-//        }
-//        return str;
-//    }
+
     private TipoComida tomarTipo() {
         if (jcheck_almuerzo.isSelected()) {
             return TipoComida.Almuerzo;
@@ -597,7 +610,8 @@ public class PedidosJF extends javax.swing.JFrame {
     }
 
     private ArrayList<Dia> getDias() {
-        ArrayList<Dia> dias = null;
+        ArrayList<Dia> dias = new ArrayList<>(); //Inicializo el ArrayList<>();
+        
         if (jcheck_lunes.isSelected()) {
             dias.add(Dia.Lunes);
         }
@@ -634,12 +648,14 @@ public class PedidosJF extends javax.swing.JFrame {
                 PedidoEntidad pedido = new PedidoEntidad(jt_cliente.getText(), jt_vianda.getText(),
                         (Integer) js_unidades.getValue(), Float.valueOf(jt_precio.getText()), dia, 0, tomarTipo());
                 if (PedidoBackEnd.agregarPedido(pedido)) {
-                    JOptionPane.showMessageDialog(null, "Pedido encargado para el dia "+pedido.getDias());
+                    String mensaje = pedido.getCliente()+" encargo "+ unidades + " " 
+                            + pedido.getVianda() +" \npara el "+dia;
+                    JOptionPane.showMessageDialog(null, mensaje);
                 } else {
                     JOptionPane.showMessageDialog(null, "Error: al intentar encargar el pedido");
                 }
             }
-        actualizarTablas();
+        actualizar();
     }
 
     
@@ -686,7 +702,7 @@ public class PedidosJF extends javax.swing.JFrame {
             if (PedidoBackEnd.eliminarPedido(id)) {
                 JOptionPane.showMessageDialog(null, "Se elimino el pedido correctamente");
             }
-            actualizarTablas();
+            actualizar();
         } else
             JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
     }//GEN-LAST:event_btn_cancelarActionPerformed
@@ -812,10 +828,12 @@ public class PedidosJF extends javax.swing.JFrame {
     private javax.swing.JLabel jl2;
     private javax.swing.JLabel jl3;
     private javax.swing.JLabel jl4;
-    private javax.swing.JLabel jl5;
     private javax.swing.JLabel jl6;
+    private javax.swing.JLabel jl7;
     private javax.swing.JLabel jl9;
     private javax.swing.JLabel jl_Titulo;
+    private javax.swing.JLabel jl_almuerzosCount;
+    private javax.swing.JLabel jl_cenasCount;
     private javax.swing.JSpinner js_unidades;
     private javax.swing.JScrollPane jscrollPanel_clientes;
     private javax.swing.JScrollPane jscrollPanel_viandas;

@@ -78,6 +78,11 @@ public class ViandasJF extends javax.swing.JFrame {
         jt_nombre.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jt_nombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_nombre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        jt_nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jt_nombreActionPerformed(evt);
+            }
+        });
         jt_nombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jt_nombreKeyReleased(evt);
@@ -298,6 +303,10 @@ public class ViandasJF extends javax.swing.JFrame {
         actualizarTabla();
         limpiarCampos();
     }//GEN-LAST:event_btn_agregar1ActionPerformed
+
+    private void jt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jt_nombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jt_nombreActionPerformed
 
     /**
      * @param args the command line arguments

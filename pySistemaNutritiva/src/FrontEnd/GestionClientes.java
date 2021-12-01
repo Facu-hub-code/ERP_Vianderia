@@ -78,6 +78,11 @@ public class GestionClientes extends javax.swing.JFrame {
         jt_nombre.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jt_nombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_nombre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        jt_nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jt_nombreActionPerformed(evt);
+            }
+        });
         jt_nombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jt_nombreKeyReleased(evt);
@@ -88,6 +93,11 @@ public class GestionClientes extends javax.swing.JFrame {
         jt_apellido.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jt_apellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_apellido.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        jt_apellido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jt_apellidoActionPerformed(evt);
+            }
+        });
         jt_apellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jt_apellidoKeyReleased(evt);
@@ -413,6 +423,14 @@ public class GestionClientes extends javax.swing.JFrame {
         limpiarCampos();
         actualizarTabla();
     }//GEN-LAST:event_btn_agregar1ActionPerformed
+
+    private void jt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jt_nombreActionPerformed
+        //filtrarNombre();
+    }//GEN-LAST:event_jt_nombreActionPerformed
+
+    private void jt_apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jt_apellidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jt_apellidoActionPerformed
 
     /**
      * @param args the command line arguments
