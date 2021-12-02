@@ -140,7 +140,7 @@ public class LoginJF extends javax.swing.JFrame {
             sistemaPrincipal.setVisible(true);
             this.dispose();
         } else {
-            JOptionPane.showMessageDialog(null, "Credenciales de acceso incorrecta."
+            JOptionPane.showMessageDialog(null, "Credenciales de acceso incorrecta.\n"
                     + "Por favor vuelva a intentar");
         }
     }//GEN-LAST:event_btn_ingresarActionPerformed
@@ -152,7 +152,7 @@ public class LoginJF extends javax.swing.JFrame {
                 sistemaPrincipal.setVisible(true);
                 this.dispose();
             } else {
-                JOptionPane.showMessageDialog(null, "Credenciales de acceso incorrecta."
+                JOptionPane.showMessageDialog(null, "Credenciales de acceso incorrecta.\n"
                         + "Por favor vuelva a intentar");
             }
         }

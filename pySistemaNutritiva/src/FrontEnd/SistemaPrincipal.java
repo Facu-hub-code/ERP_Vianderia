@@ -45,7 +45,7 @@ public class SistemaPrincipal extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/SistPrincipal.png"))); // NOI18N
 
         btn_clientes.setBackground(new java.awt.Color(255, 253, 118));
-        btn_clientes.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btn_clientes.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btn_clientes.setForeground(new java.awt.Color(0, 0, 0));
         btn_clientes.setText("Clientes");
         btn_clientes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
@@ -56,7 +56,7 @@ public class SistemaPrincipal extends javax.swing.JFrame {
         });
 
         btn_viandas.setBackground(new java.awt.Color(255, 253, 118));
-        btn_viandas.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btn_viandas.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btn_viandas.setForeground(new java.awt.Color(0, 0, 0));
         btn_viandas.setText("Viandas");
         btn_viandas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
@@ -67,7 +67,7 @@ public class SistemaPrincipal extends javax.swing.JFrame {
         });
 
         btn_pedidos.setBackground(new java.awt.Color(255, 253, 118));
-        btn_pedidos.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btn_pedidos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btn_pedidos.setForeground(new java.awt.Color(0, 0, 0));
         btn_pedidos.setText("Pedidos");
         btn_pedidos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
@@ -78,7 +78,7 @@ public class SistemaPrincipal extends javax.swing.JFrame {
         });
 
         btn_ventas.setBackground(new java.awt.Color(255, 253, 118));
-        btn_ventas.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btn_ventas.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btn_ventas.setForeground(new java.awt.Color(0, 0, 0));
         btn_ventas.setText("Ventas");
         btn_ventas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
@@ -89,7 +89,7 @@ public class SistemaPrincipal extends javax.swing.JFrame {
         });
 
         btn_Caja.setBackground(new java.awt.Color(255, 253, 118));
-        btn_Caja.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btn_Caja.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btn_Caja.setForeground(new java.awt.Color(0, 0, 0));
         btn_Caja.setText("Caja");
         btn_Caja.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));

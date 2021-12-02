@@ -89,31 +89,31 @@ public class PedidosJF extends javax.swing.JFrame {
         jl_Titulo.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jl1.setBackground(new java.awt.Color(243, 243, 194));
-        jl1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jl1.setForeground(new java.awt.Color(243, 243, 194));
         jl1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jl1.setText("Cliente:");
 
         jl2.setBackground(new java.awt.Color(243, 243, 194));
-        jl2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jl2.setForeground(new java.awt.Color(243, 243, 194));
         jl2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jl2.setText("Vianda:");
 
         jl3.setBackground(new java.awt.Color(243, 243, 194));
-        jl3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jl3.setForeground(new java.awt.Color(243, 243, 194));
         jl3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jl3.setText("Precio:");
 
         jl4.setBackground(new java.awt.Color(243, 243, 194));
-        jl4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jl4.setForeground(new java.awt.Color(243, 243, 194));
         jl4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jl4.setText("Unidades:");
 
         jt_cliente.setBackground(new java.awt.Color(243, 243, 194));
-        jt_cliente.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jt_cliente.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jt_cliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_cliente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         jt_cliente.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -123,7 +123,7 @@ public class PedidosJF extends javax.swing.JFrame {
         });
 
         jt_vianda.setBackground(new java.awt.Color(243, 243, 194));
-        jt_vianda.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jt_vianda.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jt_vianda.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_vianda.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         jt_vianda.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -134,7 +134,7 @@ public class PedidosJF extends javax.swing.JFrame {
 
         jt_precio.setEditable(false);
         jt_precio.setBackground(new java.awt.Color(243, 243, 194));
-        jt_precio.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jt_precio.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jt_precio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_precio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         jt_precio.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -144,7 +144,7 @@ public class PedidosJF extends javax.swing.JFrame {
         });
 
         btn_encargar.setBackground(new java.awt.Color(255, 253, 118));
-        btn_encargar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btn_encargar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btn_encargar.setText("Encargar");
         btn_encargar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         btn_encargar.addActionListener(new java.awt.event.ActionListener() {
@@ -154,7 +154,7 @@ public class PedidosJF extends javax.swing.JFrame {
         });
 
         btn_cancelar.setBackground(new java.awt.Color(255, 253, 118));
-        btn_cancelar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btn_cancelar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btn_cancelar.setText("Cancelar");
         btn_cancelar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -164,7 +164,7 @@ public class PedidosJF extends javax.swing.JFrame {
         });
 
         btn_limpiar.setBackground(new java.awt.Color(255, 253, 118));
-        btn_limpiar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btn_limpiar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btn_limpiar.setText("Limpiar");
         btn_limpiar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -174,13 +174,13 @@ public class PedidosJF extends javax.swing.JFrame {
         });
 
         jl_almuerzosCount.setBackground(new java.awt.Color(243, 243, 194));
-        jl_almuerzosCount.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl_almuerzosCount.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jl_almuerzosCount.setForeground(new java.awt.Color(243, 243, 194));
         jl_almuerzosCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jl_almuerzosCount.setText("Almuerzos:");
 
         jl6.setBackground(new java.awt.Color(243, 243, 194));
-        jl6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jl6.setForeground(new java.awt.Color(243, 243, 194));
         jl6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jl6.setText("Cena:");
@@ -210,7 +210,7 @@ public class PedidosJF extends javax.swing.JFrame {
         jcheck_miercoles_carne.setText("Miercoles Carne");
 
         jl9.setBackground(new java.awt.Color(243, 243, 194));
-        jl9.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jl9.setForeground(new java.awt.Color(243, 243, 194));
         jl9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jl9.setText("Dias:");
@@ -331,13 +331,13 @@ public class PedidosJF extends javax.swing.JFrame {
         jscrollPanel_viandas.setViewportView(jtable_viandas);
 
         jl7.setBackground(new java.awt.Color(243, 243, 194));
-        jl7.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jl7.setForeground(new java.awt.Color(243, 243, 194));
         jl7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jl7.setText("Almuerzo:");
 
         jl_cenasCount.setBackground(new java.awt.Color(243, 243, 194));
-        jl_cenasCount.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jl_cenasCount.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jl_cenasCount.setForeground(new java.awt.Color(243, 243, 194));
         jl_cenasCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jl_cenasCount.setText("Cenas:");
@@ -354,13 +354,6 @@ public class PedidosJF extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(84, 84, 84)
-                                .addComponent(jcheck_almuerzo)
-                                .addGap(18, 18, 18)
-                                .addComponent(jl6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jcheck_cena))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -389,17 +382,25 @@ public class PedidosJF extends javax.swing.JFrame {
                                     .addComponent(jcheck_miercoles_pescado)))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_encargar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_encargar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jl7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jcheck_almuerzo)
+                        .addGap(18, 18, 18)
+                        .addComponent(jl6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jcheck_cena)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtab_panel_general, javax.swing.GroupLayout.DEFAULT_SIZE, 711, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(6, 602, Short.MAX_VALUE)
-                                .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jtab_panel_general, javax.swing.GroupLayout.DEFAULT_SIZE, 724, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jscrollPanel_clientes)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -410,11 +411,6 @@ public class PedidosJF extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jl_cenasCount, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(40, 40, 40)
-                    .addComponent(jl7)
-                    .addContainerGap(906, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -451,7 +447,8 @@ public class PedidosJF extends javax.swing.JFrame {
                             .addComponent(jcheck_cena)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jl6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jcheck_almuerzo, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                .addComponent(jcheck_almuerzo, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(jl7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jl9, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -466,20 +463,15 @@ public class PedidosJF extends javax.swing.JFrame {
                         .addComponent(jcheck_jueves)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jcheck_viernes)
-                        .addGap(77, 77, 77)
+                        .addGap(31, 31, 31)
+                        .addComponent(btn_limpiar)
+                        .addGap(18, 18, 18)
                         .addComponent(btn_encargar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jscrollPanel_clientes, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
                     .addComponent(jscrollPanel_viandas))
-                .addGap(9, 9, 9)
-                .addComponent(btn_limpiar)
-                .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(328, 328, 328)
-                    .addComponent(jl7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(414, Short.MAX_VALUE)))
+                .addGap(43, 43, 43))
         );
 
         pack();
@@ -489,6 +481,7 @@ public class PedidosJF extends javax.swing.JFrame {
         getContentPane().setBackground(new Color(49, 28, 28));
         setLocationRelativeTo(null);
         setDefaultCloseOperation(HIDE_ON_CLOSE);
+        setTitle("Pedidos");
         js_unidades.setMinimumSize(new Dimension(0, 10));
 
     }
