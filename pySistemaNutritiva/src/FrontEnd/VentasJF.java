@@ -416,9 +416,9 @@ public class VentasJF extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void initComponentsFacu() {
-        this.getContentPane().setBackground(new Color(49, 28, 28));
+        getContentPane().setBackground(new Color(49, 28, 28));
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(HIDE_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setTitle("Ventas");
     }
 

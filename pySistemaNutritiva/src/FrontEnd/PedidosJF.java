@@ -486,7 +486,7 @@ public class PedidosJF extends javax.swing.JFrame {
     private void initComponentsFacu() {
         getContentPane().setBackground(new Color(49, 28, 28));
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(HIDE_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setTitle("Pedidos");
         js_unidades.setMinimumSize(new Dimension(0, 10));
 

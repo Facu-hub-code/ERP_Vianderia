@@ -30,7 +30,7 @@ public class ViandasJF extends javax.swing.JFrame {
         getContentPane().setBackground(new Color(49, 28, 28));
         setLocationRelativeTo(null);
         setTitle("Viandas");
-        setDefaultCloseOperation(HIDE_ON_CLOSE);            
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);            
     }
     /**
      * This method is called from within the constructor to initialize the form.

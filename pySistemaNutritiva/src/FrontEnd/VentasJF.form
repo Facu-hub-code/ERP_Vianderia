@@ -81,7 +81,6 @@
                   <Component id="jscrollPane_ventas" pref="786" max="32767" attributes="0"/>
                   <Component id="jtab_panel_general" alignment="0" pref="786" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="btn_vender2" min="-2" pref="73" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btn_borrarVentas" min="-2" pref="157" max="-2" attributes="0"/>
