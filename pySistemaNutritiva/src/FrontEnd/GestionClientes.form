@@ -34,36 +34,36 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jl_unidades2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jl_unidades5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jl_unidades3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jl_unidades1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jl_unidades4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jl_unidades6" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jt_telefono" max="32767" attributes="0"/>
-                                  <Component id="jt_apellido" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jt_nombre" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="jt_direccion" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jt_dni" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jt_id" alignment="1" min="-2" pref="167" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="btn_eliminar" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btn_agregar" alignment="0" max="32767" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                              <Component id="btn_agregar1" min="-2" pref="124" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="jl_unidades2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jl_unidades5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jl_unidades3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jl_unidades1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jl_unidades4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jl_unidades6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jt_telefono" max="32767" attributes="0"/>
+                                      <Component id="jt_apellido" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jt_nombre" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jt_direccion" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jt_dni" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jt_id" alignment="1" min="-2" pref="167" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
-                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                              <Component id="btn_agregar" alignment="0" min="-2" pref="262" max="-2" attributes="0"/>
-                              <Component id="btn_agregar1" alignment="1" min="-2" pref="124" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="btn_eliminar" alignment="0" min="-2" pref="262" max="-2" attributes="0"/>
-                          <Component id="btn_modificar" alignment="0" min="-2" pref="262" max="-2" attributes="0"/>
+                          <Component id="btn_modificar" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
               <Component id="jScrollPane1" pref="760" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -79,33 +79,33 @@
                       <Component id="jLabel1" min="-2" pref="56" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jt_nombre" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="jt_nombre" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jl_unidades1" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jt_apellido" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="jt_apellido" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jl_unidades3" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jt_telefono" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="jt_telefono" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jl_unidades5" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jt_direccion" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="jt_direccion" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jl_unidades2" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jt_dni" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="jt_dni" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jl_unidades4" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jl_unidades6" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="jt_id" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="jt_id" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Component id="btn_agregar1" min="-2" max="-2" attributes="0"/>

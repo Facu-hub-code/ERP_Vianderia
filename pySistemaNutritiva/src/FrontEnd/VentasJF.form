@@ -83,7 +83,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="btn_vender2" min="-2" pref="73" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btn_borrarVentas" min="-2" pref="157" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -99,15 +99,12 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="titulo" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btn_vender2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btn_borrarVentas" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                      <Component id="btn_borrarVentas" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_vender2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -140,7 +137,7 @@
                           <Component id="jt_tipoComida" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="jscrollPane_ventas" pref="210" max="32767" attributes="0"/>
+                  <Component id="jscrollPane_ventas" pref="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
