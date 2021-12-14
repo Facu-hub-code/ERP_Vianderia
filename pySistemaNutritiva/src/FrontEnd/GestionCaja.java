@@ -337,7 +337,8 @@ public class GestionCaja extends javax.swing.JFrame {
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
         if(checkCampos()){
             Date date = new Date();
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");     
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            
             MovimientoEntidad movimiento = new MovimientoEntidad(Float.valueOf(jt_monto.getText()),jt_especificacion.getText(), 
                 jr_ingreso.isSelected(), jr_efectivo.isSelected(), simpleDateFormat.format(date));
             if(MovimientoBackEnd.agregarMovimiento(movimiento))
