@@ -65,11 +65,17 @@ public class PedidosJF extends javax.swing.JFrame {
         jcheck_miercoles_carne = new javax.swing.JCheckBox();
         jl9 = new javax.swing.JLabel();
         jtab_panel_general = new javax.swing.JTabbedPane();
+        jScrollPane_lunes = new javax.swing.JScrollPane();
         jtable_lunes = new javax.swing.JTable();
+        jScrollPane_martes = new javax.swing.JScrollPane();
         jtable_martes = new javax.swing.JTable();
+        jScrollPane_miercoles_carne = new javax.swing.JScrollPane();
         jtable_miercoles_carne = new javax.swing.JTable();
+        jScrollPane_miercoles_pescado = new javax.swing.JScrollPane();
         jtable_miercoles_pescado = new javax.swing.JTable();
+        jScrollPane_jueves = new javax.swing.JScrollPane();
         jtable_jueves = new javax.swing.JTable();
+        jScrollPane_viernes = new javax.swing.JScrollPane();
         jtable_viernes = new javax.swing.JTable();
         jscrollPanel_clientes = new javax.swing.JScrollPane();
         jtable_clientes = new javax.swing.JTable();
@@ -228,7 +234,9 @@ public class PedidosJF extends javax.swing.JFrame {
                 jtable_lunesMouseClicked(evt);
             }
         });
-        jtab_panel_general.addTab("Lunes", jtable_lunes);
+        jScrollPane_lunes.setViewportView(jtable_lunes);
+
+        jtab_panel_general.addTab("Lunes", jScrollPane_lunes);
 
         jtable_martes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -243,7 +251,9 @@ public class PedidosJF extends javax.swing.JFrame {
                 jtable_martesMouseClicked(evt);
             }
         });
-        jtab_panel_general.addTab("Martes", jtable_martes);
+        jScrollPane_martes.setViewportView(jtable_martes);
+
+        jtab_panel_general.addTab("Martes", jScrollPane_martes);
 
         jtable_miercoles_carne.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -258,7 +268,9 @@ public class PedidosJF extends javax.swing.JFrame {
                 jtable_miercoles_carneMouseClicked(evt);
             }
         });
-        jtab_panel_general.addTab("Miercoles Carne", jtable_miercoles_carne);
+        jScrollPane_miercoles_carne.setViewportView(jtable_miercoles_carne);
+
+        jtab_panel_general.addTab("Miercoles Carne", jScrollPane_miercoles_carne);
 
         jtable_miercoles_pescado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -273,7 +285,9 @@ public class PedidosJF extends javax.swing.JFrame {
                 jtable_miercoles_pescadoMouseClicked(evt);
             }
         });
-        jtab_panel_general.addTab("Miercoles Pescado", jtable_miercoles_pescado);
+        jScrollPane_miercoles_pescado.setViewportView(jtable_miercoles_pescado);
+
+        jtab_panel_general.addTab("Miercoles Pescado", jScrollPane_miercoles_pescado);
 
         jtable_jueves.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -288,7 +302,9 @@ public class PedidosJF extends javax.swing.JFrame {
                 jtable_juevesMouseClicked(evt);
             }
         });
-        jtab_panel_general.addTab("Jueves", jtable_jueves);
+        jScrollPane_jueves.setViewportView(jtable_jueves);
+
+        jtab_panel_general.addTab("Jueves", jScrollPane_jueves);
 
         jtable_viernes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -298,7 +314,9 @@ public class PedidosJF extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jtab_panel_general.addTab("Viernes", jtable_viernes);
+        jScrollPane_viernes.setViewportView(jtable_viernes);
+
+        jtab_panel_general.addTab("Viernes", jScrollPane_viernes);
 
         jtable_clientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -477,7 +495,7 @@ public class PedidosJF extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                         .addComponent(btn_cancelar))
                     .addComponent(jscrollPanel_viandas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -815,6 +833,12 @@ public class PedidosJF extends javax.swing.JFrame {
     private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_encargar;
     private javax.swing.JButton btn_limpiar;
+    private javax.swing.JScrollPane jScrollPane_jueves;
+    private javax.swing.JScrollPane jScrollPane_lunes;
+    private javax.swing.JScrollPane jScrollPane_martes;
+    private javax.swing.JScrollPane jScrollPane_miercoles_carne;
+    private javax.swing.JScrollPane jScrollPane_miercoles_pescado;
+    private javax.swing.JScrollPane jScrollPane_viernes;
     private javax.swing.JCheckBox jcheck_almuerzo;
     private javax.swing.JCheckBox jcheck_cena;
     private javax.swing.JCheckBox jcheck_jueves;

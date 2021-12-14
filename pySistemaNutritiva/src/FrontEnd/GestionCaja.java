@@ -46,7 +46,7 @@ public class GestionCaja extends javax.swing.JFrame {
         btn_agregar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
         btn_modificar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPane_caja = new javax.swing.JScrollPane();
         jtable_caja = new javax.swing.JTable();
         jl_unidades1 = new javax.swing.JLabel();
         jl_unidades2 = new javax.swing.JLabel();
@@ -142,7 +142,7 @@ public class GestionCaja extends javax.swing.JFrame {
                 jtable_cajaMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jtable_caja);
+        jScrollPane_caja.setViewportView(jtable_caja);
 
         jl_unidades1.setBackground(new java.awt.Color(243, 243, 194));
         jl_unidades1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -239,7 +239,7 @@ public class GestionCaja extends javax.swing.JFrame {
                         .addComponent(btn_modificar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 736, Short.MAX_VALUE)
+                    .addComponent(jScrollPane_caja, javax.swing.GroupLayout.DEFAULT_SIZE, 736, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btn_borrarRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -289,7 +289,7 @@ public class GestionCaja extends javax.swing.JFrame {
                             .addComponent(btn_limpiar)
                             .addComponent(btn_borrarRegistros))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane_caja, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -445,7 +445,7 @@ public class GestionCaja extends javax.swing.JFrame {
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_limpiar;
     private javax.swing.JButton btn_modificar;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane_caja;
     private javax.swing.JLabel jl_Total;
     private javax.swing.JLabel jl_efectivo;
     private javax.swing.JLabel jl_titulo;
