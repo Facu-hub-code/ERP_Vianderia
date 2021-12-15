@@ -31,19 +31,19 @@ public class PedidoBackEnd {
         String dia = null;
         
         switch (diaSemana){
-            case 2:
+            case 1:
                 dia = "Lunes";
                 break;
-            case 3:
+            case 2:
                 dia = "Martes";
                 break;
-            case 4:
+            case 3:
                 dia = "Miercoles"; //todo revisar que tome ambos.
                 break;
-            case 5:
+            case 4:
                 dia = "Jueves";
                 break;
-            case 6:
+            case 5:
                 dia = "Viernes";
                 break;
             default:
