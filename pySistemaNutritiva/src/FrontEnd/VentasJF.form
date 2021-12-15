@@ -296,6 +296,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jt_clienteKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jt_vianda">
       <Properties>

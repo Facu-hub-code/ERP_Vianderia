@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PedidoBackEnd {
 
-    private static String tomarDia(){
+    public static String getDiaSiguiente(){
         Date date = new Date();
         GregorianCalendar cal = new GregorianCalendar();
         cal.setTime(date);
@@ -52,8 +52,39 @@ public class PedidoBackEnd {
         return dia;
     }
     
+    public static String getDia(){
+        Date date = new Date();
+        GregorianCalendar cal = new GregorianCalendar();
+        cal.setTime(date);
+        int diaSemana = cal.get(Calendar.DAY_OF_WEEK);
+        
+        String dia = null;
+        
+        switch (diaSemana){
+            case 1:
+                dia = "Lunes";
+                break;
+            case 2:
+                dia = "Martes";
+                break;
+            case 3:
+                dia = "Miercoles"; //todo revisar que tome ambos.
+                break;
+            case 4:
+                dia = "Jueves";
+                break;
+            case 5:
+                dia = "Viernes";
+                break;
+            default:
+                break;                                
+        }
+        return dia;
+    }
+
+    
     public static int calcularAlmuerzosHoy() {    
-        String dia = tomarDia();
+        String dia = getDiaSiguiente();
         int count = 0;
         Connection cn = Conexion.conectar();
         try {            
@@ -72,7 +103,7 @@ public class PedidoBackEnd {
     }
 
     public static int calcularCenasHoy() {    
-        String dia = tomarDia();
+        String dia = getDiaSiguiente();
         int count = 0;
         Connection cn = Conexion.conectar();
         try {            

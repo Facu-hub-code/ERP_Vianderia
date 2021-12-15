@@ -127,6 +127,11 @@ public class VentasJF extends javax.swing.JFrame {
         jt_cliente.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jt_cliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_cliente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        jt_cliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jt_clienteKeyReleased(evt);
+            }
+        });
 
         jt_vianda.setBackground(new java.awt.Color(243, 243, 194));
         jt_vianda.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -582,6 +587,13 @@ public class VentasJF extends javax.swing.JFrame {
         int filaSeleccionada = jtable_viernes.getSelectedRow();
         mouseClickFacu((JTable) jtab_panel_general.getSelectedComponent(), filaSeleccionada);
     }//GEN-LAST:event_jtable_viernesMouseClicked
+
+    private void filtrarNombre(String valor){
+        PedidoBackEnd.
+    }
+    private void jt_clienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_clienteKeyReleased
+        filtrarNombre(jt_cliente.getText());
+    }//GEN-LAST:event_jt_clienteKeyReleased
 
     /**
      * @param args the command line arguments
