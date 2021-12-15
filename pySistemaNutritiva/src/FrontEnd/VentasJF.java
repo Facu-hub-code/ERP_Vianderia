@@ -589,7 +589,7 @@ public class VentasJF extends javax.swing.JFrame {
     }//GEN-LAST:event_jtable_viernesMouseClicked
 
     private void filtrarNombre(String valor){
-        PedidoBackEnd.
+        VentaBackEnd.filtrarPorCliente(valor);
     }
     private void jt_clienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_clienteKeyReleased
         filtrarNombre(jt_cliente.getText());

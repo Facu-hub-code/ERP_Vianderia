@@ -60,6 +60,34 @@ public class VentaBackEnd {
         return null;
     }
     
+    public static DefaultTableModel filtrarPorCliente(String cliente){
+        Connection con = Conexion.conectar();
+        String[] titulos = {"ID", "Cliente", "Vianda" ,"Unidades", "Precio", "Fecha", "Tipo"};
+        DefaultTableModel defaultTableModel = new DefaultTableModel();
+        for(String titulo: titulos)
+            defaultTableModel.addColumn(titulo);
+        String[] registros = new String[7];
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM ventas WHERE cliente LIKE '%" + cliente +"%'");
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()){           
+                registros[0] = rs.getInt("idventa")+"";
+                registros[1] = rs.getString("cliente");
+                registros[2] = rs.getString("vianda");
+                registros[3] = rs.getInt("unidades")+"";
+                registros[4] = rs.getFloat("precio")+"";
+                registros[5] = rs.getDate("fecha").toString();
+                registros[6] = rs.getString("tipo");
+                defaultTableModel.addRow(registros);
+            }           
+            con.close();
+            return defaultTableModel;
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return null;
+    }
+    
     public static boolean modificarVenta(VentaEntidad venta){
         Connection cn = Conexion.conectar();
         String sql = "UPDATE ventas SET "
