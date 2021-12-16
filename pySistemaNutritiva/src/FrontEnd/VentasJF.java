@@ -590,6 +590,25 @@ public class VentasJF extends javax.swing.JFrame {
         mouseClickFacu(jtable_viernes, filaSeleccionada);
     }//GEN-LAST:event_jtable_viernesMouseClicked
 
+    private JTable tomarTableHoy(String dia){
+        switch(dia){
+            case "Lunes":
+                return jtable_lunes;
+                break;
+            case "Martes":
+                return jtable_martes;
+                break;
+            case "Miercoles":
+                //todo resolver
+                break;
+            case "Jueves":
+                return null;
+                break;
+                
+                   
+        }
+        return null;
+    }
     private void filtrarNombre(String valor){
         //tomar la tabla del dia de hoy. todo: crear metodo
         //Modificarla segun el cliente que entra como @param: valor
