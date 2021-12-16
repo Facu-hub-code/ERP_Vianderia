@@ -15,7 +15,9 @@ import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -550,27 +552,27 @@ public class VentasJF extends javax.swing.JFrame {
 
     private void jtable_lunesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_lunesMouseClicked
         int filaSeleccionada = jtable_lunes.rowAtPoint(evt.getPoint());
-        mouseClickFacu((JTable) jtab_panel_general.getSelectedComponent(), filaSeleccionada);
+        mouseClickFacu(jtable_lunes, filaSeleccionada);
     }//GEN-LAST:event_jtable_lunesMouseClicked
 
     private void jtable_martesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_martesMouseClicked
         int filaSeleccionada = jtable_martes.getSelectedRow();
-        mouseClickFacu((JTable) jtab_panel_general.getSelectedComponent(), filaSeleccionada);
+        mouseClickFacu(jtable_martes, filaSeleccionada);
     }//GEN-LAST:event_jtable_martesMouseClicked
 
     private void jtable_miercoles_carneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_miercoles_carneMouseClicked
         int filaSeleccionada = jtable_miercoles_carne.getSelectedRow();
-        mouseClickFacu((JTable) jtab_panel_general.getSelectedComponent(), filaSeleccionada);
+        mouseClickFacu(jtable_miercoles_carne, filaSeleccionada);
     }//GEN-LAST:event_jtable_miercoles_carneMouseClicked
 
     private void jtable_miercoles_pescadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_miercoles_pescadoMouseClicked
         int filaSeleccionada = jtable_miercoles_pescado.getSelectedRow();
-        mouseClickFacu((JTable) jtab_panel_general.getSelectedComponent(), filaSeleccionada);
+        mouseClickFacu(jtable_miercoles_pescado, filaSeleccionada);
     }//GEN-LAST:event_jtable_miercoles_pescadoMouseClicked
 
     private void jtable_juevesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_juevesMouseClicked
         int filaSeleccionada = jtable_jueves.getSelectedRow();
-        mouseClickFacu((JTable) jtab_panel_general.getSelectedComponent(), filaSeleccionada);
+        mouseClickFacu(jtable_jueves, filaSeleccionada);
     }//GEN-LAST:event_jtable_juevesMouseClicked
 
     private void btn_vender2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vender2ActionPerformed
@@ -585,13 +587,16 @@ public class VentasJF extends javax.swing.JFrame {
 
     private void jtable_viernesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_viernesMouseClicked
         int filaSeleccionada = jtable_viernes.getSelectedRow();
-        mouseClickFacu((JTable) jtab_panel_general.getSelectedComponent(), filaSeleccionada);
+        mouseClickFacu(jtable_viernes, filaSeleccionada);
     }//GEN-LAST:event_jtable_viernesMouseClicked
 
     private void filtrarNombre(String valor){
-        VentaBackEnd.filtrarPorCliente(valor);
+        //tomar la tabla del dia de hoy. todo: crear metodo
+        //Modificarla segun el cliente que entra como @param: valor
+        //setearla en el panel general 
     }
     private void jt_clienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_clienteKeyReleased
+        //jtab_panel_general.setComponentAt(WIDTH, rootPane); todo: seleccionar por click, luego implementar
         filtrarNombre(jt_cliente.getText());
     }//GEN-LAST:event_jt_clienteKeyReleased
 

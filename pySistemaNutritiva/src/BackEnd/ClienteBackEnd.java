@@ -78,19 +78,20 @@ public class ClienteBackEnd {
     
     public static DefaultTableModel filtrarApellido(String valor) {
         Connection conn = Conexion.conectar();
-        String[] titulos = {"Nombre", "Apellido", "DNI", "Direccion", "Telefono"};
-        String[] registros = new String[5];
+        String[] titulos = {"ID", "Nombre", "Apellido", "DNI", "Direccion", "Telefono"};
+        String[] registros = new String[6];
         DefaultTableModel model = new DefaultTableModel(null, titulos);
         String sql = "SELECT * FROM clientes WHERE apellido LIKE '%" + valor + "%'";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                registros[0] = rs.getString("nombre");
-                registros[1] = rs.getString("apellido");
-                registros[2] = rs.getInt("dni")+"";
-                registros[3] = rs.getString("direccion");
-                registros[4] = rs.getLong("telefono")+"";
+                registros[0] = rs.getString("idcliente");
+                registros[1] = rs.getString("nombre");
+                registros[2] = rs.getString("apellido");
+                registros[3] = rs.getInt("dni")+"";
+                registros[4] = rs.getString("direccion");
+                registros[5] = rs.getLong("telefono")+"";
                 model.addRow(registros);
             }
             conn.close();
@@ -103,19 +104,20 @@ public class ClienteBackEnd {
     
     public static DefaultTableModel filtrarNombre(String valor) {
         Connection conn = Conexion.conectar();
-        String[] titulos = {"Nombre", "Apellido", "DNI", "Direccion", "Telefono"};
-        String[] registros = new String[5];
+        String[] titulos = {"ID", "Nombre", "Apellido", "DNI", "Direccion", "Telefono"};
+        String[] registros = new String[6];
         DefaultTableModel model = new DefaultTableModel(null, titulos);
         String sql = "SELECT * FROM clientes WHERE nombre LIKE '%" + valor + "%'";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                registros[0] = rs.getString("nombre");
-                registros[1] = rs.getString("apellido");
-                registros[2] = rs.getInt("dni")+"";
-                registros[3] = rs.getString("direccion");
-                registros[4] = rs.getLong("telefono")+"";
+                registros[0] = rs.getString("idcliente");
+                registros[1] = rs.getString("nombre");
+                registros[2] = rs.getString("apellido");
+                registros[3] = rs.getInt("dni")+"";
+                registros[4] = rs.getString("direccion");
+                registros[5] = rs.getLong("telefono")+"";
                 model.addRow(registros);
             }
             conn.close();

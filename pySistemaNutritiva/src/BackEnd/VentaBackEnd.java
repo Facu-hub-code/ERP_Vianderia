@@ -61,27 +61,27 @@ public class VentaBackEnd {
     }
     
     public static DefaultTableModel filtrarPorCliente(String cliente){
-        Connection con = Conexion.conectar();
-        String[] titulos = {"ID", "Cliente", "Vianda" ,"Unidades", "Precio", "Fecha", "Tipo"};
-        DefaultTableModel defaultTableModel = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel();
+        String[] titulos = {"idpedido", "cliente", "dias", "precio", "tipo", "unidades", "vianda" };
         for(String titulo: titulos)
-            defaultTableModel.addColumn(titulo);
+            model.addColumn(titulo);
         String[] registros = new String[7];
+        Connection cn = Conexion.conectar();
         try {
-            PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM ventas WHERE cliente LIKE '%" + cliente +"%'");
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()){           
-                registros[0] = rs.getInt("idventa")+"";
+            PreparedStatement ps = cn.prepareStatement("SELECT * FROM pedidos WHERE (cliente LIKE '%"+cliente+"%')");
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                registros[0] = rs.getInt("idpedido")+"";
                 registros[1] = rs.getString("cliente");
-                registros[2] = rs.getString("vianda");
-                registros[3] = rs.getInt("unidades")+"";
-                registros[4] = rs.getFloat("precio")+"";
-                registros[5] = rs.getDate("fecha").toString();
-                registros[6] = rs.getString("tipo");
-                defaultTableModel.addRow(registros);
-            }           
-            con.close();
-            return defaultTableModel;
+                registros[2] = rs.getString("dias");
+                registros[3] = rs.getFloat("precio")+"";
+                registros[4] = rs.getString("tipo");
+                registros[5] = rs.getInt("unidades")+"";
+                registros[6] = rs.getString("vianda");
+                model.addRow(registros);
+            }
+            cn.close();
+            return model;
         } catch (SQLException e) {
             System.out.println(e.toString());
         }
