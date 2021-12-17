@@ -33,22 +33,13 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Component id="img_login" min="-2" pref="481" max="-2" attributes="0"/>
+              <EmptySpace pref="40" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
-                      <Component id="jLabelRound1" min="-2" pref="129" max="-2" attributes="0"/>
-                      <EmptySpace pref="117" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jt_pass" min="-2" pref="262" max="-2" attributes="0"/>
-                          <Component id="jt_usuario" min="-2" pref="256" max="-2" attributes="0"/>
-                          <Component id="btn_ingresar" alignment="0" min="-2" pref="262" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jt_pass" min="-2" pref="262" max="-2" attributes="0"/>
+                  <Component id="jt_usuario" min="-2" pref="256" max="-2" attributes="0"/>
+                  <Component id="btn_ingresar" alignment="0" min="-2" pref="262" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -61,9 +52,7 @@
                       <Component id="img_login" min="-2" pref="600" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
-                      <Component id="jLabelRound1" min="-2" pref="122" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="305" max="-2" attributes="0"/>
                       <Component id="jt_usuario" min="-2" pref="19" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="jt_pass" min="-2" max="-2" attributes="0"/>
@@ -153,16 +142,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_ingresarActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="jroundborder.JLabelRound" name="jLabelRound1">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-            <PropertyBean type="jroundborder.BorderRound"/>
-        </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Recursos/logo_login.png"/>
-        </Property>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>
