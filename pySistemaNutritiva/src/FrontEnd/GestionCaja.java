@@ -301,6 +301,8 @@ public class GestionCaja extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setTitle("Caja");
+        jr_efectivo.setSelected(true);
+        jr_ingreso.setSelected(true);
     }
     
     private boolean checkCampos(){
@@ -315,8 +317,8 @@ public class GestionCaja extends javax.swing.JFrame {
     private void limpiarCampos(){
         jt_monto.setText("");
         jt_especificacion.setText("");
-        jr_ingreso.setSelected(false);
-        jr_efectivo.setSelected(false);
+        jr_ingreso.setSelected(true);
+        jr_efectivo.setSelected(true);
     }
     
     //Metodo que actualiza los valores de la tabla segun la base de datos

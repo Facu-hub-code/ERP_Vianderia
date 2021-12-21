@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="JRoundBorder">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/pySistemaNutritiva/libs/JRound/JRoundBorder.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

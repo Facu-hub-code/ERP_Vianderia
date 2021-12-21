@@ -60,7 +60,7 @@ public class VentaBackEnd {
         return null;
     }
     
-    public static DefaultTableModel filtrarPorCliente(String cliente){
+    public static DefaultTableModel filtrarPorCliente(String cliente, String dia){
         DefaultTableModel model = new DefaultTableModel();
         String[] titulos = {"idpedido", "cliente", "dias", "precio", "tipo", "unidades", "vianda" };
         for(String titulo: titulos)
@@ -68,7 +68,8 @@ public class VentaBackEnd {
         String[] registros = new String[7];
         Connection cn = Conexion.conectar();
         try {
-            PreparedStatement ps = cn.prepareStatement("SELECT * FROM pedidos WHERE (cliente LIKE '%"+cliente+"%')");
+            PreparedStatement ps = cn.prepareStatement("SELECT * FROM pedidos WHERE ( (cliente LIKE '%"+cliente+"%')"
+                    + " && (dias LIKE '%"+dia+"%'))");
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 registros[0] = rs.getInt("idpedido")+"";

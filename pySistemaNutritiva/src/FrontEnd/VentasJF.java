@@ -74,7 +74,7 @@ public class VentasJF extends javax.swing.JFrame {
         jtable_jueves = new javax.swing.JTable();
         jScrollPane_viernes = new javax.swing.JScrollPane();
         jtable_viernes = new javax.swing.JTable();
-        btn_vender2 = new javax.swing.JButton();
+        btn_limpiar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(49, 28, 28));
@@ -214,6 +214,11 @@ public class VentasJF extends javax.swing.JFrame {
 
             }
         ));
+        jtable_ventas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtable_ventasMouseClicked(evt);
+            }
+        });
         jscrollPane_ventas.setViewportView(jtable_ventas);
 
         jtable_lunes.setModel(new javax.swing.table.DefaultTableModel(
@@ -301,12 +306,12 @@ public class VentasJF extends javax.swing.JFrame {
 
         jtab_panel_general.addTab("Viernes", jScrollPane_viernes);
 
-        btn_vender2.setBackground(new java.awt.Color(255, 253, 118));
-        btn_vender2.setText("Limpiar");
-        btn_vender2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        btn_vender2.addActionListener(new java.awt.event.ActionListener() {
+        btn_limpiar.setBackground(new java.awt.Color(255, 253, 118));
+        btn_limpiar.setText("Limpiar");
+        btn_limpiar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_vender2ActionPerformed(evt);
+                btn_limpiarActionPerformed(evt);
             }
         });
 
@@ -356,7 +361,7 @@ public class VentasJF extends javax.swing.JFrame {
                     .addComponent(jscrollPane_ventas, javax.swing.GroupLayout.DEFAULT_SIZE, 786, Short.MAX_VALUE)
                     .addComponent(jtab_panel_general, javax.swing.GroupLayout.DEFAULT_SIZE, 786, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn_vender2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btn_borrarVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -370,7 +375,7 @@ public class VentasJF extends javax.swing.JFrame {
                         .addComponent(titulo))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btn_borrarVentas)
-                        .addComponent(btn_vender2)))
+                        .addComponent(btn_limpiar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -433,7 +438,7 @@ public class VentasJF extends javax.swing.JFrame {
         jt_precio.setText("");
         jt_id.setText("");
         jt_tipoComida.setText("");
-        jcheck_efectivo.setSelected(false);
+        jcheck_efectivo.setSelected(true);
         actualizarTablas();
     }
 
@@ -569,9 +574,9 @@ public class VentasJF extends javax.swing.JFrame {
         mouseClickFacu(jtable_jueves, filaSeleccionada);
     }//GEN-LAST:event_jtable_juevesMouseClicked
 
-    private void btn_vender2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vender2ActionPerformed
+    private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
         limpiarCampos();        
-    }//GEN-LAST:event_btn_vender2ActionPerformed
+    }//GEN-LAST:event_btn_limpiarActionPerformed
 
     private void jtable_viernesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_viernesMouseClicked
         int filaSeleccionada = jtable_viernes.getSelectedRow();
@@ -599,12 +604,22 @@ public class VentasJF extends javax.swing.JFrame {
     private void filtrarNombre(String valor){
         String dia = PedidoBackEnd.getDia();
         JTable tabla = tomarTableHoy(dia);
-        tabla.setModel(VentaBackEnd.filtrarPorCliente(valor));
-        //setearla en el panel general REVISAR
+        tabla.setModel(VentaBackEnd.filtrarPorCliente(valor, dia));
     }
     private void jt_clienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_clienteKeyReleased
         filtrarNombre(jt_cliente.getText());
     }//GEN-LAST:event_jt_clienteKeyReleased
+
+    private void jtable_ventasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_ventasMouseClicked
+        int filaSelec = jtable_ventas.rowAtPoint(evt.getPoint());
+        jt_id.setText(jtable_ventas.getValueAt(filaSelec, 0).toString());
+        jt_cliente.setText(jtable_ventas.getValueAt(filaSelec, 1).toString());
+        jt_vianda.setText(jtable_ventas.getValueAt(filaSelec, 2).toString());
+        jt_unidades.setText(jtable_ventas.getValueAt(filaSelec, 3).toString());
+        jt_precio.setText(jtable_ventas.getValueAt(filaSelec, 4).toString());
+        jt_tipoComida.setText(jtable_ventas.getValueAt(filaSelec, 6).toString());
+        
+    }//GEN-LAST:event_jtable_ventasMouseClicked
 
     /**
      * @param args the command line arguments
@@ -645,9 +660,9 @@ public class VentasJF extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_borrarVentas;
     private javax.swing.JButton btn_eliminar;
+    private javax.swing.JButton btn_limpiar;
     private javax.swing.JButton btn_modificar;
     private javax.swing.JButton btn_vender;
-    private javax.swing.JButton btn_vender2;
     private javax.swing.JLabel cliente;
     private javax.swing.JLabel efectivo;
     private javax.swing.JLabel id;

@@ -22,7 +22,7 @@ import javax.swing.JTable;
  * @author facul
  */
 public class PedidosJF extends javax.swing.JFrame {
-
+    private int idVigente;
     /**
      * Constructor: - Creates new form GestionClientes
      */
@@ -314,6 +314,11 @@ public class PedidosJF extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jtable_viernes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtable_viernesMouseClicked(evt);
+            }
+        });
         jScrollPane_viernes.setViewportView(jtable_viernes);
 
         jtab_panel_general.addTab("Viernes", jScrollPane_viernes);
@@ -498,9 +503,9 @@ public class PedidosJF extends javax.swing.JFrame {
                         .addComponent(btn_encargar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_cancelar))
-                    .addComponent(jscrollPanel_viandas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jscrollPanel_viandas)
                     .addComponent(jscrollPanel_clientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -575,6 +580,7 @@ public class PedidosJF extends javax.swing.JFrame {
     }
 
     private void mouseClickFacu(JTable tabla, int filaSeleccionada) {
+        idVigente = Integer.valueOf(tabla.getValueAt(filaSeleccionada, 0).toString());
         jt_cliente.setText(tabla.getValueAt(filaSeleccionada, 1).toString());
         jt_vianda.setText(tabla.getValueAt(filaSeleccionada, 2).toString());
         js_unidades.setValue(Integer.valueOf(tabla.getValueAt(filaSeleccionada, 3).toString()));
@@ -717,11 +723,8 @@ public class PedidosJF extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_limpiarActionPerformed
 
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
-        if (checkCampos()) {
-            JTable table = (JTable) (jtab_panel_general.getSelectedComponent());
-            int row = table.getSelectedRow();
-            int id = Integer.valueOf(table.getValueAt(row, 0).toString());
-            if (PedidoBackEnd.eliminarPedido(id)) {
+        if (checkCampos() && idVigente != 0) {           
+            if (PedidoBackEnd.eliminarPedido(idVigente)) {
                 JOptionPane.showMessageDialog(null, "Se elimino el pedido correctamente");
             }
             actualizar();
@@ -731,32 +734,32 @@ public class PedidosJF extends javax.swing.JFrame {
 
     private void jtable_lunesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_lunesMouseClicked
         int filaSeleccionada = jtable_lunes.rowAtPoint(evt.getPoint());
-        mouseClickFacu((JTable) jtab_panel_general.getSelectedComponent(), filaSeleccionada);
+        mouseClickFacu(jtable_lunes, filaSeleccionada);
     }//GEN-LAST:event_jtable_lunesMouseClicked
 
     private void jtable_martesMouseClicked(java.awt.event.MouseEvent evt) {
         int filaSeleccionada = jtable_martes.rowAtPoint(evt.getPoint());
-        mouseClickFacu((JTable) jtab_panel_general.getSelectedComponent(), filaSeleccionada);
+        mouseClickFacu(jtable_martes, filaSeleccionada);
     }
 
     private void jtable_miercoles_carneMouseClicked(java.awt.event.MouseEvent evt) {
         int filaSeleccionada = jtable_miercoles_carne.rowAtPoint(evt.getPoint());
-        mouseClickFacu((JTable) jtab_panel_general.getSelectedComponent(), filaSeleccionada);
+        mouseClickFacu(jtable_miercoles_carne, filaSeleccionada);
     }
 
     private void jtable_miercoles_pescadoMouseClicked(java.awt.event.MouseEvent evt) {
         int filaSeleccionada = jtable_miercoles_pescado.rowAtPoint(evt.getPoint());
-        mouseClickFacu((JTable) jtab_panel_general.getSelectedComponent(), filaSeleccionada);
+        mouseClickFacu(jtable_miercoles_pescado, filaSeleccionada);
     }
 
     private void jtable_juevesMouseClicked(java.awt.event.MouseEvent evt) {
         int filaSeleccionada = jtable_jueves.rowAtPoint(evt.getPoint());
-        mouseClickFacu((JTable) jtab_panel_general.getSelectedComponent(), filaSeleccionada);
+        mouseClickFacu(jtable_jueves, filaSeleccionada);
     }
 
     private void jtable_viernesMouseClicked(java.awt.event.MouseEvent evt) {
         int filaSeleccionada = jtable_viernes.rowAtPoint(evt.getPoint());
-        mouseClickFacu((JTable) jtab_panel_general.getSelectedComponent(), filaSeleccionada);
+        mouseClickFacu(jtable_viernes, filaSeleccionada);
     }
 
     /*
@@ -779,6 +782,10 @@ public class PedidosJF extends javax.swing.JFrame {
         int filaSeleccionada = jtable_jueves.getSelectedRow();
         mouseClickFacu((JTable)jtab_panel_general.getSelectedComponent(), filaSeleccionada);      
     }//GEN-LAST:event_jtable_juevesMouseClicked
+
+    private void jtable_viernesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_viernesMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtable_viernesMouseClicked
 
     /**
      * @param args the command line arguments

@@ -203,10 +203,10 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btn_cancelar" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jscrollPanel_viandas" pref="0" max="32767" attributes="0"/>
+                  <Component id="jscrollPanel_viandas" max="32767" attributes="0"/>
                   <Component id="jscrollPanel_clientes" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="37" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -878,6 +878,9 @@
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jtable_viernesMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

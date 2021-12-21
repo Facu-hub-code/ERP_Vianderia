@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="SistemaNutritiva1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/EntregaNutritiva/dist/SistemaNutritiva.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="SistemaNutritiva">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/pySistemaNutritiva/dist/SistemaNutritiva.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
