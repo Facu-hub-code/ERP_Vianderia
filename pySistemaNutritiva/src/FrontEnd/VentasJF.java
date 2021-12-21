@@ -78,6 +78,7 @@ public class VentasJF extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(49, 28, 28));
+        setResizable(false);
 
         titulo.setBackground(new java.awt.Color(49, 28, 28));
         titulo.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N

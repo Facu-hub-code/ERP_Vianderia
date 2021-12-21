@@ -86,6 +86,7 @@ public class PedidosJF extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(49, 28, 28));
+        setResizable(false);
 
         jl_Titulo.setBackground(new java.awt.Color(49, 28, 28));
         jl_Titulo.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N

@@ -56,6 +56,7 @@ public class GestionClientes extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(49, 28, 28));
+        setResizable(false);
 
         jLabel1.setBackground(new java.awt.Color(49, 28, 28));
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
