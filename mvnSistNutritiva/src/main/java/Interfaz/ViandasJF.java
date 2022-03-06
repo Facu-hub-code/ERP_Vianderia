@@ -3,11 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package FrontEnd;
+package Interfaz;
 
 import java.awt.Color;
-import BackEnd.ViandaBackEnd;
-import Entidad.ViandaEntidad;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,10 +21,10 @@ public class ViandasJF extends javax.swing.JFrame {
 
         initComponents();
         initComponentsFacu();
-        actualizarTabla();
+        actualizar();
     }
 
-    private void initComponentsFacu() {
+    private void initComponentsFacu() { //todo: revisar        
         getContentPane().setBackground(new Color(49, 28, 28));
         setLocationRelativeTo(null);
         setTitle("Viandas");
@@ -42,16 +40,15 @@ public class ViandasJF extends javax.swing.JFrame {
     private void initComponents() {
 
         lj_TITULO = new javax.swing.JLabel();
-        jl_unidades1 = new javax.swing.JLabel();
-        jl_unidades3 = new javax.swing.JLabel();
+        jl_nombre = new javax.swing.JLabel();
+        jl_precio = new javax.swing.JLabel();
         jt_nombre = new javax.swing.JTextField();
         jt_precio = new javax.swing.JTextField();
         btn_agregar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
         btn_modificar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPane_general = new javax.swing.JScrollPane();
         jtable_viandas = new javax.swing.JTable();
-        btn_agregar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(49, 28, 28));
@@ -64,27 +61,22 @@ public class ViandasJF extends javax.swing.JFrame {
         lj_TITULO.setText("VIANDAS");
         lj_TITULO.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
-        jl_unidades1.setBackground(new java.awt.Color(243, 243, 194));
-        jl_unidades1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jl_unidades1.setForeground(new java.awt.Color(243, 243, 194));
-        jl_unidades1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_unidades1.setText("Nombre:");
+        jl_nombre.setBackground(new java.awt.Color(243, 243, 194));
+        jl_nombre.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jl_nombre.setForeground(new java.awt.Color(243, 243, 194));
+        jl_nombre.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_nombre.setText("Nombre:");
 
-        jl_unidades3.setBackground(new java.awt.Color(243, 243, 194));
-        jl_unidades3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jl_unidades3.setForeground(new java.awt.Color(243, 243, 194));
-        jl_unidades3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_unidades3.setText("Precio: $");
+        jl_precio.setBackground(new java.awt.Color(243, 243, 194));
+        jl_precio.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jl_precio.setForeground(new java.awt.Color(243, 243, 194));
+        jl_precio.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_precio.setText("Precio: $");
 
         jt_nombre.setBackground(new java.awt.Color(243, 243, 194));
         jt_nombre.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jt_nombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_nombre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        jt_nombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jt_nombreActionPerformed(evt);
-            }
-        });
         jt_nombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jt_nombreKeyReleased(evt);
@@ -147,17 +139,7 @@ public class ViandasJF extends javax.swing.JFrame {
                 jtable_viandasMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jtable_viandas);
-
-        btn_agregar1.setBackground(new java.awt.Color(255, 253, 118));
-        btn_agregar1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        btn_agregar1.setText("Limpiar");
-        btn_agregar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        btn_agregar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_agregar1ActionPerformed(evt);
-            }
-        });
+        jScrollPane_general.setViewportView(jtable_viandas);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -173,8 +155,8 @@ public class ViandasJF extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jl_unidades3)
-                                    .addComponent(jl_unidades1))
+                                    .addComponent(jl_precio)
+                                    .addComponent(jl_nombre))
                                 .addGap(28, 28, 28)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jt_nombre)
@@ -182,10 +164,9 @@ public class ViandasJF extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(btn_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btn_agregar1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 937, Short.MAX_VALUE)
+                .addComponent(jScrollPane_general, javax.swing.GroupLayout.DEFAULT_SIZE, 937, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -195,23 +176,21 @@ public class ViandasJF extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 53, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE))
+                        .addComponent(jScrollPane_general, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lj_TITULO, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jl_unidades1)
+                                .addComponent(jl_nombre)
                                 .addGap(22, 22, 22))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jt_precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_unidades3))
+                            .addComponent(jl_precio))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_agregar1)
-                        .addGap(18, 18, 18)
                         .addComponent(btn_agregar)
                         .addGap(18, 18, 18)
                         .addComponent(btn_eliminar)
@@ -223,66 +202,31 @@ public class ViandasJF extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void limpiarCampos() {
-        jt_nombre.setText("");
-        jt_precio.setText("");
-    }
-
     private void filtrarNombre(String nombre) {
-        jtable_viandas.setModel(ViandaBackEnd.filtrarNombre(nombre));
     }
 
     //Metodo que chequea que ningun campo de texto este vacio.
-    private boolean checkCampos() {
+    private boolean checkCampos() { //todo: revisar
         return !(jt_nombre.getText().equalsIgnoreCase("")
                 || jt_precio.getText().equalsIgnoreCase(""));
     }
 
     //Metodo que actualiza los valores de la tabla segun la base de datos
-    private void actualizarTabla() {
-        jtable_viandas.setModel(ViandaBackEnd.actualizarTabla());
+    private void actualizar() {
+        //todo: add your handling code here
+       
     }
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
-        if (checkCampos()) {
-            ViandaEntidad vianda = new ViandaEntidad(jt_nombre.getText(), Float.valueOf(jt_precio.getText()));
-            if(ViandaBackEnd.agregarVianda(vianda))
-                JOptionPane.showMessageDialog(null, "Vianda "+jt_nombre.getText()+" agregada correctamente");
-            else
-                JOptionPane.showMessageDialog(null, "Error al intentar agregar la vianda: "+jt_nombre.getText());
-            actualizarTabla();
-        } else {
-            JOptionPane.showMessageDialog(null, "Faltan campos de completar");
-        }
+
     }//GEN-LAST:event_btn_agregarActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        if (checkCampos()) {
-            int row = jtable_viandas.getSelectedRow();
-            int id = Integer.valueOf(jtable_viandas.getValueAt(row, 0).toString());
-            if(ViandaBackEnd.eliminarVianda(id))
-                JOptionPane.showMessageDialog(null, "Vianda eliminada correctamente");
-            else
-                JOptionPane.showMessageDialog(null, "Error: al intentar eliminar la vianda");
-            actualizarTabla();
-        } else {
-            JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
-        }
+
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
-        if (checkCampos()) {
-            ViandaEntidad vianda = new ViandaEntidad(jt_nombre.getText(), Float.valueOf(jt_precio.getText()));
-            int row = jtable_viandas.getSelectedRow();
-            int id = Integer.valueOf(jtable_viandas.getValueAt(row, 0).toString());
-            if(ViandaBackEnd.modificarVianda(vianda, id))
-                JOptionPane.showMessageDialog(null, "Modificacion exitosa");
-            else
-                JOptionPane.showMessageDialog(null, "Error: al intentar modificar la vianda");
-            actualizarTabla();
-        } else {
-            JOptionPane.showMessageDialog(null, "Puede que falte completar algun campo");
-        }
+
     }//GEN-LAST:event_btn_modificarActionPerformed
 
     private void jtable_viandasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_viandasMouseClicked
@@ -300,15 +244,6 @@ public class ViandasJF extends javax.swing.JFrame {
     private void jt_nombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_nombreKeyReleased
         this.filtrarNombre(jt_nombre.getText());
     }//GEN-LAST:event_jt_nombreKeyReleased
-
-    private void btn_agregar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregar1ActionPerformed
-        actualizarTabla();
-        limpiarCampos();
-    }//GEN-LAST:event_btn_agregar1ActionPerformed
-
-    private void jt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jt_nombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jt_nombreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -348,12 +283,11 @@ public class ViandasJF extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_agregar;
-    private javax.swing.JButton btn_agregar1;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_modificar;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel jl_unidades1;
-    private javax.swing.JLabel jl_unidades3;
+    private javax.swing.JScrollPane jScrollPane_general;
+    private javax.swing.JLabel jl_nombre;
+    private javax.swing.JLabel jl_precio;
     private javax.swing.JTextField jt_nombre;
     private javax.swing.JTextField jt_precio;
     private javax.swing.JTable jtable_viandas;
