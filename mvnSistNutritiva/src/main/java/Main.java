@@ -1,4 +1,5 @@
 import Entidad.Cliente;
+import Hibernate.ClienteRepository;
 import Hibernate.HibernateUtil;
 import Logica.LoginLogica;
 import org.hibernate.Session;
@@ -18,16 +19,8 @@ public class Main {
         cliente.setEmail("faculoren7@gmail.com");
         cliente.setTelefono("3585098671");
 
-        Session session = HibernateUtil.getSession();
-        Transaction transaction = session.beginTransaction();
-        try {
-            session.save(cliente);
-            transaction.commit();
-        } catch (Exception e) {
-            if(transaction != null) transaction.rollback();
-            e.printStackTrace();
-        } finally {
-            HibernateUtil.closeSession();
-        }
+        ClienteRepository clienteRepository = new ClienteRepository();
+        clienteRepository.sasve(cliente);
+
     }
 }
