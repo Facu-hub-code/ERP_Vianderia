@@ -5,5 +5,6 @@ Sistema de gestion de pedidos y ventas para la vianderia Nutritiva en General De
 
 * Ubicacion: https://bit.ly/3DbbhEW
 
-* Version de la JavaVM que se necesita: java 16.0.1 2021-04-20
-* Motor de bdd XAMPP Control Panel v3.3
+* Version de la JavaVM que se necesita: java 16.0.1
+* Motor de Base de Datos: MySQL
+* Builder: Maven - JAR File
