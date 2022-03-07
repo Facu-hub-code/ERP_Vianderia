@@ -5,15 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f6ba0bc-1813-4156-85d5-b38edcb40a38" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Hibernate/ViandasRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Logica/ViandasLogica.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entidad/ViandaEntidad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entidad/ViandaEntidad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Hibernate/ClienteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Hibernate/ClienteRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Hibernate/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Hibernate/Repository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaz/ViandasInterfaz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaz/ViandasInterfaz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Logica/ClienteLogica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Logica/ClienteLogica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Hibernate/HibernateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Hibernate/HibernateUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Entidad/ViandaEntidad.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Entidad/ViandaEntidad.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Hibernate/ClienteRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Hibernate/ClienteRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Hibernate/Repository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Hibernate/Repository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Hibernate/ViandasRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Hibernate/ViandasRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/ViandasInterfaz$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/ViandasInterfaz$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/ViandasInterfaz$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/ViandasInterfaz$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/ViandasInterfaz$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/ViandasInterfaz$3.class" afterDir="false" />
@@ -21,6 +24,7 @@
       <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/ViandasInterfaz$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/ViandasInterfaz$5.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/ViandasInterfaz.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/ViandasInterfaz.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Logica/ClienteLogica.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Logica/ClienteLogica.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Logica/ViandasLogica.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Logica/ViandasLogica.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,5 +136,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Interfaz/ViandasInterfaz.java</url>
+          <line>281</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

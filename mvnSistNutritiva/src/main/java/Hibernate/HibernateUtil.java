@@ -1,6 +1,7 @@
 package Hibernate;
 
 import Entidad.ClienteEntidad;
+import Entidad.ViandaEntidad;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -13,6 +14,7 @@ public class HibernateUtil {
     public static boolean inicializarAcceso(String user, String password) {
         Configuration configuration = new Configuration().configure();
         configuration.addAnnotatedClass(ClienteEntidad.class);
+        configuration.addAnnotatedClass(ViandaEntidad.class);
         configuration.setProperty("hibernate.connection.username", user);
         configuration.setProperty("hibernate.connection.password", password);
         try {
