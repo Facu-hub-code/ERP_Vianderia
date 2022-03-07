@@ -52,4 +52,11 @@ public class PedidoLogica {
         }
         return pedidosDia;
     }
+
+    public static ArrayList<PedidoEntidad> getPedidos() {
+        PedidoRepository repo = new PedidoRepository();
+        List<PedidoEntidad> pedidoList = repo.findAll(); //guardo todos los pedidos
+        ArrayList<PedidoEntidad> pedidos = new ArrayList<>(pedidoList); //casteo Array
+        return pedidos;
+    }
 }

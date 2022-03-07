@@ -464,23 +464,33 @@ public class PedidosInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_jtable_viandasMouseClicked
 
     private void jtable_lunesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_lunesMouseClicked
-        // TODO add your handling code here:
+        int filaSelec = jtable_lunes.rowAtPoint(evt.getPoint());
+        jt_vianda.setText(jtable_viandas.getValueAt(filaSelec, 1).toString());
+        idViandaVigente = (int) jtable_viandas.getValueAt(filaSelec, 0);
     }//GEN-LAST:event_jtable_lunesMouseClicked
 
     private void jtable_martesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_martesMouseClicked
-        // TODO add your handling code here:
+        int filaSelec = jtable_martes.rowAtPoint(evt.getPoint());
+        jt_vianda.setText(jtable_viandas.getValueAt(filaSelec, 1).toString());
+        idViandaVigente = (int) jtable_viandas.getValueAt(filaSelec, 0);
     }//GEN-LAST:event_jtable_martesMouseClicked
 
     private void jtable_miercolesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_miercolesMouseClicked
-        // TODO add your handling code here:
+        int filaSelec = jtable_miercoles.rowAtPoint(evt.getPoint());
+        jt_vianda.setText(jtable_viandas.getValueAt(filaSelec, 1).toString());
+        idViandaVigente = (int) jtable_viandas.getValueAt(filaSelec, 0);
     }//GEN-LAST:event_jtable_miercolesMouseClicked
 
     private void jtable_juevesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_juevesMouseClicked
-        // TODO add your handling code here:
+        int filaSelec = jtable_jueves.rowAtPoint(evt.getPoint());
+        jt_vianda.setText(jtable_viandas.getValueAt(filaSelec, 1).toString());
+        idViandaVigente = (int) jtable_viandas.getValueAt(filaSelec, 0);
     }//GEN-LAST:event_jtable_juevesMouseClicked
 
     private void jtable_viernesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_viernesMouseClicked
-        // TODO add your handling code here:
+        int filaSelec = jtable_viernes.rowAtPoint(evt.getPoint());
+        jt_vianda.setText(jtable_viandas.getValueAt(filaSelec, 1).toString());
+        idViandaVigente = (int) jtable_viandas.getValueAt(filaSelec, 0);
     }//GEN-LAST:event_jtable_viernesMouseClicked
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
@@ -875,7 +885,6 @@ public class PedidosInterfaz extends javax.swing.JFrame {
             }
         }
     }
-
     private void setDefaultSorter(JTable tabla, int columna, SortOrder sortOrder) {
         TableRowSorter<TableModel> sorter = new TableRowSorter<>(tabla.getModel());
         tabla.setRowSorter(sorter);
@@ -885,8 +894,6 @@ public class PedidosInterfaz extends javax.swing.JFrame {
         sorter.setSortKeys(sortKeys);
         sorter.sort();
     }
-
-
     public void sortearFecha() {
         setDefaultSorter(jtable_viandas, 1, SortOrder.DESCENDING); //revisar columna
     }

@@ -5,7 +5,20 @@
  */
 package Interfaz;
 
+import Entidad.PedidoEntidad;
+import Entidad.Tipo;
+import Logica.PedidoLogica;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import java.awt.Color;
+import java.sql.Date;
+import java.time.DayOfWeek;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.PatternSyntaxException;
 
 /**
  * @company FK-SOFT
@@ -13,6 +26,8 @@ import java.awt.Color;
  */
 public class VentasInterfaz extends javax.swing.JFrame {
 
+    private int idPedidoVigente;
+    private int idVentaVigente;
     /**
      * Constructor: - Creates new form GestionClientes
      */
@@ -216,27 +231,37 @@ public class VentasInterfaz extends javax.swing.JFrame {
 
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
-        //Todo: implementar
+        agregarVenta();
     }//GEN-LAST:event_btn_agregarActionPerformed
 
+    private void agregarVenta() {
+    }
+
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
-        //Todo: implementar
+        modificarVenta();
     }//GEN-LAST:event_btn_modificarActionPerformed
 
+    private void modificarVenta() {
+
+    }
+
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        // TODO add your handling code here:
+        // TODO: agregar el bit de anulado
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void buscadorClientes(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorClientes
-        // TODO add your handling code here:
+        addFilter(jtable_ventas, jt_cliente.getText(), 1);//todo:revisar index
     }//GEN-LAST:event_buscadorClientes
 
     private void jtable_pedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_pedidosMouseClicked
-        // TODO add your handling code here:
+        int filaSelec = jtable_pedidos.rowAtPoint(evt.getPoint());
+        idPedidoVigente = (int) jtable_pedidos.getValueAt(filaSelec, 0);
     }//GEN-LAST:event_jtable_pedidosMouseClicked
 
     private void jtable_ventasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_ventasMouseClicked
-        // TODO add your handling code here:
+        int filaSelec = jtable_ventas.rowAtPoint(evt.getPoint());
+        jt_cliente.setText(jtable_ventas.getValueAt(filaSelec, 1).toString());//todo:revisar index
+        idVentaVigente = (int) jtable_ventas.getValueAt(filaSelec, 0);
     }//GEN-LAST:event_jtable_ventasMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -256,6 +281,112 @@ public class VentasInterfaz extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void actualizar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        limpiarCampos();
+        llenarTablaVentas();
+        llenarTablaPedidos();
     }
+
+    private void llenarTablaVentas() {
+        String[] columnas = new String[]{"ID", "Cliente", "Vianda", "Fecha", "Tipo", "Monto"};
+        Class[] tipos = {Integer.class, String.class, String.class, Date.class, Tipo.class, Double.class};
+
+        ArrayList<Vent> pedidosLunes = PedidoLogica.getPedidos();
+        Object[][] objetosArray = new Object[pedidosLunes.size()][columnas.length];
+
+        for (int i = 0; i < pedidosLunes.size(); i++) {
+            Tipo tipo;
+            if (pedidosLunes.get(i).getTipo().equals("almuerzo"))
+                tipo = Tipo.Almuerzo;
+            else
+                tipo = Tipo.Cena;
+
+            objetosArray[i] = new Object[]{
+                    pedidosLunes.get(i).getId(),
+                    pedidosLunes.get(i).getClientesIdclientes().getNombre(),
+                    pedidosLunes.get(i).getViandasIdviandas().getNombre(),
+                    pedidosLunes.get(i).getFecha(),
+                    pedidosLunes.get(i).getTipo()
+            };
+        }
+
+        jtable_pedidos.setModel(new DefaultTableModel(objetosArray, columnas) {
+            Class[] types = tipos;
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+
+            @Override
+            public Class getColumnClass(int columnindex) {
+                return this.types[columnindex];
+            }
+        });
+    }
+
+    private void llenarTablaPedidos() {
+        String[] columnas = new String[]{"ID", "Cliente", "Vianda", "Fecha", "Tipo"};
+        Class[] tipos = {Integer.class, String.class, String.class, Date.class, Tipo.class};
+
+        ArrayList<PedidoEntidad> pedidosLunes = PedidoLogica.getPedidos();
+        Object[][] objetosArray = new Object[pedidosLunes.size()][columnas.length];
+
+        for (int i = 0; i < pedidosLunes.size(); i++) {
+            Tipo tipo;
+            if (pedidosLunes.get(i).getTipo().equals("almuerzo"))
+                tipo = Tipo.Almuerzo;
+            else
+                tipo = Tipo.Cena;
+
+            objetosArray[i] = new Object[]{
+                    pedidosLunes.get(i).getId(),
+                    pedidosLunes.get(i).getClientesIdclientes().getNombre(),
+                    pedidosLunes.get(i).getViandasIdviandas().getNombre(),
+                    pedidosLunes.get(i).getFecha(),
+                    pedidosLunes.get(i).getTipo()
+            };
+        }
+
+        jtable_pedidos.setModel(new DefaultTableModel(objetosArray, columnas) {
+            Class[] types = tipos;
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+
+            @Override
+            public Class getColumnClass(int columnindex) {
+                return this.types[columnindex];
+            }
+        });
+    }
+
+    public void addFilter(JTable tbl, String txt, Integer SearchColumnIndex) {
+        DefaultTableModel model = (DefaultTableModel) tbl.getModel();
+        final TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        tbl.setRowSorter(sorter);
+        if (txt.length() == 0) {
+            sortearFechaVentas();
+        } else {
+            try {
+                sorter.setRowFilter(RowFilter.regexFilter("(?i)" + txt, SearchColumnIndex));
+            } catch (PatternSyntaxException pse) {
+                System.out.println("Bad regex pattern");
+            }
+        }
+    }
+    private void setDefaultSorter(JTable tabla, int columna, SortOrder sortOrder) {
+        TableRowSorter<TableModel> sorter = new TableRowSorter<>(tabla.getModel());
+        tabla.setRowSorter(sorter);
+        List<RowSorter.SortKey> sortKeys = new ArrayList<>();
+        sortKeys.add(new RowSorter.SortKey(columna, sortOrder));
+
+        sorter.setSortKeys(sortKeys);
+        sorter.sort();
+    }
+    public void sortearFechaVentas() {
+        setDefaultSorter(jtable_ventas, 1, SortOrder.DESCENDING); //revisar columna
+    }
+
 }
