@@ -1,7 +1,3 @@
-/*
- * todo: Hacer el borde circular a la imagen del logo del login + todos sus 
- * detalles
- */
 package Interfaz;
 
 import Logica.LoginLogica;
@@ -16,12 +12,9 @@ import javax.swing.JOptionPane;
  */
 public class LoginInterfaz extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
     public LoginInterfaz() {
         initComponents();
-        initFacuComponents(); //todo hacer logo redondo
+        initFacuComponents();
         setVisible(true);
     }
 
@@ -122,7 +115,9 @@ public class LoginInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_jt_passMouseClicked
 
     private void btn_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarActionPerformed
-        if (LoginLogica.validarIngreso(jt_usuario.getText(), jt_pass.getText())){
+        String user = jt_usuario.getText(), password = jt_pass.getText();
+        boolean acceso = LoginLogica.validarIngreso(user, password);
+        if (acceso){
             SistemaPrincipalInterfaz sistemaPrincipal = new SistemaPrincipalInterfaz();
             this.dispose();
         } else {
@@ -132,14 +127,14 @@ public class LoginInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_ingresarActionPerformed
 
     private void jt_passKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_passKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            if (LoginLogica.validarIngreso(jt_usuario.getText(), jt_pass.getText())){
-                SistemaPrincipalInterfaz sistemaPrincipal = new SistemaPrincipalInterfaz();
-                this.dispose();
-            } else {
-                JOptionPane.showMessageDialog(null, "Credenciales de acceso incorrecta.\n"
-                + "Por favor vuelva a intentar");
-            }
+        String user = jt_usuario.getText(), password = jt_pass.getText();
+        boolean acceso = LoginLogica.validarIngreso(user, password);
+        if (acceso){
+            SistemaPrincipalInterfaz sistemaPrincipal = new SistemaPrincipalInterfaz();
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Credenciales de acceso incorrecta.\n"
+                    + "Por favor vuelva a intentar");
         }
     }//GEN-LAST:event_jt_passKeyPressed
 
@@ -167,7 +162,7 @@ public class LoginInterfaz extends javax.swing.JFrame {
 
         jt_usuario.setPreferredSize(text_field);
         jt_usuario.setBackground(bkgnd_text_field);
-        btn_ingresar.setBackground(yellow_nutritiva); //Todo: poner el boton amarillo
+        btn_ingresar.setBackground(yellow_nutritiva);
 
     }
 

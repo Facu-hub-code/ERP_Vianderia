@@ -13,9 +13,6 @@ import java.awt.Color;
  */
 public class ClientesInterfaz extends javax.swing.JFrame {
 
-    /**
-     * Constructor: - Creates new form GestionClientes
-     */
     public ClientesInterfaz() {
         initComponents();
         initComponentsFacu();
