@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f6ba0bc-1813-4156-85d5-b38edcb40a38" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaz/PedidosInterfaz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaz/PedidosInterfaz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaz/VentasInterfaz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaz/VentasInterfaz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Logica/PedidoLogica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Logica/PedidoLogica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Base de Datos/model_nutritiva.mwb" beforeDir="false" afterPath="$PROJECT_DIR$/../Base de Datos/model_nutritiva.mwb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Base de Datos/script_creacion_nutritiva.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../Base de Datos/script_creacion_nutritiva.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entidad/VentaEntidad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entidad/VentaEntidad.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,9 +18,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="com.haulmont.jpb.JpaEntity" />
         <option value="Class" />
         <option value="Enum" />
+        <option value="com.haulmont.jpb.JpaEntity" />
       </list>
     </option>
   </component>
@@ -47,6 +46,7 @@
     <setting file="file://$PROJECT_DIR$/src/main/java/Interfaz/PedidosInterfaz.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Interfaz/ViandasInterfaz.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Entidad/VentaEntidad.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Hibernate/ViandasRepository.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Logica/ViandasLogica.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Main.java" root0="SKIP_INSPECTION" />

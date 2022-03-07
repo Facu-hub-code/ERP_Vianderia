@@ -1116,47 +1116,52 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="318" parent="289" name="fecha">
-      <DataType>date|0s</DataType>
+    <column id="318" parent="289" name="monto">
+      <DataType>double|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="319" parent="289" name="pedidos_idpedidos">
-      <DataType>int|0s</DataType>
+    <column id="319" parent="289" name="fecha">
+      <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <foreign-key id="320" parent="289" name="fk_ventas_pedidos1">
+    <column id="320" parent="289" name="pedidos_idpedidos">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <foreign-key id="321" parent="289" name="fk_ventas_pedidos1">
       <ColNames>pedidos_idpedidos</ColNames>
       <RefColNames>idpedidos</RefColNames>
       <RefTableName>pedidos</RefTableName>
     </foreign-key>
-    <index id="321" parent="289" name="fk_ventas_pedidos1_idx">
+    <index id="322" parent="289" name="fk_ventas_pedidos1_idx">
       <ColNames>pedidos_idpedidos</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="322" parent="289" name="PRIMARY">
+    <key id="323" parent="289" name="PRIMARY">
       <ColNames>idventas</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="323" parent="290" name="idviandas">
+    <column id="324" parent="290" name="idviandas">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="324" parent="290" name="nombre">
+    <column id="325" parent="290" name="nombre">
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="325" parent="290" name="precio">
+    <column id="326" parent="290" name="precio">
       <DataType>float|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <key id="326" parent="290" name="PRIMARY">
+    <key id="327" parent="290" name="PRIMARY">
       <ColNames>idviandas</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>

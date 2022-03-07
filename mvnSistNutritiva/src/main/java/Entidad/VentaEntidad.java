@@ -1,6 +1,7 @@
 package Entidad;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "ventas", indexes = {
@@ -11,6 +12,42 @@ public class VentaEntidad {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idventas", nullable = false)
     private Integer id;
+
+    @Column(name = "monto", nullable = false)
+    private Double monto;
+
+    @Column(name = "fecha", nullable = false)
+    private LocalDate fecha;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "pedidos_idpedidos", nullable = false)
+    private PedidoEntidad pedidosIdpedidos;
+
+    
+
+    public PedidoEntidad getPedidosIdpedidos() {
+        return pedidosIdpedidos;
+    }
+
+    public void setPedidosIdpedidos(PedidoEntidad pedidosIdpedidos) {
+        this.pedidosIdpedidos = pedidosIdpedidos;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+
+    public Double getMonto() {
+        return monto;
+    }
+
+    public void setMonto(Double monto) {
+        this.monto = monto;
+    }
 
     public Integer getId() {
         return id;
