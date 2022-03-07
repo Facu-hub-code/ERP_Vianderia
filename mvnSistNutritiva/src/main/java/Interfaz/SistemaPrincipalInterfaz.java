@@ -140,11 +140,11 @@ public class SistemaPrincipalInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_pedidosActionPerformed
 
     private void btn_ventasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ventasActionPerformed
-
+        VentasInterfaz ventasInterfaz = new VentasInterfaz();
     }//GEN-LAST:event_btn_ventasActionPerformed
 
     private void btn_CajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CajaActionPerformed
-        
+        CajaInterfaz cajaInterfaz = new CajaInterfaz();
     }//GEN-LAST:event_btn_CajaActionPerformed
 
     private void btn_viandasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viandasActionPerformed
