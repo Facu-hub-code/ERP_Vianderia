@@ -38,4 +38,10 @@ public class ViandasLogica {
         ArrayList<ViandaEntidad> viandas = new ArrayList<>(viandasList);
         return viandas;
     }
+
+    public static ViandaEntidad getVianda(int id) {
+        ViandasRepository viandasRepository = new ViandasRepository();
+        ViandaEntidad vianda = viandasRepository.findbyID(id);
+        return vianda;
+    }
 }

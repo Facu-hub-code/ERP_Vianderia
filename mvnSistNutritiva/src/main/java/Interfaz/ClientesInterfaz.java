@@ -264,48 +264,11 @@ public class ClientesInterfaz extends javax.swing.JFrame {
 
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
-        String nombre = jt_nombre.getText(), apellido = "", direccion = "", dni = "", telefono = "";
-        if (!nombre.equals(null) || !nombre.equals("")){
-            try{
-                nombre = jt_nombre.getText();
-                apellido = jt_apellido.getText();
-                direccion = jt_dni.getText();
-                dni = jt_dni.getText();
-                telefono = jt_telefono.getText();
-            }catch (NullPointerException e){
-                System.out.println("Habia algun campo nulo");
-                e.printStackTrace();
-            }
-            ClienteEntidad cliente = new ClienteEntidad(nombre, apellido, direccion, dni, telefono);
-            boolean flag = ClienteLogica.agregarCliente(cliente);
-            if (flag)
-                JOptionPane.showMessageDialog(null, "Cliente "+cliente.getNombre()+" agregado con exito");
-            else
-                JOptionPane.showMessageDialog(null, "Error: al intentar agregar el cliente");
-        }
+        agregarCliente();
     }//GEN-LAST:event_btn_agregarActionPerformed
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
-        String nombre = jt_nombre.getText(), apellido = "", direccion = "", dni = "", telefono = "";
-        if (!nombre.equals(null) || !nombre.equals("")){
-            try{
-                nombre = jt_nombre.getText();
-                apellido = jt_apellido.getText();
-                direccion = jt_dni.getText();
-                dni = jt_dni.getText();
-                telefono = jt_telefono.getText();
-            }catch (NullPointerException e){
-                System.out.println("Habia algun campo nulo");
-                e.printStackTrace();
-            }
-            ClienteRepository clienteRepository = new ClienteRepository();
-            ClienteEntidad cliente = clienteRepository.findbyID(idVigente);
-            boolean flag = ClienteLogica.modificarCliente(cliente);
-            if (flag)
-                JOptionPane.showMessageDialog(null, "Cliente "+cliente.getNombre()+" modificado con exito");
-            else
-                JOptionPane.showMessageDialog(null, "Error: al intentar modificar el cliente");
-        }
+        modificarCliente();
     }//GEN-LAST:event_btn_modificarActionPerformed
 
     private void jtable_clientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_clientesMouseClicked
@@ -422,6 +385,51 @@ public class ClientesInterfaz extends javax.swing.JFrame {
         jt_direccion.setText("");
         jt_dni.setText("");
         jt_telefono.setText("");
+    }
+
+    private void agregarCliente() {
+        String nombre = jt_nombre.getText(), apellido = "", direccion = "", dni = "", telefono = "";
+        if (!nombre.equals(null) || !nombre.equals("")){
+            try{
+                nombre = jt_nombre.getText();
+                apellido = jt_apellido.getText();
+                direccion = jt_dni.getText();
+                dni = jt_dni.getText();
+                telefono = jt_telefono.getText();
+            }catch (NullPointerException e){
+                System.out.println("Habia algun campo nulo");
+                e.printStackTrace();
+            }
+            ClienteEntidad cliente = new ClienteEntidad(nombre, apellido, direccion, dni, telefono);
+            boolean flag = ClienteLogica.agregarCliente(cliente);
+            if (flag)
+                JOptionPane.showMessageDialog(null, "Cliente "+cliente.getNombre()+" agregado con exito");
+            else
+                JOptionPane.showMessageDialog(null, "Error: al intentar agregar el cliente");
+        }
+    }
+
+    private void modificarCliente() {
+        String nombre = jt_nombre.getText(), apellido = "", direccion = "", dni = "", telefono = "";
+        if (!nombre.equals(null) || !nombre.equals("")){
+            try{
+                nombre = jt_nombre.getText();
+                apellido = jt_apellido.getText();
+                direccion = jt_dni.getText();
+                dni = jt_dni.getText();
+                telefono = jt_telefono.getText();
+            }catch (NullPointerException e){
+                System.out.println("Habia algun campo nulo");
+                e.printStackTrace();
+            }
+            ClienteRepository clienteRepository = new ClienteRepository();
+            ClienteEntidad cliente = clienteRepository.findbyID(idVigente);
+            boolean flag = ClienteLogica.modificarCliente(cliente);
+            if (flag)
+                JOptionPane.showMessageDialog(null, "Cliente "+cliente.getNombre()+" modificado con exito");
+            else
+                JOptionPane.showMessageDialog(null, "Error: al intentar modificar el cliente");
+        }
     }
 
 }

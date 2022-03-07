@@ -5,14 +5,31 @@
  */
 package Interfaz;
 
+import Entidad.*;
+import Logica.ClienteLogica;
+import Logica.PedidoLogica;
+import Logica.ViandasLogica;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import java.awt.Color;
+import java.sql.Date;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.PatternSyntaxException;
 
 /**
  * @company FK-SOFT
  * @author facul
  */
 public class PedidosInterfaz extends javax.swing.JFrame {
-
+    private int idPedidoVigente;
+    private int idClienteVigente;
+    private int idViandaVigente;
     /**
      * Constructor: - Creates new form GestionClientes
      */
@@ -60,6 +77,7 @@ public class PedidosInterfaz extends javax.swing.JFrame {
         jtable_jueves = new javax.swing.JTable();
         jScrollPane7 = new javax.swing.JScrollPane();
         jtable_viernes = new javax.swing.JTable();
+        btn_actualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(49, 28, 28));
@@ -101,8 +119,18 @@ public class PedidosInterfaz extends javax.swing.JFrame {
         jl_vianda.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         rb_almuerzo.setText("ALMUERZO");
+        rb_almuerzo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb_almuerzoActionPerformed(evt);
+            }
+        });
 
         rb_cena.setText("CENA");
+        rb_cena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb_cenaActionPerformed(evt);
+            }
+        });
 
         jt_cliente.setBackground(new java.awt.Color(243, 243, 194));
         jt_cliente.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -294,6 +322,16 @@ public class PedidosInterfaz extends javax.swing.JFrame {
 
         jTabbedPane_general.addTab("Viernes", jScrollPane7);
 
+        btn_actualizar.setBackground(new java.awt.Color(255, 253, 118));
+        btn_actualizar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btn_actualizar.setText("Actualizar");
+        btn_actualizar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_actualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -314,7 +352,8 @@ public class PedidosInterfaz extends javax.swing.JFrame {
                                         .addComponent(jt_cliente, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
                                         .addComponent(jt_vianda)))
                                 .addComponent(btn_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_eliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(btn_eliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_actualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jl_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -358,6 +397,8 @@ public class PedidosInterfaz extends javax.swing.JFrame {
                             .addComponent(jt_vianda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jl_vianda, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_actualizar)
+                        .addGap(18, 18, 18)
                         .addComponent(btn_agregar)
                         .addGap(18, 18, 18)
                         .addComponent(btn_modificar)
@@ -370,7 +411,7 @@ public class PedidosInterfaz extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void initComponentsFacu(){ //todo: revisar
+    private void initComponentsFacu(){
         getContentPane().setBackground(new Color(49, 28, 28));
         setLocationRelativeTo(null);
         setTitle("Gestion de pedidos");       
@@ -379,31 +420,47 @@ public class PedidosInterfaz extends javax.swing.JFrame {
 
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
-        //Todo: implementar
+        agregarPedido();
     }//GEN-LAST:event_btn_agregarActionPerformed
 
+
+
+    private boolean checkCampos() {
+        //Si la fecha esta vacia o no hay ningun tipo seleccionado o no se selecciono vianda o cliente
+        boolean flagCampos = jdate_fecha.toString().equals("") ||
+                (!rb_cena.isSelected() && !rb_almuerzo.isSelected()) ||
+                jt_vianda.getText().equals("") ||
+                jt_cliente.getText().equals("");
+        return !flagCampos;
+    }
+
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
-        //Todo: implementar
+        modificarPedido();
     }//GEN-LAST:event_btn_modificarActionPerformed
 
+
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        // TODO add your handling code here:
+        // TODO implementar bit de anulado
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void buscadorClientes(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorClientes
-        // TODO add your handling code here:
+        addFilter(jtable_cliente, jt_cliente.getText(), 1);//todo: revisar index
     }//GEN-LAST:event_buscadorClientes
 
     private void buscadorViandas(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorViandas
-        // TODO add your handling code here:
+        addFilter(jtable_viandas, jt_vianda.getText(), 1);//todo: revisar index
     }//GEN-LAST:event_buscadorViandas
 
     private void jtable_clienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_clienteMouseClicked
-        // TODO add your handling code here:
+        int filaSelec = jtable_cliente.rowAtPoint(evt.getPoint());
+        jt_cliente.setText(jtable_cliente.getValueAt(filaSelec, 1).toString());
+        idClienteVigente = (int) jtable_cliente.getValueAt(filaSelec, 0);
     }//GEN-LAST:event_jtable_clienteMouseClicked
 
     private void jtable_viandasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_viandasMouseClicked
-        // TODO add your handling code here:
+        int filaSelec = jtable_viandas.rowAtPoint(evt.getPoint());
+        jt_vianda.setText(jtable_viandas.getValueAt(filaSelec, 1).toString());
+        idViandaVigente = (int) jtable_viandas.getValueAt(filaSelec, 0);
     }//GEN-LAST:event_jtable_viandasMouseClicked
 
     private void jtable_lunesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_lunesMouseClicked
@@ -426,7 +483,22 @@ public class PedidosInterfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtable_viernesMouseClicked
 
+    private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
+        actualizar();
+    }//GEN-LAST:event_btn_actualizarActionPerformed
+
+    private void rb_almuerzoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_almuerzoActionPerformed
+        if(rb_almuerzo.isSelected())
+            rb_cena.setSelected(false);
+    }//GEN-LAST:event_rb_almuerzoActionPerformed
+
+    private void rb_cenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_cenaActionPerformed
+        if (rb_cena.isSelected())
+            rb_almuerzo.setSelected(false);
+    }//GEN-LAST:event_rb_cenaActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_actualizar;
     private javax.swing.JButton btn_agregar;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_modificar;
@@ -457,7 +529,366 @@ public class PedidosInterfaz extends javax.swing.JFrame {
     private javax.swing.JRadioButton rb_cena;
     // End of variables declaration//GEN-END:variables
 
-    private void actualizar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void agregarPedido() {
+        ClienteEntidad cliente = null;
+        ViandaEntidad vianda = null;
+        Date fecha = null;
+        String tipo = null;
+        if (checkCampos()){
+            try{
+                cliente = ClienteLogica.getCliente(idClienteVigente);
+                vianda = ViandasLogica.getVianda(idViandaVigente);
+                fecha = new java.sql.Date(jdate_fecha.getDate().getTime());
+                if (rb_almuerzo.isSelected())
+                    tipo = "almuerzo";
+                else
+                    tipo = "cena";
+            }catch (NullPointerException e){
+                System.out.println("puede haber algun campo nulo");
+                e.printStackTrace();
+            }
+            PedidoEntidad pedido = new PedidoEntidad(cliente, vianda, fecha, tipo);
+            boolean flag = PedidoLogica.agregarPedido(pedido);
+            if (flag)
+                JOptionPane.showMessageDialog(null, "Pedido de "+cliente.getNombre()+" agregado con exito");
+            else
+                JOptionPane.showMessageDialog(null, "Error: al intentar agregar el pediodo");
+        }
     }
+
+    private void modificarPedido(){
+        ClienteEntidad cliente = null;
+        ViandaEntidad vianda = null;
+        Date fecha = null;
+        String tipo = null;
+        if (checkCampos()){
+            try{
+                cliente = ClienteLogica.getCliente(idClienteVigente);
+                vianda = ViandasLogica.getVianda(idViandaVigente);
+                fecha = new java.sql.Date(jdate_fecha.getDate().getTime());
+                if (rb_almuerzo.isSelected())
+                    tipo = "almuerzo";
+                else
+                    tipo = "cena";
+            }catch (NullPointerException e){
+                System.out.println("puede haber algun campo nulo");
+                e.printStackTrace();
+            }
+            PedidoEntidad pedido = new PedidoEntidad(cliente, vianda, fecha, tipo);
+            boolean flag = PedidoLogica.modificarPedido(pedido);
+            if (flag)
+                JOptionPane.showMessageDialog(null, "Pedido de "+cliente.getNombre()+" agregado con exito");
+            else
+                JOptionPane.showMessageDialog(null, "Error: al intentar agregar el pediodo");
+        }
+    }
+
+    private void actualizar() {
+        llenarTablaClientes();
+        llenarTablaViandas();
+        llenarTablasPedidos();
+        limpiarCampos();
+    }
+
+    private void llenarTablasPedidos() {
+        llenarTablaLunes();
+        llenarTablaMartes();
+        llenarTablaMiercoles();
+        llenarTablaJueves();
+        llenarTablaViernes();
+    }
+
+    private void llenarTablaViernes() {
+        String[] columnas = new String[]{"ID", "Cliente", "Vianda", "Fecha", "Tipo"};
+        Class[] tipos = {Integer.class, String.class, String.class, Date.class, Tipo.class};
+
+        ArrayList<PedidoEntidad> pedidosViernes = PedidoLogica.getPedidos(DayOfWeek.FRIDAY);
+        Object[][] objetosArray = new Object[pedidosViernes.size()][columnas.length];
+
+        for (int i = 0; i < pedidosViernes.size(); i++) {
+            Tipo tipo;
+            if (pedidosViernes.get(i).getTipo().equals("almuerzo"))
+                tipo = Tipo.Almuerzo;
+            else
+                tipo = Tipo.Cena;
+
+            objetosArray[i] = new Object[]{
+                    pedidosViernes.get(i).getId(),
+                    pedidosViernes.get(i).getClientesIdclientes().getNombre(),
+                    pedidosViernes.get(i).getViandasIdviandas().getNombre(),
+                    pedidosViernes.get(i).getFecha(),
+                    pedidosViernes.get(i).getTipo()
+            };
+        }
+
+        jtable_viernes.setModel(new DefaultTableModel(objetosArray, columnas) {
+            Class[] types = tipos;
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+
+            @Override
+            public Class getColumnClass(int columnindex) {
+                return this.types[columnindex];
+            }
+        });
+    }
+
+    private void llenarTablaJueves() {
+        String[] columnas = new String[]{"ID", "Cliente", "Vianda", "Fecha", "Tipo"};
+        Class[] tipos = {Integer.class, String.class, String.class, Date.class, Tipo.class};
+
+        ArrayList<PedidoEntidad> pedidosJueves = PedidoLogica.getPedidos(DayOfWeek.TUESDAY);
+        Object[][] objetosArray = new Object[pedidosJueves.size()][columnas.length];
+
+        for (int i = 0; i < pedidosJueves.size(); i++) {
+            Tipo tipo;
+            if (pedidosJueves.get(i).getTipo().equals("almuerzo"))
+                tipo = Tipo.Almuerzo;
+            else
+                tipo = Tipo.Cena;
+
+            objetosArray[i] = new Object[]{
+                    pedidosJueves.get(i).getId(),
+                    pedidosJueves.get(i).getClientesIdclientes().getNombre(),
+                    pedidosJueves.get(i).getViandasIdviandas().getNombre(),
+                    pedidosJueves.get(i).getFecha(),
+                    pedidosJueves.get(i).getTipo()
+            };
+        }
+
+        jtable_jueves.setModel(new DefaultTableModel(objetosArray, columnas) {
+            Class[] types = tipos;
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+
+            @Override
+            public Class getColumnClass(int columnindex) {
+                return this.types[columnindex];
+            }
+        });
+    }
+
+    private void llenarTablaMiercoles() {
+        String[] columnas = new String[]{"ID", "Cliente", "Vianda", "Fecha", "Tipo"};
+        Class[] tipos = {Integer.class, String.class, String.class, Date.class, Tipo.class};
+
+        ArrayList<PedidoEntidad> pedidosMiercoles = PedidoLogica.getPedidos(DayOfWeek.WEDNESDAY);
+        Object[][] objetosArray = new Object[pedidosMiercoles.size()][columnas.length];
+
+        for (int i = 0; i < pedidosMiercoles.size(); i++) {
+            Tipo tipo;
+            if (pedidosMiercoles.get(i).getTipo().equals("almuerzo"))
+                tipo = Tipo.Almuerzo;
+            else
+                tipo = Tipo.Cena;
+
+            objetosArray[i] = new Object[]{
+                    pedidosMiercoles.get(i).getId(),
+                    pedidosMiercoles.get(i).getClientesIdclientes().getNombre(),
+                    pedidosMiercoles.get(i).getViandasIdviandas().getNombre(),
+                    pedidosMiercoles.get(i).getFecha(),
+                    pedidosMiercoles.get(i).getTipo()
+            };
+        }
+
+        jtable_miercoles.setModel(new DefaultTableModel(objetosArray, columnas) {
+            Class[] types = tipos;
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+
+            @Override
+            public Class getColumnClass(int columnindex) {
+                return this.types[columnindex];
+            }
+        });
+    }
+
+    private void llenarTablaMartes() {
+        String[] columnas = new String[]{"ID", "Cliente", "Vianda", "Fecha", "Tipo"};
+        Class[] tipos = {Integer.class, String.class, String.class, Date.class, Tipo.class};
+
+        ArrayList<PedidoEntidad> pedidosMartes = PedidoLogica.getPedidos(DayOfWeek.THURSDAY);
+        Object[][] objetosArray = new Object[pedidosMartes.size()][columnas.length];
+
+        for (int i = 0; i < pedidosMartes.size(); i++) {
+            Tipo tipo;
+            if (pedidosMartes.get(i).getTipo().equals("almuerzo"))
+                tipo = Tipo.Almuerzo;
+            else
+                tipo = Tipo.Cena;
+
+            objetosArray[i] = new Object[]{
+                    pedidosMartes.get(i).getId(),
+                    pedidosMartes.get(i).getClientesIdclientes().getNombre(),
+                    pedidosMartes.get(i).getViandasIdviandas().getNombre(),
+                    pedidosMartes.get(i).getFecha(),
+                    pedidosMartes.get(i).getTipo()
+            };
+        }
+
+        jtable_martes.setModel(new DefaultTableModel(objetosArray, columnas) {
+            Class[] types = tipos;
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+
+            @Override
+            public Class getColumnClass(int columnindex) {
+                return this.types[columnindex];
+            }
+        });
+    }
+
+    private void llenarTablaLunes() {
+        String[] columnas = new String[]{"ID", "Cliente", "Vianda", "Fecha", "Tipo"};
+        Class[] tipos = {Integer.class, String.class, String.class, Date.class, Tipo.class};
+
+        ArrayList<PedidoEntidad> pedidosLunes = PedidoLogica.getPedidos(DayOfWeek.MONDAY);
+        Object[][] objetosArray = new Object[pedidosLunes.size()][columnas.length];
+
+        for (int i = 0; i < pedidosLunes.size(); i++) {
+            Tipo tipo;
+            if (pedidosLunes.get(i).getTipo().equals("almuerzo"))
+                tipo = Tipo.Almuerzo;
+            else
+                tipo = Tipo.Cena;
+
+            objetosArray[i] = new Object[]{
+                    pedidosLunes.get(i).getId(),
+                    pedidosLunes.get(i).getClientesIdclientes().getNombre(),
+                    pedidosLunes.get(i).getViandasIdviandas().getNombre(),
+                    pedidosLunes.get(i).getFecha(),
+                    pedidosLunes.get(i).getTipo()
+            };
+        }
+
+        jtable_lunes.setModel(new DefaultTableModel(objetosArray, columnas) {
+            Class[] types = tipos;
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+
+            @Override
+            public Class getColumnClass(int columnindex) {
+                return this.types[columnindex];
+            }
+        });
+    }
+
+    private void limpiarCampos() {
+        jt_cliente.setText("");
+        jt_vianda.setText("");
+        rb_almuerzo.setSelected(false);
+        rb_cena.setSelected(false);
+        jdate_fecha.setDate(java.sql.Date.valueOf(LocalDate.now()));
+    }
+
+    private void llenarTablaViandas() {
+        String[] columnas = new String[]{"ID", "Nombre", "Precio"};
+        Class[] tipos = {Integer.class, String.class, Double.class};
+
+        ArrayList<ViandaEntidad> viandas = ViandasLogica.getViandas();
+        Object[][] objetosArray = new Object[viandas.size()][columnas.length];
+
+        for (int i = 0; i < viandas.size(); i++) {
+            objetosArray[i] = new Object[]{
+                    viandas.get(i).getId(),
+                    viandas.get(i).getNombre(),
+                    viandas.get(i).getPrecio()
+            };
+        }
+
+        jtable_viandas.setModel(new DefaultTableModel(objetosArray, columnas) {
+            Class[] types = tipos;
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+
+            @Override
+            public Class getColumnClass(int columnindex) {
+                return this.types[columnindex];
+            }
+        });
+    }
+
+    private void llenarTablaClientes() {
+
+        String[] columnas = new String[]{"ID", "Nombre", "Apellido", "Direccion", "DNI", "Telefono"};
+        Class[] tipos = {Integer.class, String.class, String.class, String.class, String.class, String.class};
+
+        ArrayList<ClienteEntidad> clientes = ClienteLogica.getClientes();
+        Object[][] objetosArray = new Object[clientes.size()][columnas.length];
+
+        for (int i = 0; i < clientes.size(); i++) {
+            objetosArray[i] = new Object[]{
+                    clientes.get(i).getId(),
+                    clientes.get(i).getNombre(),
+                    clientes.get(i).getApellido(),
+                    clientes.get(i).getDireccion(),
+                    clientes.get(i).getDni(),
+                    clientes.get(i).getTelefono()
+            };
+        }
+
+        jtable_cliente.setModel(new DefaultTableModel(objetosArray, columnas) {
+            Class[] types = tipos;
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+            @Override
+            public Class getColumnClass(int columnindex){
+                return this.types[columnindex];
+            }
+        });
+    }
+
+    public void addFilter(JTable tbl, String txt, Integer SearchColumnIndex) {
+
+        DefaultTableModel model = (DefaultTableModel) tbl.getModel();
+
+        final TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        tbl.setRowSorter(sorter);
+        if (txt.length() == 0) {
+            sortearFecha();
+        } else {
+            try {
+                sorter.setRowFilter(RowFilter.regexFilter("(?i)" + txt, SearchColumnIndex));
+            } catch (PatternSyntaxException pse) {
+                System.out.println("Bad regex pattern");
+            }
+        }
+    }
+
+    private void setDefaultSorter(JTable tabla, int columna, SortOrder sortOrder) {
+        TableRowSorter<TableModel> sorter = new TableRowSorter<>(tabla.getModel());
+        tabla.setRowSorter(sorter);
+        List<RowSorter.SortKey> sortKeys = new ArrayList<>();
+        sortKeys.add(new RowSorter.SortKey(columna, sortOrder));
+
+        sorter.setSortKeys(sortKeys);
+        sorter.sort();
+    }
+
+
+    public void sortearFecha() {
+        setDefaultSorter(jtable_viandas, 1, SortOrder.DESCENDING); //revisar columna
+    }
+
 }

@@ -35,4 +35,10 @@ public class ClienteLogica {
             return false;
         }
     }
+
+    public static ClienteEntidad getCliente(int idClienteVigente) {
+        ClienteRepository clienteRepository = new ClienteRepository();
+        ClienteEntidad cliente = clienteRepository.findbyID(idClienteVigente);
+        return cliente;
+    }
 }
