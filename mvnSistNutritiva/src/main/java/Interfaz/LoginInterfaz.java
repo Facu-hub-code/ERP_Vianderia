@@ -22,6 +22,7 @@ public class LoginInterfaz extends javax.swing.JFrame {
     public LoginInterfaz() {
         initComponents();
         initFacuComponents(); //todo hacer logo redondo
+        setVisible(true);
     }
 
     /**
@@ -132,13 +133,13 @@ public class LoginInterfaz extends javax.swing.JFrame {
 
     private void jt_passKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_passKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-                    if (LoginLogica.validarIngreso(jt_usuario.getText(), jt_pass.getText())){
-            SistemaPrincipalInterfaz sistemaPrincipal = new SistemaPrincipalInterfaz();
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(null, "Credenciales de acceso incorrecta.\n"
-                    + "Por favor vuelva a intentar");
-        }
+            if (LoginLogica.validarIngreso(jt_usuario.getText(), jt_pass.getText())){
+                SistemaPrincipalInterfaz sistemaPrincipal = new SistemaPrincipalInterfaz();
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Credenciales de acceso incorrecta.\n"
+                + "Por favor vuelva a intentar");
+            }
         }
     }//GEN-LAST:event_jt_passKeyPressed
 

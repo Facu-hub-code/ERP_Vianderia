@@ -6,7 +6,6 @@
 package Interfaz;
 
 import java.awt.Color;
-import javax.swing.JOptionPane;
 
 /**
  * @company FK-SOFT
@@ -20,6 +19,7 @@ public class ClientesInterfaz extends javax.swing.JFrame {
     public ClientesInterfaz() {
         initComponents();
         initComponentsFacu();
+        setVisible(true);
         actualizar();
     }
 
@@ -35,13 +35,18 @@ public class ClientesInterfaz extends javax.swing.JFrame {
         jl_titulo = new javax.swing.JLabel();
         jt_nombre = new javax.swing.JTextField();
         jt_apellido = new javax.swing.JTextField();
-        jt_dni = new javax.swing.JTextField();
-        jt_email = new javax.swing.JTextField();
         jt_telefono = new javax.swing.JTextField();
+        jt_email = new javax.swing.JTextField();
+        jt_dni = new javax.swing.JTextField();
         btn_agregar = new javax.swing.JButton();
         btn_modificar = new javax.swing.JButton();
         jscrollpane_general = new javax.swing.JScrollPane();
         jtable_clientes = new javax.swing.JTable();
+        jl_nombre = new javax.swing.JLabel();
+        jl_apellido = new javax.swing.JLabel();
+        jl_dni = new javax.swing.JLabel();
+        jl_mail = new javax.swing.JLabel();
+        jl_telefono = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(49, 28, 28));
@@ -60,7 +65,7 @@ public class ClientesInterfaz extends javax.swing.JFrame {
         jt_nombre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         jt_nombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jt_nombreKeyReleased(evt);
+                buscadorNombre(evt);
             }
         });
 
@@ -68,36 +73,21 @@ public class ClientesInterfaz extends javax.swing.JFrame {
         jt_apellido.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jt_apellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_apellido.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        jt_apellido.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jt_apellidoKeyReleased(evt);
-            }
-        });
 
-        jt_dni.setBackground(new java.awt.Color(243, 243, 194));
-        jt_dni.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jt_dni.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jt_dni.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        jt_dni.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jt_dniKeyTyped(evt);
-            }
-        });
+        jt_telefono.setBackground(new java.awt.Color(243, 243, 194));
+        jt_telefono.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jt_telefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jt_telefono.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
 
         jt_email.setBackground(new java.awt.Color(243, 243, 194));
         jt_email.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jt_email.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_email.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
 
-        jt_telefono.setBackground(new java.awt.Color(243, 243, 194));
-        jt_telefono.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jt_telefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jt_telefono.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        jt_telefono.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jt_telefonoKeyTyped(evt);
-            }
-        });
+        jt_dni.setBackground(new java.awt.Color(243, 243, 194));
+        jt_dni.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jt_dni.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jt_dni.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
 
         btn_agregar.setBackground(new java.awt.Color(255, 253, 118));
         btn_agregar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -137,31 +127,71 @@ public class ClientesInterfaz extends javax.swing.JFrame {
         });
         jscrollpane_general.setViewportView(jtable_clientes);
 
+        jl_nombre.setBackground(new java.awt.Color(49, 28, 28));
+        jl_nombre.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jl_nombre.setForeground(new java.awt.Color(255, 253, 118));
+        jl_nombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jl_nombre.setText("NOMBRE");
+        jl_nombre.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jl_apellido.setBackground(new java.awt.Color(49, 28, 28));
+        jl_apellido.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jl_apellido.setForeground(new java.awt.Color(255, 253, 118));
+        jl_apellido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jl_apellido.setText("APELLIDO");
+        jl_apellido.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jl_dni.setBackground(new java.awt.Color(49, 28, 28));
+        jl_dni.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jl_dni.setForeground(new java.awt.Color(255, 253, 118));
+        jl_dni.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jl_dni.setText("DNI");
+        jl_dni.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jl_mail.setBackground(new java.awt.Color(49, 28, 28));
+        jl_mail.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jl_mail.setForeground(new java.awt.Color(255, 253, 118));
+        jl_mail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jl_mail.setText("MAIL");
+        jl_mail.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jl_telefono.setBackground(new java.awt.Color(49, 28, 28));
+        jl_telefono.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jl_telefono.setForeground(new java.awt.Color(255, 253, 118));
+        jl_telefono.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jl_telefono.setText("TELEFONO");
+        jl_telefono.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_agregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btn_agregar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(86, 86, 86)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jt_telefono, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                                    .addComponent(jt_apellido)
-                                    .addComponent(jt_nombre, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jt_email)
-                                    .addComponent(jt_dni)))
-                            .addComponent(btn_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(45, 45, 45)
-                .addComponent(jscrollpane_general, javax.swing.GroupLayout.DEFAULT_SIZE, 936, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jl_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_mail, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_dni, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jt_dni)
+                            .addComponent(jt_apellido)
+                            .addComponent(jt_nombre, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jt_email)
+                            .addComponent(jt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btn_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jscrollpane_general, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,20 +201,30 @@ public class ClientesInterfaz extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jt_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jt_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jt_dni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_dni, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jt_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jt_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_mail, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jt_dni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_agregar)
                         .addGap(18, 18, 18)
                         .addComponent(btn_modificar))
-                    .addComponent(jscrollpane_general, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE))
+                    .addComponent(jscrollpane_general, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
         );
 
@@ -197,94 +237,37 @@ public class ClientesInterfaz extends javax.swing.JFrame {
         setTitle("Clientes");       
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
-    
-    
-    private void filtrarNombre(String valor) {
-    }
 
-    private void filtrarApellido(String valor) {
-    }
-    
-
-    private void actualizar() {
-    }
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
-
-        
+        //Todo: implementar
     }//GEN-LAST:event_btn_agregarActionPerformed
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
-
+        //Todo: implementar
     }//GEN-LAST:event_btn_modificarActionPerformed
 
     private void jtable_clientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_clientesMouseClicked
         int filaSelec = jtable_clientes.rowAtPoint(evt.getPoint());
         jt_nombre.setText(jtable_clientes.getValueAt(filaSelec, 1).toString());
         jt_apellido.setText(jtable_clientes.getValueAt(filaSelec, 2).toString());
-        jt_dni.setText(jtable_clientes.getValueAt(filaSelec, 3).toString());
+        jt_telefono.setText(jtable_clientes.getValueAt(filaSelec, 3).toString());
         jt_email.setText(jtable_clientes.getValueAt(filaSelec, 4).toString());
-        jt_telefono.setText(jtable_clientes.getValueAt(filaSelec, 5).toString());
-
+        jt_dni.setText(jtable_clientes.getValueAt(filaSelec, 5).toString()); //Todo: revisar filas
     }//GEN-LAST:event_jtable_clientesMouseClicked
 
-    private void jt_nombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_nombreKeyReleased
-        this.filtrarNombre(jt_nombre.getText());
-    }//GEN-LAST:event_jt_nombreKeyReleased
-
-    private void jt_apellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_apellidoKeyReleased
-        this.filtrarApellido(jt_apellido.getText());
-    }//GEN-LAST:event_jt_apellidoKeyReleased
-
-    private void jt_dniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_dniKeyTyped
-        char c = evt.getKeyChar();
-        if (c < '0' || c > '9')
-            evt.consume();
-    }//GEN-LAST:event_jt_dniKeyTyped
-
-    private void jt_telefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_telefonoKeyTyped
-        char c = evt.getKeyChar();
-        if (c < '0' || c > '9')
-            evt.consume();
-    }//GEN-LAST:event_jt_telefonoKeyTyped
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ClientesInterfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ClientesInterfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ClientesInterfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ClientesInterfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new ClientesInterfaz().setVisible(true);
-        });
-    }
+    private void buscadorNombre(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorNombre
+        //Todo: buscar metodo addFilter
+    }//GEN-LAST:event_buscadorNombre
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_agregar;
     private javax.swing.JButton btn_modificar;
+    private javax.swing.JLabel jl_apellido;
+    private javax.swing.JLabel jl_dni;
+    private javax.swing.JLabel jl_mail;
+    private javax.swing.JLabel jl_nombre;
+    private javax.swing.JLabel jl_telefono;
     private javax.swing.JLabel jl_titulo;
     private javax.swing.JScrollPane jscrollpane_general;
     private javax.swing.JTextField jt_apellido;
@@ -294,4 +277,8 @@ public class ClientesInterfaz extends javax.swing.JFrame {
     private javax.swing.JTextField jt_telefono;
     private javax.swing.JTable jtable_clientes;
     // End of variables declaration//GEN-END:variables
+
+    private void actualizar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

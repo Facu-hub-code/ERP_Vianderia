@@ -20,7 +20,7 @@ public class SistemaPrincipalInterfaz extends javax.swing.JFrame {
     public SistemaPrincipalInterfaz() {
         initComponents();
         initComponentsFacu();
-        
+        setVisible(true);
     }
 
     /**
@@ -132,21 +132,23 @@ public class SistemaPrincipalInterfaz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clientesActionPerformed
-        ClientesInterfaz gestionClientes = new ClientesInterfaz();
+        ClientesInterfaz clientesInterfaz = new ClientesInterfaz();
     }//GEN-LAST:event_btn_clientesActionPerformed
 
     private void btn_pedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pedidosActionPerformed
+        
     }//GEN-LAST:event_btn_pedidosActionPerformed
 
     private void btn_ventasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ventasActionPerformed
+
     }//GEN-LAST:event_btn_ventasActionPerformed
 
     private void btn_CajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CajaActionPerformed
-        GestionCaja gestionCaja = new GestionCaja();
+        
     }//GEN-LAST:event_btn_CajaActionPerformed
 
     private void btn_viandasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viandasActionPerformed
-        ViandasInterfaz viandasJF = new ViandasInterfaz();
+        ViandasInterfaz viandasInterfaz = new ViandasInterfaz();
     }//GEN-LAST:event_btn_viandasActionPerformed
 
     
