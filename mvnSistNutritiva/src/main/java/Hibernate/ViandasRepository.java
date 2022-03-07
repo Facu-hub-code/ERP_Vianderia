@@ -1,6 +1,7 @@
 package Hibernate;
 
 import Entidad.ClienteEntidad;
+import Entidad.ViandaEntidad;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -12,15 +13,14 @@ import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClienteRepository implements Repository<ClienteEntidad>{
-
+public class ViandasRepository implements Repository<ViandaEntidad>{
 
     @Override
-    public void save(ClienteEntidad cliente) {
+    public void save(ViandaEntidad vianda) {
         Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
         try {
-            session.save(cliente);
+            session.save(vianda);
             transaction.commit();
         }catch (Exception e){
             if(transaction != null) transaction.rollback();
@@ -31,16 +31,16 @@ public class ClienteRepository implements Repository<ClienteEntidad>{
     }
 
     @Override
-    public List<ClienteEntidad> findAll() {
+    public List<ViandaEntidad> findAll() {
         Session sesion = HibernateUtil.getSession();
         try {
             CriteriaBuilder cb = sesion.getCriteriaBuilder();
-            CriteriaQuery<ClienteEntidad> cq = cb.createQuery(ClienteEntidad.class);
-            Root<ClienteEntidad> rootEntry = cq.from(ClienteEntidad.class);
-            CriteriaQuery<ClienteEntidad> all = cq.select(rootEntry);
-            TypedQuery<ClienteEntidad> allQuery = sesion.createQuery(all);
-            ArrayList<ClienteEntidad> clientes = (ArrayList<ClienteEntidad>) allQuery.getResultList();
-            return clientes;
+            CriteriaQuery<ViandaEntidad> cq = cb.createQuery(ViandaEntidad.class);
+            Root<ViandaEntidad> rootEntry = cq.from(ViandaEntidad.class);
+            CriteriaQuery<ViandaEntidad> all = cq.select(rootEntry);
+            TypedQuery<ViandaEntidad> allQuery = sesion.createQuery(all);
+            ArrayList<ViandaEntidad> viandas = (ArrayList<ViandaEntidad>) allQuery.getResultList();
+            return viandas;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -50,20 +50,20 @@ public class ClienteRepository implements Repository<ClienteEntidad>{
     }
 
     @Override
-    public ClienteEntidad findbyID(int id) {
+    public ViandaEntidad findbyID(int id) {
         Session sesion = HibernateUtil.getSession();
         try {
             CriteriaBuilder cb = sesion.getCriteriaBuilder();
-            CriteriaQuery<ClienteEntidad> cq = cb.createQuery(ClienteEntidad.class);
-            Root<ClienteEntidad> rootEntry = cq.from(ClienteEntidad.class);
-            CriteriaQuery<ClienteEntidad> all = cq.select(rootEntry);
+            CriteriaQuery<ViandaEntidad> cq = cb.createQuery(ViandaEntidad.class);
+            Root<ViandaEntidad> rootEntry = cq.from(ViandaEntidad.class);
+            CriteriaQuery<ViandaEntidad> all = cq.select(rootEntry);
+            TypedQuery<ViandaEntidad> allQuery = sesion.createQuery(all);
 
             Predicate identificacion = cb.equal(rootEntry.get("id"), id);
             cq.where(identificacion);
 
-            TypedQuery<ClienteEntidad> allQuery = sesion.createQuery(all);
-            ArrayList<ClienteEntidad> clientes = (ArrayList<ClienteEntidad>) allQuery.getResultList();
-            return clientes.get(0);
+            ArrayList<ViandaEntidad> viandas = (ArrayList<ViandaEntidad>) allQuery.getResultList();
+            return viandas.get(0);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -73,22 +73,22 @@ public class ClienteRepository implements Repository<ClienteEntidad>{
     }
 
     @Override
-    public void update(ClienteEntidad cliente) {
+    public void update(ViandaEntidad vianda) {
         Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
         try {
-            session.merge(cliente);
+            session.merge(vianda);
             transaction.commit();
-        }catch (Exception e){
-            if(transaction != null) transaction.rollback();
+        } catch (Exception e) {
+            if (transaction != null) transaction.rollback();
             e.printStackTrace();
-        }finally {
+        } finally {
             HibernateUtil.closeSession();
         }
     }
 
     @Override
-    public void delete(ClienteEntidad cliente) {
+    public void delete(ViandaEntidad viandaEntidad) {
 
     }
 }

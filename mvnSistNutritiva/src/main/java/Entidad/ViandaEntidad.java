@@ -16,6 +16,14 @@ public class ViandaEntidad {
     @Column(name = "precio", nullable = false)
     private Double precio;
 
+    public ViandaEntidad() {
+    }
+
+    public ViandaEntidad(String nombre, double precio) {
+        this.nombre = nombre;
+        this.precio = precio;
+    }
+
     public Double getPrecio() {
         return precio;
     }

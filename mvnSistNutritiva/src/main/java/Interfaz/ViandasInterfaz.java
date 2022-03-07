@@ -5,13 +5,29 @@
  */
 package Interfaz;
 
+import Entidad.ClienteEntidad;
+import Entidad.ViandaEntidad;
+import Hibernate.ClienteRepository;
+import Hibernate.ViandasRepository;
+import Logica.ClienteLogica;
+import Logica.ViandasLogica;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.PatternSyntaxException;
 
 /**
- * @company FK-SOFT
  * @author facul
+ * @company FK-SOFT
  */
 public class ViandasInterfaz extends javax.swing.JFrame {
+
+    private static int idVigente;
 
     /**
      * Constructor: - Creates new form GestionClientes
@@ -114,15 +130,15 @@ public class ViandasInterfaz extends javax.swing.JFrame {
         });
 
         jtable_viandas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
+                new Object[][]{
+                        {},
+                        {},
+                        {},
+                        {}
+                },
+                new String[]{
 
-            }
+                }
         ));
         jtable_viandas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -134,86 +150,119 @@ public class ViandasInterfaz extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_agregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jl_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jt_precio, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                            .addComponent(jt_nombre, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addComponent(btn_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_eliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(jscrollpane_general, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(btn_agregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(jl_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jl_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(jt_precio, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                                                        .addComponent(jt_nombre, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                        .addComponent(btn_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btn_eliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jscrollpane_general, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE)
+                                .addContainerGap())
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(59, 59, 59)
+                                .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jt_precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_agregar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_modificar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_eliminar))
-                    .addComponent(jscrollpane_general, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE))
-                .addGap(22, 22, 22))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jl_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jt_precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jl_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(btn_agregar)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(btn_modificar)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(btn_eliminar))
+                                        .addComponent(jscrollpane_general, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE))
+                                .addGap(22, 22, 22))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void initComponentsFacu(){ //todo: revisar
+    private void initComponentsFacu() {
         getContentPane().setBackground(new Color(49, 28, 28));
         setLocationRelativeTo(null);
-        setTitle("Gestion de viandas");       
+        setTitle("Gestion de viandas");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
-        //Todo: implementar
+        String nombre = jt_nombre.getText();
+        double precio = 0.0;
+        if (!nombre.equals(null) || !nombre.equals("")) {
+            try {
+                nombre = jt_nombre.getText();
+                precio = Double.valueOf(jt_precio.getText());
+            } catch (NullPointerException e) {
+                System.out.println("Habia algun campo nulo");
+                e.printStackTrace();
+            }
+            ViandaEntidad vianda = new ViandaEntidad(nombre, precio);
+            boolean flag = ViandasLogica.agregarVianda(vianda);
+            if (flag)
+                JOptionPane.showMessageDialog(null, "Vianda " + vianda.getNombre() + " agregada con exito");
+            else
+                JOptionPane.showMessageDialog(null, "Error: al intentar agregar la vianda");
+        }
     }//GEN-LAST:event_btn_agregarActionPerformed
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
-        //Todo: implementar
+        String nombre = jt_nombre.getText();
+        double precio = 0.0;
+        if (!nombre.equals(null) || !nombre.equals("")) {
+            try {
+                nombre = jt_nombre.getText();
+                precio = Double.valueOf(jt_precio.getText());
+            } catch (NullPointerException e) {
+                System.out.println("Habia algun campo nulo");
+                e.printStackTrace();
+            }
+            ViandasRepository viandasRepository = new ViandasRepository();
+            ViandaEntidad vianda = viandasRepository.findbyID(idVigente);
+            boolean flag = ViandasLogica.modificarVianda(vianda);
+            if (flag)
+                JOptionPane.showMessageDialog(null, "Vianda " + vianda.getNombre() + " modificada con exito");
+            else
+                JOptionPane.showMessageDialog(null, "Error: al intentar modificar la vianda");
+        }
     }//GEN-LAST:event_btn_modificarActionPerformed
 
     private void jtable_viandasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_viandasMouseClicked
         int filaSelec = jtable_viandas.rowAtPoint(evt.getPoint());
         jt_nombre.setText(jtable_viandas.getValueAt(filaSelec, 1).toString());
         jt_precio.setText(jtable_viandas.getValueAt(filaSelec, 2).toString());
-         //Todo: revisar filas
+        idVigente = (int) jtable_viandas.getValueAt(filaSelec, 0);
     }//GEN-LAST:event_jtable_viandasMouseClicked
 
     private void buscadorNombre(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorNombre
-        //Todo: buscar metodo addFilter
+        addFilter(jtable_viandas, jt_nombre.getText(), 1);
     }//GEN-LAST:event_buscadorNombre
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        // TODO add your handling code here:
+        // TODO: agregar bit de eliminado
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -230,6 +279,74 @@ public class ViandasInterfaz extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void actualizar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        llenarTabla();
+        limpiarCampos();
+    }
+
+    private void llenarTabla() {
+        String[] columnas = new String[]{"ID", "Nombre", "Precio"};
+        Class[] tipos = {Integer.class, String.class, Double.class};
+
+        ArrayList<ViandaEntidad> viandas = ViandasLogica.getViandas();
+        Object[][] objetosArray = new Object[viandas.size()][columnas.length];
+
+        for (int i = 0; i < viandas.size(); i++) {
+            objetosArray[i] = new Object[]{
+                    viandas.get(i).getId(),
+                    viandas.get(i).getNombre(),
+                    viandas.get(i).getPrecio()
+            };
+        }
+
+        jtable_viandas.setModel(new DefaultTableModel(objetosArray, columnas) {
+            Class[] types = tipos;
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+
+            @Override
+            public Class getColumnClass(int columnindex) {
+                return this.types[columnindex];
+            }
+        });
+    }
+
+    public void addFilter(JTable tbl, String txt, Integer SearchColumnIndex) {
+
+        DefaultTableModel model = (DefaultTableModel) tbl.getModel();
+
+        final TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        tbl.setRowSorter(sorter);
+        if (txt.length() == 0) {
+            sortearFecha();
+        } else {
+            try {
+                sorter.setRowFilter(RowFilter.regexFilter("(?i)" + txt, SearchColumnIndex));
+            } catch (PatternSyntaxException pse) {
+                System.out.println("Bad regex pattern");
+            }
+        }
+    }
+
+    private void setDefaultSorter(JTable tabla, int columna, SortOrder sortOrder) {
+        TableRowSorter<TableModel> sorter = new TableRowSorter<>(tabla.getModel());
+        tabla.setRowSorter(sorter);
+        List<RowSorter.SortKey> sortKeys = new ArrayList<>();
+        sortKeys.add(new RowSorter.SortKey(columna, sortOrder));
+
+        sorter.setSortKeys(sortKeys);
+        sorter.sort();
+    }
+
+
+    public void sortearFecha() {
+        setDefaultSorter(jtable_viandas, 1, SortOrder.DESCENDING); //revisar columna
+    }
+
+    private void limpiarCampos() {
+        jt_nombre.setText("");
+        jt_precio.setText("");
     }
 }

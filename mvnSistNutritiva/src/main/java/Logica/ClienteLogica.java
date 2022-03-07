@@ -10,7 +10,7 @@ public class ClienteLogica {
     public static boolean agregarCliente(ClienteEntidad cliente) {
         try{
             ClienteRepository clienteRepository = new ClienteRepository();
-            clienteRepository.sasve(cliente);
+            clienteRepository.save(cliente);
             return true;
         }catch (Exception e){
             e.printStackTrace();
@@ -28,7 +28,7 @@ public class ClienteLogica {
     public static boolean modificarCliente(ClienteEntidad cliente) {
         try{
             ClienteRepository clienteRepository = new ClienteRepository();
-            clienteRepository.update(cliente); //todo: hacer
+            clienteRepository.update(cliente);
             return true;
         }catch (Exception e){
             e.printStackTrace();
