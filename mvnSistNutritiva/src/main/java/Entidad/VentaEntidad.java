@@ -21,16 +21,23 @@ public class VentaEntidad {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "pedidos_idpedidos", nullable = false)
-    private PedidoEntidad pedidosIdpedidos;
+    private PedidoEntidad pedido;
 
-    
-
-    public PedidoEntidad getPedidosIdpedidos() {
-        return pedidosIdpedidos;
+    public VentaEntidad() {
     }
 
-    public void setPedidosIdpedidos(PedidoEntidad pedidosIdpedidos) {
-        this.pedidosIdpedidos = pedidosIdpedidos;
+    public VentaEntidad(Double monto, LocalDate fecha, PedidoEntidad pedido) {
+        this.monto = monto;
+        this.fecha = fecha;
+        this.pedido = pedido;
+    }
+
+    public PedidoEntidad getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(PedidoEntidad pedidosIdpedidos) {
+        this.pedido = pedidosIdpedidos;
     }
 
     public LocalDate getFecha() {

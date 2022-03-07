@@ -624,8 +624,8 @@ public class PedidosInterfaz extends javax.swing.JFrame {
 
             objetosArray[i] = new Object[]{
                     pedidosViernes.get(i).getId(),
-                    pedidosViernes.get(i).getClientesIdclientes().getNombre(),
-                    pedidosViernes.get(i).getViandasIdviandas().getNombre(),
+                    pedidosViernes.get(i).getCliente().getNombre(),
+                    pedidosViernes.get(i).getVianda().getNombre(),
                     pedidosViernes.get(i).getFecha(),
                     pedidosViernes.get(i).getTipo()
             };
@@ -662,8 +662,8 @@ public class PedidosInterfaz extends javax.swing.JFrame {
 
             objetosArray[i] = new Object[]{
                     pedidosJueves.get(i).getId(),
-                    pedidosJueves.get(i).getClientesIdclientes().getNombre(),
-                    pedidosJueves.get(i).getViandasIdviandas().getNombre(),
+                    pedidosJueves.get(i).getCliente().getNombre(),
+                    pedidosJueves.get(i).getVianda().getNombre(),
                     pedidosJueves.get(i).getFecha(),
                     pedidosJueves.get(i).getTipo()
             };
@@ -700,8 +700,8 @@ public class PedidosInterfaz extends javax.swing.JFrame {
 
             objetosArray[i] = new Object[]{
                     pedidosMiercoles.get(i).getId(),
-                    pedidosMiercoles.get(i).getClientesIdclientes().getNombre(),
-                    pedidosMiercoles.get(i).getViandasIdviandas().getNombre(),
+                    pedidosMiercoles.get(i).getCliente().getNombre(),
+                    pedidosMiercoles.get(i).getVianda().getNombre(),
                     pedidosMiercoles.get(i).getFecha(),
                     pedidosMiercoles.get(i).getTipo()
             };
@@ -738,8 +738,8 @@ public class PedidosInterfaz extends javax.swing.JFrame {
 
             objetosArray[i] = new Object[]{
                     pedidosMartes.get(i).getId(),
-                    pedidosMartes.get(i).getClientesIdclientes().getNombre(),
-                    pedidosMartes.get(i).getViandasIdviandas().getNombre(),
+                    pedidosMartes.get(i).getCliente().getNombre(),
+                    pedidosMartes.get(i).getVianda().getNombre(),
                     pedidosMartes.get(i).getFecha(),
                     pedidosMartes.get(i).getTipo()
             };
@@ -776,8 +776,8 @@ public class PedidosInterfaz extends javax.swing.JFrame {
 
             objetosArray[i] = new Object[]{
                     pedidosLunes.get(i).getId(),
-                    pedidosLunes.get(i).getClientesIdclientes().getNombre(),
-                    pedidosLunes.get(i).getViandasIdviandas().getNombre(),
+                    pedidosLunes.get(i).getCliente().getNombre(),
+                    pedidosLunes.get(i).getVianda().getNombre(),
                     pedidosLunes.get(i).getFecha(),
                     pedidosLunes.get(i).getTipo()
             };

@@ -7,7 +7,9 @@ package Interfaz;
 
 import Entidad.PedidoEntidad;
 import Entidad.Tipo;
+import Entidad.VentaEntidad;
 import Logica.PedidoLogica;
+import Logica.VentasLogica;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -15,7 +17,7 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import java.awt.Color;
 import java.sql.Date;
-import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.PatternSyntaxException;
@@ -235,6 +237,7 @@ public class VentasInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_agregarActionPerformed
 
     private void agregarVenta() {
+        //Todo: implementar
     }
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
@@ -242,7 +245,7 @@ public class VentasInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_modificarActionPerformed
 
     private void modificarVenta() {
-
+        //Todo: implementar
     }
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
@@ -281,31 +284,37 @@ public class VentasInterfaz extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void actualizar() {
-//        limpiarCampos();
+        limpiarCampos();
         llenarTablaVentas();
         llenarTablaPedidos();
+    }
+
+    private void limpiarCampos() {
+        jdate_fecha.setDate(new java.util.Date());
+        jt_cliente.setText("");
     }
 
     private void llenarTablaVentas() {
         String[] columnas = new String[]{"ID", "Cliente", "Vianda", "Fecha", "Tipo", "Monto"};
         Class[] tipos = {Integer.class, String.class, String.class, Date.class, Tipo.class, Double.class};
 
-        ArrayList<Vent> pedidosLunes = PedidoLogica.getPedidos();
-        Object[][] objetosArray = new Object[pedidosLunes.size()][columnas.length];
+        ArrayList<VentaEntidad> ventas = VentasLogica.getVentas();
+        Object[][] objetosArray = new Object[ventas.size()][columnas.length];
 
-        for (int i = 0; i < pedidosLunes.size(); i++) {
+        for (int i = 0; i < ventas.size(); i++) {
             Tipo tipo;
-            if (pedidosLunes.get(i).getTipo().equals("almuerzo"))
+            if (ventas.get(i).getPedido().getTipo().equals("almuerzo"))
                 tipo = Tipo.Almuerzo;
             else
                 tipo = Tipo.Cena;
 
             objetosArray[i] = new Object[]{
-                    pedidosLunes.get(i).getId(),
-                    pedidosLunes.get(i).getClientesIdclientes().getNombre(),
-                    pedidosLunes.get(i).getViandasIdviandas().getNombre(),
-                    pedidosLunes.get(i).getFecha(),
-                    pedidosLunes.get(i).getTipo()
+                    ventas.get(i).getId(),
+                    ventas.get(i).getPedido().getCliente().getNombre(),
+                    ventas.get(i).getPedido().getVianda().getNombre(),
+                    ventas.get(i).getFecha(),
+                    tipo,
+                    ventas.get(i).getMonto()
             };
         }
 
@@ -340,8 +349,8 @@ public class VentasInterfaz extends javax.swing.JFrame {
 
             objetosArray[i] = new Object[]{
                     pedidosLunes.get(i).getId(),
-                    pedidosLunes.get(i).getClientesIdclientes().getNombre(),
-                    pedidosLunes.get(i).getViandasIdviandas().getNombre(),
+                    pedidosLunes.get(i).getCliente().getNombre(),
+                    pedidosLunes.get(i).getVianda().getNombre(),
                     pedidosLunes.get(i).getFecha(),
                     pedidosLunes.get(i).getTipo()
             };

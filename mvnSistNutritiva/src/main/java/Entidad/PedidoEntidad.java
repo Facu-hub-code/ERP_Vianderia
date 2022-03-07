@@ -2,7 +2,6 @@ package Entidad;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "pedidos")
@@ -13,7 +12,7 @@ public class PedidoEntidad {
     private Integer id;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "clientes_idclientes")
-    private ClienteEntidad clientesIdclientes;
+    private ClienteEntidad cliente;
 
     @Column(name = "fecha", nullable = false)
     private Date fecha;
@@ -24,24 +23,24 @@ public class PedidoEntidad {
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "viandas_idviandas", nullable = false)
-    private ViandaEntidad viandasIdviandas;
+    private ViandaEntidad vianda;
 
     public PedidoEntidad() {
     }
 
-    public PedidoEntidad(ClienteEntidad clientesIdclientes, ViandaEntidad viandasIdviandas, Date fecha, String tipo) {
-        this.clientesIdclientes = clientesIdclientes;
-        this.viandasIdviandas = viandasIdviandas;
+    public PedidoEntidad(ClienteEntidad cliente, ViandaEntidad vianda, Date fecha, String tipo) {
+        this.cliente = cliente;
+        this.vianda = vianda;
         this.fecha = fecha;
         this.tipo = tipo;
     }
 
-    public ViandaEntidad getViandasIdviandas() {
-        return viandasIdviandas;
+    public ViandaEntidad getVianda() {
+        return vianda;
     }
 
-    public void setViandasIdviandas(ViandaEntidad viandasIdviandas) {
-        this.viandasIdviandas = viandasIdviandas;
+    public void setVianda(ViandaEntidad viandasIdviandas) {
+        this.vianda = viandasIdviandas;
     }
 
     public String getTipo() {
@@ -60,12 +59,12 @@ public class PedidoEntidad {
         this.fecha = fecha;
     }
 
-    public ClienteEntidad getClientesIdclientes() {
-        return clientesIdclientes;
+    public ClienteEntidad getCliente() {
+        return cliente;
     }
 
-    public void setClientesIdclientes(ClienteEntidad clientesIdclientes) {
-        this.clientesIdclientes = clientesIdclientes;
+    public void setCliente(ClienteEntidad clientesIdclientes) {
+        this.cliente = clientesIdclientes;
     }
 
     public Integer getId() {
