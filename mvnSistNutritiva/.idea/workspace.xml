@@ -5,12 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f6ba0bc-1813-4156-85d5-b38edcb40a38" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Logica/ClienteLogica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entidad/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entidad/ClienteEntidad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entidad/Pedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entidad/Pedido.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Hibernate/ClienteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Hibernate/ClienteRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Hibernate/HibernateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Hibernate/HibernateUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Hibernate/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Hibernate/Repository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaz/ClientesInterfaz.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaz/ClientesInterfaz.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Interfaz/ClientesInterfaz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaz/ClientesInterfaz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaz/Label/CLabel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaz/Label/CircleBorder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaz/LoginInterfaz.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaz/LoginInterfaz.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Interfaz/LoginInterfaz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaz/LoginInterfaz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Entidad/Cliente.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Entidad/Pedido.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Entidad/Pedido.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Hibernate/ClienteRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Hibernate/ClienteRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Hibernate/HibernateUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Hibernate/HibernateUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/LoginInterfaz$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/LoginInterfaz$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/LoginInterfaz$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/LoginInterfaz$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/LoginInterfaz$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/LoginInterfaz.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/LoginInterfaz.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +54,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/Entidad/Cliente.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Entidad/ClienteEntidad.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Interfaz/ClientesInterfaz.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Hibernate/ClienteRepository.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/META-INF/persistence.xml" root0="SKIP_INSPECTION" />
@@ -38,6 +62,7 @@
     <setting file="file://$PROJECT_DIR$/src/main/java/Hibernate/HibernateUtil.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Hibernate/Repository.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Interfaz/LoginInterfaz.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Logica/ClienteLogica.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Logica/LoginLogica.java" root0="SKIP_INSPECTION" />
   </component>
@@ -117,16 +142,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Main.java</url>
-          <line>21</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

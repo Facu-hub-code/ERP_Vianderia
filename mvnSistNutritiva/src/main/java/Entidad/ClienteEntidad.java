@@ -1,12 +1,10 @@
 package Entidad;
 
 import javax.persistence.*;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "clientes")
-public class Cliente {
+public class ClienteEntidad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idclientes", nullable = false)
@@ -21,11 +19,22 @@ public class Cliente {
     @Column(name = "dni", length = 45)
     private String dni;
 
-    @Column(name = "email", length = 45)
-    private String email;
+    @Column(name = "direccion", length = 45)
+    private String direccion;
 
     @Column(name = "telefono", length = 45)
     private String telefono;
+
+    public ClienteEntidad() {
+    }
+
+    public ClienteEntidad(String nombre, String apellido, String dni, String email, String telefono) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.direccion = email;
+        this.telefono = telefono;
+    }
 
     public String getTelefono() {
         return telefono;
@@ -35,12 +44,12 @@ public class Cliente {
         this.telefono = telefono;
     }
 
-    public String getEmail() {
-        return email;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public String getDni() {

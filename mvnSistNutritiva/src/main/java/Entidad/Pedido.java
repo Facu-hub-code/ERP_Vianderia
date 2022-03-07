@@ -11,13 +11,13 @@ public class Pedido {
     private Integer id;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "clientes_idclientes")
-    private Cliente clientesIdclientes;
+    private ClienteEntidad clientesIdclientes;
 
-    public Cliente getClientesIdclientes() {
+    public ClienteEntidad getClientesIdclientes() {
         return clientesIdclientes;
     }
 
-    public void setClientesIdclientes(Cliente clientesIdclientes) {
+    public void setClientesIdclientes(ClienteEntidad clientesIdclientes) {
         this.clientesIdclientes = clientesIdclientes;
     }
 

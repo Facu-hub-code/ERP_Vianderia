@@ -1,7 +1,5 @@
 package Hibernate;
 
-import Entidad.Cliente;
-
 import java.util.List;
 
 public interface Repository<T> {

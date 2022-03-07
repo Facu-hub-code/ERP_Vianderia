@@ -28,6 +28,8 @@ public class LoginInterfaz extends javax.swing.JFrame {
     private void initComponents() {
 
         img_login = new javax.swing.JLabel();
+        jl_user = new javax.swing.JLabel();
+        jl_pass = new javax.swing.JLabel();
         jt_usuario = new javax.swing.JTextField();
         jt_pass = new javax.swing.JPasswordField();
         btn_ingresar = new javax.swing.JButton();
@@ -41,30 +43,27 @@ public class LoginInterfaz extends javax.swing.JFrame {
         img_login.setAlignmentX(12.0F);
         img_login.setAlignmentY(196.0F);
 
+        jl_user.setBackground(new java.awt.Color(49, 28, 28));
+        jl_user.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jl_user.setForeground(new java.awt.Color(255, 253, 118));
+        jl_user.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_user.setText("USUARIO");
+        jl_user.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jl_pass.setBackground(new java.awt.Color(49, 28, 28));
+        jl_pass.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jl_pass.setForeground(new java.awt.Color(255, 253, 118));
+        jl_pass.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_pass.setText("CONTRASE—A");
+        jl_pass.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
         jt_usuario.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jt_usuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jt_usuario.setText("Usuario");
         jt_usuario.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), null, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
-        jt_usuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jt_usuarioMouseClicked(evt);
-            }
-        });
 
         jt_pass.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jt_pass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jt_pass.setText("Contrase√±a");
         jt_pass.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        jt_pass.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jt_passMouseClicked(evt);
-            }
-        });
-        jt_pass.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jt_passKeyPressed(evt);
-            }
-        });
 
         btn_ingresar.setBackground(new java.awt.Color(255, 253, 118));
         btn_ingresar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -85,9 +84,12 @@ public class LoginInterfaz extends javax.swing.JFrame {
                 .addComponent(img_login, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jt_pass, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jt_pass, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jl_pass, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jl_user, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jt_usuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)))
                 .addGap(38, 38, 38))
         );
         layout.setVerticalGroup(
@@ -98,21 +100,21 @@ public class LoginInterfaz extends javax.swing.JFrame {
                         .addGap(27, 27, 27)
                         .addComponent(img_login, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(305, 305, 305)
+                        .addGap(255, 255, 255)
+                        .addComponent(jl_user, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
+                        .addGap(18, 18, 18)
+                        .addComponent(jl_pass, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jt_pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
+                        .addGap(47, 47, 47)
                         .addComponent(btn_ingresar)))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jt_passMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_passMouseClicked
-        jt_pass.setText("");
-    }//GEN-LAST:event_jt_passMouseClicked
 
     private void btn_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarActionPerformed
         String user = jt_usuario.getText(), password = jt_pass.getText();
@@ -125,22 +127,6 @@ public class LoginInterfaz extends javax.swing.JFrame {
                     + "Por favor vuelva a intentar");
         }
     }//GEN-LAST:event_btn_ingresarActionPerformed
-
-    private void jt_passKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_passKeyPressed
-        String user = jt_usuario.getText(), password = jt_pass.getText();
-        boolean acceso = LoginLogica.validarIngreso(user, password);
-        if (acceso){
-            SistemaPrincipalInterfaz sistemaPrincipal = new SistemaPrincipalInterfaz();
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(null, "Credenciales de acceso incorrecta.\n"
-                    + "Por favor vuelva a intentar");
-        }
-    }//GEN-LAST:event_jt_passKeyPressed
-
-    private void jt_usuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_usuarioMouseClicked
-        jt_usuario.setText("");
-    }//GEN-LAST:event_jt_usuarioMouseClicked
 
     /*
     Funcion para terminar detalles del FrontEnd.
@@ -169,6 +155,8 @@ public class LoginInterfaz extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_ingresar;
     private javax.swing.JLabel img_login;
+    private javax.swing.JLabel jl_pass;
+    private javax.swing.JLabel jl_user;
     private javax.swing.JPasswordField jt_pass;
     private javax.swing.JTextField jt_usuario;
     // End of variables declaration//GEN-END:variables
