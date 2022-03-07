@@ -33,6 +33,11 @@ public class ClientesInterfaz extends javax.swing.JFrame {
     private void initComponents() {
 
         jl_titulo = new javax.swing.JLabel();
+        jl_nombre = new javax.swing.JLabel();
+        jl_apellido = new javax.swing.JLabel();
+        jl_dni = new javax.swing.JLabel();
+        jl_mail = new javax.swing.JLabel();
+        jl_telefono = new javax.swing.JLabel();
         jt_nombre = new javax.swing.JTextField();
         jt_apellido = new javax.swing.JTextField();
         jt_telefono = new javax.swing.JTextField();
@@ -42,11 +47,6 @@ public class ClientesInterfaz extends javax.swing.JFrame {
         btn_modificar = new javax.swing.JButton();
         jscrollpane_general = new javax.swing.JScrollPane();
         jtable_clientes = new javax.swing.JTable();
-        jl_nombre = new javax.swing.JLabel();
-        jl_apellido = new javax.swing.JLabel();
-        jl_dni = new javax.swing.JLabel();
-        jl_mail = new javax.swing.JLabel();
-        jl_telefono = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(49, 28, 28));
@@ -58,6 +58,41 @@ public class ClientesInterfaz extends javax.swing.JFrame {
         jl_titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jl_titulo.setText("CLIENTES");
         jl_titulo.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jl_nombre.setBackground(new java.awt.Color(49, 28, 28));
+        jl_nombre.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jl_nombre.setForeground(new java.awt.Color(255, 253, 118));
+        jl_nombre.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_nombre.setText("NOMBRE");
+        jl_nombre.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jl_apellido.setBackground(new java.awt.Color(49, 28, 28));
+        jl_apellido.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jl_apellido.setForeground(new java.awt.Color(255, 253, 118));
+        jl_apellido.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_apellido.setText("APELLIDO");
+        jl_apellido.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jl_dni.setBackground(new java.awt.Color(49, 28, 28));
+        jl_dni.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jl_dni.setForeground(new java.awt.Color(255, 253, 118));
+        jl_dni.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_dni.setText("DNI");
+        jl_dni.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jl_mail.setBackground(new java.awt.Color(49, 28, 28));
+        jl_mail.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jl_mail.setForeground(new java.awt.Color(255, 253, 118));
+        jl_mail.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_mail.setText("MAIL");
+        jl_mail.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jl_telefono.setBackground(new java.awt.Color(49, 28, 28));
+        jl_telefono.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jl_telefono.setForeground(new java.awt.Color(255, 253, 118));
+        jl_telefono.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_telefono.setText("TELEFONO");
+        jl_telefono.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jt_nombre.setBackground(new java.awt.Color(243, 243, 194));
         jt_nombre.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -126,41 +161,6 @@ public class ClientesInterfaz extends javax.swing.JFrame {
             }
         });
         jscrollpane_general.setViewportView(jtable_clientes);
-
-        jl_nombre.setBackground(new java.awt.Color(49, 28, 28));
-        jl_nombre.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jl_nombre.setForeground(new java.awt.Color(255, 253, 118));
-        jl_nombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jl_nombre.setText("NOMBRE");
-        jl_nombre.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-
-        jl_apellido.setBackground(new java.awt.Color(49, 28, 28));
-        jl_apellido.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jl_apellido.setForeground(new java.awt.Color(255, 253, 118));
-        jl_apellido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jl_apellido.setText("APELLIDO");
-        jl_apellido.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-
-        jl_dni.setBackground(new java.awt.Color(49, 28, 28));
-        jl_dni.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jl_dni.setForeground(new java.awt.Color(255, 253, 118));
-        jl_dni.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jl_dni.setText("DNI");
-        jl_dni.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-
-        jl_mail.setBackground(new java.awt.Color(49, 28, 28));
-        jl_mail.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jl_mail.setForeground(new java.awt.Color(255, 253, 118));
-        jl_mail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jl_mail.setText("MAIL");
-        jl_mail.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-
-        jl_telefono.setBackground(new java.awt.Color(49, 28, 28));
-        jl_telefono.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jl_telefono.setForeground(new java.awt.Color(255, 253, 118));
-        jl_telefono.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jl_telefono.setText("TELEFONO");
-        jl_telefono.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -234,7 +234,7 @@ public class ClientesInterfaz extends javax.swing.JFrame {
     private void initComponentsFacu(){ //todo: revisar
         getContentPane().setBackground(new Color(49, 28, 28));
         setLocationRelativeTo(null);
-        setTitle("Clientes");       
+        setTitle("Gestion de clientes");       
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
