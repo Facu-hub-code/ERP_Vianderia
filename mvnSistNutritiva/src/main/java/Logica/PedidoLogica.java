@@ -59,4 +59,10 @@ public class PedidoLogica {
         ArrayList<PedidoEntidad> pedidos = new ArrayList<>(pedidoList); //casteo Array
         return pedidos;
     }
+
+    public static PedidoEntidad getPedido(int id) {
+        PedidoRepository pedidoRepository = new PedidoRepository();
+        PedidoEntidad pedido = pedidoRepository.findbyID(id);
+        return pedido;
+    }
 }

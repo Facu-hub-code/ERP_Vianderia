@@ -5,11 +5,11 @@
  */
 package Interfaz;
 
-import Entidad.PedidoEntidad;
-import Entidad.Tipo;
-import Entidad.VentaEntidad;
+import Entidad.*;
+import Logica.ClienteLogica;
 import Logica.PedidoLogica;
 import Logica.VentasLogica;
+import Logica.ViandasLogica;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -237,7 +237,25 @@ public class VentasInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_agregarActionPerformed
 
     private void agregarVenta() {
-        //Todo: implementar
+        double monto = 0.0;
+        Date fecha = null;
+        PedidoEntidad pedido = null;
+        if (checkCampos()){
+            try{
+                //monto = Double.valueOf(jt_monto.getText());
+                fecha = new java.sql.Date(jdate_fecha.getDate().getTime());
+                pedido = PedidoLogica.getPedido(idPedidoVigente);
+            }catch (NullPointerException e){
+                System.out.println("puede haber algun campo nulo");
+                e.printStackTrace();
+            }
+            VentaEntidad venta = new VentaEntidad(monto, fecha, pedido);
+            boolean flag = VentasLogica.agregar(venta);
+            if (flag)
+                JOptionPane.showMessageDialog(null, "Venta de "+pedido.getCliente().getNombre()+" agregado con exito");
+            else
+                JOptionPane.showMessageDialog(null, "Error: al intentar agregar la venta");
+        }
     }
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
@@ -245,8 +263,28 @@ public class VentasInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_modificarActionPerformed
 
     private void modificarVenta() {
-        //Todo: implementar
+        double monto = 0.0;
+        Date fecha = null;
+        PedidoEntidad pedido = null;
+        if (checkCampos()){
+            try{
+                //monto = Double.valueOf(jt_monto.getText());
+                fecha = new java.sql.Date(jdate_fecha.getDate().getTime());
+                pedido = PedidoLogica.getPedido(idPedidoVigente);
+            }catch (NullPointerException e){
+                System.out.println("puede haber algun campo nulo");
+                e.printStackTrace();
+            }
+            VentaEntidad venta = new VentaEntidad(monto, fecha, pedido);
+            boolean flag = VentasLogica.modificarVenta(venta);
+            if (flag)
+                JOptionPane.showMessageDialog(null, "Venta de "+pedido.getCliente().getNombre()+" agregado con exito");
+            else
+                JOptionPane.showMessageDialog(null, "Error: al intentar agregar la venta");
+        }
     }
+
+
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         // TODO: agregar el bit de anulado
@@ -282,6 +320,11 @@ public class VentasInterfaz extends javax.swing.JFrame {
     private javax.swing.JTable jtable_pedidos;
     private javax.swing.JTable jtable_ventas;
     // End of variables declaration//GEN-END:variables
+
+    private boolean checkCampos() {
+        //boolean flag =
+        return false;
+    }
 
     private void actualizar() {
         limpiarCampos();

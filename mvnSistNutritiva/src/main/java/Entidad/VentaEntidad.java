@@ -1,7 +1,7 @@
 package Entidad;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.sql.Date;
 
 @Entity
 @Table(name = "ventas", indexes = {
@@ -17,7 +17,7 @@ public class VentaEntidad {
     private Double monto;
 
     @Column(name = "fecha", nullable = false)
-    private LocalDate fecha;
+    private Date fecha;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "pedidos_idpedidos", nullable = false)
@@ -26,7 +26,7 @@ public class VentaEntidad {
     public VentaEntidad() {
     }
 
-    public VentaEntidad(Double monto, LocalDate fecha, PedidoEntidad pedido) {
+    public VentaEntidad(Double monto, Date fecha, PedidoEntidad pedido) {
         this.monto = monto;
         this.fecha = fecha;
         this.pedido = pedido;
@@ -40,11 +40,11 @@ public class VentaEntidad {
         this.pedido = pedidosIdpedidos;
     }
 
-    public LocalDate getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
