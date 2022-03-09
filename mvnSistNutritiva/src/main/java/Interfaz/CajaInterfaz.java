@@ -36,12 +36,12 @@ public class CajaInterfaz extends javax.swing.JFrame {
         jl_movimientos = new javax.swing.JLabel();
         jl_observaciones = new javax.swing.JLabel();
         jt_monto = new javax.swing.JTextField();
-        jt_observaciones = new javax.swing.JTextField();
         btn_agregar = new javax.swing.JButton();
         btn_modificar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
         jscrollpane_general2 = new javax.swing.JScrollPane();
         jtable_movimientos = new javax.swing.JTable();
+        jt_monto1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(49, 28, 28));
@@ -71,7 +71,7 @@ public class CajaInterfaz extends javax.swing.JFrame {
         jt_monto.setBackground(new java.awt.Color(243, 243, 194));
         jt_monto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jt_monto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jt_monto.setBorder(javax.swing.BorderFactory.createBevelBorder(null, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        jt_monto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         jt_monto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 buscadorClientes(evt);
@@ -81,20 +81,10 @@ public class CajaInterfaz extends javax.swing.JFrame {
             }
         });
 
-        jt_observaciones.setBackground(new java.awt.Color(243, 243, 194));
-        jt_observaciones.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jt_observaciones.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jt_observaciones.setBorder(javax.swing.BorderFactory.createBevelBorder(null, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        jt_observaciones.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                buscadorViandas(evt);
-            }
-        });
-
         btn_agregar.setBackground(new java.awt.Color(255, 253, 118));
         btn_agregar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btn_agregar.setText("Agregar");
-        btn_agregar.setBorder(javax.swing.BorderFactory.createBevelBorder(null, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        btn_agregar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         btn_agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_agregarActionPerformed(evt);
@@ -104,7 +94,7 @@ public class CajaInterfaz extends javax.swing.JFrame {
         btn_modificar.setBackground(new java.awt.Color(255, 253, 118));
         btn_modificar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btn_modificar.setText("Modificar");
-        btn_modificar.setBorder(javax.swing.BorderFactory.createBevelBorder(null, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        btn_modificar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         btn_modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_modificarActionPerformed(evt);
@@ -114,7 +104,7 @@ public class CajaInterfaz extends javax.swing.JFrame {
         btn_eliminar.setBackground(new java.awt.Color(255, 253, 118));
         btn_eliminar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btn_eliminar.setText("Eliminar");
-        btn_eliminar.setBorder(javax.swing.BorderFactory.createBevelBorder(null, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        btn_eliminar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_eliminarActionPerformed(evt);
@@ -139,6 +129,19 @@ public class CajaInterfaz extends javax.swing.JFrame {
         });
         jscrollpane_general2.setViewportView(jtable_movimientos);
 
+        jt_monto1.setBackground(new java.awt.Color(243, 243, 194));
+        jt_monto1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jt_monto1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jt_monto1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        jt_monto1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jt_monto1buscadorClientes(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jt_monto1filtroNumeros(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -146,29 +149,29 @@ public class CajaInterfaz extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btn_agregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btn_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
-                                    .addComponent(btn_eliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(59, 59, 59)
-                                .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(17, 17, 17))
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_agregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                            .addComponent(btn_eliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jl_movimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jt_monto, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jl_movimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jt_monto, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jt_observaciones, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
                                 .addComponent(jl_observaciones)
-                                .addGap(149, 149, 149)))
-                        .addGap(18, 18, 18)))
-                .addComponent(jscrollpane_general2, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE)
+                                .addGap(149, 149, 149))
+                            .addComponent(jt_monto1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addComponent(jscrollpane_general2, javax.swing.GroupLayout.DEFAULT_SIZE, 981, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -182,10 +185,10 @@ public class CajaInterfaz extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jt_monto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jl_movimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(274, 274, 274)
+                        .addGap(294, 294, 294)
                         .addComponent(jl_observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jt_observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jt_monto1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btn_agregar)
                         .addGap(18, 18, 18)
@@ -223,10 +226,6 @@ public class CajaInterfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_buscadorClientes
 
-    private void buscadorViandas(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorViandas
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscadorViandas
-
     private void jtable_movimientosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_movimientosMouseClicked
 //        int filaSelec = jtable_clientes.rowAtPoint(evt.getPoint());
 //        jt_nombre.setText(jtable_clientes.getValueAt(filaSelec, 1).toString());
@@ -242,6 +241,14 @@ public class CajaInterfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_filtroNumeros
 
+    private void jt_monto1buscadorClientes(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_monto1buscadorClientes
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jt_monto1buscadorClientes
+
+    private void jt_monto1filtroNumeros(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_monto1filtroNumeros
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jt_monto1filtroNumeros
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_agregar;
     private javax.swing.JButton btn_eliminar;
@@ -249,13 +256,9 @@ public class CajaInterfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jl_movimientos;
     private javax.swing.JLabel jl_observaciones;
     private javax.swing.JLabel jl_titulo;
-    private javax.swing.JScrollPane jscrollpane_general;
-    private javax.swing.JScrollPane jscrollpane_general1;
     private javax.swing.JScrollPane jscrollpane_general2;
     private javax.swing.JTextField jt_monto;
-    private javax.swing.JTextField jt_observaciones;
-    private javax.swing.JTable jtable_clientes;
-    private javax.swing.JTable jtable_clientes1;
+    private javax.swing.JTextField jt_monto1;
     private javax.swing.JTable jtable_movimientos;
     // End of variables declaration//GEN-END:variables
 

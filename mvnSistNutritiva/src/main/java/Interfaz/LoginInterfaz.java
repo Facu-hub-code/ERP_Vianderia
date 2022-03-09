@@ -6,6 +6,8 @@ import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
+import static java.lang.String.valueOf;
+
 /**
  *
  * @author facul
@@ -54,16 +56,26 @@ public class LoginInterfaz extends javax.swing.JFrame {
         jl_pass.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jl_pass.setForeground(new java.awt.Color(255, 253, 118));
         jl_pass.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_pass.setText("CONTRASE�A");
+        jl_pass.setText("CONTRASE�A");
         jl_pass.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jt_usuario.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jt_usuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_usuario.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), null, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        jt_usuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                loginTxtUserName(evt);
+            }
+        });
 
         jt_pass.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jt_pass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_pass.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        jt_pass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                loginTxtPassword(evt);
+            }
+        });
 
         btn_ingresar.setBackground(new java.awt.Color(255, 253, 118));
         btn_ingresar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -121,12 +133,36 @@ public class LoginInterfaz extends javax.swing.JFrame {
         boolean acceso = LoginLogica.validarIngreso(user, password);
         if (acceso){
             SistemaPrincipalInterfaz sistemaPrincipal = new SistemaPrincipalInterfaz();
-            this.dispose();
+            dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Credenciales de acceso incorrecta.\n"
                     + "Por favor vuelva a intentar");
         }
     }//GEN-LAST:event_btn_ingresarActionPerformed
+
+    private void loginTxtUserName(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginTxtUserName
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            boolean valido = LoginLogica.validarIngreso(jt_usuario.getText(), valueOf(jt_pass.getPassword()));
+            if(valido){
+                SistemaPrincipalInterfaz sistemaPrincipal = new SistemaPrincipalInterfaz();
+                dispose();
+            }
+            else
+                JOptionPane.showMessageDialog(this, "Nombre de usuario o contraseña incorretas", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_loginTxtUserName
+
+    private void loginTxtPassword(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginTxtPassword
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            boolean valido = LoginLogica.validarIngreso(jt_usuario.getText(), valueOf(jt_pass.getPassword()));
+            if(valido){
+                SistemaPrincipalInterfaz sistemaPrincipal = new SistemaPrincipalInterfaz();
+                dispose();
+            }
+            else
+                JOptionPane.showMessageDialog(this, "Nombre de usuario o contraseña incorretas", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_loginTxtPassword
 
     /*
     Funcion para terminar detalles del FrontEnd.

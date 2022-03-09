@@ -27,17 +27,17 @@ import java.util.regex.PatternSyntaxException;
  * @author facul
  */
 public class PedidosInterfaz extends javax.swing.JFrame {
-    private int idPedidoVigente;
-    private int idClienteVigente;
-    private int idViandaVigente;
+    private static int idPedidoVigente;
+    private static int idClienteVigente;
+    private static int idViandaVigente;
     /**
      * Constructor: - Creates new form GestionClientes
      */
     public PedidosInterfaz() {
         initComponents();
-        initComponentsFacu();
+        setUp();
         setVisible(true);
-        actualizar();
+        update();
     }
 
     /**
@@ -411,7 +411,7 @@ public class PedidosInterfaz extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void initComponentsFacu(){
+    private void setUp(){
         getContentPane().setBackground(new Color(49, 28, 28));
         setLocationRelativeTo(null);
         setTitle("Gestion de pedidos");       
@@ -494,7 +494,7 @@ public class PedidosInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_jtable_viernesMouseClicked
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
-        actualizar();
+        update();
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
     private void rb_almuerzoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_almuerzoActionPerformed
@@ -593,7 +593,7 @@ public class PedidosInterfaz extends javax.swing.JFrame {
         }
     }
 
-    private void actualizar() {
+    private void update() {
         llenarTablaClientes();
         llenarTablaViandas();
         llenarTablasPedidos();
