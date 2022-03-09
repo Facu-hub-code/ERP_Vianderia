@@ -556,8 +556,10 @@ public class PedidosInterfaz extends javax.swing.JFrame {
                 tipo = "almuerzo";
             else
                 tipo = "cena";
+
             PedidoEntidad pedido = new PedidoEntidad(cliente, vianda, fecha, tipo);
             boolean flag = PedidoLogica.agregarPedido(pedido);
+
             if (flag)
                 JOptionPane.showMessageDialog(null, "Pedido de "+cliente.getNombre()+" agregado con exito");
             else
@@ -566,25 +568,20 @@ public class PedidosInterfaz extends javax.swing.JFrame {
     }
 
     private void modificarPedido(){
-        ClienteEntidad cliente = null;
-        ViandaEntidad vianda = null;
-        Date fecha = null;
-        String tipo = null;
+        ClienteEntidad cliente = null; ViandaEntidad vianda = null; Date fecha = null; String tipo = null;
         if (checkCampos()){
-            try{
-                cliente = ClienteLogica.getCliente(idClienteVigente);
-                vianda = ViandasLogica.getVianda(idViandaVigente);
-                fecha = new java.sql.Date(jdate_fecha.getDate().getTime());
-                if (rb_almuerzo.isSelected())
-                    tipo = "almuerzo";
-                else
-                    tipo = "cena";
-            }catch (NullPointerException e){
-                System.out.println("puede haber algun campo nulo");
-                e.printStackTrace();
-            }
+
+            cliente = ClienteLogica.getCliente(idClienteVigente);
+            vianda = ViandasLogica.getVianda(idViandaVigente);
+            fecha = new java.sql.Date(jdate_fecha.getDate().getTime());
+            if (rb_almuerzo.isSelected())
+                tipo = "almuerzo";
+            else
+                tipo = "cena";
+
             PedidoEntidad pedido = new PedidoEntidad(cliente, vianda, fecha, tipo);
             boolean flag = PedidoLogica.modificarPedido(pedido);
+
             if (flag)
                 JOptionPane.showMessageDialog(null, "Pedido de "+cliente.getNombre()+" agregado con exito");
             else

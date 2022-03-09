@@ -6,10 +6,8 @@
 package Interfaz;
 
 import Entidad.*;
-import Logica.ClienteLogica;
 import Logica.PedidoLogica;
 import Logica.VentasLogica;
-import Logica.ViandasLogica;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -17,7 +15,6 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import java.awt.Color;
 import java.sql.Date;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.PatternSyntaxException;
@@ -28,16 +25,16 @@ import java.util.regex.PatternSyntaxException;
  */
 public class VentasInterfaz extends javax.swing.JFrame {
 
-    private int idPedidoVigente;
-    private int idVentaVigente;
+    private static int idPedidoVigente;
+    private static int idVentaVigente;
     /**
      * Constructor: - Creates new form GestionClientes
      */
     public VentasInterfaz() {
         initComponents();
-        initComponentsFacu();
+        setUp();
         setVisible(true);
-        actualizar();
+        update();
     }
 
     /**
@@ -224,17 +221,56 @@ public class VentasInterfaz extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void initComponentsFacu(){ //todo: revisar
+    private void setUp(){
         getContentPane().setBackground(new Color(49, 28, 28));
         setLocationRelativeTo(null);
         setTitle("Gestion de ventas");       
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
-
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
         agregarVenta();
     }//GEN-LAST:event_btn_agregarActionPerformed
+
+    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
+        modificarVenta();
+    }//GEN-LAST:event_btn_modificarActionPerformed
+
+    private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
+        // TODO: agregar el bit de anulado
+    }//GEN-LAST:event_btn_eliminarActionPerformed
+
+    private void buscadorClientes(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorClientes
+        addFilter(jtable_ventas, jt_cliente.getText(), 1);
+    }//GEN-LAST:event_buscadorClientes
+
+    private void jtable_pedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_pedidosMouseClicked
+        int filaSelec = jtable_pedidos.rowAtPoint(evt.getPoint());
+        jt_cliente.setText(jtable_pedidos.getValueAt(filaSelec,1).toString());
+        idPedidoVigente = (int) jtable_pedidos.getValueAt(filaSelec, 0);
+    }//GEN-LAST:event_jtable_pedidosMouseClicked
+
+    private void jtable_ventasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_ventasMouseClicked
+        int filaSelec = jtable_ventas.rowAtPoint(evt.getPoint());
+        jt_cliente.setText(jtable_ventas.getValueAt(filaSelec, 1).toString());
+        idVentaVigente = (int) jtable_ventas.getValueAt(filaSelec, 0);
+    }//GEN-LAST:event_jtable_ventasMouseClicked
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_agregar;
+    private javax.swing.JButton btn_eliminar;
+    private javax.swing.JButton btn_modificar;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane_general;
+    private com.toedter.calendar.JDateChooser jdate_fecha;
+    private javax.swing.JLabel jl_cliente;
+    private javax.swing.JLabel jl_fecha;
+    private javax.swing.JLabel jl_titulo;
+    private javax.swing.JTextField jt_cliente;
+    private javax.swing.JTable jtable_pedidos;
+    private javax.swing.JTable jtable_ventas;
+    // End of variables declaration//GEN-END:variables
 
     private void agregarVenta() {
         double monto = 0.0;
@@ -258,9 +294,6 @@ public class VentasInterfaz extends javax.swing.JFrame {
         }
     }
 
-    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
-        modificarVenta();
-    }//GEN-LAST:event_btn_modificarActionPerformed
 
     private void modificarVenta() {
         double monto = 0.0;
@@ -284,57 +317,21 @@ public class VentasInterfaz extends javax.swing.JFrame {
         }
     }
 
-
-
-    private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        // TODO: agregar el bit de anulado
-    }//GEN-LAST:event_btn_eliminarActionPerformed
-
-    private void buscadorClientes(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorClientes
-        addFilter(jtable_ventas, jt_cliente.getText(), 1);//todo:revisar index
-    }//GEN-LAST:event_buscadorClientes
-
-    private void jtable_pedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_pedidosMouseClicked
-        int filaSelec = jtable_pedidos.rowAtPoint(evt.getPoint());
-        idPedidoVigente = (int) jtable_pedidos.getValueAt(filaSelec, 0);
-    }//GEN-LAST:event_jtable_pedidosMouseClicked
-
-    private void jtable_ventasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_ventasMouseClicked
-        int filaSelec = jtable_ventas.rowAtPoint(evt.getPoint());
-        jt_cliente.setText(jtable_ventas.getValueAt(filaSelec, 1).toString());//todo:revisar index
-        idVentaVigente = (int) jtable_ventas.getValueAt(filaSelec, 0);
-    }//GEN-LAST:event_jtable_ventasMouseClicked
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_agregar;
-    private javax.swing.JButton btn_eliminar;
-    private javax.swing.JButton btn_modificar;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane_general;
-    private com.toedter.calendar.JDateChooser jdate_fecha;
-    private javax.swing.JLabel jl_cliente;
-    private javax.swing.JLabel jl_fecha;
-    private javax.swing.JLabel jl_titulo;
-    private javax.swing.JTextField jt_cliente;
-    private javax.swing.JTable jtable_pedidos;
-    private javax.swing.JTable jtable_ventas;
-    // End of variables declaration//GEN-END:variables
-
     private boolean checkCampos() {
-        //boolean flag =
-        return false;
+        return !(idVentaVigente<0 || idPedidoVigente<0);
     }
 
-    private void actualizar() {
+    private void update() {
         limpiarCampos();
-        llenarTablaVentas();
         llenarTablaPedidos();
+        llenarTablaVentas();
     }
 
     private void limpiarCampos() {
         jdate_fecha.setDate(new java.util.Date());
         jt_cliente.setText("");
+        idPedidoVigente = -1;
+        idVentaVigente = -1;
     }
 
     private void llenarTablaVentas() {
