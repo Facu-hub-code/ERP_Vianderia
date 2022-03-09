@@ -273,12 +273,12 @@ public class ClientesInterfaz extends javax.swing.JFrame {
 
     private void jtable_clientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_clientesMouseClicked
         int filaSelec = jtable_clientes.rowAtPoint(evt.getPoint());
+        idVigente = (int) jtable_clientes.getValueAt(filaSelec, 0);
         jt_nombre.setText(jtable_clientes.getValueAt(filaSelec, 1).toString());
         jt_apellido.setText(jtable_clientes.getValueAt(filaSelec, 2).toString());
         jt_dni.setText(jtable_clientes.getValueAt(filaSelec, 3).toString());
         jt_direccion.setText(jtable_clientes.getValueAt(filaSelec, 4).toString());
         jt_telefono.setText(jtable_clientes.getValueAt(filaSelec, 5).toString());
-        idVigente = (int) jtable_clientes.getValueAt(filaSelec, 0);
     }//GEN-LAST:event_jtable_clientesMouseClicked
 
     private void buscadorNombre(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorNombre
@@ -316,7 +316,7 @@ public class ClientesInterfaz extends javax.swing.JFrame {
     }
 
     private void llenarTabla() {
-        String[] columnas = new String[]{"ID", "Nombre", "Apellido", "Direccion", "DNI", "Telefono"};
+        String[] columnas = new String[]{"ID", "Nombre", "Apellido", "DNI", "Direccion", "Telefono"};
         Class[] tipos = {Integer.class, String.class, String.class, String.class, String.class, String.class};
 
         ArrayList<ClienteEntidad> clientes = ClienteLogica.getClientes();
@@ -327,8 +327,8 @@ public class ClientesInterfaz extends javax.swing.JFrame {
                     clientes.get(i).getId(),
                     clientes.get(i).getNombre(),
                     clientes.get(i).getApellido(),
-                    clientes.get(i).getDireccion(),
                     clientes.get(i).getDni(),
+                    clientes.get(i).getDireccion(),
                     clientes.get(i).getTelefono()
             };
         }
@@ -389,7 +389,7 @@ public class ClientesInterfaz extends javax.swing.JFrame {
 
     private void agregarCliente() {
         String nombre = jt_nombre.getText(), apellido = "", direccion = "", dni = "", telefono = "";
-        if (!nombre.equals(null) || !nombre.equals("")){
+        if (!nombre.equals(null) || !nombre.equals("")){ //Check que no sea ni nulo ni vacio
             try{
                 nombre = jt_nombre.getText();
                 apellido = jt_apellido.getText();
@@ -422,8 +422,7 @@ public class ClientesInterfaz extends javax.swing.JFrame {
                 System.out.println("Habia algun campo nulo");
                 e.printStackTrace();
             }
-            ClienteRepository clienteRepository = new ClienteRepository();
-            ClienteEntidad cliente = clienteRepository.findbyID(idVigente);
+            ClienteEntidad cliente = ClienteLogica.getCliente(idVigente);
             boolean flag = ClienteLogica.modificarCliente(cliente);
             if (flag)
                 JOptionPane.showMessageDialog(null, "Cliente "+cliente.getNombre()+" modificado con exito");
