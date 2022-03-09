@@ -86,9 +86,4 @@ public class ViandasRepository implements Repository<ViandaEntidad>{
             HibernateUtil.closeSession();
         }
     }
-
-    @Override
-    public void delete(ViandaEntidad viandaEntidad) {
-
-    }
 }

@@ -25,6 +25,9 @@ public class ClienteEntidad {
     @Column(name = "telefono", length = 45)
     private String telefono;
 
+    @Column(name = "anulado", nullable = false)
+    private boolean anulado;
+
     public ClienteEntidad() {
     }
 
@@ -82,5 +85,13 @@ public class ClienteEntidad {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public boolean isAnulado() {
+        return anulado;
+    }
+
+    public void setAnulado(boolean anulado) {
+        this.anulado = anulado;
     }
 }

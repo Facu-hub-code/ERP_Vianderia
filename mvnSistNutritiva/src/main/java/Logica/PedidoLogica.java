@@ -14,22 +14,22 @@ import java.util.*;
 public class PedidoLogica {
 
     public static boolean agregarPedido(PedidoEntidad pedido) {
-        try{
+        try {
             PedidoRepository pedidoRepository = new PedidoRepository();
             pedidoRepository.save(pedido);
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
     }
 
     public static boolean modificarPedido(PedidoEntidad pedido) {
-        try{
+        try {
             PedidoRepository pedidoRepository = new PedidoRepository();
             pedidoRepository.update(pedido);
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
@@ -41,12 +41,12 @@ public class PedidoLogica {
         ArrayList<PedidoEntidad> pedidosDia = new ArrayList<>();
 
 
-        for (PedidoEntidad pedido : pedidos){
+        for (PedidoEntidad pedido : pedidos) {
             LocalDate diaPedido =
-                    LocalDate.of( pedido.getFecha().getYear() + 1900 //no se porque el metodo le resta 1900
-                    ,pedido.getFecha().getMonth() + 1 //no se porque le resta 1
-                    ,pedido.getFecha().getDate());
-            if (diaPedido.getDayOfWeek() == day){
+                    LocalDate.of(pedido.getFecha().getYear() + 1900 //no se porque el metodo le resta 1900
+                            , pedido.getFecha().getMonth() + 1 //no se porque le resta 1
+                            , pedido.getFecha().getDate());
+            if (diaPedido.getDayOfWeek() == day) {
                 pedidosDia.add(pedido);
             }
         }
@@ -64,5 +64,18 @@ public class PedidoLogica {
         PedidoRepository pedidoRepository = new PedidoRepository();
         PedidoEntidad pedido = pedidoRepository.findbyID(id);
         return pedido;
+    }
+
+    public static boolean eliminarPedido(int idPedidoVigente) {
+        try {
+            PedidoRepository pedidoRepository = new PedidoRepository();
+            PedidoEntidad pedido = pedidoRepository.findbyID(idPedidoVigente);
+            pedido.setAnulado(true);
+            pedidoRepository.update(pedido);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

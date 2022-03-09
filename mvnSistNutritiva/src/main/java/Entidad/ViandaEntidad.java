@@ -16,6 +16,9 @@ public class ViandaEntidad {
     @Column(name = "precio", nullable = false)
     private Double precio;
 
+    @Column(name = "anulado", nullable = false)
+    private boolean anulado;
+
     public ViandaEntidad() {
     }
 
@@ -46,5 +49,13 @@ public class ViandaEntidad {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public boolean isAnulado() {
+        return anulado;
+    }
+
+    public void setAnulado(boolean anulado) {
+        this.anulado = anulado;
     }
 }

@@ -25,6 +25,9 @@ public class PedidoEntidad {
     @JoinColumn(name = "viandas_idviandas", nullable = false)
     private ViandaEntidad vianda;
 
+    @Column(name = "anulado", nullable = false)
+    private boolean anulado;
+
     public PedidoEntidad() {
     }
 
@@ -75,5 +78,11 @@ public class PedidoEntidad {
         this.id = id;
     }
 
-    //TODO Reverse Engineering! Migrate other columns to the entity
+    public boolean isAnulado() {
+        return anulado;
+    }
+
+    public void setAnulado(boolean anulado) {
+        this.anulado = anulado;
+    }
 }

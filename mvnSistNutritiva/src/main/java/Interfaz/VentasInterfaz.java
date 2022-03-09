@@ -6,6 +6,7 @@
 package Interfaz;
 
 import Entidad.*;
+import Logica.CajaLogica;
 import Logica.PedidoLogica;
 import Logica.VentasLogica;
 
@@ -20,13 +21,14 @@ import java.util.List;
 import java.util.regex.PatternSyntaxException;
 
 /**
- * @company FK-SOFT
  * @author facul
+ * @company FK-SOFT
  */
 public class VentasInterfaz extends javax.swing.JFrame {
 
     private static int idPedidoVigente;
     private static int idVentaVigente;
+
     /**
      * Constructor: - Creates new form GestionClientes
      */
@@ -126,15 +128,15 @@ public class VentasInterfaz extends javax.swing.JFrame {
         });
 
         jtable_pedidos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
+                new Object[][]{
+                        {},
+                        {},
+                        {},
+                        {}
+                },
+                new String[]{
 
-            }
+                }
         ));
         jtable_pedidos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -146,15 +148,15 @@ public class VentasInterfaz extends javax.swing.JFrame {
         jTabbedPane_general.addTab("Pedidos", jScrollPane1);
 
         jtable_ventas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
+                new Object[][]{
+                        {},
+                        {},
+                        {},
+                        {}
+                },
+                new String[]{
 
-            }
+                }
         ));
         jtable_ventas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -168,68 +170,73 @@ public class VentasInterfaz extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btn_agregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
-                                .addComponent(btn_eliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jl_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jdate_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jl_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jt_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(jTabbedPane_general, javax.swing.GroupLayout.PREFERRED_SIZE, 968, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(20, 20, 20)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                .addComponent(btn_agregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(btn_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                                                                .addComponent(btn_eliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addComponent(jl_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(jdate_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addComponent(jl_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(jt_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jTabbedPane_general, javax.swing.GroupLayout.PREFERRED_SIZE, 968, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(59, 59, 59)
+                                                .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jl_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jdate_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jt_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_agregar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_modificar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_eliminar))
-                    .addComponent(jTabbedPane_general, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE))
-                .addGap(22, 22, 22))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jl_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jdate_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jt_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jl_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(btn_agregar)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(btn_modificar)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(btn_eliminar))
+                                        .addComponent(jTabbedPane_general, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE))
+                                .addGap(22, 22, 22))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void setUp(){
+    private void setUp() {
         getContentPane().setBackground(new Color(49, 28, 28));
         setLocationRelativeTo(null);
-        setTitle("Gestion de ventas");       
+        setTitle("Gestion de ventas");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
-        agregarVenta();
+        if(checkCampos()){
+            agregarVenta();
+            eliminarPedido();
+            agregarMovimiento(PedidoLogica.getPedido(idPedidoVigente));
+        }
+
     }//GEN-LAST:event_btn_agregarActionPerformed
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
@@ -246,7 +253,7 @@ public class VentasInterfaz extends javax.swing.JFrame {
 
     private void jtable_pedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_pedidosMouseClicked
         int filaSelec = jtable_pedidos.rowAtPoint(evt.getPoint());
-        jt_cliente.setText(jtable_pedidos.getValueAt(filaSelec,1).toString());
+        jt_cliente.setText(jtable_pedidos.getValueAt(filaSelec, 1).toString());
         idPedidoVigente = (int) jtable_pedidos.getValueAt(filaSelec, 0);
     }//GEN-LAST:event_jtable_pedidosMouseClicked
 
@@ -272,26 +279,36 @@ public class VentasInterfaz extends javax.swing.JFrame {
     private javax.swing.JTable jtable_ventas;
     // End of variables declaration//GEN-END:variables
 
+    private void agregarMovimiento(PedidoEntidad pedido) {
+        MovimientoEntidad movimientoEntidad = new MovimientoEntidad();
+        movimientoEntidad.setFecha(new java.sql.Date(new java.util.Date().getTime()));
+        movimientoEntidad.setMonto(pedido.getVianda().getPrecio());
+        String observacion = pedido.getVianda().getNombre()+" ; "+pedido.getCliente().getNombre();
+        movimientoEntidad.setObservacion(observacion);
+        CajaLogica.agregarMovimiento(movimientoEntidad);
+    }
+
+    private void eliminarPedido() {
+        PedidoLogica.eliminarPedido(idPedidoVigente);
+    }
+
     private void agregarVenta() {
         double monto = 0.0;
         Date fecha = null;
         PedidoEntidad pedido = null;
-        if (checkCampos()){
-            try{
-                //monto = Double.valueOf(jt_monto.getText());
-                fecha = new java.sql.Date(jdate_fecha.getDate().getTime());
-                pedido = PedidoLogica.getPedido(idPedidoVigente);
-            }catch (NullPointerException e){
-                System.out.println("puede haber algun campo nulo");
-                e.printStackTrace();
-            }
-            VentaEntidad venta = new VentaEntidad(monto, fecha, pedido);
-            boolean flag = VentasLogica.agregar(venta);
-            if (flag)
-                JOptionPane.showMessageDialog(null, "Venta de "+pedido.getCliente().getNombre()+" agregado con exito");
-            else
-                JOptionPane.showMessageDialog(null, "Error: al intentar agregar la venta");
+        try {
+            fecha = new java.sql.Date(jdate_fecha.getDate().getTime());
+            pedido = PedidoLogica.getPedido(idPedidoVigente);
+            monto = pedido.getVianda().getPrecio();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
         }
+        VentaEntidad venta = new VentaEntidad(monto, fecha, pedido);
+        boolean flag = VentasLogica.agregar(venta);
+        if (flag)
+            JOptionPane.showMessageDialog(null, "Venta de " + pedido.getCliente().getNombre() + " agregado con exito");
+        else
+            JOptionPane.showMessageDialog(null, "Error: al intentar agregar la venta");
     }
 
 
@@ -299,26 +316,26 @@ public class VentasInterfaz extends javax.swing.JFrame {
         double monto = 0.0;
         Date fecha = null;
         PedidoEntidad pedido = null;
-        if (checkCampos()){
-            try{
+        if (checkCampos()) {
+            try {
                 //monto = Double.valueOf(jt_monto.getText());
                 fecha = new java.sql.Date(jdate_fecha.getDate().getTime());
                 pedido = PedidoLogica.getPedido(idPedidoVigente);
-            }catch (NullPointerException e){
+            } catch (NullPointerException e) {
                 System.out.println("puede haber algun campo nulo");
                 e.printStackTrace();
             }
             VentaEntidad venta = new VentaEntidad(monto, fecha, pedido);
             boolean flag = VentasLogica.modificarVenta(venta);
             if (flag)
-                JOptionPane.showMessageDialog(null, "Venta de "+pedido.getCliente().getNombre()+" agregado con exito");
+                JOptionPane.showMessageDialog(null, "Venta de " + pedido.getCliente().getNombre() + " agregado con exito");
             else
                 JOptionPane.showMessageDialog(null, "Error: al intentar agregar la venta");
         }
     }
 
     private boolean checkCampos() {
-        return !(idVentaVigente<0 || idPedidoVigente<0);
+        return !(idVentaVigente < 0 || idPedidoVigente < 0);
     }
 
     private void update() {
@@ -425,6 +442,7 @@ public class VentasInterfaz extends javax.swing.JFrame {
             }
         }
     }
+
     private void setDefaultSorter(JTable tabla, int columna, SortOrder sortOrder) {
         TableRowSorter<TableModel> sorter = new TableRowSorter<>(tabla.getModel());
         tabla.setRowSorter(sorter);
@@ -434,6 +452,7 @@ public class VentasInterfaz extends javax.swing.JFrame {
         sorter.setSortKeys(sortKeys);
         sorter.sort();
     }
+
     public void sortearFechaVentas() {
         setDefaultSorter(jtable_ventas, 1, SortOrder.DESCENDING); //revisar columna
     }

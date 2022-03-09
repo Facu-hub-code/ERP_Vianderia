@@ -1,6 +1,7 @@
 package Entidad;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.time.LocalDate;
 
 @Entity
@@ -18,13 +19,22 @@ public class MovimientoEntidad {
     private String observacion;
 
     @Column(name = "fecha", nullable = false)
-    private LocalDate fecha;
+    private Date fecha;
 
-    public LocalDate getFecha() {
+    public MovimientoEntidad() {
+    }
+
+    public MovimientoEntidad(double monto, String observacion, Date fecha) {
+        this.monto = monto;
+        this.observacion = observacion;
+        this.fecha = fecha;
+    }
+
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 

@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS `bdd_nutritiva`.`clientes` (
   `dni` VARCHAR(45) NULL DEFAULT NULL,
   `email` VARCHAR(45) NULL DEFAULT NULL,
   `telefono` VARCHAR(45) NULL DEFAULT NULL,
+  `anulado` BIT NOT NULL DEFAULT 0,
   PRIMARY KEY (`idclientes`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 2
@@ -42,6 +43,7 @@ CREATE TABLE IF NOT EXISTS `bdd_nutritiva`.`movimientos` (
   `monto` FLOAT NOT NULL,
   `observacion` VARCHAR(45) NULL DEFAULT NULL,
   `fecha` DATE NOT NULL,
+  `anulado` BIT NOT NULL,
   PRIMARY KEY (`idmovimientos`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
@@ -54,6 +56,7 @@ CREATE TABLE IF NOT EXISTS `bdd_nutritiva`.`viandas` (
   `idviandas` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NOT NULL,
   `precio` FLOAT NOT NULL,
+  `anulado` BIT NOT NULL DEFAULT 0,
   PRIMARY KEY (`idviandas`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
@@ -68,6 +71,7 @@ CREATE TABLE IF NOT EXISTS `bdd_nutritiva`.`pedidos` (
   `tipo` ENUM('almuerzo', 'cena') NOT NULL,
   `clientes_idclientes` INT NOT NULL,
   `viandas_idviandas` INT NOT NULL,
+  `anulado` BIT NOT NULL,
   PRIMARY KEY (`idpedidos`),
   INDEX `fk_pedidos_clientes_idx` (`clientes_idclientes` ASC) VISIBLE,
   INDEX `fk_pedidos_viandas1_idx` (`viandas_idviandas` ASC) VISIBLE,
@@ -101,6 +105,7 @@ CREATE TABLE IF NOT EXISTS `bdd_nutritiva`.`ventas` (
   `monto` DOUBLE NOT NULL,
   `fecha` DATE NOT NULL,
   `pedidos_idpedidos` INT NOT NULL,
+  `anulado` BIT NOT NULL,
   PRIMARY KEY (`idventas`),
   INDEX `fk_ventas_pedidos1_idx` (`pedidos_idpedidos` ASC) VISIBLE,
   CONSTRAINT `fk_ventas_pedidos1`

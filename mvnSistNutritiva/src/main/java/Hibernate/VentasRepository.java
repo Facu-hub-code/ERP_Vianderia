@@ -45,9 +45,4 @@ public class VentasRepository implements Repository<VentaEntidad> {
     public void update(VentaEntidad ventaEntidad) {
 
     }
-
-    @Override
-    public void delete(VentaEntidad ventaEntidad) {
-
-    }
 }

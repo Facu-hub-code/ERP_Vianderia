@@ -86,8 +86,4 @@ public class PedidoRepository implements Repository<PedidoEntidad> {
         }
     }
 
-    @Override
-    public void delete(PedidoEntidad pedidoEntidad) {
-
-    }
 }
