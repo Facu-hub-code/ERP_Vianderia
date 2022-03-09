@@ -37,14 +37,14 @@ public class PedidoLogica {
 
     public static ArrayList<PedidoEntidad> getPedidos(DayOfWeek day) {
         PedidoRepository repo = new PedidoRepository();
-        List<PedidoEntidad> pedidoList = repo.findAll(); //guardo todos los pedidos
-        ArrayList<PedidoEntidad> pedidos = new ArrayList<>(pedidoList); //casteo Array
+        ArrayList<PedidoEntidad> pedidos = new ArrayList<>(repo.findAll());
         ArrayList<PedidoEntidad> pedidosDia = new ArrayList<>();
+
 
         for (PedidoEntidad pedido : pedidos){
             LocalDate diaPedido =
                     LocalDate.of( pedido.getFecha().getYear() + 1900 //no se porque el metodo le resta 1900
-                    ,pedido.getFecha().getMonth()
+                    ,pedido.getFecha().getMonth() + 1 //no se porque le resta 1
                     ,pedido.getFecha().getDate());
             if (diaPedido.getDayOfWeek() == day){
                 pedidosDia.add(pedido);
