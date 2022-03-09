@@ -280,12 +280,19 @@ public class VentasInterfaz extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void agregarMovimiento(PedidoEntidad pedido) {
+        MovimientoEntidad movimientoEntidad = crearMovimiento(pedido);
+        CajaLogica.agregarMovimiento(movimientoEntidad);
+    }
+
+    private MovimientoEntidad crearMovimiento(PedidoEntidad pedido) {
         MovimientoEntidad movimientoEntidad = new MovimientoEntidad();
         movimientoEntidad.setFecha(new java.sql.Date(new java.util.Date().getTime()));
         movimientoEntidad.setMonto(pedido.getVianda().getPrecio());
-        String observacion = pedido.getVianda().getNombre()+" ; "+pedido.getCliente().getNombre();
+        String observacion ="Cliente: " + pedido.getCliente().getNombre()+" "+pedido.getCliente().getApellido()
+                +"\nVianda: "+pedido.getVianda().getNombre();
         movimientoEntidad.setObservacion(observacion);
-        CajaLogica.agregarMovimiento(movimientoEntidad);
+        movimientoEntidad.setAnulado(false);
+        return movimientoEntidad;
     }
 
     private void eliminarPedido() {

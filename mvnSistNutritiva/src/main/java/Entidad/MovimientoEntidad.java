@@ -21,6 +21,9 @@ public class MovimientoEntidad {
     @Column(name = "fecha", nullable = false)
     private Date fecha;
 
+    @Column(name = "anulado", nullable = false)
+    private boolean anulado;
+
     public MovimientoEntidad() {
     }
 
@@ -60,5 +63,13 @@ public class MovimientoEntidad {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public boolean isAnulado() {
+        return anulado;
+    }
+
+    public void setAnulado(boolean anulado) {
+        this.anulado = anulado;
     }
 }
