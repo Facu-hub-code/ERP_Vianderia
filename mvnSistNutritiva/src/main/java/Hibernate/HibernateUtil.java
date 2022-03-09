@@ -1,9 +1,6 @@
 package Hibernate;
 
-import Entidad.ClienteEntidad;
-import Entidad.PedidoEntidad;
-import Entidad.VentaEntidad;
-import Entidad.ViandaEntidad;
+import Entidad.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -19,6 +16,7 @@ public class HibernateUtil {
         configuration.addAnnotatedClass(ViandaEntidad.class);
         configuration.addAnnotatedClass(PedidoEntidad.class);
         configuration.addAnnotatedClass(VentaEntidad.class);
+        configuration.addAnnotatedClass(MovimientoEntidad.class);
         configuration.setProperty("hibernate.connection.username", user);
         configuration.setProperty("hibernate.connection.password", password);
         try {

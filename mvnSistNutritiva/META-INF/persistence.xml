@@ -8,6 +8,7 @@
     <class>Entidad.ViandaEntidad</class>
     <class>Entidad.PedidoEntidad</class>
     <class>Entidad.VentaEntidad</class>
+    <class>Entidad.MovimientoEntidad</class>
     <properties>
       <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/bdd_nutritiva"/>
       <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
