@@ -38,6 +38,8 @@ public class ClienteRepository implements Repository<ClienteEntidad>{
             CriteriaQuery<ClienteEntidad> cq = cb.createQuery(ClienteEntidad.class);
             Root<ClienteEntidad> rootEntry = cq.from(ClienteEntidad.class);
             CriteriaQuery<ClienteEntidad> all = cq.select(rootEntry);
+            Predicate anulado = cb.equal(rootEntry.get("anulado"), false);
+            cq.where(anulado);
             TypedQuery<ClienteEntidad> allQuery = sesion.createQuery(all);
             ArrayList<ClienteEntidad> clientes = (ArrayList<ClienteEntidad>) allQuery.getResultList();
             return clientes;

@@ -37,6 +37,8 @@ public class CajaRepository implements Repository<MovimientoEntidad>{
             CriteriaQuery<MovimientoEntidad> cq = cb.createQuery(MovimientoEntidad.class);
             Root<MovimientoEntidad> rootEntry = cq.from(MovimientoEntidad.class);
             CriteriaQuery<MovimientoEntidad> all = cq.select(rootEntry);
+            Predicate anulado = cb.equal(rootEntry.get("anulado"), false);
+            cq.where(anulado);
             TypedQuery<MovimientoEntidad> allQuery = sesion.createQuery(all);
             ArrayList<MovimientoEntidad> movimientos = (ArrayList<MovimientoEntidad>) allQuery.getResultList();
             return movimientos;

@@ -37,6 +37,8 @@ public class PedidoRepository implements Repository<PedidoEntidad> {
             CriteriaQuery<PedidoEntidad> cq = cb.createQuery(PedidoEntidad.class);
             Root<PedidoEntidad> rootEntry = cq.from(PedidoEntidad.class);
             CriteriaQuery<PedidoEntidad> all = cq.select(rootEntry);
+            Predicate anulado = cb.equal(rootEntry.get("anulado"), false);
+            cq.where(anulado);
             TypedQuery<PedidoEntidad> allQuery = sesion.createQuery(all);
             ArrayList<PedidoEntidad> pedidos = (ArrayList<PedidoEntidad>) allQuery.getResultList();
             return pedidos;
