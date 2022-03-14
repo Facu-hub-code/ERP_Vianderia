@@ -5,24 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f6ba0bc-1813-4156-85d5-b38edcb40a38" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/JPASupport-project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Entidad/CierreCajaEntidad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8668b5a9-73a7-4774-af43-41c7a04d373e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/8668b5a9-73a7-4774-af43-41c7a04d373e.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entidad/ClienteEntidad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entidad/ClienteEntidad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entidad/Dias.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entidad/MovimientoEntidad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entidad/MovimientoEntidad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entidad/PedidoEntidad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entidad/PedidoEntidad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entidad/Tipo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entidad/Tipo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entidad/VentaEntidad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entidad/VentaEntidad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entidad/ViandaEntidad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entidad/ViandaEntidad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaz/CajaInterfaz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaz/CajaInterfaz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Hibernate/ClienteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Hibernate/ClienteRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaz/ClientesInterfaz.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaz/ClientesInterfaz.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Interfaz/ClientesInterfaz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaz/ClientesInterfaz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaz/PedidosInterfaz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaz/PedidosInterfaz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaz/VentasInterfaz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaz/VentasInterfaz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Logica/PedidoLogica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Logica/PedidoLogica.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Entidad/ClienteEntidad.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Entidad/ClienteEntidad.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Entidad/Dias.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Entidad/MovimientoEntidad.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Entidad/MovimientoEntidad.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Entidad/PedidoEntidad.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Entidad/PedidoEntidad.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Entidad/Tipo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Entidad/Tipo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Entidad/VentaEntidad.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Entidad/VentaEntidad.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Entidad/ViandaEntidad.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Entidad/ViandaEntidad.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/CajaInterfaz$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/CajaInterfaz$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/CajaInterfaz$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/CajaInterfaz$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/CajaInterfaz$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/CajaInterfaz$3.class" afterDir="false" />
@@ -36,6 +29,14 @@
       <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$5.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$6.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$16.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$17.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$17.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$18.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$18.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$19.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$19.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$20.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$20.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$21.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$21.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$22.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$22.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/VentasInterfaz$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/VentasInterfaz$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/VentasInterfaz$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/VentasInterfaz$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/VentasInterfaz$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/VentasInterfaz$3.class" afterDir="false" />
@@ -66,35 +67,35 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/Entidad/CierreCajaEntidad.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Entidad/PedidoEntidad.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/Entidad/Tipo.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/Logica/PedidoLogica.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/Interfaz/LoginInterfaz.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/Hibernate/PedidoRepository.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Entidad/ClienteEntidad.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/META-INF/persistence.xml" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/Interfaz/ClientesInterfaz.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/Hibernate/VentasRepository.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Interfaz/ViandasInterfaz.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Interfaz/CajaInterfaz.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Logica/VentasLogica.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Entidad/VentaEntidad.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/Main.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/Logica/LoginLogica.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/Hibernate/HibernateUtil.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/Hibernate/ClienteRepository.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/Logica/ClienteLogica.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/Hibernate/Repository.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Interfaz/LoginInterfaz.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Entidad/CierreCajaEntidad.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Interfaz/PedidosInterfaz.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Interfaz/VentasInterfaz.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Logica/CajaLogica.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Interfaz/ClientesInterfaz.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Hibernate/ClienteRepository.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Hibernate/HibernateUtil.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Hibernate/Repository.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Entidad/Tipo.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/META-INF/persistence.xml" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Main.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Logica/ClienteLogica.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Hibernate/PedidoRepository.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Hibernate/VentasRepository.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Logica/PedidoLogica.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Entidad/MovimientoEntidad.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/Interfaz/PedidosInterfaz.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/Interfaz/CajaInterfaz.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/Hibernate/CajaRepository.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/Interfaz/ViandasInterfaz.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Hibernate/ViandasRepository.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/Logica/ViandasLogica.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Entidad/ViandaEntidad.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Logica/ViandasLogica.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Logica/LoginLogica.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Hibernate/CajaRepository.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
