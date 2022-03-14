@@ -63,8 +63,10 @@ public class ViandasRepository implements Repository<ViandaEntidad>{
             CriteriaQuery<ViandaEntidad> all = cq.select(rootEntry);
             TypedQuery<ViandaEntidad> allQuery = sesion.createQuery(all);
 
+            Predicate anulada = cb.equal(rootEntry.get("anulado"), false);
             Predicate identificacion = cb.equal(rootEntry.get("id"), id);
-            cq.where(identificacion);
+            Predicate predicate = cb.and(anulada, identificacion);
+            cq.where(predicate);
 
             ArrayList<ViandaEntidad> viandas = (ArrayList<ViandaEntidad>) allQuery.getResultList();
             return viandas.get(0);
