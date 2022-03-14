@@ -1,7 +1,6 @@
 package Logica;
 
 import Entidad.ClienteEntidad;
-import Entidad.Dias;
 import Entidad.PedidoEntidad;
 import Hibernate.ClienteRepository;
 import Hibernate.PedidoRepository;

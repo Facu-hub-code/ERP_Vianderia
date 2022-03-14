@@ -976,192 +976,260 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <table id="285" parent="274" name="clientes"/>
-    <table id="286" parent="274" name="movimientos"/>
-    <table id="287" parent="274" name="pedidos"/>
-    <table id="288" parent="274" name="usuarios_sistema"/>
-    <table id="289" parent="274" name="ventas"/>
-    <table id="290" parent="274" name="viandas"/>
-    <column id="291" parent="285" name="idclientes">
+    <table id="285" parent="274" name="cierres_caja"/>
+    <table id="286" parent="274" name="clientes"/>
+    <table id="287" parent="274" name="movimientos"/>
+    <table id="288" parent="274" name="pedidos"/>
+    <table id="289" parent="274" name="usuarios_sistema"/>
+    <table id="290" parent="274" name="ventas"/>
+    <table id="291" parent="274" name="viandas"/>
+    <column id="292" parent="285" name="idcierres_caja">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="292" parent="285" name="nombre">
+    <column id="293" parent="285" name="fecha">
+      <DataType>date|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="294" parent="285" name="efectivo">
+      <DataType>double|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="295" parent="285" name="banco">
+      <DataType>double|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="296" parent="285" name="anulado">
+      <DataType>bit(1)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <key id="297" parent="285" name="PRIMARY">
+      <ColNames>idcierres_caja</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <column id="298" parent="286" name="idclientes">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="299" parent="286" name="nombre">
       <Comment>Pueden estar todos los campos vacíos, pero al menos necesitamos el nombre</Comment>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="293" parent="285" name="apellido">
+    <column id="300" parent="286" name="apellido">
       <DataType>varchar(45)|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="294" parent="285" name="dni">
+    <column id="301" parent="286" name="dni">
       <DataType>varchar(45)|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="295" parent="285" name="email">
+    <column id="302" parent="286" name="email">
       <DataType>varchar(45)|0s</DataType>
       <Position>5</Position>
     </column>
-    <column id="296" parent="285" name="telefono">
+    <column id="303" parent="286" name="telefono">
       <DataType>varchar(45)|0s</DataType>
       <Position>6</Position>
     </column>
-    <key id="297" parent="285" name="PRIMARY">
+    <column id="304" parent="286" name="direccion">
+      <DataType>varchar(45)|0s</DataType>
+      <Position>7</Position>
+    </column>
+    <column id="305" parent="286" name="anulado">
+      <DataType>bit(1)|0s</DataType>
+      <DefaultExpression>b&apos;0&apos;</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>8</Position>
+    </column>
+    <key id="306" parent="286" name="PRIMARY">
       <ColNames>idclientes</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="298" parent="286" name="idmovimientos">
+    <column id="307" parent="287" name="idmovimientos">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="299" parent="286" name="monto">
+    <column id="308" parent="287" name="monto">
       <DataType>float|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="300" parent="286" name="observacion">
+    <column id="309" parent="287" name="observacion">
       <DataType>varchar(45)|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="301" parent="286" name="fecha">
+    <column id="310" parent="287" name="fecha">
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <key id="302" parent="286" name="PRIMARY">
+    <column id="311" parent="287" name="efectivo">
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="312" parent="287" name="anulado">
+      <DataType>bit(1)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <key id="313" parent="287" name="PRIMARY">
       <ColNames>idmovimientos</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="303" parent="287" name="idpedidos">
+    <column id="314" parent="288" name="idpedidos">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="304" parent="287" name="fecha">
+    <column id="315" parent="288" name="fecha">
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="305" parent="287" name="tipo">
+    <column id="316" parent="288" name="tipo">
       <DataType>enum(&apos;almuerzo&apos;, &apos;cena&apos;)|0e</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="306" parent="287" name="clientes_idclientes">
+    <column id="317" parent="288" name="clientes_idclientes">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="307" parent="287" name="viandas_idviandas">
+    <column id="318" parent="288" name="viandas_idviandas">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <foreign-key id="308" parent="287" name="fk_pedidos_clientes">
+    <column id="319" parent="288" name="anulado">
+      <DataType>bit(1)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <foreign-key id="320" parent="288" name="fk_pedidos_clientes">
       <ColNames>clientes_idclientes</ColNames>
       <RefColNames>idclientes</RefColNames>
       <RefTableName>clientes</RefTableName>
     </foreign-key>
-    <foreign-key id="309" parent="287" name="fk_pedidos_viandas1">
+    <foreign-key id="321" parent="288" name="fk_pedidos_viandas1">
       <ColNames>viandas_idviandas</ColNames>
       <RefColNames>idviandas</RefColNames>
       <RefTableName>viandas</RefTableName>
     </foreign-key>
-    <index id="310" parent="287" name="fk_pedidos_clientes_idx">
+    <index id="322" parent="288" name="fk_pedidos_clientes_idx">
       <ColNames>clientes_idclientes</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="311" parent="287" name="fk_pedidos_viandas1_idx">
+    <index id="323" parent="288" name="fk_pedidos_viandas1_idx">
       <ColNames>viandas_idviandas</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="312" parent="287" name="PRIMARY">
+    <key id="324" parent="288" name="PRIMARY">
       <ColNames>idpedidos</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="313" parent="288" name="idusuarios_sistema">
+    <column id="325" parent="289" name="idusuarios_sistema">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="314" parent="288" name="username">
+    <column id="326" parent="289" name="username">
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="315" parent="288" name="password">
+    <column id="327" parent="289" name="password">
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <key id="316" parent="288" name="PRIMARY">
+    <key id="328" parent="289" name="PRIMARY">
       <ColNames>idusuarios_sistema</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="317" parent="289" name="idventas">
+    <column id="329" parent="290" name="idventas">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="318" parent="289" name="monto">
+    <column id="330" parent="290" name="monto">
       <DataType>double|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="319" parent="289" name="fecha">
+    <column id="331" parent="290" name="fecha">
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="320" parent="289" name="pedidos_idpedidos">
+    <column id="332" parent="290" name="pedidos_idpedidos">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <foreign-key id="321" parent="289" name="fk_ventas_pedidos1">
+    <column id="333" parent="290" name="anulado">
+      <DataType>bit(1)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <foreign-key id="334" parent="290" name="fk_ventas_pedidos1">
       <ColNames>pedidos_idpedidos</ColNames>
       <RefColNames>idpedidos</RefColNames>
       <RefTableName>pedidos</RefTableName>
     </foreign-key>
-    <index id="322" parent="289" name="fk_ventas_pedidos1_idx">
+    <index id="335" parent="290" name="fk_ventas_pedidos1_idx">
       <ColNames>pedidos_idpedidos</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="323" parent="289" name="PRIMARY">
+    <key id="336" parent="290" name="PRIMARY">
       <ColNames>idventas</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="324" parent="290" name="idviandas">
+    <column id="337" parent="291" name="idviandas">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="325" parent="290" name="nombre">
+    <column id="338" parent="291" name="nombre">
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="326" parent="290" name="precio">
+    <column id="339" parent="291" name="precio">
       <DataType>float|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <key id="327" parent="290" name="PRIMARY">
+    <column id="340" parent="291" name="anulado">
+      <DataType>bit(1)|0s</DataType>
+      <DefaultExpression>b&apos;0&apos;</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <key id="341" parent="291" name="PRIMARY">
       <ColNames>idviandas</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>

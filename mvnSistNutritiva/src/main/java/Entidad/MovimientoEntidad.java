@@ -21,16 +21,21 @@ public class MovimientoEntidad {
     @Column(name = "fecha", nullable = false)
     private Date fecha;
 
+    @Column(name = "efectivo", nullable = false)
+    private boolean efectivo;
+
     @Column(name = "anulado", nullable = false)
     private boolean anulado;
 
     public MovimientoEntidad() {
     }
 
-    public MovimientoEntidad(double monto, String observacion, Date fecha) {
+    public MovimientoEntidad(double monto, String observacion, Date fecha, boolean efectivo) {
         this.monto = monto;
         this.observacion = observacion;
         this.fecha = fecha;
+        this.efectivo = efectivo;
+        anulado = false;
     }
 
     public Date getFecha() {
@@ -71,5 +76,13 @@ public class MovimientoEntidad {
 
     public void setAnulado(boolean anulado) {
         this.anulado = anulado;
+    }
+
+    public boolean isEfectivo() {
+        return efectivo;
+    }
+
+    public void setEfectivo(boolean efectivo) {
+        this.efectivo = efectivo;
     }
 }

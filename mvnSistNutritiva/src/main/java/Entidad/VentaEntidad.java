@@ -23,6 +23,9 @@ public class VentaEntidad {
     @JoinColumn(name = "pedidos_idpedidos", nullable = false)
     private PedidoEntidad pedido;
 
+    @Column(name = "anulado", nullable = false)
+    private boolean anulado;
+
     public VentaEntidad() {
     }
 
@@ -30,6 +33,7 @@ public class VentaEntidad {
         this.monto = monto;
         this.fecha = fecha;
         this.pedido = pedido;
+        anulado = false;
     }
 
     public PedidoEntidad getPedido() {
@@ -62,5 +66,13 @@ public class VentaEntidad {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public boolean isAnulado() {
+        return anulado;
+    }
+
+    public void setAnulado(boolean anulado) {
+        this.anulado = anulado;
     }
 }

@@ -19,6 +19,9 @@ public class ClienteEntidad {
     @Column(name = "dni", length = 45)
     private String dni;
 
+    @Column(name = "email", length = 45)
+    private String email;
+
     @Column(name = "direccion", length = 45)
     private String direccion;
 
@@ -31,12 +34,14 @@ public class ClienteEntidad {
     public ClienteEntidad() {
     }
 
-    public ClienteEntidad(String nombre, String apellido, String dni, String email, String telefono) {
+    public ClienteEntidad(String nombre, String apellido, String dni, String email, String telefono, String direccion) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.direccion = email;
         this.telefono = telefono;
+        this.direccion = direccion;
+        anulado = false;
     }
 
     public String getTelefono() {
@@ -89,6 +94,14 @@ public class ClienteEntidad {
 
     public boolean isAnulado() {
         return anulado;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setAnulado(boolean anulado) {

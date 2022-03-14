@@ -264,7 +264,8 @@ public class CajaInterfaz extends javax.swing.JFrame {
             MovimientoEntidad movimientoEntidad = new MovimientoEntidad(
                     Double.valueOf(jt_monto.getText()),
                     jt_observaciones.getText(),
-                    new Date(new java.util.Date().getTime())
+                    new Date(new java.util.Date().getTime()),
+                    false //todo: cambiar desde la interfaz
             );
             if(CajaLogica.agregarMovimiento(movimientoEntidad))
                 JOptionPane.showMessageDialog(null, "Movimiento agregado con exito");

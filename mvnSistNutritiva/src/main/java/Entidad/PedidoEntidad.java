@@ -36,6 +36,7 @@ public class PedidoEntidad {
         this.vianda = vianda;
         this.fecha = fecha;
         this.tipo = tipo;
+        anulado = false;
     }
 
     public ViandaEntidad getVianda() {

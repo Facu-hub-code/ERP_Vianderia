@@ -614,9 +614,9 @@ public class PedidosInterfaz extends javax.swing.JFrame {
         for (int i = 0; i < pedidosViernes.size(); i++) {
             Tipo tipo;
             if (pedidosViernes.get(i).getTipo().equals("almuerzo"))
-                tipo = Tipo.Almuerzo;
+                tipo = Tipo.ALMUERZO;
             else
-                tipo = Tipo.Cena;
+                tipo = Tipo.CENA;
 
             objetosArray[i] = new Object[]{
                     pedidosViernes.get(i).getId(),
@@ -652,9 +652,9 @@ public class PedidosInterfaz extends javax.swing.JFrame {
         for (int i = 0; i < pedidosJueves.size(); i++) {
             Tipo tipo;
             if (pedidosJueves.get(i).getTipo().equals("almuerzo"))
-                tipo = Tipo.Almuerzo;
+                tipo = Tipo.ALMUERZO;
             else
-                tipo = Tipo.Cena;
+                tipo = Tipo.CENA;
 
             objetosArray[i] = new Object[]{
                     pedidosJueves.get(i).getId(),
@@ -690,9 +690,9 @@ public class PedidosInterfaz extends javax.swing.JFrame {
         for (int i = 0; i < pedidosMiercoles.size(); i++) {
             Tipo tipo;
             if (pedidosMiercoles.get(i).getTipo().equals("almuerzo"))
-                tipo = Tipo.Almuerzo;
+                tipo = Tipo.ALMUERZO;
             else
-                tipo = Tipo.Cena;
+                tipo = Tipo.CENA;
 
             objetosArray[i] = new Object[]{
                     pedidosMiercoles.get(i).getId(),
@@ -728,9 +728,9 @@ public class PedidosInterfaz extends javax.swing.JFrame {
         for (int i = 0; i < pedidosMartes.size(); i++) {
             Tipo tipo;
             if (pedidosMartes.get(i).getTipo().equals("almuerzo"))
-                tipo = Tipo.Almuerzo;
+                tipo = Tipo.ALMUERZO;
             else
-                tipo = Tipo.Cena;
+                tipo = Tipo.CENA;
 
             objetosArray[i] = new Object[]{
                     pedidosMartes.get(i).getId(),
@@ -766,9 +766,9 @@ public class PedidosInterfaz extends javax.swing.JFrame {
         for (int i = 0; i < pedidosLunes.size(); i++) {
             Tipo tipo;
             if (pedidosLunes.get(i).getTipo().equals("almuerzo"))
-                tipo = Tipo.Almuerzo;
+                tipo = Tipo.ALMUERZO;
             else
-                tipo = Tipo.Cena;
+                tipo = Tipo.CENA;
 
             objetosArray[i] = new Object[]{
                     pedidosLunes.get(i).getId(),

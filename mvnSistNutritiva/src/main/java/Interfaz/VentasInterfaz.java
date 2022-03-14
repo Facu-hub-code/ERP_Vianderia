@@ -368,9 +368,9 @@ public class VentasInterfaz extends javax.swing.JFrame {
         for (int i = 0; i < ventas.size(); i++) {
             Tipo tipo;
             if (ventas.get(i).getPedido().getTipo().equals("almuerzo"))
-                tipo = Tipo.Almuerzo;
+                tipo = Tipo.ALMUERZO;
             else
-                tipo = Tipo.Cena;
+                tipo = Tipo.CENA;
 
             objetosArray[i] = new Object[]{
                     ventas.get(i).getId(),
@@ -407,9 +407,9 @@ public class VentasInterfaz extends javax.swing.JFrame {
         for (int i = 0; i < pedidosLunes.size(); i++) {
             Tipo tipo;
             if (pedidosLunes.get(i).getTipo().equals("almuerzo"))
-                tipo = Tipo.Almuerzo;
+                tipo = Tipo.ALMUERZO;
             else
-                tipo = Tipo.Cena;
+                tipo = Tipo.CENA;
 
             objetosArray[i] = new Object[]{
                     pedidosLunes.get(i).getId(),

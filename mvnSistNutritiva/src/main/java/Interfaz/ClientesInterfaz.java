@@ -400,7 +400,7 @@ public class ClientesInterfaz extends javax.swing.JFrame {
                 System.out.println("Habia algun campo nulo");
                 e.printStackTrace();
             }
-            ClienteEntidad cliente = new ClienteEntidad(nombre, apellido, direccion, dni, telefono);
+            ClienteEntidad cliente = new ClienteEntidad(nombre, apellido, direccion, dni, telefono, "direccion");//todo: cambiar desde la interfaz;
             boolean flag = ClienteLogica.agregarCliente(cliente);
             if (flag)
                 JOptionPane.showMessageDialog(null, "Cliente "+cliente.getNombre()+" agregado con exito");

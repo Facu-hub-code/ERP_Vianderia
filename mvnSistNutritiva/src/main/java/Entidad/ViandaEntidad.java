@@ -25,6 +25,7 @@ public class ViandaEntidad {
     public ViandaEntidad(String nombre, double precio) {
         this.nombre = nombre;
         this.precio = precio;
+        anulado = false;
     }
 
     public Double getPrecio() {
