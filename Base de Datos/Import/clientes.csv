@@ -1,111 +1,111 @@
-idcliente;nombre;apellido;dni;direccion;telefono
-1;Fabricio;Buffa;1;;
-2;Roberto;Urquia;1;Int. Urquia esq. Sarmiento;3584392564
-3;Belen;Salera;1;;3585186127
-4;Patri;Carloni;1;;3585617368
-5;Cari;Pedraza;1;;3584388600
-6;Acoplados;Rubiolo;30712243660;Chaco 155 - Gral. Deheza;3584907176
-7;Mica;Rojas;1;;3584394573
-8;Gabi;Salera;1;;3585168833
-9;Cata;Martinez;1;;0
-10;Ethel;Cavalchini;1;;3585092797
-11;Diego ;Calderon;1;;3585609065
-12;Jessica;Vera;1;;3584825930
-13;Belen;Casale;1;;3584190125
-14;Pitty;Marengo;1;;3584821178
-15;Negra;Serassio;1;;3584907790
-16;Alcira;Medina;1;;3583640407
-17;Maggi;Perucca;1;;3584224349
-18;Ceci;Urquia;1;;3513081999
-19;Patri;Alanis;1;;3584242753
-20;Majo;Antonelli;1;;3584818932
-21;Roma;Vecina;1;;3534273568
-22;Miguel ;Calderon;1;;0
-23;Caro;Berro;1;;3584296778
-24;Anamar;Saldaño;1;;3585043990
-25;Mica;Sequeira;1;;3584129064
-26;Oscar;Breitkopf;1;;3584826358
-27;Gabi;Barbieri;30808769;;3584122315
-28;Pau;Rivarola;;;3584185076
-29;Tefi;Manassero;;Ruta Nacional 158 esq. Los algarrobos;3584199297
-30;Tefi;Panigoni;;;3585603220
-31;Seba;Malatini;;Juan Jose Paso 273;3584369755
-32;Flor;Heildand;;;3584106199
-33;Agostina;DiPascuale;;;3583640407
-34;Hijo;Rossellini;;;3585097219
-35;Belen;Fandiño;;;3584372327
-36;Lucas;Vallejos;;;3584125779
-37;Lili;Goldsetin;;;3584374344
-38;Eliana;Guevara;;;3484374285
-39;Adriana ;Grosso;;;3584226002
-40;Cari;Scataglini;;;3584249502
-41;Alberto;Raga;;;3584248805
-42;Vindi;Scattolini;;;3584129913
-43;Popo;Molina;;;3585041463
-44;Jaki;Garnero;;;3584285640
-45;Stella;Caballero;;;3584834491
-46;Sergio;Fraire;;;3584377982
-47;Nati;Toledo;;;3584283661
-48;Ana;Pesco;;;3584821908
-49;Daniel ;Lavini;20171896391;Bv. San Martin 477 - Gral. Deheza;3584392501
-50;Ivan ;Gomez;1;;3584362812
-51;Javier ;Gomez;1;;3584242601
-52;Analia;Perlo;1;;3585163426
-53;Hector;Ponsetti;1;;3584907914
-54;Sole ;Palacios;1;;3584374475
-55;Eliana;Torres;1;;0
-56;Fran;Grosso;1;;3584122424
-57;Joaquin;Aceitera;30502874353;;3585066407
-58;Cami;Aceitera;30502874353;;3465445221
-59;Luciana;Diaz;1;;3585092054
-60;Susana;Bertone;1;;0
-61;Juanqui;Suarez;1;;3584365573
-62;Alvaro;Ferrero;1;;3585486991
-63;Aldo;Galimbertti;1;;3534192920
-64;Miqueas;Magallanes;1;;3585607296
-65;Lala;Mugna;1;;3584387190
-66;Julio;Destefanis;1;;3585626655
-67;Susana;Morra;1;;3584184022
-68;Eugenia ;Ceridono;1;;3584181292
-69;Sol;Vignati;1;;3584363485
-70;Cari;Machuca;1;;3584194379
-71;Dai;Ramos;1;;3585173035
-72;Mile;Chiaramello;1;;3584903939
-73;Pao;Moyano;1;;3584390550
-74;Haidee;Bustos;1;;3585616101
-75;Ana;Trejo;1;;3584188583
-76;Carlos;Montiel;1;;3585042462
-77;Mariano;Jurado;1;;
-78;Romina;Brignone;1;;3585600764
-79;Omar;Ale;20257350135;Jose de Amenabar 745 - Cordoba;3513599252
-80;Marcia;Valle;1;;3468566805
-81;Roman;Host;1;;3584816109
-82;Dani;Presiutti;1;;3585603594
-83;Juan Carlos;Palacios;1;;3584834167
-84;Manu;Stucky;1;;3584290030
-85;Rosana ;Ruffer;1;;3584198194
-86;Tito;Caudana;1;;3584118693
-87;Humberto;Scataglini;1;;3584360986
-88;Mati;Toffolo;1;;3534454687
-89;Canela ;Raimonda;1;;3584287816
-90;Olivia;Verra;1;;
-91;Tomas;Re;1;;3534266405
-92;Alexandra;Hurrass;1;;3584247657
-93;Diego ;Chamas;1;;3534236224
-94;Martin;Pignattelli;1;;3584287214
-95;Lara;Salvaterra;1;Bv 9 de Julio 375;3586002455
-96;Eva;Crivello;1;Corrientes 79;3584907388
-97;Gloria;Albano;1;;3584821139
-98;Noe ;Genesio;1;;3584366223
-99;Maria;Correcaminos;1;;3585146949
-100;Benjamin;Amelong;37079368;;3584127002
-101;Gabi;Freytes;1;;3584369602
-102;Martin;Crivello;37523549;;3585049637
-103;Julio;Gorosito;1;;3584834849
-104;Gabi;Bancor;1;;3534233979
-105;Gabi;Interdonatto;1;;3584111217
-106;Agus;Gariglio;1;;3534064065
-107;Silvia;Visozo;1;;3585603345
-108;Fede;Bertazo;1;;3584224843
-109;Alicia;Scataglini;1;;3584245114
-110;Tomas;Rosso;30708193573;;3584377945
+idcliente;nombre;apellido;dni;email;telefono;direccion;anulado
+1;Fabricio;Buffa;;;;;
+2;Roberto;Urquia;;;3584392564;Int. Urquia esq. Sarmiento;
+3;Belen;Salera;;;3585186127;;
+4;Patri;Carloni;;;3585617368;;
+5;Cari;Pedraza;;;3584388600;;
+6;Acoplados;Rubiolo;30712243660;;3584907176;Chaco 155 - Gral. Deheza;
+7;Mica;Rojas;;;3584394573;;
+8;Gabi;Salera;;;3585168833;;
+9;Cata;Martinez;;;0;;
+10;Ethel;Cavalchini;;;3585092797;;
+11;Diego ;Calderon;;;3585609065;;
+12;Jessica;Vera;;;3584825930;;
+13;Belen;Casale;;;3584190125;;
+14;Pitty;Marengo;;;3584821178;;
+15;Negra;Serassio;;;3584907790;;
+16;Alcira;Medina;;;3583640407;;
+17;Maggi;Perucca;;;3584224349;;
+18;Ceci;Urquia;;;3513081999;;
+19;Patri;Alanis;;;3584242753;;
+20;Majo;Antonelli;;;3584818932;;
+21;Roma;Vecina;;;3534273568;;
+22;Miguel ;Calderon;;;0;;
+23;Caro;Berro;;;3584296778;;
+24;Anamar;Saldaño;;;3585043990;;
+25;Mica;Sequeira;;;3584129064;;
+26;Oscar;Breitkopf;;;3584826358;;
+27;Gabi;Barbieri;30808769;;3584122315;;
+28;Pau;Rivarola;;;3584185076;;
+29;Tefi;Manassero;;;3584199297;Ruta Nacional 158 esq. Los algarrobos;
+30;Tefi;Panigoni;;;3585603220;;
+31;Seba;Malatini;;;3584369755;Juan Jose Paso 273;
+32;Flor;Heildand;;;3584106199;;
+33;Agostina;DiPascuale;;;3583640407;;
+34;Hijo;Rossellini;;;3585097219;;
+35;Belen;Fandiño;;;3584372327;;
+36;Lucas;Vallejos;;;3584125779;;
+37;Lili;Goldsetin;;;3584374344;;
+38;Eliana;Guevara;;;3484374285;;
+39;Adriana ;Grosso;;;3584226002;;
+40;Cari;Scataglini;;;3584249502;;
+41;Alberto;Raga;;;3584248805;;
+42;Vindi;Scattolini;;;3584129913;;
+43;Popo;Molina;;;3585041463;;
+44;Jaki;Garnero;;;3584285640;;
+45;Stella;Caballero;;;3584834491;;
+46;Sergio;Fraire;;;3584377982;;
+47;Nati;Toledo;;;3584283661;;
+48;Ana;Pesco;;;3584821908;;
+49;Daniel ;Lavini;20171896391;;3584392501;Bv. San Martin 477 - Gral. Deheza;
+50;Ivan ;Gomez;;;3584362812;;
+51;Javier ;Gomez;;;3584242601;;
+52;Analia;Perlo;;;3585163426;;
+53;Hector;Ponsetti;;;3584907914;;
+54;Sole ;Palacios;;;3584374475;;
+55;Eliana;Torres;;;0;;
+56;Fran;Grosso;;;3584122424;;
+57;Joaquin;Aceitera;30502874353;;3585066407;;
+58;Cami;Aceitera;30502874353;;3465445221;;
+59;Luciana;Diaz;;;3585092054;;
+60;Susana;Bertone;;;0;;
+61;Juanqui;Suarez;;;3584365573;;
+62;Alvaro;Ferrero;;;3585486991;;
+63;Aldo;Galimbertti;;;3534192920;;
+64;Miqueas;Magallanes;;;3585607296;;
+65;Lala;Mugna;;;3584387190;;
+66;Julio;Destefanis;;;3585626655;;
+67;Susana;Morra;;;3584184022;;
+68;Eugenia ;Ceridono;;;3584181292;;
+69;Sol;Vignati;;;3584363485;;
+70;Cari;Machuca;;;3584194379;;
+71;Dai;Ramos;;;3585173035;;
+72;Mile;Chiaramello;;;3584903939;;
+73;Pao;Moyano;;;3584390550;;
+74;Haidee;Bustos;;;3585616101;;
+75;Ana;Trejo;;;3584188583;;
+76;Carlos;Montiel;;;3585042462;;
+77;Mariano;Jurado;;;;;
+78;Romina;Brignone;;;3585600764;;
+79;Omar;Ale;20257350135;;3513599252;Jose de Amenabar 745 - Cordoba;
+80;Marcia;Valle;;;3468566805;;
+81;Roman;Host;;;3584816109;;
+82;Dani;Presiutti;;;3585603594;;
+83;Juan Carlos;Palacios;;;3584834167;;
+84;Manu;Stucky;;;3584290030;;
+85;Rosana ;Ruffer;;;3584198194;;
+86;Tito;Caudana;;;3584118693;;
+87;Humberto;Scataglini;;;3584360986;;
+88;Mati;Toffolo;;;3534454687;;
+89;Canela ;Raimonda;;;3584287816;;
+90;Olivia;Verra;;;;;
+91;Tomas;Re;;;3534266405;;
+92;Alexandra;Hurrass;;;3584247657;;
+93;Diego ;Chamas;;;3534236224;;
+94;Martin;Pignattelli;;;3584287214;;
+95;Lara;Salvaterra;;;3586002455;Bv 9 de Julio 375;
+96;Eva;Crivello;;;3584907388;Corrientes 79;
+97;Gloria;Albano;;;3584821139;;
+98;Noe ;Genesio;;;3584366223;;
+99;Maria;Correcaminos;;;3585146949;;
+100;Benjamin;Amelong;37079368;;3584127002;;
+101;Gabi;Freytes;;;3584369602;;
+102;Martin;Crivello;37523549;;3585049637;;
+103;Julio;Gorosito;;;3584834849;;
+104;Gabi;Bancor;;;3534233979;;
+105;Gabi;Interdonatto;;;3584111217;;
+106;Agus;Gariglio;;;3534064065;;
+107;Silvia;Visozo;;;3585603345;;
+108;Fede;Bertazo;;;3584224843;;
+109;Alicia;Scataglini;;;3584245114;;
+110;Tomas;Rosso;30708193573;;3584377945;;

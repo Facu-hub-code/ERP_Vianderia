@@ -49,11 +49,19 @@ public class CajaInterfaz extends javax.swing.JFrame {
         jl_observaciones = new javax.swing.JLabel();
         jt_monto = new javax.swing.JTextField();
         jt_observaciones = new javax.swing.JTextField();
+        jcbBox_modoPago = new javax.swing.JComboBox<>();
+        btn_buscarPorModoPago = new javax.swing.JButton();
         btn_agregar = new javax.swing.JButton();
         btn_modificar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
-        jscrollpane_general = new javax.swing.JScrollPane();
+        jTabbedPane_general = new javax.swing.JTabbedPane();
+        jScrollPane_movimientos = new javax.swing.JScrollPane();
         jtable_movimientos = new javax.swing.JTable();
+        jScrollPane_cierresDeCaja = new javax.swing.JScrollPane();
+        jtable_cierresDeCaja = new javax.swing.JTable();
+        jl_total = new javax.swing.JLabel();
+        jl_efectivo = new javax.swing.JLabel();
+        jl_banco = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(49, 28, 28));
@@ -89,6 +97,24 @@ public class CajaInterfaz extends javax.swing.JFrame {
         jt_observaciones.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jt_observaciones.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_observaciones.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+
+        jcbBox_modoPago.setFont(new java.awt.Font("Leelawadee UI", 1, 12)); // NOI18N
+        jcbBox_modoPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Modo de pago", "Efectivo", "Banco" }));
+        jcbBox_modoPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbBox_modoPagoActionPerformed(evt);
+            }
+        });
+
+        btn_buscarPorModoPago.setBackground(new java.awt.Color(255, 253, 118));
+        btn_buscarPorModoPago.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btn_buscarPorModoPago.setText("Buscar");
+        btn_buscarPorModoPago.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        btn_buscarPorModoPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscarPorModoPagoActionPerformed(evt);
+            }
+        });
 
         btn_agregar.setBackground(new java.awt.Color(255, 253, 118));
         btn_agregar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -131,12 +157,45 @@ public class CajaInterfaz extends javax.swing.JFrame {
 
             }
         ));
-        jtable_movimientos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jtable_movimientosMouseClicked(evt);
+        jScrollPane_movimientos.setViewportView(jtable_movimientos);
+
+        jTabbedPane_general.addTab("Movimientos", jScrollPane_movimientos);
+
+        jtable_cierresDeCaja.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
             }
-        });
-        jscrollpane_general.setViewportView(jtable_movimientos);
+        ));
+        jScrollPane_cierresDeCaja.setViewportView(jtable_cierresDeCaja);
+
+        jTabbedPane_general.addTab("Cierres de caja", jScrollPane_cierresDeCaja);
+
+        jl_total.setBackground(new java.awt.Color(49, 28, 28));
+        jl_total.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jl_total.setForeground(new java.awt.Color(255, 253, 118));
+        jl_total.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_total.setText("TOTAL:");
+        jl_total.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jl_efectivo.setBackground(new java.awt.Color(49, 28, 28));
+        jl_efectivo.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jl_efectivo.setForeground(new java.awt.Color(255, 253, 118));
+        jl_efectivo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_efectivo.setText("EFECTIVO:");
+        jl_efectivo.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jl_banco.setBackground(new java.awt.Color(49, 28, 28));
+        jl_banco.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jl_banco.setForeground(new java.awt.Color(255, 253, 118));
+        jl_banco.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_banco.setText("BANCO:");
+        jl_banco.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -155,44 +214,67 @@ public class CajaInterfaz extends javax.swing.JFrame {
                         .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addComponent(jl_monto, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jt_monto, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jcbBox_modoPago, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jl_monto, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jt_monto, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(jl_observaciones)
-                                .addGap(149, 149, 149))
-                            .addComponent(jt_observaciones, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(1, 1, 1)
+                                    .addComponent(jl_observaciones)
+                                    .addGap(149, 149, 149))
+                                .addComponent(jt_observaciones, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btn_buscarPorModoPago, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
-                .addComponent(jscrollpane_general, javax.swing.GroupLayout.DEFAULT_SIZE, 981, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTabbedPane_general, javax.swing.GroupLayout.PREFERRED_SIZE, 964, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jl_total, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jl_efectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jl_banco, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jt_monto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jl_monto, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(294, 294, 294)
+                        .addGap(18, 18, 18)
+                        .addComponent(jcbBox_modoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_buscarPorModoPago)
+                        .addGap(221, 221, 221)
                         .addComponent(jl_observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jt_observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btn_agregar)
                         .addGap(18, 18, 18)
-                        .addComponent(btn_modificar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_eliminar))
-                    .addComponent(jscrollpane_general, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22))
+                        .addComponent(btn_modificar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jTabbedPane_general, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_eliminar)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jl_total, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jl_efectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jl_banco, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(23, 23, 23))
         );
 
         pack();
@@ -218,22 +300,32 @@ public class CajaInterfaz extends javax.swing.JFrame {
         eliminarMovimiento();
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
-    private void jtable_movimientosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_movimientosMouseClicked
-        int filaSelec = jtable_movimientos.rowAtPoint(evt.getPoint());
-        jt_monto.setText(jtable_movimientos.getValueAt(filaSelec, 1).toString());
-        idMovmientoVigente = (int) jtable_movimientos.getValueAt(filaSelec, 0);
-    }//GEN-LAST:event_jtable_movimientosMouseClicked
+    private void jcbBox_modoPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbBox_modoPagoActionPerformed
+        //addFilter(jtable_movimientosDiarios, jcbBox_modoPago.getSelectedItem().toString(), 3);
+    }//GEN-LAST:event_jcbBox_modoPagoActionPerformed
+
+    private void btn_buscarPorModoPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarPorModoPagoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_buscarPorModoPagoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_agregar;
+    private javax.swing.JButton btn_buscarPorModoPago;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_modificar;
+    private javax.swing.JScrollPane jScrollPane_cierresDeCaja;
+    private javax.swing.JScrollPane jScrollPane_movimientos;
+    private javax.swing.JTabbedPane jTabbedPane_general;
+    private javax.swing.JComboBox<String> jcbBox_modoPago;
+    private javax.swing.JLabel jl_banco;
+    private javax.swing.JLabel jl_efectivo;
     private javax.swing.JLabel jl_monto;
     private javax.swing.JLabel jl_observaciones;
     private javax.swing.JLabel jl_titulo;
-    private javax.swing.JScrollPane jscrollpane_general;
+    private javax.swing.JLabel jl_total;
     private javax.swing.JTextField jt_monto;
     private javax.swing.JTextField jt_observaciones;
+    private javax.swing.JTable jtable_cierresDeCaja;
     private javax.swing.JTable jtable_movimientos;
     // End of variables declaration//GEN-END:variables
 

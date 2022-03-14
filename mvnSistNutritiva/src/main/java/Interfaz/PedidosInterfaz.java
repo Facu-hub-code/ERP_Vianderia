@@ -77,14 +77,19 @@ public class PedidosInterfaz extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jtable_lunes = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jtable_lunes = new javax.swing.JTable();
+        jtable_martes = new javax.swing.JTable();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jtable_lunes = new javax.swing.JTable();
+        jtable_miercoles = new javax.swing.JTable();
         jScrollPane6 = new javax.swing.JScrollPane();
         jtable_jueves = new javax.swing.JTable();
         jScrollPane7 = new javax.swing.JScrollPane();
         jtable_viernes = new javax.swing.JTable();
         btn_actualizar = new javax.swing.JButton();
+        jl_contadorLunes = new javax.swing.JLabel();
+        jl_contadormartes = new javax.swing.JLabel();
+        jl_contadorMiercoles = new javax.swing.JLabel();
+        jl_contadorJueves = new javax.swing.JLabel();
+        jl_contadorViernes = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(49, 28, 28));
@@ -249,7 +254,7 @@ public class PedidosInterfaz extends javax.swing.JFrame {
 
         jTabbedPane_general.addTab("Lunes", jScrollPane3);
 
-        jtable_lunes.setModel(new javax.swing.table.DefaultTableModel(
+        jtable_martes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -260,16 +265,16 @@ public class PedidosInterfaz extends javax.swing.JFrame {
 
             }
         ));
-        jtable_lunes.addMouseListener(new java.awt.event.MouseAdapter() {
+        jtable_martes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jtable_martesMouseClicked(evt);
             }
         });
-        jScrollPane4.setViewportView(jtable_lunes);
+        jScrollPane4.setViewportView(jtable_martes);
 
         jTabbedPane_general.addTab("Martes", jScrollPane4);
 
-        jtable_lunes.setModel(new javax.swing.table.DefaultTableModel(
+        jtable_miercoles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -280,12 +285,12 @@ public class PedidosInterfaz extends javax.swing.JFrame {
 
             }
         ));
-        jtable_lunes.addMouseListener(new java.awt.event.MouseAdapter() {
+        jtable_miercoles.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jtable_miercolesMouseClicked(evt);
             }
         });
-        jScrollPane5.setViewportView(jtable_lunes);
+        jScrollPane5.setViewportView(jtable_miercoles);
 
         jTabbedPane_general.addTab("Miercoles", jScrollPane5);
 
@@ -339,6 +344,36 @@ public class PedidosInterfaz extends javax.swing.JFrame {
             }
         });
 
+        jl_contadorLunes.setBackground(new java.awt.Color(49, 28, 28));
+        jl_contadorLunes.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jl_contadorLunes.setForeground(new java.awt.Color(255, 253, 118));
+        jl_contadorLunes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_contadorLunes.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jl_contadormartes.setBackground(new java.awt.Color(49, 28, 28));
+        jl_contadormartes.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jl_contadormartes.setForeground(new java.awt.Color(255, 253, 118));
+        jl_contadormartes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_contadormartes.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jl_contadorMiercoles.setBackground(new java.awt.Color(49, 28, 28));
+        jl_contadorMiercoles.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jl_contadorMiercoles.setForeground(new java.awt.Color(255, 253, 118));
+        jl_contadorMiercoles.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_contadorMiercoles.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jl_contadorJueves.setBackground(new java.awt.Color(49, 28, 28));
+        jl_contadorJueves.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jl_contadorJueves.setForeground(new java.awt.Color(255, 253, 118));
+        jl_contadorJueves.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_contadorJueves.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jl_contadorViernes.setBackground(new java.awt.Color(49, 28, 28));
+        jl_contadorViernes.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jl_contadorViernes.setForeground(new java.awt.Color(255, 253, 118));
+        jl_contadorViernes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_contadorViernes.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -376,14 +411,30 @@ public class PedidosInterfaz extends javax.swing.JFrame {
                         .addComponent(jTabbedPane_general, javax.swing.GroupLayout.PREFERRED_SIZE, 968, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(59, 59, 59)
-                        .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(176, 176, 176)
+                        .addComponent(jl_contadorLunes, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jl_contadormartes, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(jl_contadorMiercoles, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(jl_contadorJueves, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(jl_contadorViernes, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_contadorLunes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_contadormartes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_contadorMiercoles, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_contadorJueves, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_contadorViernes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -515,6 +566,11 @@ public class PedidosInterfaz extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane_general;
     private com.toedter.calendar.JDateChooser jdate_fecha;
     private javax.swing.JLabel jl_cliente;
+    private javax.swing.JLabel jl_contadorJueves;
+    private javax.swing.JLabel jl_contadorLunes;
+    private javax.swing.JLabel jl_contadorMiercoles;
+    private javax.swing.JLabel jl_contadorViernes;
+    private javax.swing.JLabel jl_contadormartes;
     private javax.swing.JLabel jl_fecha;
     private javax.swing.JLabel jl_tipo;
     private javax.swing.JLabel jl_titulo;
