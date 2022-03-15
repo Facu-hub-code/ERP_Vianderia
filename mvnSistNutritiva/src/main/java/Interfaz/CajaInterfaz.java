@@ -5,6 +5,7 @@
  */
 package Interfaz;
 
+import Entidad.CierreCajaEntidad;
 import Entidad.MovimientoEntidad;
 import Entidad.Tipo;
 import Entidad.VentaEntidad;
@@ -32,7 +33,7 @@ public class CajaInterfaz extends javax.swing.JFrame {
         initComponents();
         setUp();
         setVisible(true);
-        update();
+        update(0,0);
     }
 
     /**
@@ -371,9 +372,24 @@ public class CajaInterfaz extends javax.swing.JFrame {
         return !(idMovmientoVigente<0);
     }
 
-    private void update() {
+    private void update(double efectivo, double banco) {
+        CajaLogica.actualizarCierreCaja(efectivo, banco);
+        escribirSaldos();
         llenarTablaMovimientos();
         limpiarCampos();
+    }
+
+    private void escribirSaldos() {
+        double efectivo = 0, banco = 0, total = 0;
+        CierreCajaEntidad cierrecajaEntidad = CajaLogica.getUltimoCierreCaja();
+        if(cierrecajaEntidad != null) {
+            efectivo = cierrecajaEntidad.getEfectivo();
+            banco = cierrecajaEntidad.getBanco();
+            total = efectivo + banco;
+        }
+        jl_efectivo.setText("Efectivo: $" + efectivo);
+        jl_banco.setText("Banco: $" + banco);
+        jl_total.setText("Total: $" + total);
     }
 
     private void limpiarCampos() {

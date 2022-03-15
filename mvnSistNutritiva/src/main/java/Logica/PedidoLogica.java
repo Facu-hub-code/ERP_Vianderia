@@ -1,12 +1,9 @@
 package Logica;
 
-import Entidad.ClienteEntidad;
 import Entidad.PedidoEntidad;
-import Hibernate.ClienteRepository;
 import Hibernate.PedidoRepository;
 
 import java.time.DayOfWeek;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -76,5 +73,10 @@ public class PedidoLogica {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public static int contarPedidos(DayOfWeek day) {
+        ArrayList<PedidoEntidad> pedidos = getPedidos(day);
+        return pedidos.size();
     }
 }

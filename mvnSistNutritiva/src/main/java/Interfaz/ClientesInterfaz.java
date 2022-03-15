@@ -357,10 +357,10 @@ public class ClientesInterfaz extends javax.swing.JFrame {
                     clientes.get(i).getId(),
                     clientes.get(i).getNombre(),
                     clientes.get(i).getApellido(),
-                    clientes.get(i).getEmail(),
                     clientes.get(i).getDni(),
-                    clientes.get(i).getDireccion(),
-                    clientes.get(i).getTelefono()
+                    clientes.get(i).getEmail(),
+                    clientes.get(i).getTelefono(),
+                    clientes.get(i).getDireccion()
             };
         }
 

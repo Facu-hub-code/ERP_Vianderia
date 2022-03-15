@@ -650,6 +650,15 @@ public class PedidosInterfaz extends javax.swing.JFrame {
         llenarTablaViandas();
         llenarTablasPedidos();
         limpiarCampos();
+        calcularContadores();
+    }
+
+    private void calcularContadores() {
+        jl_contadorLunes.setText(""+PedidoLogica.contarPedidos(DayOfWeek.MONDAY));
+        jl_contadormartes.setText(""+PedidoLogica.contarPedidos(DayOfWeek.TUESDAY));
+        jl_contadorMiercoles.setText(""+PedidoLogica.contarPedidos(DayOfWeek.WEDNESDAY));
+        jl_contadorJueves.setText(""+PedidoLogica.contarPedidos(DayOfWeek.THURSDAY));
+        jl_contadorViernes.setText(""+PedidoLogica.contarPedidos(DayOfWeek.FRIDAY));
     }
 
     private void llenarTablasPedidos() {

@@ -1,6 +1,7 @@
 package Entidad;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.time.LocalDate;
 
 @Entity
@@ -12,7 +13,7 @@ public class CierreCajaEntidad {
     private Integer id;
 
     @Column(name = "fecha", nullable = false)
-    private LocalDate fecha;
+    private Date fecha;
 
     @Column(name = "efectivo", nullable = false)
     private Double efectivo;
@@ -26,7 +27,7 @@ public class CierreCajaEntidad {
     public CierreCajaEntidad() {
     }
 
-    public CierreCajaEntidad(LocalDate fecha, Double efectivo, Double banco) {
+    public CierreCajaEntidad(Date fecha, Double efectivo, Double banco) {
         this.fecha = fecha;
         this.efectivo = efectivo;
         this.banco = banco;
@@ -57,11 +58,11 @@ public class CierreCajaEntidad {
         this.efectivo = efectivo;
     }
 
-    public LocalDate getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
