@@ -466,11 +466,11 @@ public class PedidosInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void buscadorClientes(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorClientes
-        addFilter(jtable_cliente, jt_cliente.getText(), 1);//todo: revisar index
+        addFilter(jtable_cliente, jt_cliente.getText(), 1);
     }//GEN-LAST:event_buscadorClientes
 
     private void buscadorViandas(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorViandas
-        addFilter(jtable_viandas, jt_vianda.getText(), 1);//todo: revisar index
+        addFilter(jtable_viandas, jt_vianda.getText(), 1);
     }//GEN-LAST:event_buscadorViandas
 
     private void jtable_clienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_clienteMouseClicked
@@ -647,17 +647,17 @@ public class PedidosInterfaz extends javax.swing.JFrame {
 
     private void llenarTablaViernes() {
         String[] columnas = new String[]{"ID", "Cliente", "Vianda", "Fecha", "Tipo"};
-        Class[] tipos = {Integer.class, String.class, String.class, Date.class, Tipo.class};
+        Class[] tipos = {Integer.class, String.class, String.class, Date.class, String.class};
 
         ArrayList<PedidoEntidad> pedidosViernes = PedidoLogica.getPedidos(DayOfWeek.FRIDAY);
         Object[][] objetosArray = new Object[pedidosViernes.size()][columnas.length];
 
         for (int i = 0; i < pedidosViernes.size(); i++) {
-            Tipo tipo;
+            String tipo;
             if (pedidosViernes.get(i).getTipo().equals("almuerzo"))
-                tipo = Tipo.ALMUERZO;
+                tipo = "almuerzo";
             else
-                tipo = Tipo.CENA;
+                tipo = "cena";
 
             objetosArray[i] = new Object[]{
                     pedidosViernes.get(i).getId(),
@@ -685,17 +685,17 @@ public class PedidosInterfaz extends javax.swing.JFrame {
 
     private void llenarTablaJueves() {
         String[] columnas = new String[]{"ID", "Cliente", "Vianda", "Fecha", "Tipo"};
-        Class[] tipos = {Integer.class, String.class, String.class, Date.class, Tipo.class};
+        Class[] tipos = {Integer.class, String.class, String.class, Date.class, String.class};
 
         ArrayList<PedidoEntidad> pedidosJueves = PedidoLogica.getPedidos(DayOfWeek.THURSDAY);
         Object[][] objetosArray = new Object[pedidosJueves.size()][columnas.length];
 
         for (int i = 0; i < pedidosJueves.size(); i++) {
-            Tipo tipo;
+            String tipo;
             if (pedidosJueves.get(i).getTipo().equals("almuerzo"))
-                tipo = Tipo.ALMUERZO;
+                tipo = "almuerzo";
             else
-                tipo = Tipo.CENA;
+                tipo = "cena";
 
             objetosArray[i] = new Object[]{
                     pedidosJueves.get(i).getId(),
@@ -723,17 +723,17 @@ public class PedidosInterfaz extends javax.swing.JFrame {
 
     private void llenarTablaMiercoles() {
         String[] columnas = new String[]{"ID", "Cliente", "Vianda", "Fecha", "Tipo"};
-        Class[] tipos = {Integer.class, String.class, String.class, Date.class, Tipo.class};
+        Class[] tipos = {Integer.class, String.class, String.class, Date.class, String.class};
 
         ArrayList<PedidoEntidad> pedidosMiercoles = PedidoLogica.getPedidos(DayOfWeek.WEDNESDAY);
         Object[][] objetosArray = new Object[pedidosMiercoles.size()][columnas.length];
 
         for (int i = 0; i < pedidosMiercoles.size(); i++) {
-            Tipo tipo;
+            String tipo;
             if (pedidosMiercoles.get(i).getTipo().equals("almuerzo"))
-                tipo = Tipo.ALMUERZO;
+                tipo = "almuerzo";
             else
-                tipo = Tipo.CENA;
+                tipo = "cena";
 
             objetosArray[i] = new Object[]{
                     pedidosMiercoles.get(i).getId(),
@@ -761,17 +761,17 @@ public class PedidosInterfaz extends javax.swing.JFrame {
 
     private void llenarTablaMartes() {
         String[] columnas = new String[]{"ID", "Cliente", "Vianda", "Fecha", "Tipo"};
-        Class[] tipos = {Integer.class, String.class, String.class, Date.class, Tipo.class};
+        Class[] tipos = {Integer.class, String.class, String.class, Date.class, String.class};
 
         ArrayList<PedidoEntidad> pedidosMartes = PedidoLogica.getPedidos(DayOfWeek.TUESDAY);
         Object[][] objetosArray = new Object[pedidosMartes.size()][columnas.length];
 
         for (int i = 0; i < pedidosMartes.size(); i++) {
-            Tipo tipo;
+            String tipo;
             if (pedidosMartes.get(i).getTipo().equals("almuerzo"))
-                tipo = Tipo.ALMUERZO;
+                tipo = "almuerzo";
             else
-                tipo = Tipo.CENA;
+                tipo = "cena";
 
             objetosArray[i] = new Object[]{
                     pedidosMartes.get(i).getId(),
@@ -799,17 +799,17 @@ public class PedidosInterfaz extends javax.swing.JFrame {
 
     private void llenarTablaLunes() {
         String[] columnas = new String[]{"ID", "Cliente", "Vianda", "Fecha", "Tipo"};
-        Class[] tipos = {Integer.class, String.class, String.class, Date.class, Tipo.class};
+        Class[] tipos = {Integer.class, String.class, String.class, Date.class, String.class};
 
         ArrayList<PedidoEntidad> pedidosLunes = PedidoLogica.getPedidos(DayOfWeek.MONDAY);
         Object[][] objetosArray = new Object[pedidosLunes.size()][columnas.length];
 
         for (int i = 0; i < pedidosLunes.size(); i++) {
-            Tipo tipo;
+            String tipo;
             if (pedidosLunes.get(i).getTipo().equals("almuerzo"))
-                tipo = Tipo.ALMUERZO;
+                tipo = "almuerzo";
             else
-                tipo = Tipo.CENA;
+                tipo = "cena";
 
             objetosArray[i] = new Object[]{
                     pedidosLunes.get(i).getId(),

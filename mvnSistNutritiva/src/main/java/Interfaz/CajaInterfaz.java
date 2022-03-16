@@ -7,10 +7,7 @@ package Interfaz;
 
 import Entidad.CierreCajaEntidad;
 import Entidad.MovimientoEntidad;
-import Entidad.Tipo;
-import Entidad.VentaEntidad;
 import Logica.CajaLogica;
-import Logica.VentasLogica;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -47,14 +44,15 @@ public class CajaInterfaz extends javax.swing.JFrame {
 
         jl_titulo = new javax.swing.JLabel();
         jl_monto = new javax.swing.JLabel();
-        jl_observaciones = new javax.swing.JLabel();
+        jl_modoPago = new javax.swing.JLabel();
+        jl_fecha = new javax.swing.JLabel();
         jt_monto = new javax.swing.JTextField();
-        jt_observaciones = new javax.swing.JTextField();
         jcbBox_modoPago = new javax.swing.JComboBox<>();
-        btn_buscarPorModoPago = new javax.swing.JButton();
-        btn_actualizar = new javax.swing.JButton();
+        jdate_fecha = new com.toedter.calendar.JDateChooser();
+        btn_buscarPorFecha = new javax.swing.JButton();
+        jl_observaciones = new javax.swing.JLabel();
+        jt_observaciones = new javax.swing.JTextField();
         btn_agregar = new javax.swing.JButton();
-        btn_modificar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
         jTabbedPane_general = new javax.swing.JTabbedPane();
         jScrollPane_movimientos = new javax.swing.JScrollPane();
@@ -83,6 +81,43 @@ public class CajaInterfaz extends javax.swing.JFrame {
         jl_monto.setText("MONTO");
         jl_monto.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
+        jl_modoPago.setBackground(new java.awt.Color(49, 28, 28));
+        jl_modoPago.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jl_modoPago.setForeground(new java.awt.Color(255, 253, 118));
+        jl_modoPago.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_modoPago.setText("MODO PAGO");
+        jl_modoPago.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jl_fecha.setBackground(new java.awt.Color(49, 28, 28));
+        jl_fecha.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jl_fecha.setForeground(new java.awt.Color(255, 253, 118));
+        jl_fecha.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_fecha.setText("FECHA");
+        jl_fecha.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jt_monto.setBackground(new java.awt.Color(243, 243, 194));
+        jt_monto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jt_monto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jt_monto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+
+        jcbBox_modoPago.setFont(new java.awt.Font("Leelawadee UI", 1, 12)); // NOI18N
+        jcbBox_modoPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "Banco" }));
+        jcbBox_modoPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbBox_modoPagoActionPerformed(evt);
+            }
+        });
+
+        btn_buscarPorFecha.setBackground(new java.awt.Color(255, 253, 118));
+        btn_buscarPorFecha.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btn_buscarPorFecha.setText("Buscar");
+        btn_buscarPorFecha.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        btn_buscarPorFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscarPorFechaActionPerformed(evt);
+            }
+        });
+
         jl_observaciones.setBackground(new java.awt.Color(49, 28, 28));
         jl_observaciones.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jl_observaciones.setForeground(new java.awt.Color(255, 253, 118));
@@ -90,43 +125,10 @@ public class CajaInterfaz extends javax.swing.JFrame {
         jl_observaciones.setText("OBSERVACIONES");
         jl_observaciones.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
-        jt_monto.setBackground(new java.awt.Color(243, 243, 194));
-        jt_monto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jt_monto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jt_monto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-
         jt_observaciones.setBackground(new java.awt.Color(243, 243, 194));
         jt_observaciones.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jt_observaciones.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_observaciones.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-
-        jcbBox_modoPago.setFont(new java.awt.Font("Leelawadee UI", 1, 12)); // NOI18N
-        jcbBox_modoPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Modo de pago", "Efectivo", "Banco" }));
-        jcbBox_modoPago.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbBox_modoPagoActionPerformed(evt);
-            }
-        });
-
-        btn_buscarPorModoPago.setBackground(new java.awt.Color(255, 253, 118));
-        btn_buscarPorModoPago.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        btn_buscarPorModoPago.setText("Buscar");
-        btn_buscarPorModoPago.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        btn_buscarPorModoPago.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_buscarPorModoPagoActionPerformed(evt);
-            }
-        });
-
-        btn_actualizar.setBackground(new java.awt.Color(255, 253, 118));
-        btn_actualizar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        btn_actualizar.setText("Actualizar");
-        btn_actualizar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_actualizarActionPerformed(evt);
-            }
-        });
 
         btn_agregar.setBackground(new java.awt.Color(255, 253, 118));
         btn_agregar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -135,16 +137,6 @@ public class CajaInterfaz extends javax.swing.JFrame {
         btn_agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_agregarActionPerformed(evt);
-            }
-        });
-
-        btn_modificar.setBackground(new java.awt.Color(255, 253, 118));
-        btn_modificar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        btn_modificar.setText("Modificar");
-        btn_modificar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        btn_modificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_modificarActionPerformed(evt);
             }
         });
 
@@ -217,32 +209,37 @@ public class CajaInterfaz extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btn_agregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
-                            .addComponent(btn_eliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_actualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(59, 59, 59)
                         .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jcbBox_modoPago, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jl_monto, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jt_monto, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jl_monto, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_modoPago, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jt_monto)
+                            .addComponent(jcbBox_modoPago, 0, 155, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_buscarPorModoPago, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jl_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jdate_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btn_buscarPorFecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(1, 1, 1)
-                                    .addComponent(jl_observaciones)
-                                    .addGap(149, 149, 149))
-                                .addComponent(jt_observaciones, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(btn_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(1, 1, 1)
+                                        .addComponent(jl_observaciones)
+                                        .addGap(149, 149, 149))
+                                    .addComponent(jt_observaciones, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTabbedPane_general, javax.swing.GroupLayout.PREFERRED_SIZE, 964, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -266,19 +263,21 @@ public class CajaInterfaz extends javax.swing.JFrame {
                             .addComponent(jt_monto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jl_monto, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jcbBox_modoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jcbBox_modoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_modoPago, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jl_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jdate_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_buscarPorModoPago)
-                        .addGap(180, 180, 180)
+                        .addComponent(btn_buscarPorFecha)
+                        .addGap(220, 220, 220)
                         .addComponent(jl_observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jt_observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btn_actualizar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_agregar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_modificar))
+                        .addComponent(btn_agregar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jTabbedPane_general, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -307,10 +306,6 @@ public class CajaInterfaz extends javax.swing.JFrame {
         agregarMovimiento();
     }//GEN-LAST:event_btn_agregarActionPerformed
 
-    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
-        modificarMovimiento();
-    }//GEN-LAST:event_btn_modificarActionPerformed
-
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         eliminarMovimiento();
     }//GEN-LAST:event_btn_eliminarActionPerformed
@@ -319,26 +314,23 @@ public class CajaInterfaz extends javax.swing.JFrame {
         //addFilter(jtable_movimientosDiarios, jcbBox_modoPago.getSelectedItem().toString(), 3);
     }//GEN-LAST:event_jcbBox_modoPagoActionPerformed
 
-    private void btn_buscarPorModoPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarPorModoPagoActionPerformed
+    private void btn_buscarPorFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarPorFechaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_buscarPorModoPagoActionPerformed
-
-    private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_actualizarActionPerformed
+    }//GEN-LAST:event_btn_buscarPorFechaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_actualizar;
     private javax.swing.JButton btn_agregar;
-    private javax.swing.JButton btn_buscarPorModoPago;
+    private javax.swing.JButton btn_buscarPorFecha;
     private javax.swing.JButton btn_eliminar;
-    private javax.swing.JButton btn_modificar;
     private javax.swing.JScrollPane jScrollPane_cierresDeCaja;
     private javax.swing.JScrollPane jScrollPane_movimientos;
     private javax.swing.JTabbedPane jTabbedPane_general;
     private javax.swing.JComboBox<String> jcbBox_modoPago;
+    private com.toedter.calendar.JDateChooser jdate_fecha;
     private javax.swing.JLabel jl_banco;
     private javax.swing.JLabel jl_efectivo;
+    private javax.swing.JLabel jl_fecha;
+    private javax.swing.JLabel jl_modoPago;
     private javax.swing.JLabel jl_monto;
     private javax.swing.JLabel jl_observaciones;
     private javax.swing.JLabel jl_titulo;

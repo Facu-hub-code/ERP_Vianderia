@@ -62,19 +62,6 @@ public class PedidoLogica {
         return pedido;
     }
 
-    public static boolean eliminarPedido(int idPedidoVigente) {
-        try {
-            PedidoRepository pedidoRepository = new PedidoRepository();
-            PedidoEntidad pedido = pedidoRepository.findbyID(idPedidoVigente);
-            pedido.setAnulado(true);
-            pedidoRepository.update(pedido);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
     public static int contarPedidos(DayOfWeek day) {
         ArrayList<PedidoEntidad> pedidos = getPedidos(day);
         return pedidos.size();

@@ -52,10 +52,9 @@ public class VentasInterfaz extends javax.swing.JFrame {
         jl_fecha = new javax.swing.JLabel();
         jl_cliente = new javax.swing.JLabel();
         jdate_fecha = new com.toedter.calendar.JDateChooser();
+        btn_buscarPorFecha = new javax.swing.JButton();
         jt_cliente = new javax.swing.JTextField();
-        btn_actualizar = new javax.swing.JButton();
         btn_agregar = new javax.swing.JButton();
-        btn_modificar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
         jTabbedPane_general = new javax.swing.JTabbedPane();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -88,6 +87,16 @@ public class VentasInterfaz extends javax.swing.JFrame {
         jl_cliente.setText("CLIENTE");
         jl_cliente.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
+        btn_buscarPorFecha.setBackground(new java.awt.Color(255, 253, 118));
+        btn_buscarPorFecha.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btn_buscarPorFecha.setText("Buscar");
+        btn_buscarPorFecha.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        btn_buscarPorFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscarPorFechaActionPerformed(evt);
+            }
+        });
+
         jt_cliente.setBackground(new java.awt.Color(243, 243, 194));
         jt_cliente.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jt_cliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -98,16 +107,6 @@ public class VentasInterfaz extends javax.swing.JFrame {
             }
         });
 
-        btn_actualizar.setBackground(new java.awt.Color(255, 253, 118));
-        btn_actualizar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        btn_actualizar.setText("Actualizar");
-        btn_actualizar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_actualizarActionPerformed(evt);
-            }
-        });
-
         btn_agregar.setBackground(new java.awt.Color(255, 253, 118));
         btn_agregar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btn_agregar.setText("Agregar");
@@ -115,16 +114,6 @@ public class VentasInterfaz extends javax.swing.JFrame {
         btn_agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_agregarActionPerformed(evt);
-            }
-        });
-
-        btn_modificar.setBackground(new java.awt.Color(255, 253, 118));
-        btn_modificar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        btn_modificar.setText("Modificar");
-        btn_modificar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        btn_modificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_modificarActionPerformed(evt);
             }
         });
 
@@ -188,10 +177,8 @@ public class VentasInterfaz extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btn_agregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
-                                .addComponent(btn_eliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_actualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(btn_agregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                                .addComponent(btn_eliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jl_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -199,7 +186,8 @@ public class VentasInterfaz extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jl_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jt_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jt_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btn_buscarPorFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jTabbedPane_general, javax.swing.GroupLayout.PREFERRED_SIZE, 968, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -215,19 +203,17 @@ public class VentasInterfaz extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jl_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jdate_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jt_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jl_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jl_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jdate_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_buscarPorFecha)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_actualizar)
-                        .addGap(18, 18, 18)
                         .addComponent(btn_agregar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_modificar)
                         .addGap(18, 18, 18)
                         .addComponent(btn_eliminar))
                     .addComponent(jTabbedPane_general, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE))
@@ -245,29 +231,27 @@ public class VentasInterfaz extends javax.swing.JFrame {
     }
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
-        if(checkCampos()){
+        if(idPedidoVigente < 0)
+            JOptionPane.showMessageDialog(null, "Debe seleccionar algun pedido");
+        else{
             agregarVenta();
-            eliminarPedido();
             agregarMovimiento(PedidoLogica.getPedido(idPedidoVigente));
         }
 
-    }//GEN-LAST:event_btn_agregarActionPerformed
 
-    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
-        modificarVenta();
-    }//GEN-LAST:event_btn_modificarActionPerformed
+    }//GEN-LAST:event_btn_agregarActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         // TODO: agregar el bit de anulado
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void buscadorClientes(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorClientes
-        addFilter(jtable_ventas, jt_cliente.getText(), 1);
+        addFilter(jtable_pedidos, jt_cliente.getText(), 3);
     }//GEN-LAST:event_buscadorClientes
 
     private void jtable_pedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_pedidosMouseClicked
         int filaSelec = jtable_pedidos.rowAtPoint(evt.getPoint());
-        jt_cliente.setText(jtable_pedidos.getValueAt(filaSelec, 1).toString());
+        jt_cliente.setText(jtable_pedidos.getValueAt(filaSelec, 3).toString());
         idPedidoVigente = (int) jtable_pedidos.getValueAt(filaSelec, 0);
     }//GEN-LAST:event_jtable_pedidosMouseClicked
 
@@ -277,15 +261,14 @@ public class VentasInterfaz extends javax.swing.JFrame {
         idVentaVigente = (int) jtable_ventas.getValueAt(filaSelec, 0);
     }//GEN-LAST:event_jtable_ventasMouseClicked
 
-    private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
+    private void btn_buscarPorFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarPorFechaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_actualizarActionPerformed
+    }//GEN-LAST:event_btn_buscarPorFechaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_actualizar;
     private javax.swing.JButton btn_agregar;
+    private javax.swing.JButton btn_buscarPorFecha;
     private javax.swing.JButton btn_eliminar;
-    private javax.swing.JButton btn_modificar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane_general;
@@ -314,35 +297,31 @@ public class VentasInterfaz extends javax.swing.JFrame {
         return movimientoEntidad;
     }
 
-    private void eliminarPedido() {
-        PedidoLogica.eliminarPedido(idPedidoVigente);
-    }
 
+    /**
+     * Creo una venta y la persisto en el sistema
+     */
     private void agregarVenta() {
-        double monto = 0.0;
-        Date fecha = null;
-        PedidoEntidad pedido = null;
-        try {
-            fecha = new java.sql.Date(jdate_fecha.getDate().getTime());
-            pedido = PedidoLogica.getPedido(idPedidoVigente);
-            monto = pedido.getVianda().getPrecio();
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
+        Date fecha = new java.sql.Date(jdate_fecha.getDate().getTime());
+        PedidoEntidad pedido = PedidoLogica.getPedido(idPedidoVigente);
+        double monto = pedido.getVianda().getPrecio();
         VentaEntidad venta = new VentaEntidad(monto, fecha, pedido);
-        boolean flag = VentasLogica.agregar(venta);
-        if (flag)
+        if (VentasLogica.agregar(venta)){
             JOptionPane.showMessageDialog(null, "Venta de " + pedido.getCliente().getNombre() + " agregado con exito");
+            PedidoLogica.delete(pedido);
+        }
         else
             JOptionPane.showMessageDialog(null, "Error: al intentar agregar la venta");
     }
 
 
+    //todo: ver
+
     private void modificarVenta() {
         double monto = 0.0;
         Date fecha = null;
         PedidoEntidad pedido = null;
-        if (checkCampos()) {
+        if (idVentaVigente < 0) {
             try {
                 //monto = Double.valueOf(jt_monto.getText());
                 fecha = new java.sql.Date(jdate_fecha.getDate().getTime());
@@ -360,14 +339,12 @@ public class VentasInterfaz extends javax.swing.JFrame {
         }
     }
 
-    private boolean checkCampos() {
-        return !(idVentaVigente < 0 || idPedidoVigente < 0);
-    }
-
     private void update() {
         limpiarCampos();
         llenarTablaPedidos();
         llenarTablaVentas();
+        idPedidoVigente = -1;
+        idVentaVigente = -1;
     }
 
     private void limpiarCampos() {
@@ -379,17 +356,17 @@ public class VentasInterfaz extends javax.swing.JFrame {
 
     private void llenarTablaVentas() {
         String[] columnas = new String[]{"ID", "Cliente", "Vianda", "Fecha", "Tipo", "Monto"};
-        Class[] tipos = {Integer.class, String.class, String.class, Date.class, Tipo.class, Double.class};
+        Class[] tipos = {Integer.class, String.class, String.class, Date.class, String.class, Double.class};
 
         ArrayList<VentaEntidad> ventas = VentasLogica.getVentas();
         Object[][] objetosArray = new Object[ventas.size()][columnas.length];
 
         for (int i = 0; i < ventas.size(); i++) {
-            Tipo tipo;
+            String tipo;
             if (ventas.get(i).getPedido().getTipo().equals("almuerzo"))
-                tipo = Tipo.ALMUERZO;
+                tipo = "almuerzo";
             else
-                tipo = Tipo.CENA;
+                tipo = "cena";
 
             objetosArray[i] = new Object[]{
                     ventas.get(i).getId(),
@@ -401,7 +378,7 @@ public class VentasInterfaz extends javax.swing.JFrame {
             };
         }
 
-        jtable_pedidos.setModel(new DefaultTableModel(objetosArray, columnas) {
+        jtable_ventas.setModel(new DefaultTableModel(objetosArray, columnas) {
             Class[] types = tipos;
 
             @Override
@@ -417,25 +394,25 @@ public class VentasInterfaz extends javax.swing.JFrame {
     }
 
     private void llenarTablaPedidos() {
-        String[] columnas = new String[]{"ID", "Cliente", "Vianda", "Fecha", "Tipo"};
-        Class[] tipos = {Integer.class, String.class, String.class, Date.class, Tipo.class};
+        String[] columnas = new String[]{"ID", "Fecha", "Tipo", "Cliente", "Vianda"};
+        Class[] tipos = {Integer.class, Date.class, String.class, String.class, String.class};
 
-        ArrayList<PedidoEntidad> pedidosLunes = PedidoLogica.getPedidos();
-        Object[][] objetosArray = new Object[pedidosLunes.size()][columnas.length];
+        ArrayList<PedidoEntidad> pedidos = PedidoLogica.getPedidos();
+        Object[][] objetosArray = new Object[pedidos.size()][columnas.length];
 
-        for (int i = 0; i < pedidosLunes.size(); i++) {
-            Tipo tipo;
-            if (pedidosLunes.get(i).getTipo().equals("almuerzo"))
-                tipo = Tipo.ALMUERZO;
+        for (int i = 0; i < pedidos.size(); i++) {
+            String tipo;
+            if (pedidos.get(i).getTipo().equals("almuerzo"))
+                tipo = "almuerzo";
             else
-                tipo = Tipo.CENA;
+                tipo = "cena";
 
             objetosArray[i] = new Object[]{
-                    pedidosLunes.get(i).getId(),
-                    pedidosLunes.get(i).getCliente().getNombre(),
-                    pedidosLunes.get(i).getVianda().getNombre(),
-                    pedidosLunes.get(i).getFecha(),
-                    pedidosLunes.get(i).getTipo()
+                    pedidos.get(i).getId(),
+                    pedidos.get(i).getFecha(),
+                    pedidos.get(i).getTipo(),
+                    pedidos.get(i).getCliente().getNombre(),
+                    pedidos.get(i).getVianda().getNombre()
             };
         }
 

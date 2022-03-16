@@ -3,6 +3,7 @@ package Hibernate;
 import Entidad.PedidoEntidad;
 import Entidad.VentaEntidad;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -14,8 +15,18 @@ import java.util.List;
 
 public class VentasRepository implements Repository<VentaEntidad> {
     @Override
-    public void save(VentaEntidad ventaEntidad) {
-
+    public void save(VentaEntidad venta) {
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            session.save(venta);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            HibernateUtil.closeSession();
+        }
     }
 
     @Override
