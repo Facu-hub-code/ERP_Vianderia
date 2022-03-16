@@ -44,4 +44,16 @@ public class ViandasLogica {
         ViandaEntidad vianda = viandasRepository.findbyID(id);
         return vianda;
     }
+
+    public static boolean delete(ViandaEntidad vianda) {
+        try{
+            vianda.setAnulado(true);
+            ViandasRepository viandasRepository = new ViandasRepository();
+            viandasRepository.update(vianda);
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

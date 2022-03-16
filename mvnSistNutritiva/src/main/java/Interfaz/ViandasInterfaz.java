@@ -7,8 +7,6 @@ package Interfaz;
 
 import Entidad.ClienteEntidad;
 import Entidad.ViandaEntidad;
-import Hibernate.ClienteRepository;
-import Hibernate.ViandasRepository;
 import Logica.ClienteLogica;
 import Logica.ViandasLogica;
 
@@ -36,7 +34,7 @@ public class ViandasInterfaz extends javax.swing.JFrame {
         initComponents();
         initComponentsFacu();
         setVisible(true);
-        actualizar();
+        update();
     }
 
     /**
@@ -223,17 +221,19 @@ public class ViandasInterfaz extends javax.swing.JFrame {
     }
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
-        agregarVianda();
+        addVianda();
+        update();
     }//GEN-LAST:event_btn_agregarActionPerformed
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
-        modificarVianda();
+        updateVianda();
+        update();
     }//GEN-LAST:event_btn_modificarActionPerformed
 
     private void jtable_viandasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_viandasMouseClicked
         int filaSelec = jtable_viandas.rowAtPoint(evt.getPoint());
         jt_nombre.setText(jtable_viandas.getValueAt(filaSelec, 1).toString());
-        jt_precio.setText("$ "+jtable_viandas.getValueAt(filaSelec, 2).toString());
+        jt_precio.setText(jtable_viandas.getValueAt(filaSelec, 2).toString());
         idVigente = (int) jtable_viandas.getValueAt(filaSelec, 0);
     }//GEN-LAST:event_jtable_viandasMouseClicked
 
@@ -242,11 +242,12 @@ public class ViandasInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_buscadorNombre
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        // TODO: agregar bit de eliminado
+        deleteVianda();
+        update();
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
-        // TODO add your handling code here:
+        update();
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -263,33 +264,43 @@ public class ViandasInterfaz extends javax.swing.JFrame {
     private javax.swing.JTable jtable_viandas;
     // End of variables declaration//GEN-END:variables
 
-    private void modificarVianda() {
-        String nombre = "";
-        double precio = 0.0;
+    private void updateVianda() {
+        String nombre = ""; double precio = 0.0;
+        if (checkCampos() && idVigente >= 0) {
+            nombre = jt_nombre.getText();
+            precio = Double.valueOf(jt_precio.getText());
+            ViandaEntidad vianda = ViandasLogica.getVianda(idVigente);
+            vianda.setNombre(nombre); vianda.setPrecio(precio);
+            if (ViandasLogica.modificarVianda(vianda))
+                JOptionPane.showMessageDialog(null, "Vianda " + vianda.getNombre() + " modificada con exito");
+            else
+                JOptionPane.showMessageDialog(null, "Error: al intentar modificar la vianda");
+        }else
+            JOptionPane.showMessageDialog(null, "Debe seleccionar alguna vianda");
+    }
+
+    private void addVianda() {
+        String nombre = ""; double precio = 0.0;
         if (checkCampos()) {
             nombre = jt_nombre.getText();
             precio = Double.valueOf(jt_precio.getText());
             ViandaEntidad vianda = new ViandaEntidad(nombre, precio);
-            boolean flag = ViandasLogica.modificarVianda(vianda);
-            if (flag)
+            if (ViandasLogica.agregarVianda(vianda))
                 JOptionPane.showMessageDialog(null, "Vianda " + vianda.getNombre() + " agregada con exito");
             else
                 JOptionPane.showMessageDialog(null, "Error: al intentar agregar la vianda");
         }
     }
 
-    private void agregarVianda() {
-        String nombre = "";
-        double precio = 0.0;
-        if (checkCampos()) {
-            nombre = jt_nombre.getText();
-            precio = Double.valueOf(jt_precio.getText());
-            ViandaEntidad vianda = new ViandaEntidad(nombre, precio);
-            boolean flag = ViandasLogica.agregarVianda(vianda);
-            if (flag)
-                JOptionPane.showMessageDialog(null, "Vianda " + vianda.getNombre() + " agregada con exito");
+    private void deleteVianda() {
+        if(idVigente < 0)
+            JOptionPane.showMessageDialog(null, "Debe seleccionar alguna vianda");
+        else {
+            ViandaEntidad vianda = ViandasLogica.getVianda(idVigente);
+            if(ViandasLogica.delete(vianda))
+                JOptionPane.showMessageDialog(null, "Vianda " + vianda.getNombre() + " eliminada con exito");
             else
-                JOptionPane.showMessageDialog(null, "Error: al intentar agregar la vianda");
+                JOptionPane.showMessageDialog(null, "Error: al intentar eliminar la vianda");
         }
     }
 
@@ -298,21 +309,19 @@ public class ViandasInterfaz extends javax.swing.JFrame {
      * @return boolean
      * @throws NullPointerException cuando falta completar algun campo
      */
-    private boolean checkCampos() { //todo: probar metodo
-        try{
-            jt_nombre.getText();
-            jt_precio.getText();
-            if(jl_nombre.getText().equals("") || jt_precio.getText().equals(""))
-                return false;
-            return true;
-        }catch (NullPointerException e){
+    private boolean checkCampos() {
+        jt_nombre.getText();
+        jt_precio.getText();
+        if(jt_nombre.getText().equals("") || jt_precio.getText().equals("")) //si algun campo esta vacio
             return false;
-        }
+        else
+            return true;
     }
 
-    private void actualizar() {
-        llenarTabla();
+    private void update() {
         limpiarCampos();
+        llenarTabla();
+        idVigente = -1;
     }
 
     private void llenarTabla() {

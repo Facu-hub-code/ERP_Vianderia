@@ -306,10 +306,12 @@ public class ClientesInterfaz extends javax.swing.JFrame {
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
         addCliente();
+        update();
     }//GEN-LAST:event_btn_agregarActionPerformed
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
         updateCliente();
+        update();
     }//GEN-LAST:event_btn_modificarActionPerformed
 
     private void jtable_clientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_clientesMouseClicked
@@ -332,6 +334,7 @@ public class ClientesInterfaz extends javax.swing.JFrame {
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         deleteCliente();
+        update();
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -456,7 +459,6 @@ public class ClientesInterfaz extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Error: al intentar agregar el cliente");
         }else
             JOptionPane.showMessageDialog(null, "Debe ingresarle al menos un nombre al cliente");
-        update();
     }
 
     private void updateCliente() {
@@ -485,7 +487,6 @@ public class ClientesInterfaz extends javax.swing.JFrame {
             else
                 JOptionPane.showMessageDialog(null, "Error: al intentar modificar el cliente");
         }
-        update();
     }
 
     private void deleteCliente() {
@@ -498,6 +499,5 @@ public class ClientesInterfaz extends javax.swing.JFrame {
             else
                 JOptionPane.showMessageDialog(null, "Error: al intentar eliminar el cliente");
         }
-        update();
     }
 }
