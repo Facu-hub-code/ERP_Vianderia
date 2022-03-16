@@ -3,6 +3,7 @@
 /pySistemaNutritiva/build/
 /pySistemaNutritiva/dist/
 /pySistemaNutritiva/nbproject/private/
+*.class
 =======
 /problems/nbproject/private/
 /problems/build/
@@ -10,5 +11,4 @@
 =======
 /mysqlTest/nbproject/private/
 >>>>>>> Stashed changes
-*.class
 *.class
