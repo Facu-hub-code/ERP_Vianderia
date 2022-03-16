@@ -66,9 +66,15 @@ public class PedidosInterfaz extends javax.swing.JFrame {
         rb_cena = new javax.swing.JRadioButton();
         jt_cliente = new javax.swing.JTextField();
         jt_vianda = new javax.swing.JTextField();
+        btn_actualizar = new javax.swing.JButton();
         btn_agregar = new javax.swing.JButton();
         btn_modificar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
+        jl_contadorLunes = new javax.swing.JLabel();
+        jl_contadormartes = new javax.swing.JLabel();
+        jl_contadorMiercoles = new javax.swing.JLabel();
+        jl_contadorJueves = new javax.swing.JLabel();
+        jl_contadorViernes = new javax.swing.JLabel();
         jTabbedPane_general = new javax.swing.JTabbedPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtable_cliente = new javax.swing.JTable();
@@ -84,12 +90,6 @@ public class PedidosInterfaz extends javax.swing.JFrame {
         jtable_jueves = new javax.swing.JTable();
         jScrollPane7 = new javax.swing.JScrollPane();
         jtable_viernes = new javax.swing.JTable();
-        btn_actualizar = new javax.swing.JButton();
-        jl_contadorLunes = new javax.swing.JLabel();
-        jl_contadormartes = new javax.swing.JLabel();
-        jl_contadorMiercoles = new javax.swing.JLabel();
-        jl_contadorJueves = new javax.swing.JLabel();
-        jl_contadorViernes = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(49, 28, 28));
@@ -164,6 +164,16 @@ public class PedidosInterfaz extends javax.swing.JFrame {
             }
         });
 
+        btn_actualizar.setBackground(new java.awt.Color(255, 253, 118));
+        btn_actualizar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btn_actualizar.setText("Actualizar");
+        btn_actualizar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_actualizarActionPerformed(evt);
+            }
+        });
+
         btn_agregar.setBackground(new java.awt.Color(255, 253, 118));
         btn_agregar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btn_agregar.setText("Agregar");
@@ -193,6 +203,36 @@ public class PedidosInterfaz extends javax.swing.JFrame {
                 btn_eliminarActionPerformed(evt);
             }
         });
+
+        jl_contadorLunes.setBackground(new java.awt.Color(49, 28, 28));
+        jl_contadorLunes.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jl_contadorLunes.setForeground(new java.awt.Color(255, 253, 118));
+        jl_contadorLunes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_contadorLunes.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jl_contadormartes.setBackground(new java.awt.Color(49, 28, 28));
+        jl_contadormartes.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jl_contadormartes.setForeground(new java.awt.Color(255, 253, 118));
+        jl_contadormartes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_contadormartes.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jl_contadorMiercoles.setBackground(new java.awt.Color(49, 28, 28));
+        jl_contadorMiercoles.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jl_contadorMiercoles.setForeground(new java.awt.Color(255, 253, 118));
+        jl_contadorMiercoles.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_contadorMiercoles.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jl_contadorJueves.setBackground(new java.awt.Color(49, 28, 28));
+        jl_contadorJueves.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jl_contadorJueves.setForeground(new java.awt.Color(255, 253, 118));
+        jl_contadorJueves.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_contadorJueves.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jl_contadorViernes.setBackground(new java.awt.Color(49, 28, 28));
+        jl_contadorViernes.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jl_contadorViernes.setForeground(new java.awt.Color(255, 253, 118));
+        jl_contadorViernes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_contadorViernes.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jtable_cliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -333,46 +373,6 @@ public class PedidosInterfaz extends javax.swing.JFrame {
         jScrollPane7.setViewportView(jtable_viernes);
 
         jTabbedPane_general.addTab("Viernes", jScrollPane7);
-
-        btn_actualizar.setBackground(new java.awt.Color(255, 253, 118));
-        btn_actualizar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        btn_actualizar.setText("Actualizar");
-        btn_actualizar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_actualizarActionPerformed(evt);
-            }
-        });
-
-        jl_contadorLunes.setBackground(new java.awt.Color(49, 28, 28));
-        jl_contadorLunes.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jl_contadorLunes.setForeground(new java.awt.Color(255, 253, 118));
-        jl_contadorLunes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_contadorLunes.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-
-        jl_contadormartes.setBackground(new java.awt.Color(49, 28, 28));
-        jl_contadormartes.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jl_contadormartes.setForeground(new java.awt.Color(255, 253, 118));
-        jl_contadormartes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_contadormartes.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-
-        jl_contadorMiercoles.setBackground(new java.awt.Color(49, 28, 28));
-        jl_contadorMiercoles.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jl_contadorMiercoles.setForeground(new java.awt.Color(255, 253, 118));
-        jl_contadorMiercoles.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_contadorMiercoles.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-
-        jl_contadorJueves.setBackground(new java.awt.Color(49, 28, 28));
-        jl_contadorJueves.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jl_contadorJueves.setForeground(new java.awt.Color(255, 253, 118));
-        jl_contadorJueves.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_contadorJueves.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-
-        jl_contadorViernes.setBackground(new java.awt.Color(49, 28, 28));
-        jl_contadorViernes.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jl_contadorViernes.setForeground(new java.awt.Color(255, 253, 118));
-        jl_contadorViernes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_contadorViernes.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

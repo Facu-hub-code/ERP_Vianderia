@@ -6,13 +6,56 @@
   <component name="ChangeListManager">
     <list default="true" id="7f6ba0bc-1813-4156-85d5-b38edcb40a38" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entidad/CierreCajaEntidad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entidad/CierreCajaEntidad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Hibernate/CajaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Hibernate/CajaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaz/CajaInterfaz.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaz/CajaInterfaz.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Interfaz/CajaInterfaz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaz/CajaInterfaz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaz/ClientesInterfaz.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaz/ClientesInterfaz.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Interfaz/ClientesInterfaz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaz/ClientesInterfaz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaz/PedidosInterfaz.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaz/PedidosInterfaz.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Interfaz/PedidosInterfaz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaz/PedidosInterfaz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Logica/CajaLogica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Logica/CajaLogica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Logica/PedidoLogica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Logica/PedidoLogica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaz/VentasInterfaz.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaz/VentasInterfaz.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaz/VentasInterfaz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaz/VentasInterfaz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaz/ViandasInterfaz.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaz/ViandasInterfaz.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaz/ViandasInterfaz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaz/ViandasInterfaz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Logica/ClienteLogica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Logica/ClienteLogica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Hibernate/CajaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Hibernate/CajaRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/CajaInterfaz$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/CajaInterfaz$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/CajaInterfaz$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/CajaInterfaz$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/CajaInterfaz$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/CajaInterfaz$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/CajaInterfaz$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/CajaInterfaz$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/CajaInterfaz$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/CajaInterfaz$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/CajaInterfaz.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/CajaInterfaz.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/ClientesInterfaz.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$13.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$14.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$15.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$16.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$17.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$17.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$18.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$18.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$19.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$19.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$20.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$20.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$21.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$21.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$22.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$22.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/PedidosInterfaz.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Logica/CajaLogica.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Logica/CajaLogica.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Logica/PedidoLogica.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Logica/PedidoLogica.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

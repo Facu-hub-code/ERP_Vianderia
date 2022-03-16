@@ -41,4 +41,16 @@ public class ClienteLogica {
         ClienteEntidad cliente = clienteRepository.findbyID(idClienteVigente);
         return cliente;
     }
+
+    public static boolean delete(ClienteEntidad cliente) {
+        try{
+            cliente.setAnulado(true);
+            ClienteRepository clienteRepository = new ClienteRepository();
+            clienteRepository.update(cliente);
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
