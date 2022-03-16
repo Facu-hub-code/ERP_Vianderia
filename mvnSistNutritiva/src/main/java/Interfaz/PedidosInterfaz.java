@@ -27,9 +27,9 @@ import java.util.regex.PatternSyntaxException;
  * @author facul
  */
 public class PedidosInterfaz extends javax.swing.JFrame {
-    private static int idPedidoVigente = -1;
-    private static int idClienteVigente = -1;
-    private static int idViandaVigente = -1;
+    private static int idPedidoVigente;
+    private static int idClienteVigente;
+    private static int idViandaVigente;
     /**
      * Constructor: - Creates new form GestionClientes
      */
@@ -68,10 +68,9 @@ public class PedidosInterfaz extends javax.swing.JFrame {
         jt_vianda = new javax.swing.JTextField();
         btn_actualizar = new javax.swing.JButton();
         btn_agregar = new javax.swing.JButton();
-        btn_modificar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
         jl_contadorLunes = new javax.swing.JLabel();
-        jl_contadormartes = new javax.swing.JLabel();
+        jl_contadorMartes = new javax.swing.JLabel();
         jl_contadorMiercoles = new javax.swing.JLabel();
         jl_contadorJueves = new javax.swing.JLabel();
         jl_contadorViernes = new javax.swing.JLabel();
@@ -184,16 +183,6 @@ public class PedidosInterfaz extends javax.swing.JFrame {
             }
         });
 
-        btn_modificar.setBackground(new java.awt.Color(255, 253, 118));
-        btn_modificar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        btn_modificar.setText("Modificar");
-        btn_modificar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        btn_modificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_modificarActionPerformed(evt);
-            }
-        });
-
         btn_eliminar.setBackground(new java.awt.Color(255, 253, 118));
         btn_eliminar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btn_eliminar.setText("Eliminar");
@@ -210,11 +199,11 @@ public class PedidosInterfaz extends javax.swing.JFrame {
         jl_contadorLunes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jl_contadorLunes.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
-        jl_contadormartes.setBackground(new java.awt.Color(49, 28, 28));
-        jl_contadormartes.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jl_contadormartes.setForeground(new java.awt.Color(255, 253, 118));
-        jl_contadormartes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_contadormartes.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jl_contadorMartes.setBackground(new java.awt.Color(49, 28, 28));
+        jl_contadorMartes.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jl_contadorMartes.setForeground(new java.awt.Color(255, 253, 118));
+        jl_contadorMartes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_contadorMartes.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jl_contadorMiercoles.setBackground(new java.awt.Color(49, 28, 28));
         jl_contadorMiercoles.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
@@ -379,9 +368,21 @@ public class PedidosInterfaz extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
+                        .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(750, 750, 750)
+                        .addComponent(jl_contadorLunes, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jl_contadorMartes, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jl_contadorMiercoles, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jl_contadorJueves, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jl_contadorViernes, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(btn_agregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -393,7 +394,6 @@ public class PedidosInterfaz extends javax.swing.JFrame {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jt_cliente, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
                                         .addComponent(jt_vianda)))
-                                .addComponent(btn_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btn_eliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btn_actualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
@@ -408,20 +408,7 @@ public class PedidosInterfaz extends javax.swing.JFrame {
                                         .addComponent(rb_cena))
                                     .addComponent(jdate_fecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(18, 18, 18)
-                        .addComponent(jTabbedPane_general, javax.swing.GroupLayout.PREFERRED_SIZE, 968, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(176, 176, 176)
-                        .addComponent(jl_contadorLunes, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jl_contadormartes, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(jl_contadorMiercoles, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(jl_contadorJueves, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(jl_contadorViernes, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTabbedPane_general, javax.swing.GroupLayout.PREFERRED_SIZE, 968, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -430,11 +417,11 @@ public class PedidosInterfaz extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jl_contadorLunes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jl_contadormartes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jl_contadorMiercoles, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jl_contadorJueves, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jl_contadorViernes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jl_contadorLunes, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_contadorMartes, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_contadorMiercoles, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_contadorJueves, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_contadorViernes, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -459,8 +446,6 @@ public class PedidosInterfaz extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btn_agregar)
                         .addGap(18, 18, 18)
-                        .addComponent(btn_modificar)
-                        .addGap(18, 18, 18)
                         .addComponent(btn_eliminar))
                     .addComponent(jTabbedPane_general, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
@@ -470,16 +455,14 @@ public class PedidosInterfaz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
-        agregarPedido();
+        addPedido();
+        update();
     }//GEN-LAST:event_btn_agregarActionPerformed
-
-    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
-        modificarPedido();
-    }//GEN-LAST:event_btn_modificarActionPerformed
 
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        // TODO implementar bit de anulado
+        deletePedido();
+        update();
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void buscadorClientes(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorClientes
@@ -555,7 +538,6 @@ public class PedidosInterfaz extends javax.swing.JFrame {
     private javax.swing.JButton btn_actualizar;
     private javax.swing.JButton btn_agregar;
     private javax.swing.JButton btn_eliminar;
-    private javax.swing.JButton btn_modificar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -568,9 +550,9 @@ public class PedidosInterfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jl_cliente;
     private javax.swing.JLabel jl_contadorJueves;
     private javax.swing.JLabel jl_contadorLunes;
+    private javax.swing.JLabel jl_contadorMartes;
     private javax.swing.JLabel jl_contadorMiercoles;
     private javax.swing.JLabel jl_contadorViernes;
-    private javax.swing.JLabel jl_contadormartes;
     private javax.swing.JLabel jl_fecha;
     private javax.swing.JLabel jl_tipo;
     private javax.swing.JLabel jl_titulo;
@@ -589,20 +571,25 @@ public class PedidosInterfaz extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private boolean checkCampos() throws NullPointerException {
+        //Todo: terminar verificacion de fechas
         //Si la fecha esta vacia o no hay ningun tipo seleccionado o no se selecciono vianda o cliente
-        boolean flagCamposVacios = jdate_fecha.toString().equals("") ||
+        boolean flagCamposVacios =
+                jdate_fecha.toString().equals("") ||
                 (!rb_cena.isSelected() && !rb_almuerzo.isSelected()) ||
                 jt_vianda.getText().equals("") ||
                 jt_cliente.getText().equals("");
         //si estamos haciendo un pedido anterior o los idEstan mal
-        boolean flagCamposErroneos = jdate_fecha.getDate().before(new java.util.Date()) ||
-                idPedidoVigente < 0 ||
+        //java.sql.Date pedidoDate = (Date) jdate_fecha.getDate();
+        //Date hoy = new java.sql.Date(new java.util.Date().getTime());
+        boolean flagCamposErroneos =
+                //pedidoDate.before(hoy) ||
+                //idPedidoVigente < 0 ||
                 idViandaVigente < 0 ||
                 idClienteVigente < 0;
-        return !(flagCamposVacios || flagCamposErroneos);
+        return (flagCamposVacios == false && flagCamposErroneos == false);
     }
 
-    private void agregarPedido() {
+    private void addPedido() {
         ClienteEntidad cliente = null; ViandaEntidad vianda = null; Date fecha = null; String tipo = null;
         if (checkCampos()){
             cliente = ClienteLogica.getCliente(idClienteVigente);
@@ -612,56 +599,45 @@ public class PedidosInterfaz extends javax.swing.JFrame {
                 tipo = "almuerzo";
             else
                 tipo = "cena";
-
             PedidoEntidad pedido = new PedidoEntidad(cliente, vianda, fecha, tipo);
-            boolean flag = PedidoLogica.agregarPedido(pedido);
-
-            if (flag)
+            if (PedidoLogica.agregarPedido(pedido))
                 JOptionPane.showMessageDialog(null, "Pedido de "+cliente.getNombre()+" agregado con exito");
             else
                 JOptionPane.showMessageDialog(null, "Error: al intentar agregar el pediodo");
         }
     }
 
-    private void modificarPedido(){
-        ClienteEntidad cliente = null; ViandaEntidad vianda = null; Date fecha = null; String tipo = null;
-        if (checkCampos()){
-
-            cliente = ClienteLogica.getCliente(idClienteVigente);
-            vianda = ViandasLogica.getVianda(idViandaVigente);
-            fecha = new java.sql.Date(jdate_fecha.getDate().getTime());
-            if (rb_almuerzo.isSelected())
-                tipo = "almuerzo";
+    private void deletePedido() {
+        if(idPedidoVigente < 0)
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un pedido para eliminar");
+        else{
+            PedidoEntidad pedido = PedidoLogica.getPedido(idPedidoVigente);
+            if(PedidoLogica.delete(pedido))
+                JOptionPane.showMessageDialog(null, "Pedido eliminado con exito");
             else
-                tipo = "cena";
-
-            PedidoEntidad pedido = new PedidoEntidad(cliente, vianda, fecha, tipo);
-            boolean flag = PedidoLogica.modificarPedido(pedido);
-
-            if (flag)
-                JOptionPane.showMessageDialog(null, "Pedido de "+cliente.getNombre()+" agregado con exito");
-            else
-                JOptionPane.showMessageDialog(null, "Error: al intentar agregar el pediodo");
+                JOptionPane.showMessageDialog(null, "Error: al intentar eliminar el pedido");
         }
     }
 
     private void update() {
+        limpiarCampos();
+        calcularContadores();
         llenarTablaClientes();
         llenarTablaViandas();
         llenarTablasPedidos();
-        limpiarCampos();
-        calcularContadores();
     }
 
     private void calcularContadores() {
-        jl_contadorLunes.setText(""+PedidoLogica.contarPedidos(DayOfWeek.MONDAY));
-        jl_contadormartes.setText(""+PedidoLogica.contarPedidos(DayOfWeek.TUESDAY));
-        jl_contadorMiercoles.setText(""+PedidoLogica.contarPedidos(DayOfWeek.WEDNESDAY));
-        jl_contadorJueves.setText(""+PedidoLogica.contarPedidos(DayOfWeek.THURSDAY));
-        jl_contadorViernes.setText(""+PedidoLogica.contarPedidos(DayOfWeek.FRIDAY));
+        //Todo: check martes/jueves
+        jl_contadorLunes.setText("L: "+PedidoLogica.contarPedidos(DayOfWeek.MONDAY));
+        jl_contadorMartes.setText("M: "+PedidoLogica.contarPedidos(DayOfWeek.TUESDAY));
+        jl_contadorMiercoles.setText("X: "+PedidoLogica.contarPedidos(DayOfWeek.WEDNESDAY));
+        jl_contadorJueves.setText("J: "+PedidoLogica.contarPedidos(DayOfWeek.THURSDAY));
+        jl_contadorViernes.setText("V: "+PedidoLogica.contarPedidos(DayOfWeek.FRIDAY));
     }
 
     private void llenarTablasPedidos() {
+        //Todo: check tablas viernes y martes
         llenarTablaLunes();
         llenarTablaMartes();
         llenarTablaMiercoles();

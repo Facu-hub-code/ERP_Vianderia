@@ -79,4 +79,16 @@ public class PedidoLogica {
         ArrayList<PedidoEntidad> pedidos = getPedidos(day);
         return pedidos.size();
     }
+
+    public static boolean delete(PedidoEntidad pedido) {
+        try{
+            pedido.setAnulado(true);
+            PedidoRepository pedidoRepository = new PedidoRepository();
+            pedidoRepository.update(pedido);
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
