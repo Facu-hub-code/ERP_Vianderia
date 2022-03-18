@@ -104,7 +104,6 @@ DEFAULT CHARACTER SET = utf8mb3;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `bdd_nutritiva`.`ventas` (
   `idventas` INT NOT NULL AUTO_INCREMENT,
-  `monto` DOUBLE NOT NULL,
   `fecha` DATE NOT NULL,
   `pedidos_idpedidos` INT NOT NULL,
   `movimientos_idmovimientos` INT NOT NULL,

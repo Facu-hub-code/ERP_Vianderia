@@ -14,9 +14,6 @@ public class VentaEntidad {
     @Column(name = "idventas", nullable = false)
     private Integer id;
 
-    @Column(name = "monto", nullable = false)
-    private Double monto;
-
     @Column(name = "fecha", nullable = false)
     private LocalDate fecha;
 
@@ -61,14 +58,6 @@ public class VentaEntidad {
 
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
-    }
-
-    public Double getMonto() {
-        return monto;
-    }
-
-    public void setMonto(Double monto) {
-        this.monto = monto;
     }
 
     public Integer getId() {
