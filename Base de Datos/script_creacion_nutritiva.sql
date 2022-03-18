@@ -70,7 +70,7 @@ DEFAULT CHARACTER SET = utf8mb3;
 CREATE TABLE IF NOT EXISTS `bdd_nutritiva`.`pedidos` (
   `idpedidos` INT NOT NULL AUTO_INCREMENT,
   `fecha` DATE NOT NULL,
-  `tipo` ENUM('almuerzo', 'cena') NOT NULL,
+  `tipo` ENUM('ALMUERZO', 'CENA') NOT NULL,
   `clientes_idclientes` INT NOT NULL,
   `viandas_idviandas` INT NOT NULL,
   `anulado` BIT NOT NULL,
@@ -108,11 +108,18 @@ CREATE TABLE IF NOT EXISTS `bdd_nutritiva`.`ventas` (
   `fecha` DATE NOT NULL,
   `pedidos_idpedidos` INT NOT NULL,
   `anulado` BIT NOT NULL,
+  `movimientos_idmovimientos` INT NOT NULL,
   PRIMARY KEY (`idventas`),
   INDEX `fk_ventas_pedidos1_idx` (`pedidos_idpedidos` ASC) VISIBLE,
+  INDEX `fk_ventas_movimientos1_idx` (`movimientos_idmovimientos` ASC) VISIBLE,
   CONSTRAINT `fk_ventas_pedidos1`
     FOREIGN KEY (`pedidos_idpedidos`)
-    REFERENCES `bdd_nutritiva`.`pedidos` (`idpedidos`))
+    REFERENCES `bdd_nutritiva`.`pedidos` (`idpedidos`),
+  CONSTRAINT `fk_ventas_movimientos1`
+    FOREIGN KEY (`movimientos_idmovimientos`)
+    REFERENCES `bdd_nutritiva`.`movimientos` (`idmovimientos`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
 
