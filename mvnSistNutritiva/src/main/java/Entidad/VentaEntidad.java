@@ -2,7 +2,6 @@ package Entidad;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "ventas", indexes = {
@@ -20,11 +19,11 @@ public class VentaEntidad {
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "pedidos_idpedidos", nullable = false)
-    private PedidoEntidad pedidosIdpedidos;
+    private PedidoEntidad pedido;
 
     @OneToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "movimientos_idmovimientos", nullable = false)
-    private MovimientoEntidad movimientosIdmovimientos;
+    private MovimientoEntidad movimiento;
 
     @Column(name = "anulado", nullable = false)
     private Boolean anulado = false;
@@ -32,10 +31,10 @@ public class VentaEntidad {
     public VentaEntidad() {
     }
 
-    public VentaEntidad(Date fecha, PedidoEntidad pedidosIdpedidos, MovimientoEntidad movimientosIdmovimientos) {
+    public VentaEntidad(Date fecha, PedidoEntidad pedidosIdpedidos, MovimientoEntidad movimiento) {
         this.fecha = fecha;
-        this.pedidosIdpedidos = pedidosIdpedidos;
-        this.movimientosIdmovimientos = movimientosIdmovimientos;
+        this.pedido = pedidosIdpedidos;
+        this.movimiento = movimiento;
     }
 
     public Boolean getAnulado() {
@@ -47,19 +46,19 @@ public class VentaEntidad {
     }
 
     public MovimientoEntidad getMovimiento() {
-        return movimientosIdmovimientos;
+        return movimiento;
     }
 
     public void setMovimiento(MovimientoEntidad movimientosIdmovimientos) {
-        this.movimientosIdmovimientos = movimientosIdmovimientos;
+        this.movimiento = movimientosIdmovimientos;
     }
 
     public PedidoEntidad getPedido() {
-        return pedidosIdpedidos;
+        return pedido;
     }
 
     public void setPedido(PedidoEntidad pedidosIdpedidos) {
-        this.pedidosIdpedidos = pedidosIdpedidos;
+        this.pedido = pedidosIdpedidos;
     }
 
     public Date getFecha() {

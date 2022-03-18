@@ -5,15 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f6ba0bc-1813-4156-85d5-b38edcb40a38" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Base de Datos/Import/script_creacion_nutritiva.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../Base de Datos/Import/script_creacion_nutritiva.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Base de Datos/model_nutritiva.mwb" beforeDir="false" afterPath="$PROJECT_DIR$/../Base de Datos/model_nutritiva.mwb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Base de Datos/model_nutritiva.mwb.bak" beforeDir="false" afterPath="$PROJECT_DIR$/../Base de Datos/model_nutritiva.mwb.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Base de Datos/model_nutritiva.mwb.mwb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Base de Datos/script_creacion_nutritiva.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../Base de Datos/script_creacion_nutritiva.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entidad/Tipo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entidad/CierreCajaEntidad.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entidad/VentaEntidad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entidad/VentaEntidad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Hibernate/CajaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Hibernate/CajaRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Hibernate/VentasRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Hibernate/VentasRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Interfaz/CajaInterfaz.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaz/CajaInterfaz.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Interfaz/CajaInterfaz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaz/CajaInterfaz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaz/PedidosInterfaz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaz/PedidosInterfaz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaz/VentasInterfaz.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaz/VentasInterfaz.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaz/VentasInterfaz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaz/VentasInterfaz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Logica/PedidoLogica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Logica/PedidoLogica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Logica/CajaLogica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Logica/CajaLogica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Logica/VentasLogica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Logica/VentasLogica.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Entidad/ClienteEntidad.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Entidad/ClienteEntidad.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Entidad/Dias.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Entidad/MovimientoEntidad.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Entidad/MovimientoEntidad.class" afterDir="false" />
@@ -23,7 +29,6 @@
       <change beforePath="$PROJECT_DIR$/target/classes/Entidad/ViandaEntidad.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Entidad/ViandaEntidad.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Hibernate/CajaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Hibernate/CajaRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Hibernate/ClienteRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Hibernate/ClienteRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Hibernate/HibernateUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Hibernate/HibernateUtil.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Hibernate/PedidoRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Hibernate/PedidoRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Hibernate/Repository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Hibernate/Repository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Hibernate/VentasRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Hibernate/VentasRepository.class" afterDir="false" />
@@ -86,6 +91,7 @@
       <change beforePath="$PROJECT_DIR$/target/classes/Logica/CajaLogica.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Logica/CajaLogica.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Logica/ClienteLogica.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Logica/ClienteLogica.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Logica/PedidoLogica.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Logica/PedidoLogica.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Logica/VentasLogica.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Logica/VentasLogica.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Logica/ViandasLogica.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Logica/ViandasLogica.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
     </list>
@@ -113,9 +119,8 @@
     <setting file="file://$PROJECT_DIR$/src/main/java/Interfaz/ViandasInterfaz.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Interfaz/CajaInterfaz.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Logica/VentasLogica.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/Entidad/VentaEntidad.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Interfaz/LoginInterfaz.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/Entidad/CierreCajaEntidad.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Entidad/VentaEntidad.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Interfaz/PedidosInterfaz.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Interfaz/VentasInterfaz.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Logica/CajaLogica.java" root0="SKIP_INSPECTION" />
@@ -221,7 +226,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Hibernate/VentasRepository.java</url>
-          <line>27</line>
+          <line>28</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

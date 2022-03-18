@@ -1,5 +1,6 @@
 package Logica;
 
+import Entidad.MovimientoEntidad;
 import Entidad.VentaEntidad;
 import Hibernate.VentasRepository;
 
@@ -46,4 +47,5 @@ public class VentasLogica {
         VentasRepository ventasRepository = new VentasRepository();
         ventasRepository.update(venta);
     }
+
 }

@@ -127,14 +127,13 @@ DEFAULT CHARACTER SET = utf8mb3;
 -- Table `bdd_nutritiva`.`cierres_caja`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `bdd_nutritiva`.`cierres_caja` (
-  `idcierres_caja` INT NOT NULL AUTO_INCREMENT,
   `fecha` DATE NOT NULL,
-  `efectivo` DOUBLE NOT NULL,
-  `banco` DOUBLE NOT NULL,
-  `anulado` BIT(1) NOT NULL,
-  PRIMARY KEY (`idcierres_caja`))
-ENGINE = InnoDB;
-
+  `efectivo` FLOAT NULL DEFAULT NULL,
+  `banco` FLOAT NULL DEFAULT NULL,
+  PRIMARY KEY (`fecha`),
+  UNIQUE INDEX `fecha_UNIQUE` (`fecha` ASC) VISIBLE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

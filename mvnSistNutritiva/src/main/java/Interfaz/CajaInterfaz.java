@@ -5,9 +5,9 @@
  */
 package Interfaz;
 
-import Entidad.CierreCajaEntidad;
 import Entidad.MovimientoEntidad;
 import Logica.CajaLogica;
+import Logica.VentasLogica;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -30,7 +30,7 @@ public class CajaInterfaz extends javax.swing.JFrame {
         initComponents();
         setUp();
         setVisible(true);
-        update(0,0);
+        update();
     }
 
     /**
@@ -54,14 +54,11 @@ public class CajaInterfaz extends javax.swing.JFrame {
         jt_observaciones = new javax.swing.JTextField();
         btn_agregar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
-        jTabbedPane_general = new javax.swing.JTabbedPane();
-        jScrollPane_movimientos = new javax.swing.JScrollPane();
-        jtable_movimientos = new javax.swing.JTable();
-        jScrollPane_cierresDeCaja = new javax.swing.JScrollPane();
-        jtable_cierresDeCaja = new javax.swing.JTable();
         jl_total = new javax.swing.JLabel();
         jl_efectivo = new javax.swing.JLabel();
         jl_banco = new javax.swing.JLabel();
+        jScrollPane_general = new javax.swing.JScrollPane();
+        jtble_movimientos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(49, 28, 28));
@@ -150,36 +147,6 @@ public class CajaInterfaz extends javax.swing.JFrame {
             }
         });
 
-        jtable_movimientos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane_movimientos.setViewportView(jtable_movimientos);
-
-        jTabbedPane_general.addTab("Movimientos", jScrollPane_movimientos);
-
-        jtable_cierresDeCaja.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane_cierresDeCaja.setViewportView(jtable_cierresDeCaja);
-
-        jTabbedPane_general.addTab("Cierres de caja", jScrollPane_cierresDeCaja);
-
         jl_total.setBackground(new java.awt.Color(49, 28, 28));
         jl_total.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jl_total.setForeground(new java.awt.Color(255, 253, 118));
@@ -200,6 +167,24 @@ public class CajaInterfaz extends javax.swing.JFrame {
         jl_banco.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jl_banco.setText("BANCO:");
         jl_banco.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jtble_movimientos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jtble_movimientos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtble_movimientosMouseClicked(evt);
+            }
+        });
+        jScrollPane_general.setViewportView(jtble_movimientos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -242,23 +227,23 @@ public class CajaInterfaz extends javax.swing.JFrame {
                                     .addComponent(jt_observaciones, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane_general, javax.swing.GroupLayout.PREFERRED_SIZE, 964, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jl_total, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jl_efectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jl_banco, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                        .addComponent(jl_banco, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane_general, javax.swing.GroupLayout.PREFERRED_SIZE, 965, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jt_monto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jl_monto, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -278,9 +263,7 @@ public class CajaInterfaz extends javax.swing.JFrame {
                         .addComponent(jt_observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btn_agregar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jTabbedPane_general, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane_general, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_eliminar)
@@ -303,11 +286,13 @@ public class CajaInterfaz extends javax.swing.JFrame {
 
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
-        agregarMovimiento();
+        addMovimiento();
+        update();
     }//GEN-LAST:event_btn_agregarActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        eliminarMovimiento();
+        deleteMovimiento();
+        update();
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void jcbBox_modoPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbBox_modoPagoActionPerformed
@@ -318,13 +303,17 @@ public class CajaInterfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_buscarPorFechaActionPerformed
 
+    private void jtble_movimientosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtble_movimientosMouseClicked
+        int filaSelec = jtble_movimientos.getSelectedRow();
+        jt_monto.setText(jtble_movimientos.getValueAt(filaSelec, 1).toString());
+        idMovmientoVigente = (int) jtble_movimientos.getValueAt(filaSelec, 0);
+    }//GEN-LAST:event_jtble_movimientosMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_agregar;
     private javax.swing.JButton btn_buscarPorFecha;
     private javax.swing.JButton btn_eliminar;
-    private javax.swing.JScrollPane jScrollPane_cierresDeCaja;
-    private javax.swing.JScrollPane jScrollPane_movimientos;
-    private javax.swing.JTabbedPane jTabbedPane_general;
+    private javax.swing.JScrollPane jScrollPane_general;
     private javax.swing.JComboBox<String> jcbBox_modoPago;
     private com.toedter.calendar.JDateChooser jdate_fecha;
     private javax.swing.JLabel jl_banco;
@@ -337,80 +326,59 @@ public class CajaInterfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jl_total;
     private javax.swing.JTextField jt_monto;
     private javax.swing.JTextField jt_observaciones;
-    private javax.swing.JTable jtable_cierresDeCaja;
-    private javax.swing.JTable jtable_movimientos;
+    private javax.swing.JTable jtble_movimientos;
     // End of variables declaration//GEN-END:variables
 
-    private void eliminarMovimiento() {
-        if (checkCampos()){
-            MovimientoEntidad movimientoEntidad = CajaLogica.getMovimiento(idMovmientoVigente);
-            if (CajaLogica.eliminarMovimiento(movimientoEntidad)){
-                JOptionPane.showMessageDialog(null, "Movimiento anulado con exito");
-            }else
+    private void deleteMovimiento() {
+        if (idMovmientoVigente < 0)
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un movimiento");
+        else{
+            if(CajaLogica.deleteMovimiento(CajaLogica.getMovimiento(idMovmientoVigente)))
+                JOptionPane.showMessageDialog(null, "Movimiento eliminado con exito");
+            else
                 JOptionPane.showMessageDialog(null, "Error: al intentar eliminar el movimiento");
         }
     }
 
-    private void modificarMovimiento() {
-        if(checkCampos()){
-            MovimientoEntidad movimientoEntidad = CajaLogica.getMovimiento(idMovmientoVigente);
-            movimientoEntidad.setMonto(Double.valueOf(jt_monto.getText()));
-            if(CajaLogica.updateMovimiento(movimientoEntidad))
-                JOptionPane.showMessageDialog(null, "Movimiento agregado con exito");
-            else
-                JOptionPane.showMessageDialog(null, "Error: al intentar agregar el movimiento");
-        }else
-            JOptionPane.showMessageDialog(null, "Hay campos obligatorios que debes completar");
-    }
-
-    private void agregarMovimiento() {
-        if(checkCampos()){
+    private void addMovimiento() {
+        if(jt_monto.equals(""))
+            JOptionPane.showMessageDialog(null, "Debe especificar un monto");
+        else{
+            boolean efectivo = (jcbBox_modoPago.getSelectedItem().equals("Efectivo"));
             MovimientoEntidad movimientoEntidad = new MovimientoEntidad(
-                    Double.valueOf(jt_monto.getText()),
-                    jt_observaciones.getText(),
-                    new Date(new java.util.Date().getTime()),
-                    false //todo: cambiar desde la interfaz
+                    Double.valueOf(jt_monto.getText()), //monto
+                    jt_observaciones.getText(), new java.sql.Date(new java.util.Date().getTime()), //fecha
+                    efectivo //booleano efectivo
             );
             if(CajaLogica.addMovimiento(movimientoEntidad))
                 JOptionPane.showMessageDialog(null, "Movimiento agregado con exito");
             else
                 JOptionPane.showMessageDialog(null, "Error: al intentar agregar el movimiento");
-        }else
-            JOptionPane.showMessageDialog(null, "Hay campos obligatorios que debes completar");
+        }
     }
 
-    private boolean checkCampos() {
-        return !(idMovmientoVigente<0);
-    }
-
-    private void update(double efectivo, double banco) {
-        CajaLogica.actualizarCierreCaja(efectivo, banco);
-        escribirSaldos();
+    private void update() {
         llenarTablaMovimientos();
+        escribirSaldos();
         limpiarCampos();
     }
 
     private void escribirSaldos() {
-        double efectivo = 0, banco = 0, total = 0;
-        CierreCajaEntidad cierrecajaEntidad = CajaLogica.getUltimoCierreCaja();
-        if(cierrecajaEntidad != null) {
-            efectivo = cierrecajaEntidad.getEfectivo();
-            banco = cierrecajaEntidad.getBanco();
-            total = efectivo + banco;
-        }
-        jl_efectivo.setText("Efectivo: $" + efectivo);
-        jl_banco.setText("Banco: $" + banco);
-        jl_total.setText("Total: $" + total);
+        double efectivo = CajaLogica.getSaldoEfectivo(), banco = CajaLogica.getSaldoBanco();
+        jl_banco.setText("Banco: " + banco);
+        jl_efectivo.setText("Efectivo: " + efectivo);
+        jl_total.setText("Total: " + efectivo + banco);
     }
 
     private void limpiarCampos() {
         jt_monto.setText("");
         idMovmientoVigente = -1;
+        jt_observaciones.setText("");
     }
 
     private void llenarTablaMovimientos() {
-        String[] columnas = new String[]{"ID", "Monto", "Fecha", "Observacion"};
-        Class[] tipos = {Integer.class, Double.class, Date.class, String.class};
+        String[] columnas = new String[]{"ID", "Monto", "Observacion", "Fecha", "Efectivo"};
+        Class[] tipos = {Integer.class, Double.class, String.class, Date.class, Boolean.class};
 
         ArrayList<MovimientoEntidad> movimientos = CajaLogica.getMovimientos();
         Object[][] objetosArray = new Object[movimientos.size()][columnas.length];
@@ -419,12 +387,13 @@ public class CajaInterfaz extends javax.swing.JFrame {
             objetosArray[i] = new Object[]{
                     movimientos.get(i).getId(),
                     movimientos.get(i).getMonto(),
+                    movimientos.get(i).getObservacion(),
                     movimientos.get(i).getFecha(),
-                    movimientos.get(i).getObservacion()
+                    movimientos.get(i).isEfectivo()
             };
         }
 
-        jtable_movimientos.setModel(new DefaultTableModel(objetosArray, columnas) {
+        jtble_movimientos.setModel(new DefaultTableModel(objetosArray, columnas) {
             Class[] types = tipos;
 
             @Override

@@ -104,11 +104,10 @@ DEFAULT CHARACTER SET = utf8mb3;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `bdd_nutritiva`.`ventas` (
   `idventas` INT NOT NULL AUTO_INCREMENT,
-  `monto` DOUBLE NOT NULL,
   `fecha` DATE NOT NULL,
   `pedidos_idpedidos` INT NOT NULL,
-  `anulado` BIT NOT NULL,
   `movimientos_idmovimientos` INT NOT NULL,
+  `anulado` BIT NOT NULL,
   PRIMARY KEY (`idventas`),
   INDEX `fk_ventas_pedidos1_idx` (`pedidos_idpedidos` ASC) VISIBLE,
   INDEX `fk_ventas_movimientos1_idx` (`movimientos_idmovimientos` ASC) VISIBLE,
@@ -122,19 +121,6 @@ CREATE TABLE IF NOT EXISTS `bdd_nutritiva`.`ventas` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
-
-
--- -----------------------------------------------------
--- Table `bdd_nutritiva`.`cierres_caja`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bdd_nutritiva`.`cierres_caja` (
-  `idcierres_caja` INT NOT NULL AUTO_INCREMENT,
-  `fecha` DATE NOT NULL,
-  `efectivo` DOUBLE NOT NULL,
-  `banco` DOUBLE NOT NULL,
-  `anulado` BIT(1) NOT NULL,
-  PRIMARY KEY (`idcierres_caja`))
-ENGINE = InnoDB;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

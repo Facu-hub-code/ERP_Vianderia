@@ -1,5 +1,6 @@
 package Hibernate;
 
+import Entidad.MovimientoEntidad;
 import Entidad.VentaEntidad;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -82,6 +83,28 @@ public class VentasRepository implements Repository<VentaEntidad> {
         } catch (Exception e) {
             if (transaction != null) transaction.rollback();
             e.printStackTrace();
+        } finally {
+            HibernateUtil.closeSession();
+        }
+    }
+
+    public VentaEntidad finbyMovimiento(MovimientoEntidad movimiento) {
+        Session sesion = HibernateUtil.getSession();
+        try {
+            CriteriaBuilder cb = sesion.getCriteriaBuilder();
+            CriteriaQuery<VentaEntidad> cq = cb.createQuery(VentaEntidad.class);
+            Root<VentaEntidad> rootEntry = cq.from(VentaEntidad.class);
+            CriteriaQuery<VentaEntidad> all = cq.select(rootEntry);
+            Predicate anulado = cb.equal(rootEntry.get("anulado"), false);
+            Predicate identificacion = cb.equal(rootEntry.get("movimiento"), movimiento);
+            Predicate predicate = cb.and(identificacion, anulado);
+            cq.where(predicate);
+            TypedQuery<VentaEntidad> allQuery = sesion.createQuery(all);
+            ArrayList<VentaEntidad> ventas = (ArrayList<VentaEntidad>) allQuery.getResultList();
+            return ventas.get(0);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         } finally {
             HibernateUtil.closeSession();
         }
