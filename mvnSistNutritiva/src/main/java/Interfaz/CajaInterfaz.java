@@ -355,7 +355,7 @@ public class CajaInterfaz extends javax.swing.JFrame {
         if(checkCampos()){
             MovimientoEntidad movimientoEntidad = CajaLogica.getMovimiento(idMovmientoVigente);
             movimientoEntidad.setMonto(Double.valueOf(jt_monto.getText()));
-            if(CajaLogica.modificarMovimiento(movimientoEntidad))
+            if(CajaLogica.updateMovimiento(movimientoEntidad))
                 JOptionPane.showMessageDialog(null, "Movimiento agregado con exito");
             else
                 JOptionPane.showMessageDialog(null, "Error: al intentar agregar el movimiento");

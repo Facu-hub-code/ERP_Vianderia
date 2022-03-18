@@ -1,5 +1,6 @@
 package Logica;
 
+import Entidad.VentaEntidad;
 import Hibernate.VentasRepository;
 
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ public class VentasLogica {
         return ventas;
     }
 
-    public static boolean modificarVenta(VentaEntidad venta) {
+    public static boolean updateVenta(VentaEntidad venta) {
         try {
             VentasRepository ventasRepository = new VentasRepository();
             ventasRepository.update(venta);
@@ -24,7 +25,7 @@ public class VentasLogica {
         }
     }
 
-    public static boolean agregar(VentaEntidad venta) {
+    public static boolean addVenta(VentaEntidad venta) {
         try {
             VentasRepository ventasRepository = new VentasRepository();
             ventasRepository.save(venta);

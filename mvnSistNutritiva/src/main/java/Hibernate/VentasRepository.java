@@ -1,5 +1,6 @@
 package Hibernate;
 
+import Entidad.VentaEntidad;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 

@@ -49,11 +49,13 @@ public class VentasInterfaz extends javax.swing.JFrame {
     private void initComponents() {
 
         jl_titulo = new javax.swing.JLabel();
-        jl_fecha = new javax.swing.JLabel();
         jl_cliente = new javax.swing.JLabel();
+        jl_modoPago = new javax.swing.JLabel();
+        jl_fecha = new javax.swing.JLabel();
+        jt_cliente = new javax.swing.JTextField();
+        jcbBox_modoPago = new javax.swing.JComboBox<>();
         jdate_fecha = new com.toedter.calendar.JDateChooser();
         btn_buscarPorFecha = new javax.swing.JButton();
-        jt_cliente = new javax.swing.JTextField();
         btn_agregar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
         jTabbedPane_general = new javax.swing.JTabbedPane();
@@ -73,13 +75,6 @@ public class VentasInterfaz extends javax.swing.JFrame {
         jl_titulo.setText("VENTAS");
         jl_titulo.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
-        jl_fecha.setBackground(new java.awt.Color(49, 28, 28));
-        jl_fecha.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jl_fecha.setForeground(new java.awt.Color(255, 253, 118));
-        jl_fecha.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_fecha.setText("FECHA");
-        jl_fecha.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-
         jl_cliente.setBackground(new java.awt.Color(49, 28, 28));
         jl_cliente.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jl_cliente.setForeground(new java.awt.Color(255, 253, 118));
@@ -87,15 +82,19 @@ public class VentasInterfaz extends javax.swing.JFrame {
         jl_cliente.setText("CLIENTE");
         jl_cliente.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
-        btn_buscarPorFecha.setBackground(new java.awt.Color(255, 253, 118));
-        btn_buscarPorFecha.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        btn_buscarPorFecha.setText("Buscar");
-        btn_buscarPorFecha.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
-        btn_buscarPorFecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_buscarPorFechaActionPerformed(evt);
-            }
-        });
+        jl_modoPago.setBackground(new java.awt.Color(49, 28, 28));
+        jl_modoPago.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jl_modoPago.setForeground(new java.awt.Color(255, 253, 118));
+        jl_modoPago.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_modoPago.setText("MODO PAGO");
+        jl_modoPago.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jl_fecha.setBackground(new java.awt.Color(49, 28, 28));
+        jl_fecha.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jl_fecha.setForeground(new java.awt.Color(255, 253, 118));
+        jl_fecha.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_fecha.setText("FECHA");
+        jl_fecha.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jt_cliente.setBackground(new java.awt.Color(243, 243, 194));
         jt_cliente.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -104,6 +103,24 @@ public class VentasInterfaz extends javax.swing.JFrame {
         jt_cliente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 buscadorClientes(evt);
+            }
+        });
+
+        jcbBox_modoPago.setFont(new java.awt.Font("Leelawadee UI", 1, 12)); // NOI18N
+        jcbBox_modoPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "Banco" }));
+        jcbBox_modoPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbBox_modoPagoActionPerformed(evt);
+            }
+        });
+
+        btn_buscarPorFecha.setBackground(new java.awt.Color(255, 253, 118));
+        btn_buscarPorFecha.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btn_buscarPorFecha.setText("Buscar");
+        btn_buscarPorFecha.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        btn_buscarPorFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscarPorFechaActionPerformed(evt);
             }
         });
 
@@ -179,21 +196,27 @@ public class VentasInterfaz extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(btn_agregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
                                 .addComponent(btn_eliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btn_buscarPorFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jl_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jdate_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jl_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jt_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btn_buscarPorFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(jl_modoPago, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
+                                            .addComponent(jl_cliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(18, 18, 18))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jl_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(35, 35, 35)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jdate_fecha, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                                    .addComponent(jcbBox_modoPago, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jt_cliente))))
                         .addGap(18, 18, 18)
                         .addComponent(jTabbedPane_general, javax.swing.GroupLayout.PREFERRED_SIZE, 968, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(59, 59, 59)
                         .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,7 +229,11 @@ public class VentasInterfaz extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jt_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jl_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jcbBox_modoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_modoPago, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jl_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jdate_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -232,39 +259,19 @@ public class VentasInterfaz extends javax.swing.JFrame {
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
         if(idPedidoVigente < 0)
-            JOptionPane.showMessageDialog(null, "Debe seleccionar algun pedido");
-        else{
-            addVenta();
-            addMovimiento(PedidoLogica.getPedido(idPedidoVigente));
-        }
-
-
+            JOptionPane.showMessageDialog(null, "Primero debe seleccionar un pedido para vender");
+        else
+            addVenta(idPedidoVigente);
+        update();
     }//GEN-LAST:event_btn_agregarActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        deleteVenta();
-    }//GEN-LAST:event_btn_eliminarActionPerformed
-
-    /**
-     * Para eliminar una venta se debe retornar el saldo a la caja, volver a habilitar el pedido y luego cancelar la venta
-     */
-    private void deleteVenta() {
         if(idVentaVigente < 0)
-            JOptionPane.showMessageDialog(null, "Debe seleccionar alguna venta");
-        else {
-            VentaEntidad venta = VentasLogica.getVenta(idVentaVigente);
-            //Retorno el saldo a la caja
-            MovimientoEntidad movimiento = addMovimiento(new java.sql.Date(new java.util.Date().getTime()),
-                    -venta.getPedido().getVianda().getPrecio(),
-                    venta.getPedido(), false);
-            CajaLogica.addMovimiento(movimiento);
-            //Habilito el pedido
-            venta.getPedido().setAnulado(false);
-            PedidoLogica.updatePedido(venta.getPedido()); //todo: revisar que el pedido no este anulado
-            //Cancelo la venta
-            VentasLogica.delete(venta);
-        }
-    }
+            JOptionPane.showMessageDialog(null, "Priero debe seleccionar una venta a cancelar");
+        else
+            deleteVenta(idVentaVigente);
+        update();
+    }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void buscadorClientes(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorClientes
         addFilter(jtable_pedidos, jt_cliente.getText(), 3);
@@ -292,6 +299,10 @@ public class VentasInterfaz extends javax.swing.JFrame {
 //        addFilter(jtable_ventas, jdate_fecha.getDateFormatString(), 3);
     }//GEN-LAST:event_btn_buscarPorFechaActionPerformed
 
+    private void jcbBox_modoPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbBox_modoPagoActionPerformed
+        //addFilter(jtable_movimientosDiarios, jcbBox_modoPago.getSelectedItem().toString(), 3);
+    }//GEN-LAST:event_jcbBox_modoPagoActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_agregar;
     private javax.swing.JButton btn_buscarPorFecha;
@@ -299,47 +310,56 @@ public class VentasInterfaz extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane_general;
+    private javax.swing.JComboBox<String> jcbBox_modoPago;
     private com.toedter.calendar.JDateChooser jdate_fecha;
     private javax.swing.JLabel jl_cliente;
     private javax.swing.JLabel jl_fecha;
+    private javax.swing.JLabel jl_modoPago;
     private javax.swing.JLabel jl_titulo;
     private javax.swing.JTextField jt_cliente;
     private javax.swing.JTable jtable_pedidos;
     private javax.swing.JTable jtable_ventas;
     // End of variables declaration//GEN-END:variables
 
-    private void addMovimiento(PedidoEntidad pedido) {
-        MovimientoEntidad movimientoEntidad = addMovimiento(new java.sql.Date(new java.util.Date().getTime()),
-                pedido.getVianda().getPrecio(), pedido, false);
-        CajaLogica.addMovimiento(movimientoEntidad);
-    }
-
-    private MovimientoEntidad addMovimiento(Date fecha, double monto, PedidoEntidad pedido, boolean anulado) {
-        MovimientoEntidad movimientoEntidad = new MovimientoEntidad();
-        movimientoEntidad.setFecha(fecha);
-        movimientoEntidad.setMonto(monto);
-        String observacion ="Cliente: " + pedido.getCliente().getNombre()+" "+pedido.getCliente().getApellido()
-                +"\nVianda: "+pedido.getVianda().getNombre();
-        movimientoEntidad.setObservacion(observacion);
-        movimientoEntidad.setAnulado(anulado);
-        return movimientoEntidad;
+    /**
+     * Se anula el movimiento correspondiente, se desanula el pedido, se cancela la venta
+     * @param idVentaVigente
+     * @param idPedidoVigente
+     */
+    public void deleteVenta(int idVentaVigente){
+        VentaEntidad venta = VentasLogica.getVenta(idVentaVigente);
+        venta.getMovimiento().setAnulado(true);
+        CajaLogica.updateMovimiento(venta.getMovimiento());
+        venta.getPedido().setAnulado(false);
+        PedidoLogica.updatePedido(venta.getPedido());
+        venta.setAnulado(true);
+        if(VentasLogica.updateVenta(venta))
+            JOptionPane.showMessageDialog(null, "Venta eliminada con exito");
+        else
+            JOptionPane.showMessageDialog(null, "Error: al intentar eliminar la venta");
     }
 
 
     /**
-     * Creo una venta y la persisto en el sistema
+     * Se anula el pedido vigente, se agrega una entidad movimiento a la caja y se agrega una entidad venta al final
      */
-    private void addVenta() {
-        Date fecha = new java.sql.Date(jdate_fecha.getDate().getTime());
-        PedidoEntidad pedido = PedidoLogica.getPedido(idPedidoVigente);
-        double monto = pedido.getVianda().getPrecio();
-        VentaEntidad venta = new VentaEntidad(monto, fecha, pedido);
-        if (VentasLogica.agregar(venta)){
-            JOptionPane.showMessageDialog(null, "Venta de " + pedido.getCliente().getNombre() + " agregado con exito");
-            PedidoLogica.delete(pedido);
-        }
+    public void addVenta(int idPedidoVigente){
+        Date hoy = new java.sql.Date(new java.util.Date().getTime());
+        PedidoEntidad pedido = PedidoLogica.getPedido(idPedidoVigente); pedido.setAnulado(true);
+        PedidoLogica.updatePedido(pedido);
+        String observacion = crearObservacion(pedido);
+        boolean efectivo = (jcbBox_modoPago.getSelectedItem().toString().equals("Efectivo"));
+        MovimientoEntidad movimiento = new MovimientoEntidad(pedido.getVianda().getPrecio(), observacion, hoy, efectivo);
+        CajaLogica.addMovimiento(movimiento);
+        VentaEntidad venta = new VentaEntidad(hoy, pedido, movimiento);
+        if(VentasLogica.addVenta(venta))
+            JOptionPane.showMessageDialog(null, "Venta agregada con exito");
         else
             JOptionPane.showMessageDialog(null, "Error: al intentar agregar la venta");
+    }
+
+    private String crearObservacion(PedidoEntidad pedido) {
+        return null;
     }
 
     private void update() {
@@ -377,7 +397,7 @@ public class VentasInterfaz extends javax.swing.JFrame {
                     ventas.get(i).getPedido().getVianda().getNombre(),
                     ventas.get(i).getFecha(),
                     tipo,
-                    ventas.get(i).getMonto()
+                    //ventas.get(i).getMonto()
             };
         }
 

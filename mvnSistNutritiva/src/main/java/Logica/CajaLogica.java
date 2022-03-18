@@ -25,7 +25,7 @@ public class CajaLogica {
         return movimientos;
     }
 
-    public static boolean modificarMovimiento(MovimientoEntidad movimientoEntidad) {
+    public static boolean updateMovimiento(MovimientoEntidad movimientoEntidad) {
         try {
             CajaRepository cajaRepository = new CajaRepository();
             cajaRepository.update(movimientoEntidad);
