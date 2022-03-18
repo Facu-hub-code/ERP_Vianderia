@@ -1,10 +1,11 @@
 package Entidad;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "ventas", indexes = {
+        @Index(name = "fk_ventas_movimientos1_idx", columnList = "movimientos_idmovimientos"),
         @Index(name = "fk_ventas_pedidos1_idx", columnList = "pedidos_idpedidos")
 })
 public class VentaEntidad {
@@ -17,38 +18,48 @@ public class VentaEntidad {
     private Double monto;
 
     @Column(name = "fecha", nullable = false)
-    private Date fecha;
+    private LocalDate fecha;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "pedidos_idpedidos", nullable = false)
-    private PedidoEntidad pedido;
+    private PedidoEntidad pedidosIdpedidos;
+
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "movimientos_idmovimientos", nullable = false)
+    private MovimientoEntidad movimientosIdmovimientos;
 
     @Column(name = "anulado", nullable = false)
-    private boolean anulado;
+    private Boolean anulado = false;
 
-    public VentaEntidad() {
+    public Boolean getAnulado() {
+        return anulado;
     }
 
-    public VentaEntidad(Double monto, Date fecha, PedidoEntidad pedido) {
-        this.monto = monto;
-        this.fecha = fecha;
-        this.pedido = pedido;
-        anulado = false;
+    public void setAnulado(Boolean anulado) {
+        this.anulado = anulado;
     }
 
-    public PedidoEntidad getPedido() {
-        return pedido;
+    public MovimientoEntidad getMovimientosIdmovimientos() {
+        return movimientosIdmovimientos;
     }
 
-    public void setPedido(PedidoEntidad pedidosIdpedidos) {
-        this.pedido = pedidosIdpedidos;
+    public void setMovimientosIdmovimientos(MovimientoEntidad movimientosIdmovimientos) {
+        this.movimientosIdmovimientos = movimientosIdmovimientos;
     }
 
-    public Date getFecha() {
+    public PedidoEntidad getPedidosIdpedidos() {
+        return pedidosIdpedidos;
+    }
+
+    public void setPedidosIdpedidos(PedidoEntidad pedidosIdpedidos) {
+        this.pedidosIdpedidos = pedidosIdpedidos;
+    }
+
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
@@ -66,13 +77,5 @@ public class VentaEntidad {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public boolean isAnulado() {
-        return anulado;
-    }
-
-    public void setAnulado(boolean anulado) {
-        this.anulado = anulado;
     }
 }
