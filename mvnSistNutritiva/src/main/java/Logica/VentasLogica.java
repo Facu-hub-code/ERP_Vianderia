@@ -1,13 +1,9 @@
 package Logica;
 
-import Entidad.PedidoEntidad;
-import Entidad.VentaEntidad;
-import Hibernate.PedidoRepository;
 import Hibernate.VentasRepository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 public class VentasLogica {
     public static ArrayList<VentaEntidad> getVentas() {
@@ -37,5 +33,16 @@ public class VentasLogica {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public static VentaEntidad getVenta(int idVentaVigente) {
+        VentasRepository ventasRepository = new VentasRepository();
+        return ventasRepository.findbyID(idVentaVigente);
+    }
+
+    public static void delete(VentaEntidad venta) {
+        venta.setAnulado(true);
+        VentasRepository ventasRepository = new VentasRepository();
+        ventasRepository.update(venta);
     }
 }

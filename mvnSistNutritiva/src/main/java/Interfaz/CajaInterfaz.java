@@ -371,7 +371,7 @@ public class CajaInterfaz extends javax.swing.JFrame {
                     new Date(new java.util.Date().getTime()),
                     false //todo: cambiar desde la interfaz
             );
-            if(CajaLogica.agregarMovimiento(movimientoEntidad))
+            if(CajaLogica.addMovimiento(movimientoEntidad))
                 JOptionPane.showMessageDialog(null, "Movimiento agregado con exito");
             else
                 JOptionPane.showMessageDialog(null, "Error: al intentar agregar el movimiento");

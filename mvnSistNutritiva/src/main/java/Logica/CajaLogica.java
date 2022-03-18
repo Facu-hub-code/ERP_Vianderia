@@ -3,15 +3,12 @@ package Logica;
 import Entidad.CierreCajaEntidad;
 import Entidad.MovimientoEntidad;
 import Hibernate.CajaRepository;
-import Hibernate.HibernateUtil;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 import java.sql.Date;
 import java.util.ArrayList;
 
 public class CajaLogica {
-    public static boolean agregarMovimiento(MovimientoEntidad movimientoEntidad) {
+    public static boolean addMovimiento(MovimientoEntidad movimientoEntidad) {
         try {
             CajaRepository cajaRepository = new CajaRepository();
             cajaRepository.save(movimientoEntidad);

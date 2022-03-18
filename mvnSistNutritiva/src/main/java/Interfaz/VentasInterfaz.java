@@ -234,16 +234,37 @@ public class VentasInterfaz extends javax.swing.JFrame {
         if(idPedidoVigente < 0)
             JOptionPane.showMessageDialog(null, "Debe seleccionar algun pedido");
         else{
-            agregarVenta();
-            agregarMovimiento(PedidoLogica.getPedido(idPedidoVigente));
+            addVenta();
+            addMovimiento(PedidoLogica.getPedido(idPedidoVigente));
         }
 
 
     }//GEN-LAST:event_btn_agregarActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        // TODO: agregar el bit de anulado
+        deleteVenta();
     }//GEN-LAST:event_btn_eliminarActionPerformed
+
+    /**
+     * Para eliminar una venta se debe retornar el saldo a la caja, volver a habilitar el pedido y luego cancelar la venta
+     */
+    private void deleteVenta() {
+        if(idVentaVigente < 0)
+            JOptionPane.showMessageDialog(null, "Debe seleccionar alguna venta");
+        else {
+            VentaEntidad venta = VentasLogica.getVenta(idVentaVigente);
+            //Retorno el saldo a la caja
+            MovimientoEntidad movimiento = addMovimiento(new java.sql.Date(new java.util.Date().getTime()),
+                    -venta.getPedido().getVianda().getPrecio(),
+                    venta.getPedido(), false);
+            CajaLogica.addMovimiento(movimiento);
+            //Habilito el pedido
+            venta.getPedido().setAnulado(false);
+            PedidoLogica.updatePedido(venta.getPedido()); //todo: revisar que el pedido no este anulado
+            //Cancelo la venta
+            VentasLogica.delete(venta);
+        }
+    }
 
     private void buscadorClientes(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorClientes
         addFilter(jtable_pedidos, jt_cliente.getText(), 3);
@@ -262,7 +283,13 @@ public class VentasInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_jtable_ventasMouseClicked
 
     private void btn_buscarPorFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarPorFechaActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Esta funcionalidad aun no esta testeada");
+//        System.out.println(jdate_fecha.toString());
+//        System.out.println(jdate_fecha.getDateFormatString());
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
+//        simpleDateFormat.format(jdate_fecha.getDate());
+//        addFilter(jtable_pedidos, jdate_fecha.getDate().toString(),1);
+//        addFilter(jtable_ventas, jdate_fecha.getDateFormatString(), 3);
     }//GEN-LAST:event_btn_buscarPorFechaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -281,19 +308,20 @@ public class VentasInterfaz extends javax.swing.JFrame {
     private javax.swing.JTable jtable_ventas;
     // End of variables declaration//GEN-END:variables
 
-    private void agregarMovimiento(PedidoEntidad pedido) {
-        MovimientoEntidad movimientoEntidad = crearMovimiento(pedido);
-        CajaLogica.agregarMovimiento(movimientoEntidad);
+    private void addMovimiento(PedidoEntidad pedido) {
+        MovimientoEntidad movimientoEntidad = addMovimiento(new java.sql.Date(new java.util.Date().getTime()),
+                pedido.getVianda().getPrecio(), pedido, false);
+        CajaLogica.addMovimiento(movimientoEntidad);
     }
 
-    private MovimientoEntidad crearMovimiento(PedidoEntidad pedido) {
+    private MovimientoEntidad addMovimiento(Date fecha, double monto, PedidoEntidad pedido, boolean anulado) {
         MovimientoEntidad movimientoEntidad = new MovimientoEntidad();
-        movimientoEntidad.setFecha(new java.sql.Date(new java.util.Date().getTime()));
-        movimientoEntidad.setMonto(pedido.getVianda().getPrecio());
+        movimientoEntidad.setFecha(fecha);
+        movimientoEntidad.setMonto(monto);
         String observacion ="Cliente: " + pedido.getCliente().getNombre()+" "+pedido.getCliente().getApellido()
                 +"\nVianda: "+pedido.getVianda().getNombre();
         movimientoEntidad.setObservacion(observacion);
-        movimientoEntidad.setAnulado(false);
+        movimientoEntidad.setAnulado(anulado);
         return movimientoEntidad;
     }
 
@@ -301,7 +329,7 @@ public class VentasInterfaz extends javax.swing.JFrame {
     /**
      * Creo una venta y la persisto en el sistema
      */
-    private void agregarVenta() {
+    private void addVenta() {
         Date fecha = new java.sql.Date(jdate_fecha.getDate().getTime());
         PedidoEntidad pedido = PedidoLogica.getPedido(idPedidoVigente);
         double monto = pedido.getVianda().getPrecio();
@@ -312,31 +340,6 @@ public class VentasInterfaz extends javax.swing.JFrame {
         }
         else
             JOptionPane.showMessageDialog(null, "Error: al intentar agregar la venta");
-    }
-
-
-    //todo: ver
-
-    private void modificarVenta() {
-        double monto = 0.0;
-        Date fecha = null;
-        PedidoEntidad pedido = null;
-        if (idVentaVigente < 0) {
-            try {
-                //monto = Double.valueOf(jt_monto.getText());
-                fecha = new java.sql.Date(jdate_fecha.getDate().getTime());
-                pedido = PedidoLogica.getPedido(idPedidoVigente);
-            } catch (NullPointerException e) {
-                System.out.println("puede haber algun campo nulo");
-                e.printStackTrace();
-            }
-            VentaEntidad venta = new VentaEntidad(monto, fecha, pedido);
-            boolean flag = VentasLogica.modificarVenta(venta);
-            if (flag)
-                JOptionPane.showMessageDialog(null, "Venta de " + pedido.getCliente().getNombre() + " agregado con exito");
-            else
-                JOptionPane.showMessageDialog(null, "Error: al intentar agregar la venta");
-        }
     }
 
     private void update() {
@@ -356,14 +359,14 @@ public class VentasInterfaz extends javax.swing.JFrame {
 
     private void llenarTablaVentas() {
         String[] columnas = new String[]{"ID", "Cliente", "Vianda", "Fecha", "Tipo", "Monto"};
-        Class[] tipos = {Integer.class, String.class, String.class, Date.class, String.class, Double.class};
+        Class[] tipos = {Integer.class, String.class, String.class, java.sql.Date.class, String.class, Double.class};
 
         ArrayList<VentaEntidad> ventas = VentasLogica.getVentas();
         Object[][] objetosArray = new Object[ventas.size()][columnas.length];
 
         for (int i = 0; i < ventas.size(); i++) {
-            String tipo;
-            if (ventas.get(i).getPedido().getTipo().equals("almuerzo"))
+            String tipo = ventas.get(i).getPedido().getTipo();
+            if (tipo.equals("almuerzo"))
                 tipo = "almuerzo";
             else
                 tipo = "cena";

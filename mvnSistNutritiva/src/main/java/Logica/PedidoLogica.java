@@ -20,7 +20,7 @@ public class PedidoLogica {
         }
     }
 
-    public static boolean modificarPedido(PedidoEntidad pedido) {
+    public static boolean updatePedido(PedidoEntidad pedido) {
         try {
             PedidoRepository pedidoRepository = new PedidoRepository();
             pedidoRepository.update(pedido);
