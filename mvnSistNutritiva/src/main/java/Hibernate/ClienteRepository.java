@@ -16,15 +16,17 @@ public class ClienteRepository implements Repository<ClienteEntidad>{
 
 
     @Override
-    public void save(ClienteEntidad cliente) {
+    public boolean save(ClienteEntidad cliente) {
         Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
         try {
             session.save(cliente);
             transaction.commit();
+            return true;
         }catch (Exception e){
             if(transaction != null) transaction.rollback();
             e.printStackTrace();
+            return false;
         }finally {
             HibernateUtil.closeSession();
         }

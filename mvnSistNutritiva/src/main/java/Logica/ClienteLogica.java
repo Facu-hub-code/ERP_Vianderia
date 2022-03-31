@@ -10,8 +10,7 @@ public class ClienteLogica {
     public static boolean agregarCliente(ClienteEntidad cliente) {
         try{
             ClienteRepository clienteRepository = new ClienteRepository();
-            clienteRepository.save(cliente);
-            return true;
+            return clienteRepository.save(cliente);
         }catch (Exception e){
             e.printStackTrace();
             return false;
