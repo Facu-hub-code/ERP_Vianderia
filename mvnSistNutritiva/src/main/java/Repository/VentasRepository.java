@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VentasRepository implements Repository<VentaEntidad> {
+
     @Override
     public boolean save(VentaEntidad venta) {
         Session session = HibernateUtil.getSession();
@@ -92,6 +93,11 @@ public class VentasRepository implements Repository<VentaEntidad> {
         }
     }
 
+    /**
+     * Encuentra una venta a partir de un movimiento
+     * @param movimiento
+     * @return
+     */
     public VentaEntidad finbyMovimiento(MovimientoEntidad movimiento) {
         Session sesion = HibernateUtil.getSession();
         try {

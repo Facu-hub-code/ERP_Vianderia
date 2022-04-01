@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PedidoRepository implements Repository<PedidoEntidad> {
+
     @Override
     public boolean save(PedidoEntidad pedidoEntidad) {
         Session session = HibernateUtil.getSession();
@@ -90,5 +91,4 @@ public class PedidoRepository implements Repository<PedidoEntidad> {
             HibernateUtil.closeSession();
         }
     }
-
 }

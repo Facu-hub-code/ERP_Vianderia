@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CajaRepository implements Repository<MovimientoEntidad>{
+
     @Override
     public boolean save(MovimientoEntidad movimientoEntidad) {
         Session session = HibernateUtil.getSession();
@@ -90,6 +91,11 @@ public class CajaRepository implements Repository<MovimientoEntidad>{
         }
     }
 
+    /**
+     * Filtra por: anulado && fecha de hoy && efectivo
+     * @param efectivo
+     * @return
+     */
     public ArrayList<MovimientoEntidad> findHoyEfectivo(boolean efectivo) {
         Session sesion = HibernateUtil.getSession();
         try {
