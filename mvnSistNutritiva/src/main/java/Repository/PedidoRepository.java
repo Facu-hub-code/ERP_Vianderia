@@ -1,7 +1,6 @@
-package Hibernate;
+package Repository;
 
-import Entidad.ClienteEntidad;
-import Entidad.ViandaEntidad;
+import Entidad.PedidoEntidad;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -13,38 +12,37 @@ import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViandasRepository implements Repository<ViandaEntidad>{
-
+public class PedidoRepository implements Repository<PedidoEntidad> {
     @Override
-    public void save(ViandaEntidad vianda) {
+    public boolean save(PedidoEntidad pedidoEntidad) {
         Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
         try {
-            session.save(vianda);
+            session.save(pedidoEntidad);
             transaction.commit();
+            return true;
         }catch (Exception e){
             if(transaction != null) transaction.rollback();
             e.printStackTrace();
+            return false;
         }finally {
             HibernateUtil.closeSession();
         }
     }
 
     @Override
-    public List<ViandaEntidad> findAll() {
+    public List<PedidoEntidad> findAll() {
         Session sesion = HibernateUtil.getSession();
         try {
             CriteriaBuilder cb = sesion.getCriteriaBuilder();
-            CriteriaQuery<ViandaEntidad> cq = cb.createQuery(ViandaEntidad.class);
-            Root<ViandaEntidad> rootEntry = cq.from(ViandaEntidad.class);
-            CriteriaQuery<ViandaEntidad> all = cq.select(rootEntry);
-
+            CriteriaQuery<PedidoEntidad> cq = cb.createQuery(PedidoEntidad.class);
+            Root<PedidoEntidad> rootEntry = cq.from(PedidoEntidad.class);
+            CriteriaQuery<PedidoEntidad> all = cq.select(rootEntry);
             Predicate anulado = cb.equal(rootEntry.get("anulado"), false);
             cq.where(anulado);
-
-            TypedQuery<ViandaEntidad> allQuery = sesion.createQuery(all);
-            ArrayList<ViandaEntidad> viandas = (ArrayList<ViandaEntidad>) allQuery.getResultList();
-            return viandas;
+            TypedQuery<PedidoEntidad> allQuery = sesion.createQuery(all);
+            ArrayList<PedidoEntidad> pedidos = (ArrayList<PedidoEntidad>) allQuery.getResultList();
+            return pedidos;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -54,22 +52,20 @@ public class ViandasRepository implements Repository<ViandaEntidad>{
     }
 
     @Override
-    public ViandaEntidad findbyID(int id) {
+    public PedidoEntidad findbyID(int id) {
         Session sesion = HibernateUtil.getSession();
         try {
             CriteriaBuilder cb = sesion.getCriteriaBuilder();
-            CriteriaQuery<ViandaEntidad> cq = cb.createQuery(ViandaEntidad.class);
-            Root<ViandaEntidad> rootEntry = cq.from(ViandaEntidad.class);
-            CriteriaQuery<ViandaEntidad> all = cq.select(rootEntry);
-            TypedQuery<ViandaEntidad> allQuery = sesion.createQuery(all);
+            CriteriaQuery<PedidoEntidad> cq = cb.createQuery(PedidoEntidad.class);
+            Root<PedidoEntidad> rootEntry = cq.from(PedidoEntidad.class);
+            CriteriaQuery<PedidoEntidad> all = cq.select(rootEntry);
 
-            Predicate anulada = cb.equal(rootEntry.get("anulado"), false);
-            Predicate identificacion = cb.equal(rootEntry.get("id"), id);
-            Predicate predicate = cb.and(anulada, identificacion);
-            cq.where(predicate);
+            Predicate identidad = cb.equal(rootEntry.get("id"), id);
+            cq.where(identidad);
 
-            ArrayList<ViandaEntidad> viandas = (ArrayList<ViandaEntidad>) allQuery.getResultList();
-            return viandas.get(0);
+            TypedQuery<PedidoEntidad> allQuery = sesion.createQuery(all);
+            ArrayList<PedidoEntidad> pedidos = (ArrayList<PedidoEntidad>) allQuery.getResultList();
+            return pedidos.get(0);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -79,17 +75,20 @@ public class ViandasRepository implements Repository<ViandaEntidad>{
     }
 
     @Override
-    public void update(ViandaEntidad vianda) {
+    public boolean update(PedidoEntidad pedidoEntidad) {
         Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
         try {
-            session.merge(vianda);
+            session.merge(pedidoEntidad);
             transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) transaction.rollback();
+            return true;
+        }catch (Exception e){
+            if(transaction != null) transaction.rollback();
             e.printStackTrace();
-        } finally {
+            return false;
+        }finally {
             HibernateUtil.closeSession();
         }
     }
+
 }

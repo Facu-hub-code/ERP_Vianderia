@@ -1,6 +1,6 @@
 package Logica;
 
-import Hibernate.HibernateUtil;
+import Repository.HibernateUtil;
 
 public class LoginLogica {
 

@@ -1,4 +1,4 @@
-package Hibernate;
+package Repository;
 
 import Entidad.MovimientoEntidad;
 import org.hibernate.Session;
@@ -15,15 +15,17 @@ import java.util.List;
 
 public class CajaRepository implements Repository<MovimientoEntidad>{
     @Override
-    public void save(MovimientoEntidad movimientoEntidad) {
+    public boolean save(MovimientoEntidad movimientoEntidad) {
         Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
         try {
             session.save(movimientoEntidad);
             transaction.commit();
+            return true;
         }catch (Exception e){
             if(transaction != null) transaction.rollback();
             e.printStackTrace();
+            return false;
         }finally {
             HibernateUtil.closeSession();
         }
@@ -72,15 +74,17 @@ public class CajaRepository implements Repository<MovimientoEntidad>{
     }
 
     @Override
-    public void update(MovimientoEntidad movimientoEntidad) {
+    public boolean update(MovimientoEntidad movimientoEntidad) {
         Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
         try {
             session.merge(movimientoEntidad);
             transaction.commit();
+            return true;
         }catch (Exception e){
             if(transaction != null) transaction.rollback();
             e.printStackTrace();
+            return false;
         }finally {
             HibernateUtil.closeSession();
         }

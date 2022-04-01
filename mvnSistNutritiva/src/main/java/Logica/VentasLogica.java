@@ -1,8 +1,7 @@
 package Logica;
 
-import Entidad.MovimientoEntidad;
 import Entidad.VentaEntidad;
-import Hibernate.VentasRepository;
+import Repository.VentasRepository;
 
 import java.util.ArrayList;
 import java.util.List;

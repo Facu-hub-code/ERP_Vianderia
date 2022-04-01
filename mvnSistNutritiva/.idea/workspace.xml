@@ -5,11 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f6ba0bc-1813-4156-85d5-b38edcb40a38" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Documentacion/funcionalidades.doc" beforeDir="false" afterPath="$PROJECT_DIR$/../Documentacion/funcionalidades.doc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Hibernate/ClienteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Hibernate/ClienteRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Hibernate/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Hibernate/Repository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Hibernate/CajaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Repository/CajaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Hibernate/ClienteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Repository/ClienteRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Hibernate/HibernateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Repository/HibernateUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Hibernate/PedidoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Repository/PedidoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Hibernate/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Repository/Repository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Hibernate/VentasRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Repository/VentasRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Hibernate/ViandasRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Repository/ViandasRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaz/ClientesInterfaz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaz/ClientesInterfaz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Logica/CajaLogica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Logica/CajaLogica.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Logica/ClienteLogica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Logica/ClienteLogica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Logica/LoginLogica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Logica/LoginLogica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Logica/PedidoLogica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Logica/PedidoLogica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Logica/VentasLogica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Logica/VentasLogica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Logica/ViandasLogica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Logica/ViandasLogica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,16 +47,16 @@
     <setting file="file://$PROJECT_DIR$/src/main/java/Logica/CajaLogica.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/test/java/Logica/LoginLogicaTest.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Main.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/Hibernate/PedidoRepository.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Repository/PedidoRepository.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/Hibernate/CajaRepository.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/Hibernate/Repository.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/Hibernate/VentasRepository.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/Hibernate/ViandasRepository.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Repository/CajaRepository.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Repository/Repository.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Repository/VentasRepository.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Repository/ViandasRepository.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Interfaz/VentasInterfaz.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Interfaz/ClientesInterfaz.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/Hibernate/HibernateUtil.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/Hibernate/ClienteRepository.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Repository/HibernateUtil.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Repository/ClienteRepository.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Interfaz/PedidosInterfaz.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Interfaz/LoginInterfaz.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Interfaz/CajaInterfaz.java" root0="SKIP_INSPECTION" />
@@ -188,16 +199,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Hibernate/VentasRepository.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Hibernate/PedidoRepository.java</url>
-          <line>86</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Interfaz/VentasInterfaz.java</url>
           <line>357</line>

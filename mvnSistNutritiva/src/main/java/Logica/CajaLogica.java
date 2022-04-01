@@ -1,7 +1,7 @@
 package Logica;
 
 import Entidad.MovimientoEntidad;
-import Hibernate.CajaRepository;
+import Repository.CajaRepository;
 
 import java.util.ArrayList;
 

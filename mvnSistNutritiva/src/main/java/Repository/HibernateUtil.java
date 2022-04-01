@@ -1,4 +1,4 @@
-package Hibernate;
+package Repository;
 
 import Entidad.*;
 import org.hibernate.Session;

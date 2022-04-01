@@ -1,7 +1,6 @@
-package Hibernate;
+package Repository;
 
 import Entidad.ClienteEntidad;
-import Entidad.PedidoEntidad;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -13,35 +12,42 @@ import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PedidoRepository implements Repository<PedidoEntidad> {
+public class ClienteRepository implements Repository<ClienteEntidad>{
+
     @Override
-    public void save(PedidoEntidad pedidoEntidad) {
+    public boolean save(ClienteEntidad cliente) {
         Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
         try {
-            session.save(pedidoEntidad);
+            session.save(cliente);
             transaction.commit();
+            return true;
         }catch (Exception e){
             if(transaction != null) transaction.rollback();
             e.printStackTrace();
+            return false;
         }finally {
             HibernateUtil.closeSession();
         }
     }
 
+    /**
+     * Utiliza el predicate anulado
+     * @return todos los clientes
+     */
     @Override
-    public List<PedidoEntidad> findAll() {
+    public List<ClienteEntidad> findAll() {
         Session sesion = HibernateUtil.getSession();
         try {
             CriteriaBuilder cb = sesion.getCriteriaBuilder();
-            CriteriaQuery<PedidoEntidad> cq = cb.createQuery(PedidoEntidad.class);
-            Root<PedidoEntidad> rootEntry = cq.from(PedidoEntidad.class);
-            CriteriaQuery<PedidoEntidad> all = cq.select(rootEntry);
+            CriteriaQuery<ClienteEntidad> cq = cb.createQuery(ClienteEntidad.class);
+            Root<ClienteEntidad> rootEntry = cq.from(ClienteEntidad.class);
+            CriteriaQuery<ClienteEntidad> all = cq.select(rootEntry);
             Predicate anulado = cb.equal(rootEntry.get("anulado"), false);
             cq.where(anulado);
-            TypedQuery<PedidoEntidad> allQuery = sesion.createQuery(all);
-            ArrayList<PedidoEntidad> pedidos = (ArrayList<PedidoEntidad>) allQuery.getResultList();
-            return pedidos;
+            TypedQuery<ClienteEntidad> allQuery = sesion.createQuery(all);
+            ArrayList<ClienteEntidad> clientes = (ArrayList<ClienteEntidad>) allQuery.getResultList();
+            return clientes;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -50,21 +56,28 @@ public class PedidoRepository implements Repository<PedidoEntidad> {
         }
     }
 
+    /**
+     * Usa el predicate anulado && id
+     * @param id
+     * @return
+     */
     @Override
-    public PedidoEntidad findbyID(int id) {
+    public ClienteEntidad findbyID(int id) {
         Session sesion = HibernateUtil.getSession();
         try {
             CriteriaBuilder cb = sesion.getCriteriaBuilder();
-            CriteriaQuery<PedidoEntidad> cq = cb.createQuery(PedidoEntidad.class);
-            Root<PedidoEntidad> rootEntry = cq.from(PedidoEntidad.class);
-            CriteriaQuery<PedidoEntidad> all = cq.select(rootEntry);
+            CriteriaQuery<ClienteEntidad> cq = cb.createQuery(ClienteEntidad.class);
+            Root<ClienteEntidad> rootEntry = cq.from(ClienteEntidad.class);
+            CriteriaQuery<ClienteEntidad> all = cq.select(rootEntry);
 
-            Predicate identidad = cb.equal(rootEntry.get("id"), id);
-            cq.where(identidad);
+            Predicate anulado = cb.equal(rootEntry.get("anulado"), false);
+            Predicate identificacion = cb.equal(rootEntry.get("id"), id);
+            Predicate predicate = cb.and(anulado, identificacion);
+            cq.where(predicate);
 
-            TypedQuery<PedidoEntidad> allQuery = sesion.createQuery(all);
-            ArrayList<PedidoEntidad> pedidos = (ArrayList<PedidoEntidad>) allQuery.getResultList();
-            return pedidos.get(0);
+            TypedQuery<ClienteEntidad> allQuery = sesion.createQuery(all);
+            ArrayList<ClienteEntidad> clientes = (ArrayList<ClienteEntidad>) allQuery.getResultList();
+            return clientes.get(0);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -74,15 +87,17 @@ public class PedidoRepository implements Repository<PedidoEntidad> {
     }
 
     @Override
-    public void update(PedidoEntidad pedidoEntidad) {
+    public boolean update(ClienteEntidad cliente) {
         Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
         try {
-            session.merge(pedidoEntidad);
+            session.merge(cliente);
             transaction.commit();
+            return true;
         }catch (Exception e){
             if(transaction != null) transaction.rollback();
             e.printStackTrace();
+            return false;
         }finally {
             HibernateUtil.closeSession();
         }

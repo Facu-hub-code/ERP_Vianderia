@@ -1,10 +1,7 @@
 package Logica;
 
-import Entidad.ClienteEntidad;
 import Entidad.ViandaEntidad;
-import Hibernate.ClienteRepository;
-import Hibernate.ViandasRepository;
-import Interfaz.ViandasInterfaz;
+import Repository.ViandasRepository;
 
 import java.util.ArrayList;
 import java.util.List;

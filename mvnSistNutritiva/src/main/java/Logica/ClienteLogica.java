@@ -1,13 +1,13 @@
 package Logica;
 
 import Entidad.ClienteEntidad;
-import Hibernate.ClienteRepository;
+import Repository.ClienteRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ClienteLogica {
-    public static boolean agregarCliente(ClienteEntidad cliente) {
+    public static boolean addClient(ClienteEntidad cliente) {
         try{
             ClienteRepository clienteRepository = new ClienteRepository();
             return clienteRepository.save(cliente);

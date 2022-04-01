@@ -1,7 +1,7 @@
 package Logica;
 
 import Entidad.PedidoEntidad;
-import Hibernate.PedidoRepository;
+import Repository.PedidoRepository;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;

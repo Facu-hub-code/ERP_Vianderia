@@ -439,31 +439,33 @@ public class ClientesInterfaz extends javax.swing.JFrame {
     }
 
     private void addCliente() {
-        String nombre = jt_nombre.getText(), apellido = "", direccion = "", dni = "", telefono = "", email = "";
-        if (!nombre.equals("")){ //getText() devuelve un string, revisar que no este vacio
-            try{
-                nombre = jt_nombre.getText();
-                apellido = jt_apellido.getText();
-                direccion = jt_dni.getText();
-                dni = jt_dni.getText();
-                telefono = jt_telefono.getText();
-                email = jt_email.getText();
-            }catch (NullPointerException e){
-                e.printStackTrace();
-            }
+        String nombre = "", apellido = "", direccion = "", dni = "", telefono = "", email = "";
+        if(nombre.isBlank()){
+            JOptionPane.showMessageDialog(null, "Error: El nombre no puede estar vacio",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }else{
+            nombre = jt_nombre.getText();
+            apellido = jt_apellido.getText();
+            direccion = jt_dni.getText();
+            dni = jt_dni.getText();
+            telefono = jt_telefono.getText();
+            email = jt_email.getText();
+
             ClienteEntidad cliente = new ClienteEntidad(nombre, apellido, dni, email, telefono, direccion);
-            boolean flag = ClienteLogica.agregarCliente(cliente);
-            if (flag)
+            if(ClienteLogica.addClient(cliente))
                 JOptionPane.showMessageDialog(null, "Cliente "+cliente.getNombre()+" agregado con exito");
             else
-                JOptionPane.showMessageDialog(null, "Error: al intentar agregar el cliente");
-        }else
-            JOptionPane.showMessageDialog(null, "Debe ingresarle al menos un nombre al cliente");
+                JOptionPane.showMessageDialog(null, "", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     private void updateCliente() {
-        String nombre = jt_nombre.getText(), apellido = "", direccion = "", dni = "", telefono = "", email = "";
-        if (!nombre.equals("") && idVigente >= 0){//minimo tiene que tener nombre y id
+        String nombre = "", apellido = "", direccion = "", dni = "", telefono = "", email = "";
+        nombre = jt_nombre.getText();
+        if(nombre.isBlank()) {
+            JOptionPane.showMessageDialog(null, "El nombre no puede estar vacio");
+        }
+        if (nombre.isBlank() && idVigente >= 0){//minimo tiene que tener nombre y id
             try{
                 nombre = jt_nombre.getText();
                 apellido = jt_apellido.getText();
