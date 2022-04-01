@@ -600,7 +600,7 @@ public class PedidosInterfaz extends javax.swing.JFrame {
             else
                 tipo = "cena";
             PedidoEntidad pedido = new PedidoEntidad(cliente, vianda, fecha, tipo);
-            if (PedidoLogica.agregarPedido(pedido))
+            if (PedidoLogica.addPedido(pedido))
                 JOptionPane.showMessageDialog(null, "Pedido de "+cliente.getNombre()+" agregado con exito");
             else
                 JOptionPane.showMessageDialog(null, "Error: al intentar agregar el pediodo");

@@ -5,9 +5,7 @@
  */
 package Interfaz;
 
-import Entidad.ClienteEntidad;
 import Entidad.ViandaEntidad;
-import Logica.ClienteLogica;
 import Logica.ViandasLogica;
 
 import javax.swing.*;
@@ -271,7 +269,7 @@ public class ViandasInterfaz extends javax.swing.JFrame {
             precio = Double.valueOf(jt_precio.getText());
             ViandaEntidad vianda = ViandasLogica.getVianda(idVigente);
             vianda.setNombre(nombre); vianda.setPrecio(precio);
-            if (ViandasLogica.modificarVianda(vianda))
+            if (ViandasLogica.updateVianda(vianda))
                 JOptionPane.showMessageDialog(null, "Vianda " + vianda.getNombre() + " modificada con exito");
             else
                 JOptionPane.showMessageDialog(null, "Error: al intentar modificar la vianda");
@@ -285,7 +283,7 @@ public class ViandasInterfaz extends javax.swing.JFrame {
             nombre = jt_nombre.getText();
             precio = Double.valueOf(jt_precio.getText());
             ViandaEntidad vianda = new ViandaEntidad(nombre, precio);
-            if (ViandasLogica.agregarVianda(vianda))
+            if (ViandasLogica.addVianda(vianda))
                 JOptionPane.showMessageDialog(null, "Vianda " + vianda.getNombre() + " agregada con exito");
             else
                 JOptionPane.showMessageDialog(null, "Error: al intentar agregar la vianda");

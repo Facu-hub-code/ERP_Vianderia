@@ -70,7 +70,7 @@ DEFAULT CHARACTER SET = utf8mb3;
 CREATE TABLE IF NOT EXISTS `bdd_nutritiva`.`pedidos` (
   `idpedidos` INT NOT NULL AUTO_INCREMENT,
   `fecha` DATE NOT NULL,
-  `tipo` ENUM('ALMUERZO', 'CENA') NOT NULL,
+  `tipo` ENUM('ALMUERZO', 'CENA', 'ALMUERZOCARNE', 'ALMUERZOPESCADO', 'CENACARNE', 'CENAPESCADO') NOT NULL,
   `clientes_idclientes` INT NOT NULL,
   `viandas_idviandas` INT NOT NULL,
   `anulado` BIT NOT NULL,
