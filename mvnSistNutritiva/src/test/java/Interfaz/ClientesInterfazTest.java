@@ -33,4 +33,25 @@ class ClientesInterfazTest {
         clientesInterfaz.setNombre("");
         Assertions.assertFalse(clientesInterfaz.addCliente());
     }
+
+    @Test
+    public void shouldUpdateCorrectly(){
+        clientesInterfaz.setIdVigente(3);
+        clientesInterfaz.setNombre("nombre valido");
+        Assertions.assertTrue(clientesInterfaz.updateCliente());
+    }
+
+    @Test
+    public void shouldUpdateInCorrectlyById(){
+        clientesInterfaz.setIdVigente(-1);
+        Assertions.assertFalse(clientesInterfaz.updateCliente());
+    }
+
+    @Test
+    public void shouldUpdateInCorrectlyByName(){
+        clientesInterfaz.setNombre("");
+        Assertions.assertFalse(clientesInterfaz.updateCliente());
+    }
+
+
 }

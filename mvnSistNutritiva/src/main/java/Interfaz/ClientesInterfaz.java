@@ -365,12 +365,15 @@ public class ClientesInterfaz extends javax.swing.JFrame {
         idVigente = -1;
     }
 
-    private void llenarTabla() {
+    private boolean llenarTabla() {
         String[] columnas = new String[]{"ID", "Nombre", "Apellido", "DNI", "Email", "Telefono", "Direccion"};
         Class[] tipos = {Integer.class, String.class, String.class, String.class, String.class, String.class, String.class};
 
         ArrayList<ClienteEntidad> clientes = ClienteLogica.getClientes();
         Object[][] objetosArray = new Object[clientes.size()][columnas.length];
+
+        if (clientes.size() == 0)
+            return false;
 
         for (int i = 0; i < clientes.size(); i++) {
             objetosArray[i] = new Object[]{
@@ -397,6 +400,7 @@ public class ClientesInterfaz extends javax.swing.JFrame {
                 return this.types[columnindex];
             }
         });
+        return true;
     }
 
     public void addFilter(JTable tbl, String txt, Integer SearchColumnIndex) {
@@ -461,7 +465,7 @@ public class ClientesInterfaz extends javax.swing.JFrame {
         }
     }
 
-    private boolean updateCliente() {
+    protected boolean updateCliente() {
         String nombre = jt_nombre.getText(), apellido = "", direccion = "", dni = "", telefono = "", email = "";
         if (nombre.isEmpty()) {
             JOptionPane.showMessageDialog(null, "El nombre no puede estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
@@ -506,6 +510,10 @@ public class ClientesInterfaz extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Codigo para testing">
     public void setNombre(String nombre) {
         jt_nombre.setText(nombre);
+    }
+
+    public void setIdVigente(int idVigente) {
+        ClientesInterfaz.idVigente = idVigente;
     }
     // </editor-fold>
 }
