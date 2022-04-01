@@ -190,15 +190,15 @@ public class ClientesInterfaz extends javax.swing.JFrame {
         });
 
         jtable_clientes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
+                new Object[][]{
+                        {},
+                        {},
+                        {},
+                        {}
+                },
+                new String[]{
 
-            }
+                }
         ));
         jtable_clientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -210,96 +210,96 @@ public class ClientesInterfaz extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btn_agregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jl_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jl_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jt_apellido, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                                    .addComponent(jt_nombre, javax.swing.GroupLayout.Alignment.TRAILING)))
-                            .addComponent(btn_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_actualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_eliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jl_telefono, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_mail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_dni, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_email, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jt_dni)
-                            .addComponent(jt_direccion)
-                            .addComponent(jt_telefono, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                            .addComponent(jt_email))))
-                .addGap(18, 18, 18)
-                .addComponent(jscrollpane_general, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(btn_agregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                        .addComponent(jl_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(jl_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                        .addComponent(jt_apellido, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                                                                        .addComponent(jt_nombre, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                                        .addComponent(btn_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(btn_actualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(btn_eliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                .addGap(0, 0, Short.MAX_VALUE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jl_telefono, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jl_mail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jl_dni, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jl_email, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(jt_dni)
+                                                        .addComponent(jt_direccion)
+                                                        .addComponent(jt_telefono, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                                                        .addComponent(jt_email))))
+                                .addGap(18, 18, 18)
+                                .addComponent(jscrollpane_general, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE)
+                                .addContainerGap())
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(59, 59, 59)
+                                .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jt_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jt_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_email, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jt_dni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_dni, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_mail, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_actualizar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_agregar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_modificar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_eliminar))
-                    .addComponent(jscrollpane_general, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE))
-                .addGap(22, 22, 22))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jl_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jt_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jl_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jt_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jl_email, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jt_dni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jl_dni, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jl_mail, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jl_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(btn_actualizar)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(btn_agregar)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(btn_modificar)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(btn_eliminar))
+                                        .addComponent(jscrollpane_general, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE))
+                                .addGap(22, 22, 22))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void initComponentsFacu(){
+    private void initComponentsFacu() {
         getContentPane().setBackground(new Color(49, 28, 28));
         setLocationRelativeTo(null);
-        setTitle("Gestion de clientes");       
+        setTitle("Gestion de clientes");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
@@ -367,7 +367,7 @@ public class ClientesInterfaz extends javax.swing.JFrame {
 
     private void llenarTabla() {
         String[] columnas = new String[]{"ID", "Nombre", "Apellido", "DNI", "Email", "Telefono", "Direccion"};
-        Class[] tipos = {Integer.class, String.class, String.class, String.class,String.class, String.class, String.class};
+        Class[] tipos = {Integer.class, String.class, String.class, String.class, String.class, String.class, String.class};
 
         ArrayList<ClienteEntidad> clientes = ClienteLogica.getClientes();
         Object[][] objetosArray = new Object[clientes.size()][columnas.length];
@@ -391,8 +391,9 @@ public class ClientesInterfaz extends javax.swing.JFrame {
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
+
             @Override
-            public Class getColumnClass(int columnindex){
+            public Class getColumnClass(int columnindex) {
                 return this.types[columnindex];
             }
         });
@@ -415,7 +416,7 @@ public class ClientesInterfaz extends javax.swing.JFrame {
         }
     }
 
-    private void setDefaultSorter(JTable tabla, int columna, SortOrder sortOrder){
+    private void setDefaultSorter(JTable tabla, int columna, SortOrder sortOrder) {
         TableRowSorter<TableModel> sorter = new TableRowSorter<>(tabla.getModel());
         tabla.setRowSorter(sorter);
         List<RowSorter.SortKey> sortKeys = new ArrayList<>();
@@ -425,7 +426,7 @@ public class ClientesInterfaz extends javax.swing.JFrame {
         sorter.sort();
     }
 
-    public void sortearFecha(){
+    public void sortearFecha() {
         setDefaultSorter(jtable_clientes, 1, SortOrder.DESCENDING); //revisar columna
     }
 
@@ -438,68 +439,74 @@ public class ClientesInterfaz extends javax.swing.JFrame {
         jt_email.setText("");
     }
 
-    private void addCliente() {
-        String nombre = "", apellido = "", direccion = "", dni = "", telefono = "", email = "";
-        if(nombre.isBlank()){
-            JOptionPane.showMessageDialog(null, "Error: El nombre no puede estar vacio",
-                    "Error", JOptionPane.ERROR_MESSAGE);
-        }else{
-            nombre = jt_nombre.getText();
-            apellido = jt_apellido.getText();
-            direccion = jt_dni.getText();
-            dni = jt_dni.getText();
-            telefono = jt_telefono.getText();
-            email = jt_email.getText();
+    protected boolean addCliente() {
+        String nombre = jt_nombre.getText(), apellido = "", direccion = "", dni = "", telefono = "", email = "";
+        if (nombre.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El nombre no puede estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
 
-            ClienteEntidad cliente = new ClienteEntidad(nombre, apellido, dni, email, telefono, direccion);
-            if(ClienteLogica.addClient(cliente))
-                JOptionPane.showMessageDialog(null, "Cliente "+cliente.getNombre()+" agregado con exito");
-            else
-                JOptionPane.showMessageDialog(null, "", "Error", JOptionPane.ERROR_MESSAGE);
+        apellido = jt_apellido.getText();
+        direccion = jt_dni.getText();
+        dni = jt_dni.getText();
+        telefono = jt_telefono.getText();
+        email = jt_email.getText();
+        ClienteEntidad cliente = new ClienteEntidad(nombre, apellido, dni, email, telefono, direccion);
+        if (ClienteLogica.addClient(cliente)) {
+            JOptionPane.showMessageDialog(null, "Cliente " + cliente.getNombre() + " agregado con exito");
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, "", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
     }
 
-    private void updateCliente() {
-        String nombre = "", apellido = "", direccion = "", dni = "", telefono = "", email = "";
-        nombre = jt_nombre.getText();
-        if(nombre.isBlank()) {
-            JOptionPane.showMessageDialog(null, "El nombre no puede estar vacio");
+    private boolean updateCliente() {
+        String nombre = jt_nombre.getText(), apellido = "", direccion = "", dni = "", telefono = "", email = "";
+        if (nombre.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El nombre no puede estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
-        if (nombre.isBlank() && idVigente >= 0){//minimo tiene que tener nombre y id
-            try{
-                nombre = jt_nombre.getText();
-                apellido = jt_apellido.getText();
-                direccion = jt_dni.getText();
-                dni = jt_dni.getText();
-                telefono = jt_telefono.getText();
-                email = jt_email.getText();
-            }catch (NullPointerException e) {
-                e.printStackTrace();
-            }
-            ClienteEntidad cliente = ClienteLogica.getCliente(idVigente);
-            cliente.setNombre(nombre);
-            cliente.setApellido(apellido);
-            cliente.setDni(dni);
-            cliente.setDireccion(direccion);
-            cliente.setTelefono(telefono);
-            cliente.setEmail(email);
-            boolean flag = ClienteLogica.modificarCliente(cliente);
-            if (flag)
-                JOptionPane.showMessageDialog(null, "Cliente "+cliente.getNombre()+" modificado con exito");
-            else
-                JOptionPane.showMessageDialog(null, "Error: al intentar modificar el cliente");
+        if (idVigente < 0) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar algun cliente", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        apellido = jt_apellido.getText();
+        direccion = jt_dni.getText();
+        dni = jt_dni.getText();
+        telefono = jt_telefono.getText();
+        email = jt_email.getText();
+
+        ClienteEntidad cliente = new ClienteEntidad(nombre, apellido, dni, email, telefono, direccion);
+        if (ClienteLogica.addClient(cliente)) {
+            JOptionPane.showMessageDialog(null, "Cliente " + cliente.getNombre() + " agregado con exito");
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, "", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
     }
 
-    private void deleteCliente() {
-        if (idVigente < 0)
+    private boolean deleteCliente() {
+        if (idVigente < 0) {
             JOptionPane.showMessageDialog(null, "Debe seleccionar algun cliente");
-        else{
-            ClienteEntidad cliente = ClienteLogica.getCliente(idVigente);
-            if(ClienteLogica.delete(cliente))
-                JOptionPane.showMessageDialog(null, "Cliente: "+cliente.getNombre()+" eliminado con exito");
-            else
-                JOptionPane.showMessageDialog(null, "Error: al intentar eliminar el cliente");
+            return false;
+        }
+        ClienteEntidad cliente = ClienteLogica.getCliente(idVigente);
+        if (ClienteLogica.delete(cliente)) {
+            JOptionPane.showMessageDialog(null, "Cliente: " + cliente.getNombre() + " eliminado con exito");
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, "Al intentar eliminar el cliente", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
     }
+
+    // <editor-fold defaultstate="collapsed" desc="Codigo para testing">
+    public void setNombre(String nombre) {
+        jt_nombre.setText(nombre);
+    }
+    // </editor-fold>
 }
+

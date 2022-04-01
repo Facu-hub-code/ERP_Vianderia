@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClienteLogica {
+
     public static boolean addClient(ClienteEntidad cliente) {
         try{
             ClienteRepository clienteRepository = new ClienteRepository();
@@ -27,8 +28,7 @@ public class ClienteLogica {
     public static boolean modificarCliente(ClienteEntidad cliente) {
         try{
             ClienteRepository clienteRepository = new ClienteRepository();
-            clienteRepository.update(cliente);
-            return true;
+            return clienteRepository.update(cliente);
         }catch (Exception e){
             e.printStackTrace();
             return false;
@@ -45,8 +45,7 @@ public class ClienteLogica {
         try{
             cliente.setAnulado(true);
             ClienteRepository clienteRepository = new ClienteRepository();
-            clienteRepository.update(cliente);
-            return true;
+            return clienteRepository.update(cliente);
         }catch (Exception e){
             e.printStackTrace();
             return false;

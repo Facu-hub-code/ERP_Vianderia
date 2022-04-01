@@ -11,7 +11,7 @@ class LoginLogicaTest {
     LoginLogica loginLogica = new LoginLogica();
 
     @Test
-    public void shouldAccesAllRight(){
+    public void shouldAccesCorrectly(){
         Assertions.assertEquals(LoginLogica.validarIngreso("root", "toor"), true);
     }
 
