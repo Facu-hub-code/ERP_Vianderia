@@ -95,7 +95,7 @@
           <Color blue="76" green="fd" red="ff" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="2"/>
-        <Property name="text" type="java.lang.String" value="USUARIO"/>
+        <Property name="text" type="java.lang.String" value="USER"/>
         <Property name="verticalAlignment" type="int" value="3"/>
       </Properties>
     </Component>
@@ -111,7 +111,7 @@
           <Color blue="76" green="fd" red="ff" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="2"/>
-        <Property name="text" type="java.lang.String" value="CONTRASE&#xd1;A"/>
+        <Property name="text" type="java.lang.String" value="PASSWORD"/>
         <Property name="verticalAlignment" type="int" value="3"/>
       </Properties>
     </Component>

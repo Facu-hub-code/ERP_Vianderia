@@ -49,14 +49,14 @@ public class LoginInterfaz extends javax.swing.JFrame {
         jl_user.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jl_user.setForeground(new java.awt.Color(255, 253, 118));
         jl_user.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_user.setText("USUARIO");
+        jl_user.setText("USER");
         jl_user.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jl_pass.setBackground(new java.awt.Color(49, 28, 28));
         jl_pass.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jl_pass.setForeground(new java.awt.Color(255, 253, 118));
         jl_pass.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_pass.setText("CONTRASE�A");
+        jl_pass.setText("PASSWORD");
         jl_pass.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jt_usuario.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -128,7 +128,7 @@ public class LoginInterfaz extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarActionPerformed
+    protected void btn_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarActionPerformed
         String user = jt_usuario.getText(), password = jt_pass.getText();
         boolean acceso = LoginLogica.validarIngreso(user, password);
         if (acceso){
@@ -140,7 +140,7 @@ public class LoginInterfaz extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_ingresarActionPerformed
 
-    private void loginTxtUserName(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginTxtUserName
+    protected void loginTxtUserName(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginTxtUserName
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             boolean valido = LoginLogica.validarIngreso(jt_usuario.getText(), valueOf(jt_pass.getPassword()));
             if(valido){
@@ -152,7 +152,7 @@ public class LoginInterfaz extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_loginTxtUserName
 
-    private void loginTxtPassword(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginTxtPassword
+    protected void loginTxtPassword(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginTxtPassword
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             boolean valido = LoginLogica.validarIngreso(jt_usuario.getText(), valueOf(jt_pass.getPassword()));
             if(valido){

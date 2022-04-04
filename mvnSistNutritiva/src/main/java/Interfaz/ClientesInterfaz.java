@@ -356,7 +356,7 @@ public class ClientesInterfaz extends javax.swing.JFrame {
     private javax.swing.JTextField jt_email;
     private javax.swing.JTextField jt_nombre;
     private javax.swing.JTextField jt_telefono;
-    private javax.swing.JTable jtable_clientes;
+    public javax.swing.JTable jtable_clientes;
     // End of variables declaration//GEN-END:variables
 
     private void update() {
@@ -443,7 +443,7 @@ public class ClientesInterfaz extends javax.swing.JFrame {
         jt_email.setText("");
     }
 
-    protected boolean addCliente() {
+    public boolean addCliente() {
         String nombre = jt_nombre.getText(), apellido = "", direccion = "", dni = "", telefono = "", email = "";
         if (nombre.isEmpty()) {
             JOptionPane.showMessageDialog(null, "El nombre no puede estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
@@ -492,7 +492,7 @@ public class ClientesInterfaz extends javax.swing.JFrame {
         }
     }
 
-    private boolean deleteCliente() {
+    public boolean deleteCliente() {
         if (idVigente < 0) {
             JOptionPane.showMessageDialog(null, "Debe seleccionar algun cliente");
             return false;

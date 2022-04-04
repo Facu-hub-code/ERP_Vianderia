@@ -38,6 +38,7 @@ public class SistemaPrincipalInterfaz extends javax.swing.JFrame {
         btn_pedidos = new javax.swing.JButton();
         btn_ventas = new javax.swing.JButton();
         btn_Caja = new javax.swing.JButton();
+        btn_tablero = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -94,20 +95,32 @@ public class SistemaPrincipalInterfaz extends javax.swing.JFrame {
             }
         });
 
+        btn_tablero.setBackground(new java.awt.Color(255, 253, 118));
+        btn_tablero.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btn_tablero.setText("Tablero");
+        btn_tablero.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        btn_tablero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_tableroActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jl_imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btn_pedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_ventas, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_clientes, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_Caja, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_viandas, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btn_pedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_ventas, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_clientes, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_Caja, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_viandas, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_tablero, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,7 +128,7 @@ public class SistemaPrincipalInterfaz extends javax.swing.JFrame {
                 .addComponent(jl_imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(160, 160, 160)
+                .addGap(94, 94, 94)
                 .addComponent(btn_pedidos)
                 .addGap(40, 40, 40)
                 .addComponent(btn_ventas)
@@ -125,13 +138,15 @@ public class SistemaPrincipalInterfaz extends javax.swing.JFrame {
                 .addComponent(btn_Caja)
                 .addGap(40, 40, 40)
                 .addComponent(btn_viandas)
+                .addGap(36, 36, 36)
+                .addComponent(btn_tablero)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clientesActionPerformed
+    protected void btn_clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clientesActionPerformed
         ClientesInterfaz clientesInterfaz = new ClientesInterfaz();
     }//GEN-LAST:event_btn_clientesActionPerformed
 
@@ -150,6 +165,10 @@ public class SistemaPrincipalInterfaz extends javax.swing.JFrame {
     private void btn_viandasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viandasActionPerformed
         ViandasInterfaz viandasInterfaz = new ViandasInterfaz();
     }//GEN-LAST:event_btn_viandasActionPerformed
+
+    private void btn_tableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tableroActionPerformed
+        TableroInterfaz tableroInterfaz = new TableroInterfaz();
+    }//GEN-LAST:event_btn_tableroActionPerformed
 
     
     private void initComponentsFacu(){
@@ -173,6 +192,7 @@ public class SistemaPrincipalInterfaz extends javax.swing.JFrame {
     private javax.swing.JButton btn_Caja;
     private javax.swing.JButton btn_clientes;
     private javax.swing.JButton btn_pedidos;
+    private javax.swing.JButton btn_tablero;
     private javax.swing.JButton btn_ventas;
     private javax.swing.JButton btn_viandas;
     private javax.swing.JLabel jl_imagen;
