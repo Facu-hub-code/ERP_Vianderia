@@ -95,4 +95,21 @@ public class ViandasRepository implements Repository<ViandaEntidad>{
             HibernateUtil.closeSession();
         }
     }
+
+    public boolean delete(ViandaEntidad viandaEntidad){
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = session.beginTransaction();
+        try{
+            session.delete(viandaEntidad);
+            transaction.commit();
+            return true;
+        }catch (Exception e){
+            if (transaction != null) transaction.rollback();
+            e.printStackTrace();
+            return false;
+        }finally {
+            HibernateUtil.closeSession();
+        }
+
+    }
 }
