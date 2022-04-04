@@ -13,9 +13,9 @@ La funcionalidad principal es: A partir de las entidades CLIENTE y VIANDA que ju
 *Builder: Maven - JAR File*
 
 
-**Requerimentos y funcionalidades**
-* Gestion de clientes:  Debe agregar 
-* Gestion de viandas
+**Requerimentos y funcionalidades a la version actual**
+* Gestion de clientes: OK
+* Gestion de viandas: problemas de merge (update)
 * Gestion de pedidos:
 * Gestion de ventas:
 * Gestion de caja:
