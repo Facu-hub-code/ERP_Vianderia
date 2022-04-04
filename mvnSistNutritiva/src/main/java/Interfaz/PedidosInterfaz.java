@@ -37,7 +37,6 @@ public class PedidosInterfaz extends javax.swing.JFrame {
         initComponents();
         setUp();
         setVisible(true);
-        update();
     }
 
     private void setUp() {
@@ -45,6 +44,10 @@ public class PedidosInterfaz extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setTitle("Gestion de pedidos");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        limpiarCampos();
+        llenarTablaClientes();
+        llenarTablaViandas();
+        llenarTablasPedidos();
     }
 
         /**
@@ -428,8 +431,8 @@ public class PedidosInterfaz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
-        addPedido();
-        update();
+        if(addPedido())
+            update();
     }//GEN-LAST:event_btn_agregarActionPerformed
 
 
@@ -508,11 +511,13 @@ public class PedidosInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_rb_cenaActionPerformed
 
     private void rb_carneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_carneActionPerformed
-        // TODO add your handling code here:
+        if(rb_carne.isSelected())
+            rb_pescado.setSelected(false);
     }//GEN-LAST:event_rb_carneActionPerformed
 
     private void rb_pescadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_pescadoActionPerformed
-        // TODO add your handling code here:
+        if(rb_pescado.isSelected())
+            rb_carne.setSelected(false);
     }//GEN-LAST:event_rb_pescadoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -548,13 +553,6 @@ public class PedidosInterfaz extends javax.swing.JFrame {
     private javax.swing.JRadioButton rb_pescado;
     // End of variables declaration//GEN-END:variables
 
-    private boolean checkCamposCorrectos(){
-        boolean flag = (idClienteVigente < 0 ) || //si no se selecciono un cliente
-                (idViandaVigente < 0) || //o no se selecciono una vianda
-                jdate_fecha.getDate().toString().isEmpty() || //o no se selecciono la fecha
-                makeTipo().isEmpty(); // o no se selecciono el tipo
-        return !flag;
-    }
 
     private String makeTipo() {
         if(rb_almuerzo.isSelected() && rb_pescado.isSelected())
@@ -567,26 +565,43 @@ public class PedidosInterfaz extends javax.swing.JFrame {
             return "CENACARNE";
         else if (rb_almuerzo.isSelected())
             return "ALMUERZO";
-        else if (rb_cena.isSelected())
-            return "CENA";
         else
-            return "";
+            return "CENA";
     }
 
-    protected boolean addPedido(){
+    private boolean addPedido(){
         ClienteEntidad cliente = null; ViandaEntidad vianda = null; Date fecha = null; String tipo = null;
-        if (checkCamposCorrectos()){
-            cliente = ClienteLogica.getCliente(idClienteVigente);
-            vianda = ViandasLogica.getVianda(idViandaVigente);
-            fecha = new java.sql.Date(jdate_fecha.getDate().getTime());
-            tipo = makeTipo();
-            PedidoEntidad pedido = new PedidoEntidad(cliente, vianda, fecha, tipo);
-            if (PedidoLogica.addPedido(pedido))
-                JOptionPane.showMessageDialog(null, "Pedido de "+cliente.getNombre()+" agregado con exito");
-            else
-                JOptionPane.showMessageDialog(null, "Error: al intentar agregar el pediodo");
+        if(jdate_fecha.getDate().toString().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El campo fecha es obligatorio");
+            return false;
         }
-        return false;
+        else if (idClienteVigente < 0) {
+            JOptionPane.showMessageDialog(null, "El campo cliente es obligatorio");
+            return false;
+        }
+        else if(idViandaVigente < 0) {
+            JOptionPane.showMessageDialog(null, "El campo vianda es obligatorio");
+            return false;
+        }
+        else if(!rb_almuerzo.isSelected() && !rb_cena.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar si es almuerzo o cena");
+            return false;
+        }
+
+        cliente = ClienteLogica.getCliente(idClienteVigente);
+        vianda = ViandasLogica.getVianda(idViandaVigente);
+        fecha = new java.sql.Date(jdate_fecha.getDate().getTime());
+        tipo = makeTipo();
+
+        PedidoEntidad pedido = new PedidoEntidad(cliente, vianda, fecha, tipo);
+        if (PedidoLogica.addPedido(pedido)) {
+            JOptionPane.showMessageDialog(null, "Pedido de " + cliente.getNombre() + " agregado con exito");
+            return true;
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Error: al intentar agregar el pediodo");
+            return false;
+        }
     }
 
     private void deletePedido() {
@@ -602,10 +617,8 @@ public class PedidosInterfaz extends javax.swing.JFrame {
     }
 
     private void update() {
-        limpiarCampos();
-        llenarTablaClientes();
-        llenarTablaViandas();
-        llenarTablasPedidos();
+        this.dispose();
+        new PedidosInterfaz();
     }
 
 
