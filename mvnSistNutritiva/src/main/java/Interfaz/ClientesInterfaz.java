@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.PatternSyntaxException;
@@ -29,7 +30,6 @@ public class ClientesInterfaz extends javax.swing.JFrame {
         initComponents();
         initComponentsFacu();
         setVisible(true);
-        update();
     }
 
     /**
@@ -301,12 +301,15 @@ public class ClientesInterfaz extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setTitle("Gestion de clientes");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        limpiarCampos();
+        llenarTabla();
+        idVigente = -1;
     }
 
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
-        addCliente();
-        update();
+        if(addCliente()) //si se agrego el cliente, actualizo la interfaz
+            update();
     }//GEN-LAST:event_btn_agregarActionPerformed
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
@@ -320,12 +323,14 @@ public class ClientesInterfaz extends javax.swing.JFrame {
         jt_nombre.setText(jtable_clientes.getValueAt(filaSelec, 1).toString());
         jt_apellido.setText(jtable_clientes.getValueAt(filaSelec, 2).toString());
         jt_dni.setText(jtable_clientes.getValueAt(filaSelec, 3).toString());
-        jt_direccion.setText(jtable_clientes.getValueAt(filaSelec, 4).toString());
+        jt_direccion.setText(jtable_clientes.getValueAt(filaSelec, 6).toString());
         jt_telefono.setText(jtable_clientes.getValueAt(filaSelec, 5).toString());
     }//GEN-LAST:event_jtable_clientesMouseClicked
 
     private void buscadorNombre(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorNombre
         addFilter(jtable_clientes, jt_nombre.getText(), 1);
+//        if(evt.getKeyCode() ==  KeyEvent.VK_SHIFT || evt.getKeyCode() ==  KeyEvent.VK_TAB) todo: implementar el tabulador
+//            jt_apellido.requestFocus();
     }//GEN-LAST:event_buscadorNombre
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
@@ -360,9 +365,8 @@ public class ClientesInterfaz extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void update() {
-        limpiarCampos();
-        llenarTabla();
-        idVigente = -1;
+        this.dispose();
+        new ClientesInterfaz();
     }
 
     private boolean llenarTabla() {
@@ -444,7 +448,7 @@ public class ClientesInterfaz extends javax.swing.JFrame {
     }
 
     public boolean addCliente() {
-        String nombre = jt_nombre.getText(), apellido = "", direccion = "", dni = "", telefono = "", email = "";
+        String nombre = jt_nombre.getText(), apellido = "", direccion = "", dni = "", telefono = "", email = ""; //defino los campos
         if (nombre.isEmpty()) {
             JOptionPane.showMessageDialog(null, "El nombre no puede estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
@@ -455,18 +459,20 @@ public class ClientesInterfaz extends javax.swing.JFrame {
         dni = jt_dni.getText();
         telefono = jt_telefono.getText();
         email = jt_email.getText();
+
         ClienteEntidad cliente = new ClienteEntidad(nombre, apellido, dni, email, telefono, direccion);
+
         if (ClienteLogica.addClient(cliente)) {
             JOptionPane.showMessageDialog(null, "Cliente " + cliente.getNombre() + " agregado con exito");
             return true;
         } else {
-            JOptionPane.showMessageDialog(null, "", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "contactese con el administrador", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
     }
 
     protected boolean updateCliente() {
-        String nombre = jt_nombre.getText(), apellido = "", direccion = "", dni = "", telefono = "", email = "";
+        String nombre = jt_nombre.getText();
         if (nombre.isEmpty()) {
             JOptionPane.showMessageDialog(null, "El nombre no puede estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
@@ -476,15 +482,18 @@ public class ClientesInterfaz extends javax.swing.JFrame {
             return false;
         }
 
-        apellido = jt_apellido.getText();
-        direccion = jt_dni.getText();
-        dni = jt_dni.getText();
-        telefono = jt_telefono.getText();
-        email = jt_email.getText();
+        //Los hardcodeo porque es mas practico que revisar que campos fueron cambiados
+        //Si hay campos vacios se guardan vacios, el metodo getText() ya castea los NullPointerException
+        ClienteEntidad cliente = ClienteLogica.getCliente(idVigente);
+        cliente.setNombre(nombre);
+        cliente.setApellido(jt_apellido.getText());
+        cliente.setDni(jt_dni.getText());
+        cliente.setEmail(jt_email.getText());
+        cliente.setTelefono(jt_telefono.getText());
+        cliente.setDireccion(jt_direccion.getText());
 
-        ClienteEntidad cliente = new ClienteEntidad(nombre, apellido, dni, email, telefono, direccion);
-        if (ClienteLogica.addClient(cliente)) {
-            JOptionPane.showMessageDialog(null, "Cliente " + cliente.getNombre() + " agregado con exito");
+        if (ClienteLogica.updateCliente(cliente)) {
+            JOptionPane.showMessageDialog(null, "Cliente " + cliente.getNombre() + " modificado con exito");
             return true;
         } else {
             JOptionPane.showMessageDialog(null, "", "Error", JOptionPane.ERROR_MESSAGE);

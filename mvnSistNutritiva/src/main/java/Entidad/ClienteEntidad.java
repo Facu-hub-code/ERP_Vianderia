@@ -38,7 +38,7 @@ public class ClienteEntidad {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
-        this.direccion = email;
+        this.email = email;
         this.telefono = telefono;
         this.direccion = direccion;
         anulado = false;

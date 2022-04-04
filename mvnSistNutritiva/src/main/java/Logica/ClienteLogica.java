@@ -2,7 +2,6 @@ package Logica;
 
 import Entidad.ClienteEntidad;
 import Repository.ClienteRepository;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +25,7 @@ public class ClienteLogica {
         return clientes;
     }
 
-    public static boolean modificarCliente(ClienteEntidad cliente) {
+    public static boolean updateCliente(ClienteEntidad cliente) {
         try{
             ClienteRepository clienteRepository = new ClienteRepository();
             return clienteRepository.update(cliente);
