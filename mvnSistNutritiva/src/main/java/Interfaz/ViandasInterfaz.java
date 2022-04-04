@@ -30,9 +30,8 @@ public class ViandasInterfaz extends javax.swing.JFrame {
      */
     public ViandasInterfaz() {
         initComponents();
-        initComponentsFacu();
+        setUp();
         setVisible(true);
-        update();
     }
 
     /**
@@ -211,16 +210,19 @@ public class ViandasInterfaz extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void initComponentsFacu() {
+    private void setUp() {
         getContentPane().setBackground(new Color(49, 28, 28));
         setLocationRelativeTo(null);
         setTitle("Gestion de viandas");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        limpiarCampos();
+        llenarTabla();
+        idVigente = -1;
     }
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
-        addVianda();
-        update();
+        if(addVianda())
+            update();
     }//GEN-LAST:event_btn_agregarActionPerformed
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
@@ -263,8 +265,13 @@ public class ViandasInterfaz extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void updateVianda() {
-        String nombre = ""; double precio = 0.0;
-        if (checkCampos() && idVigente >= 0) {
+        String nombre = ""; double precio = 0.0; //defino las variables a usar
+
+        if (jt_nombre.getText().isEmpty() || jt_precio.getText().isEmpty())
+            JOptionPane.showMessageDialog(null, "Los campos nombre y precio son obligatorios");
+        else if(idVigente < 0)
+            JOptionPane.showMessageDialog(null, "Debe seleccionar alguna vianda");
+        else{
             nombre = jt_nombre.getText();
             precio = Double.valueOf(jt_precio.getText());
             ViandaEntidad vianda = ViandasLogica.getVianda(idVigente);
@@ -273,20 +280,27 @@ public class ViandasInterfaz extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Vianda " + vianda.getNombre() + " modificada con exito");
             else
                 JOptionPane.showMessageDialog(null, "Error: al intentar modificar la vianda");
-        }else
-            JOptionPane.showMessageDialog(null, "Debe seleccionar alguna vianda");
+        }
     }
 
-    private void addVianda() {
-        String nombre = ""; double precio = 0.0;
-        if (checkCampos()) {
+    private boolean addVianda() {
+        String nombre = ""; double precio = 0.0; //defino las variables que voy a usar
+
+        if (jt_nombre.getText().isEmpty() || jt_precio.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Los campos nombre y precio son obligatorios");
+            return false;
+        }else{
             nombre = jt_nombre.getText();
             precio = Double.valueOf(jt_precio.getText());
             ViandaEntidad vianda = new ViandaEntidad(nombre, precio);
-            if (ViandasLogica.addVianda(vianda))
+            if (ViandasLogica.addVianda(vianda)) {
                 JOptionPane.showMessageDialog(null, "Vianda " + vianda.getNombre() + " agregada con exito");
-            else
-                JOptionPane.showMessageDialog(null, "Error: al intentar agregar la vianda");
+                return true;
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Al intentar agregar la vianda", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
         }
     }
 
@@ -302,24 +316,10 @@ public class ViandasInterfaz extends javax.swing.JFrame {
         }
     }
 
-    /**
-     *
-     * @return boolean
-     * @throws NullPointerException cuando falta completar algun campo
-     */
-    private boolean checkCampos() {
-        jt_nombre.getText();
-        jt_precio.getText();
-        if(jt_nombre.getText().equals("") || jt_precio.getText().equals("")) //si algun campo esta vacio
-            return false;
-        else
-            return true;
-    }
 
     private void update() {
-        limpiarCampos();
-        llenarTabla();
-        idVigente = -1;
+        this.dispose();
+        new ViandasInterfaz();
     }
 
     private void llenarTabla() {

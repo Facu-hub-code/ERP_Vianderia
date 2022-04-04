@@ -2,6 +2,7 @@ import Entidad.ClienteEntidad;
 import Interfaz.ClientesInterfaz;
 import Interfaz.LoginInterfaz;
 import Interfaz.SistemaPrincipalInterfaz;
+import Interfaz.ViandasInterfaz;
 import Logica.LoginLogica;
 
 import java.sql.Date;
@@ -15,6 +16,7 @@ public class Main {
 public static void main(String[] args) {
     LoginLogica.validarIngreso("root", "toor");
     new SistemaPrincipalInterfaz();
-    new ClientesInterfaz();
+    //new ClientesInterfaz();
+    new ViandasInterfaz();
 }
 }

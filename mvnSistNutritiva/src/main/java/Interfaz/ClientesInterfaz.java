@@ -313,8 +313,8 @@ public class ClientesInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_agregarActionPerformed
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
-        updateCliente();
-        update();
+        if(updateCliente())
+            update();
     }//GEN-LAST:event_btn_modificarActionPerformed
 
     private void jtable_clientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_clientesMouseClicked
@@ -338,8 +338,8 @@ public class ClientesInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        deleteCliente();
-        update();
+        if(deleteCliente())
+            update();
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
