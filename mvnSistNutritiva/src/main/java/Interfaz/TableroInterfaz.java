@@ -5,40 +5,33 @@
  */
 package Interfaz;
 
-import Entidad.ViandaEntidad;
-import Logica.PedidoLogica;
-import Logica.ViandasLogica;
+import Logica.TableroLogica;
 
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
 import java.awt.Color;
-import java.time.DayOfWeek;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.PatternSyntaxException;
 
 /**
  * @author facul
  * @company FK-SOFT
  */
 public class TableroInterfaz extends javax.swing.JFrame {
-
-    private static int idVigente;
-
     /**
-     * Constructor: - Creates new form GestionClientes
+     * Constructor: - Creates new form TableroInterfaz
      */
     public TableroInterfaz() {
         initComponents();
         initComponentsFacu();
         setVisible(true);
-        escribirLabels();
+        writeLabels();
     }
 
-    private void escribirLabels() {
-        jl_almuerzo.setText("ALMUERZOS:"+PedidoLogica.contarPedidos(DayOfWeek.MONDAY));
+    private void writeLabels() {
+        jl_almuerzos.setText("ALMUERZOS: " + TableroLogica.getCantAlmuerzos());
+        jl_cenas.setText("CENAS: " + TableroLogica.getCantCenas());
+        jl_almuerzo_lunes.setText("LUNES: " + TableroLogica.getAlmuerzosLunes());
+        jl_almuerzo_martes.setText("MARTES: " + TableroLogica.getAlmuerzosMartes());
+        jl_almuerzo_miercoles.setText("MIERCOLES: " + TableroLogica.getAlmuerzosMiercoles());
+        jl_almuerzo_jueves.setText("JUEVES: " + TableroLogica.getAlmuerzosJueves());
+        jl_almuerzo_viernes.setText("VIERNES: " + TableroLogica.getAlmuerzosViernes());
     }
 
     /**
@@ -50,98 +43,280 @@ public class TableroInterfaz extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel3 = new javax.swing.JPanel();
-        jl_cena = new javax.swing.JLabel();
-        jl_titulo7 = new javax.swing.JLabel();
-        jl_titulo8 = new javax.swing.JLabel();
-        jl_cena_lunes = new javax.swing.JLabel();
-        jl_titulo19 = new javax.swing.JLabel();
-        jl_titulo20 = new javax.swing.JLabel();
-        jl_titulo21 = new javax.swing.JLabel();
-        jl_titulo22 = new javax.swing.JLabel();
+        panelSuperior = new javax.swing.JPanel();
+        jl_titulo = new javax.swing.JLabel();
+        panelAlmuerzos = new javax.swing.JPanel();
+        jl_almuerzos = new javax.swing.JLabel();
+        jl_almuerzo_lunes = new javax.swing.JLabel();
+        jl_almuerzo_martes = new javax.swing.JLabel();
+        jl_almuerzo_miercoles = new javax.swing.JLabel();
+        jl_almuerzo_jueves = new javax.swing.JLabel();
+        jl_almuerzo_viernes = new javax.swing.JLabel();
+        jl_almuerzo_carne = new javax.swing.JLabel();
+        jl_almuerzo_pescado = new javax.swing.JLabel();
+        jl_almuerzo_carne_lunes = new javax.swing.JLabel();
+        jl_almuerzo_carne_martes = new javax.swing.JLabel();
+        jl_almuerzo_carne_miercoles = new javax.swing.JLabel();
+        jl_almuerzo_carne_jueves = new javax.swing.JLabel();
+        jl_almuerzo_carne_viernes = new javax.swing.JLabel();
+        jl_almuerzo_pescado_lunes = new javax.swing.JLabel();
+        jl_almuerzo_pescado_martes = new javax.swing.JLabel();
+        jl_almuerzo_pescado_miercoles = new javax.swing.JLabel();
+        jl_almuerzo_pescado_jueves = new javax.swing.JLabel();
+        jl_almuerzo_pescado_viernes = new javax.swing.JLabel();
+        panelCenas = new javax.swing.JPanel();
+        jl_cenas = new javax.swing.JLabel();
+        jl_cenas_lunes = new javax.swing.JLabel();
         jl_cena_martes = new javax.swing.JLabel();
         jl_cena_miercoles = new javax.swing.JLabel();
-        jl_cena_miercoles_carne = new javax.swing.JLabel();
-        jl_cena_miercoles_pescado = new javax.swing.JLabel();
-        jl_titulo27 = new javax.swing.JLabel();
-        jl_titulo28 = new javax.swing.JLabel();
         jl_cena_jueves = new javax.swing.JLabel();
-        jl_titulo30 = new javax.swing.JLabel();
-        jl_titulo31 = new javax.swing.JLabel();
         jl_cena_viernes = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jl_titulo = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jl_almuerzo = new javax.swing.JLabel();
-        jl_titulo5 = new javax.swing.JLabel();
-        jl_titulo6 = new javax.swing.JLabel();
-        jl_almuerzo_pescado_miercoles = new javax.swing.JLabel();
-        jl_almuerzo_carne_viernes = new javax.swing.JLabel();
-        jl_almuerzo_martes = new javax.swing.JLabel();
-        jl_almuerzo_carne_miercoles = new javax.swing.JLabel();
-        jl_almuerzo_pescado_viernes = new javax.swing.JLabel();
-        jl_almuerzo_carne_martes = new javax.swing.JLabel();
-        jl_almuerzo_carne_jueves = new javax.swing.JLabel();
-        jl_almuerzo_jueves = new javax.swing.JLabel();
-        jl_almuerzo_lunes = new javax.swing.JLabel();
-        jl_almuerzo_pescado_martes = new javax.swing.JLabel();
-        jl_almuerzo_pescado_jueves = new javax.swing.JLabel();
-        jl_almuerzo_carne_lunes = new javax.swing.JLabel();
-        jl_almuerzo_miercoles = new javax.swing.JLabel();
-        jl_almuerzo_pescado_lunes = new javax.swing.JLabel();
-        jl_almuerzo_viernes = new javax.swing.JLabel();
+        jl_cenas_carne = new javax.swing.JLabel();
+        jl_cenas_pescado = new javax.swing.JLabel();
+        jl_cenas_carne_lunes = new javax.swing.JLabel();
+        jl_cenas_carne_martes = new javax.swing.JLabel();
+        jl_cenas_carne_miercoles = new javax.swing.JLabel();
+        jl_cenas_carne_jueves = new javax.swing.JLabel();
+        jl_cenas_carne_viernes = new javax.swing.JLabel();
+        jl_cenas_pescado_lunes = new javax.swing.JLabel();
+        jl_cenas_pescado_martes = new javax.swing.JLabel();
+        jl_cenas_pescado_miercoles = new javax.swing.JLabel();
+        jl_cenas_pescado_jueves = new javax.swing.JLabel();
+        jl_cenas_pescado_viernes = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(49, 28, 28));
         setResizable(false);
 
-        jPanel3.setBackground(new java.awt.Color(49, 28, 28));
-        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panelSuperior.setBackground(new java.awt.Color(49, 28, 28));
+        panelSuperior.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jl_cena.setBackground(new java.awt.Color(49, 28, 28));
-        jl_cena.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
-        jl_cena.setForeground(new java.awt.Color(255, 253, 118));
-        jl_cena.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jl_cena.setText("CENA");
-        jl_cena.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jl_titulo.setBackground(new java.awt.Color(49, 28, 28));
+        jl_titulo.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
+        jl_titulo.setForeground(new java.awt.Color(255, 253, 118));
+        jl_titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jl_titulo.setText("TABLERO DE COMIDAS");
+        jl_titulo.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
-        jl_titulo7.setBackground(new java.awt.Color(49, 28, 28));
-        jl_titulo7.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jl_titulo7.setForeground(new java.awt.Color(255, 253, 118));
-        jl_titulo7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_titulo7.setText("PESCADO");
+        javax.swing.GroupLayout panelSuperiorLayout = new javax.swing.GroupLayout(panelSuperior);
+        panelSuperior.setLayout(panelSuperiorLayout);
+        panelSuperiorLayout.setHorizontalGroup(
+            panelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSuperiorLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(295, 295, 295))
+        );
+        panelSuperiorLayout.setVerticalGroup(
+            panelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSuperiorLayout.createSequentialGroup()
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
+        );
 
-        jl_titulo8.setBackground(new java.awt.Color(49, 28, 28));
-        jl_titulo8.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jl_titulo8.setForeground(new java.awt.Color(255, 253, 118));
-        jl_titulo8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_titulo8.setText("CARNE");
+        panelAlmuerzos.setBackground(new java.awt.Color(49, 28, 28));
+        panelAlmuerzos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jl_cena_lunes.setBackground(new java.awt.Color(49, 28, 28));
-        jl_cena_lunes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jl_cena_lunes.setForeground(new java.awt.Color(255, 253, 118));
-        jl_cena_lunes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_cena_lunes.setText("LUNES");
+        jl_almuerzos.setBackground(new java.awt.Color(49, 28, 28));
+        jl_almuerzos.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        jl_almuerzos.setForeground(new java.awt.Color(255, 253, 118));
+        jl_almuerzos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jl_almuerzos.setText("ALMUERZOS");
+        jl_almuerzos.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
-        jl_titulo19.setBackground(new java.awt.Color(49, 28, 28));
-        jl_titulo19.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jl_titulo19.setForeground(new java.awt.Color(255, 253, 118));
-        jl_titulo19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_almuerzo_lunes.setBackground(new java.awt.Color(49, 28, 28));
+        jl_almuerzo_lunes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jl_almuerzo_lunes.setForeground(new java.awt.Color(255, 253, 118));
+        jl_almuerzo_lunes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_almuerzo_lunes.setText("LUNES");
 
-        jl_titulo20.setBackground(new java.awt.Color(49, 28, 28));
-        jl_titulo20.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jl_titulo20.setForeground(new java.awt.Color(255, 253, 118));
-        jl_titulo20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_almuerzo_martes.setBackground(new java.awt.Color(49, 28, 28));
+        jl_almuerzo_martes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jl_almuerzo_martes.setForeground(new java.awt.Color(255, 253, 118));
+        jl_almuerzo_martes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_almuerzo_martes.setText("MARTES");
 
-        jl_titulo21.setBackground(new java.awt.Color(49, 28, 28));
-        jl_titulo21.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jl_titulo21.setForeground(new java.awt.Color(255, 253, 118));
-        jl_titulo21.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_almuerzo_miercoles.setBackground(new java.awt.Color(49, 28, 28));
+        jl_almuerzo_miercoles.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jl_almuerzo_miercoles.setForeground(new java.awt.Color(255, 253, 118));
+        jl_almuerzo_miercoles.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_almuerzo_miercoles.setText("MIERCOLES");
 
-        jl_titulo22.setBackground(new java.awt.Color(49, 28, 28));
-        jl_titulo22.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jl_titulo22.setForeground(new java.awt.Color(255, 253, 118));
-        jl_titulo22.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_almuerzo_jueves.setBackground(new java.awt.Color(49, 28, 28));
+        jl_almuerzo_jueves.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jl_almuerzo_jueves.setForeground(new java.awt.Color(255, 253, 118));
+        jl_almuerzo_jueves.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_almuerzo_jueves.setText("JUEVES");
+
+        jl_almuerzo_viernes.setBackground(new java.awt.Color(49, 28, 28));
+        jl_almuerzo_viernes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jl_almuerzo_viernes.setForeground(new java.awt.Color(255, 253, 118));
+        jl_almuerzo_viernes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_almuerzo_viernes.setText("VIERNES");
+
+        jl_almuerzo_carne.setBackground(new java.awt.Color(49, 28, 28));
+        jl_almuerzo_carne.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jl_almuerzo_carne.setForeground(new java.awt.Color(255, 253, 118));
+        jl_almuerzo_carne.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_almuerzo_carne.setText("CARNE");
+
+        jl_almuerzo_pescado.setBackground(new java.awt.Color(49, 28, 28));
+        jl_almuerzo_pescado.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jl_almuerzo_pescado.setForeground(new java.awt.Color(255, 253, 118));
+        jl_almuerzo_pescado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_almuerzo_pescado.setText("PESCADO");
+
+        jl_almuerzo_carne_lunes.setBackground(new java.awt.Color(49, 28, 28));
+        jl_almuerzo_carne_lunes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jl_almuerzo_carne_lunes.setForeground(new java.awt.Color(255, 253, 118));
+        jl_almuerzo_carne_lunes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        jl_almuerzo_carne_martes.setBackground(new java.awt.Color(49, 28, 28));
+        jl_almuerzo_carne_martes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jl_almuerzo_carne_martes.setForeground(new java.awt.Color(255, 253, 118));
+        jl_almuerzo_carne_martes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        jl_almuerzo_carne_miercoles.setBackground(new java.awt.Color(49, 28, 28));
+        jl_almuerzo_carne_miercoles.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jl_almuerzo_carne_miercoles.setForeground(new java.awt.Color(255, 253, 118));
+        jl_almuerzo_carne_miercoles.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        jl_almuerzo_carne_jueves.setBackground(new java.awt.Color(49, 28, 28));
+        jl_almuerzo_carne_jueves.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jl_almuerzo_carne_jueves.setForeground(new java.awt.Color(255, 253, 118));
+        jl_almuerzo_carne_jueves.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        jl_almuerzo_carne_viernes.setBackground(new java.awt.Color(49, 28, 28));
+        jl_almuerzo_carne_viernes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jl_almuerzo_carne_viernes.setForeground(new java.awt.Color(255, 253, 118));
+        jl_almuerzo_carne_viernes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        jl_almuerzo_pescado_lunes.setBackground(new java.awt.Color(49, 28, 28));
+        jl_almuerzo_pescado_lunes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jl_almuerzo_pescado_lunes.setForeground(new java.awt.Color(255, 253, 118));
+        jl_almuerzo_pescado_lunes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        jl_almuerzo_pescado_martes.setBackground(new java.awt.Color(49, 28, 28));
+        jl_almuerzo_pescado_martes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jl_almuerzo_pescado_martes.setForeground(new java.awt.Color(255, 253, 118));
+        jl_almuerzo_pescado_martes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        jl_almuerzo_pescado_miercoles.setBackground(new java.awt.Color(49, 28, 28));
+        jl_almuerzo_pescado_miercoles.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jl_almuerzo_pescado_miercoles.setForeground(new java.awt.Color(255, 253, 118));
+        jl_almuerzo_pescado_miercoles.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        jl_almuerzo_pescado_jueves.setBackground(new java.awt.Color(49, 28, 28));
+        jl_almuerzo_pescado_jueves.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jl_almuerzo_pescado_jueves.setForeground(new java.awt.Color(255, 253, 118));
+        jl_almuerzo_pescado_jueves.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        jl_almuerzo_pescado_viernes.setBackground(new java.awt.Color(49, 28, 28));
+        jl_almuerzo_pescado_viernes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jl_almuerzo_pescado_viernes.setForeground(new java.awt.Color(255, 253, 118));
+        jl_almuerzo_pescado_viernes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        javax.swing.GroupLayout panelAlmuerzosLayout = new javax.swing.GroupLayout(panelAlmuerzos);
+        panelAlmuerzos.setLayout(panelAlmuerzosLayout);
+        panelAlmuerzosLayout.setHorizontalGroup(
+            panelAlmuerzosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAlmuerzosLayout.createSequentialGroup()
+                .addGroup(panelAlmuerzosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelAlmuerzosLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jl_almuerzos, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelAlmuerzosLayout.createSequentialGroup()
+                        .addGap(144, 144, 144)
+                        .addGroup(panelAlmuerzosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jl_almuerzo_pescado, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_almuerzo_carne, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelAlmuerzosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jl_almuerzo_lunes, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_almuerzo_pescado_lunes, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_almuerzo_carne_lunes, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelAlmuerzosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jl_almuerzo_martes, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_almuerzo_pescado_martes, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_almuerzo_carne_martes, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelAlmuerzosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jl_almuerzo_miercoles, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_almuerzo_pescado_miercoles, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_almuerzo_carne_miercoles, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelAlmuerzosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jl_almuerzo_jueves, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_almuerzo_pescado_jueves, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_almuerzo_carne_jueves, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelAlmuerzosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jl_almuerzo_viernes, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_almuerzo_pescado_viernes, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_almuerzo_carne_viernes, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(105, Short.MAX_VALUE))
+        );
+        panelAlmuerzosLayout.setVerticalGroup(
+            panelAlmuerzosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAlmuerzosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jl_almuerzos, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addGroup(panelAlmuerzosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelAlmuerzosLayout.createSequentialGroup()
+                        .addComponent(jl_almuerzo_viernes)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jl_almuerzo_carne_viernes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jl_almuerzo_pescado_viernes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelAlmuerzosLayout.createSequentialGroup()
+                        .addComponent(jl_almuerzo_jueves)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jl_almuerzo_carne_jueves, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jl_almuerzo_pescado_jueves, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelAlmuerzosLayout.createSequentialGroup()
+                        .addComponent(jl_almuerzo_miercoles)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jl_almuerzo_carne_miercoles, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jl_almuerzo_pescado_miercoles, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelAlmuerzosLayout.createSequentialGroup()
+                        .addComponent(jl_almuerzo_martes)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jl_almuerzo_carne_martes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jl_almuerzo_pescado_martes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelAlmuerzosLayout.createSequentialGroup()
+                        .addComponent(jl_almuerzo_lunes)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jl_almuerzo_carne_lunes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jl_almuerzo_pescado_lunes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelAlmuerzosLayout.createSequentialGroup()
+                        .addComponent(jl_almuerzo_carne)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jl_almuerzo_pescado)))
+                .addContainerGap(80, Short.MAX_VALUE))
+        );
+
+        panelCenas.setBackground(new java.awt.Color(49, 28, 28));
+        panelCenas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jl_cenas.setBackground(new java.awt.Color(49, 28, 28));
+        jl_cenas.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        jl_cenas.setForeground(new java.awt.Color(255, 253, 118));
+        jl_cenas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jl_cenas.setText("CENAS");
+        jl_cenas.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jl_cenas_lunes.setBackground(new java.awt.Color(49, 28, 28));
+        jl_cenas_lunes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jl_cenas_lunes.setForeground(new java.awt.Color(255, 253, 118));
+        jl_cenas_lunes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_cenas_lunes.setText("LUNES");
 
         jl_cena_martes.setBackground(new java.awt.Color(49, 28, 28));
         jl_cena_martes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
@@ -155,41 +330,11 @@ public class TableroInterfaz extends javax.swing.JFrame {
         jl_cena_miercoles.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jl_cena_miercoles.setText("MIERCOLES");
 
-        jl_cena_miercoles_carne.setBackground(new java.awt.Color(49, 28, 28));
-        jl_cena_miercoles_carne.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jl_cena_miercoles_carne.setForeground(new java.awt.Color(255, 253, 118));
-        jl_cena_miercoles_carne.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        jl_cena_miercoles_pescado.setBackground(new java.awt.Color(49, 28, 28));
-        jl_cena_miercoles_pescado.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jl_cena_miercoles_pescado.setForeground(new java.awt.Color(255, 253, 118));
-        jl_cena_miercoles_pescado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        jl_titulo27.setBackground(new java.awt.Color(49, 28, 28));
-        jl_titulo27.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jl_titulo27.setForeground(new java.awt.Color(255, 253, 118));
-        jl_titulo27.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        jl_titulo28.setBackground(new java.awt.Color(49, 28, 28));
-        jl_titulo28.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jl_titulo28.setForeground(new java.awt.Color(255, 253, 118));
-        jl_titulo28.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
         jl_cena_jueves.setBackground(new java.awt.Color(49, 28, 28));
         jl_cena_jueves.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jl_cena_jueves.setForeground(new java.awt.Color(255, 253, 118));
         jl_cena_jueves.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jl_cena_jueves.setText("JUEVES");
-
-        jl_titulo30.setBackground(new java.awt.Color(49, 28, 28));
-        jl_titulo30.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jl_titulo30.setForeground(new java.awt.Color(255, 253, 118));
-        jl_titulo30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        jl_titulo31.setBackground(new java.awt.Color(49, 28, 28));
-        jl_titulo31.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jl_titulo31.setForeground(new java.awt.Color(255, 253, 118));
-        jl_titulo31.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         jl_cena_viernes.setBackground(new java.awt.Color(49, 28, 28));
         jl_cena_viernes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
@@ -197,307 +342,155 @@ public class TableroInterfaz extends javax.swing.JFrame {
         jl_cena_viernes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jl_cena_viernes.setText("VIERNES");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+        jl_cenas_carne.setBackground(new java.awt.Color(49, 28, 28));
+        jl_cenas_carne.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jl_cenas_carne.setForeground(new java.awt.Color(255, 253, 118));
+        jl_cenas_carne.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_cenas_carne.setText("CARNE");
+
+        jl_cenas_pescado.setBackground(new java.awt.Color(49, 28, 28));
+        jl_cenas_pescado.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jl_cenas_pescado.setForeground(new java.awt.Color(255, 253, 118));
+        jl_cenas_pescado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jl_cenas_pescado.setText("PESCADO");
+
+        jl_cenas_carne_lunes.setBackground(new java.awt.Color(49, 28, 28));
+        jl_cenas_carne_lunes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jl_cenas_carne_lunes.setForeground(new java.awt.Color(255, 253, 118));
+        jl_cenas_carne_lunes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        jl_cenas_carne_martes.setBackground(new java.awt.Color(49, 28, 28));
+        jl_cenas_carne_martes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jl_cenas_carne_martes.setForeground(new java.awt.Color(255, 253, 118));
+        jl_cenas_carne_martes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        jl_cenas_carne_miercoles.setBackground(new java.awt.Color(49, 28, 28));
+        jl_cenas_carne_miercoles.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jl_cenas_carne_miercoles.setForeground(new java.awt.Color(255, 253, 118));
+        jl_cenas_carne_miercoles.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        jl_cenas_carne_jueves.setBackground(new java.awt.Color(49, 28, 28));
+        jl_cenas_carne_jueves.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jl_cenas_carne_jueves.setForeground(new java.awt.Color(255, 253, 118));
+        jl_cenas_carne_jueves.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        jl_cenas_carne_viernes.setBackground(new java.awt.Color(49, 28, 28));
+        jl_cenas_carne_viernes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jl_cenas_carne_viernes.setForeground(new java.awt.Color(255, 253, 118));
+        jl_cenas_carne_viernes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        jl_cenas_pescado_lunes.setBackground(new java.awt.Color(49, 28, 28));
+        jl_cenas_pescado_lunes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jl_cenas_pescado_lunes.setForeground(new java.awt.Color(255, 253, 118));
+        jl_cenas_pescado_lunes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        jl_cenas_pescado_martes.setBackground(new java.awt.Color(49, 28, 28));
+        jl_cenas_pescado_martes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jl_cenas_pescado_martes.setForeground(new java.awt.Color(255, 253, 118));
+        jl_cenas_pescado_martes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        jl_cenas_pescado_miercoles.setBackground(new java.awt.Color(49, 28, 28));
+        jl_cenas_pescado_miercoles.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jl_cenas_pescado_miercoles.setForeground(new java.awt.Color(255, 253, 118));
+        jl_cenas_pescado_miercoles.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        jl_cenas_pescado_jueves.setBackground(new java.awt.Color(49, 28, 28));
+        jl_cenas_pescado_jueves.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jl_cenas_pescado_jueves.setForeground(new java.awt.Color(255, 253, 118));
+        jl_cenas_pescado_jueves.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        jl_cenas_pescado_viernes.setBackground(new java.awt.Color(49, 28, 28));
+        jl_cenas_pescado_viernes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jl_cenas_pescado_viernes.setForeground(new java.awt.Color(255, 253, 118));
+        jl_cenas_pescado_viernes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        javax.swing.GroupLayout panelCenasLayout = new javax.swing.GroupLayout(panelCenas);
+        panelCenas.setLayout(panelCenasLayout);
+        panelCenasLayout.setHorizontalGroup(
+            panelCenasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCenasLayout.createSequentialGroup()
+                .addGroup(panelCenasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCenasLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jl_cena, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jl_cenas, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCenasLayout.createSequentialGroup()
                         .addGap(127, 127, 127)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(panelCenasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panelCenasLayout.createSequentialGroup()
                                 .addGap(169, 169, 169)
-                                .addComponent(jl_cena_lunes, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jl_titulo7, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jl_cenas_lunes, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelCenasLayout.createSequentialGroup()
+                                .addComponent(jl_cenas_pescado, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jl_titulo20, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jl_titulo8, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jl_cenas_pescado_lunes, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelCenasLayout.createSequentialGroup()
+                                .addComponent(jl_cenas_carne, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jl_titulo19, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jl_cenas_carne_lunes, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(panelCenasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jl_cena_martes, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_titulo21, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_titulo22, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jl_cenas_pescado_martes, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_cenas_carne_martes, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(panelCenasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jl_cena_miercoles, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_cena_miercoles_pescado, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_cena_miercoles_carne, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jl_cenas_pescado_miercoles, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_cenas_carne_miercoles, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(panelCenasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jl_cena_jueves, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_titulo28, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_titulo27, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jl_cenas_pescado_jueves, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_cenas_carne_jueves, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(panelCenasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jl_cena_viernes, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_titulo30, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_titulo31, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jl_cenas_pescado_viernes, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_cenas_carne_viernes, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(80, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        panelCenasLayout.setVerticalGroup(
+            panelCenasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCenasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jl_cena, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jl_cenas, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(panelCenasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelCenasLayout.createSequentialGroup()
                         .addComponent(jl_cena_viernes)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jl_titulo31, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jl_cenas_carne_viernes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jl_titulo30, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jl_cenas_pescado_viernes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCenasLayout.createSequentialGroup()
                         .addComponent(jl_cena_jueves)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jl_titulo27, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jl_cenas_carne_jueves, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jl_titulo28, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jl_cenas_pescado_jueves, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCenasLayout.createSequentialGroup()
                         .addComponent(jl_cena_miercoles)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jl_cena_miercoles_carne, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jl_cenas_carne_miercoles, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jl_cena_miercoles_pescado, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jl_cenas_pescado_miercoles, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCenasLayout.createSequentialGroup()
                         .addComponent(jl_cena_martes)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jl_titulo22, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jl_cenas_carne_martes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jl_titulo21, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jl_cena_lunes)
+                        .addComponent(jl_cenas_pescado_martes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCenasLayout.createSequentialGroup()
+                        .addComponent(jl_cenas_lunes)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jl_titulo19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_titulo8))
+                        .addGroup(panelCenasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jl_cenas_carne_lunes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_cenas_carne))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jl_titulo7)
-                            .addComponent(jl_titulo20, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(panelCenasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jl_cenas_pescado)
+                            .addComponent(jl_cenas_pescado_lunes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(45, Short.MAX_VALUE))
-        );
-
-        jPanel4.setBackground(new java.awt.Color(49, 28, 28));
-        jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        jl_titulo.setBackground(new java.awt.Color(49, 28, 28));
-        jl_titulo.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
-        jl_titulo.setForeground(new java.awt.Color(255, 253, 118));
-        jl_titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jl_titulo.setText("TABLERO DE COMIDAS");
-        jl_titulo.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(295, 295, 295))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
-                .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
-        );
-
-        jPanel5.setBackground(new java.awt.Color(49, 28, 28));
-        jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        jl_almuerzo.setBackground(new java.awt.Color(49, 28, 28));
-        jl_almuerzo.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
-        jl_almuerzo.setForeground(new java.awt.Color(255, 253, 118));
-        jl_almuerzo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jl_almuerzo.setText("ALMUERZO");
-        jl_almuerzo.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-
-        jl_titulo5.setBackground(new java.awt.Color(49, 28, 28));
-        jl_titulo5.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jl_titulo5.setForeground(new java.awt.Color(255, 253, 118));
-        jl_titulo5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_titulo5.setText("PESCADO");
-
-        jl_titulo6.setBackground(new java.awt.Color(49, 28, 28));
-        jl_titulo6.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jl_titulo6.setForeground(new java.awt.Color(255, 253, 118));
-        jl_titulo6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_titulo6.setText("CARNE");
-
-        jl_almuerzo_pescado_miercoles.setBackground(new java.awt.Color(49, 28, 28));
-        jl_almuerzo_pescado_miercoles.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jl_almuerzo_pescado_miercoles.setForeground(new java.awt.Color(255, 253, 118));
-        jl_almuerzo_pescado_miercoles.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        jl_almuerzo_carne_viernes.setBackground(new java.awt.Color(49, 28, 28));
-        jl_almuerzo_carne_viernes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jl_almuerzo_carne_viernes.setForeground(new java.awt.Color(255, 253, 118));
-        jl_almuerzo_carne_viernes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        jl_almuerzo_martes.setBackground(new java.awt.Color(49, 28, 28));
-        jl_almuerzo_martes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jl_almuerzo_martes.setForeground(new java.awt.Color(255, 253, 118));
-        jl_almuerzo_martes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_almuerzo_martes.setText("MARTES");
-
-        jl_almuerzo_carne_miercoles.setBackground(new java.awt.Color(49, 28, 28));
-        jl_almuerzo_carne_miercoles.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jl_almuerzo_carne_miercoles.setForeground(new java.awt.Color(255, 253, 118));
-        jl_almuerzo_carne_miercoles.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        jl_almuerzo_pescado_viernes.setBackground(new java.awt.Color(49, 28, 28));
-        jl_almuerzo_pescado_viernes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jl_almuerzo_pescado_viernes.setForeground(new java.awt.Color(255, 253, 118));
-        jl_almuerzo_pescado_viernes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        jl_almuerzo_carne_martes.setBackground(new java.awt.Color(49, 28, 28));
-        jl_almuerzo_carne_martes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jl_almuerzo_carne_martes.setForeground(new java.awt.Color(255, 253, 118));
-        jl_almuerzo_carne_martes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        jl_almuerzo_carne_jueves.setBackground(new java.awt.Color(49, 28, 28));
-        jl_almuerzo_carne_jueves.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jl_almuerzo_carne_jueves.setForeground(new java.awt.Color(255, 253, 118));
-        jl_almuerzo_carne_jueves.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        jl_almuerzo_jueves.setBackground(new java.awt.Color(49, 28, 28));
-        jl_almuerzo_jueves.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jl_almuerzo_jueves.setForeground(new java.awt.Color(255, 253, 118));
-        jl_almuerzo_jueves.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_almuerzo_jueves.setText("JUEVES");
-
-        jl_almuerzo_lunes.setBackground(new java.awt.Color(49, 28, 28));
-        jl_almuerzo_lunes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jl_almuerzo_lunes.setForeground(new java.awt.Color(255, 253, 118));
-        jl_almuerzo_lunes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_almuerzo_lunes.setText("LUNES");
-
-        jl_almuerzo_pescado_martes.setBackground(new java.awt.Color(49, 28, 28));
-        jl_almuerzo_pescado_martes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jl_almuerzo_pescado_martes.setForeground(new java.awt.Color(255, 253, 118));
-        jl_almuerzo_pescado_martes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        jl_almuerzo_pescado_jueves.setBackground(new java.awt.Color(49, 28, 28));
-        jl_almuerzo_pescado_jueves.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jl_almuerzo_pescado_jueves.setForeground(new java.awt.Color(255, 253, 118));
-        jl_almuerzo_pescado_jueves.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        jl_almuerzo_carne_lunes.setBackground(new java.awt.Color(49, 28, 28));
-        jl_almuerzo_carne_lunes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jl_almuerzo_carne_lunes.setForeground(new java.awt.Color(255, 253, 118));
-        jl_almuerzo_carne_lunes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        jl_almuerzo_miercoles.setBackground(new java.awt.Color(49, 28, 28));
-        jl_almuerzo_miercoles.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jl_almuerzo_miercoles.setForeground(new java.awt.Color(255, 253, 118));
-        jl_almuerzo_miercoles.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_almuerzo_miercoles.setText("MIERCOLES");
-
-        jl_almuerzo_pescado_lunes.setBackground(new java.awt.Color(49, 28, 28));
-        jl_almuerzo_pescado_lunes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jl_almuerzo_pescado_lunes.setForeground(new java.awt.Color(255, 253, 118));
-        jl_almuerzo_pescado_lunes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        jl_almuerzo_viernes.setBackground(new java.awt.Color(49, 28, 28));
-        jl_almuerzo_viernes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jl_almuerzo_viernes.setForeground(new java.awt.Color(255, 253, 118));
-        jl_almuerzo_viernes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jl_almuerzo_viernes.setText("VIERNES");
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jl_almuerzo, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(144, 144, 144)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jl_titulo5, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_titulo6, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jl_almuerzo_lunes, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_almuerzo_pescado_lunes, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_almuerzo_carne_lunes, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jl_almuerzo_martes, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_almuerzo_pescado_martes, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_almuerzo_carne_martes, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jl_almuerzo_miercoles, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_almuerzo_pescado_miercoles, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_almuerzo_carne_miercoles, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jl_almuerzo_jueves, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_almuerzo_pescado_jueves, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_almuerzo_carne_jueves, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jl_almuerzo_viernes, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_almuerzo_pescado_viernes, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_almuerzo_carne_viernes, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(105, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jl_almuerzo, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jl_almuerzo_viernes)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jl_almuerzo_carne_viernes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jl_almuerzo_pescado_viernes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jl_almuerzo_jueves)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jl_almuerzo_carne_jueves, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jl_almuerzo_pescado_jueves, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jl_almuerzo_miercoles)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jl_almuerzo_carne_miercoles, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jl_almuerzo_pescado_miercoles, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jl_almuerzo_martes)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jl_almuerzo_carne_martes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jl_almuerzo_pescado_martes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jl_almuerzo_lunes)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jl_almuerzo_carne_lunes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jl_almuerzo_pescado_lunes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jl_titulo6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jl_titulo5)))
-                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -507,11 +500,11 @@ public class TableroInterfaz extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelSuperior, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(panelAlmuerzos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panelCenas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -519,11 +512,11 @@ public class TableroInterfaz extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelAlmuerzos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelCenas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -538,10 +531,7 @@ public class TableroInterfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JLabel jl_almuerzo;
+    private javax.swing.JLabel jl_almuerzo_carne;
     private javax.swing.JLabel jl_almuerzo_carne_jueves;
     private javax.swing.JLabel jl_almuerzo_carne_lunes;
     private javax.swing.JLabel jl_almuerzo_carne_martes;
@@ -551,32 +541,35 @@ public class TableroInterfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jl_almuerzo_lunes;
     private javax.swing.JLabel jl_almuerzo_martes;
     private javax.swing.JLabel jl_almuerzo_miercoles;
+    private javax.swing.JLabel jl_almuerzo_pescado;
     private javax.swing.JLabel jl_almuerzo_pescado_jueves;
     private javax.swing.JLabel jl_almuerzo_pescado_lunes;
     private javax.swing.JLabel jl_almuerzo_pescado_martes;
     private javax.swing.JLabel jl_almuerzo_pescado_miercoles;
     private javax.swing.JLabel jl_almuerzo_pescado_viernes;
     private javax.swing.JLabel jl_almuerzo_viernes;
-    private javax.swing.JLabel jl_cena;
+    private javax.swing.JLabel jl_almuerzos;
     private javax.swing.JLabel jl_cena_jueves;
-    private javax.swing.JLabel jl_cena_lunes;
     private javax.swing.JLabel jl_cena_martes;
     private javax.swing.JLabel jl_cena_miercoles;
-    private javax.swing.JLabel jl_cena_miercoles_carne;
-    private javax.swing.JLabel jl_cena_miercoles_pescado;
     private javax.swing.JLabel jl_cena_viernes;
+    private javax.swing.JLabel jl_cenas;
+    private javax.swing.JLabel jl_cenas_carne;
+    private javax.swing.JLabel jl_cenas_carne_jueves;
+    private javax.swing.JLabel jl_cenas_carne_lunes;
+    private javax.swing.JLabel jl_cenas_carne_martes;
+    private javax.swing.JLabel jl_cenas_carne_miercoles;
+    private javax.swing.JLabel jl_cenas_carne_viernes;
+    private javax.swing.JLabel jl_cenas_lunes;
+    private javax.swing.JLabel jl_cenas_pescado;
+    private javax.swing.JLabel jl_cenas_pescado_jueves;
+    private javax.swing.JLabel jl_cenas_pescado_lunes;
+    private javax.swing.JLabel jl_cenas_pescado_martes;
+    private javax.swing.JLabel jl_cenas_pescado_miercoles;
+    private javax.swing.JLabel jl_cenas_pescado_viernes;
     private javax.swing.JLabel jl_titulo;
-    private javax.swing.JLabel jl_titulo19;
-    private javax.swing.JLabel jl_titulo20;
-    private javax.swing.JLabel jl_titulo21;
-    private javax.swing.JLabel jl_titulo22;
-    private javax.swing.JLabel jl_titulo27;
-    private javax.swing.JLabel jl_titulo28;
-    private javax.swing.JLabel jl_titulo30;
-    private javax.swing.JLabel jl_titulo31;
-    private javax.swing.JLabel jl_titulo5;
-    private javax.swing.JLabel jl_titulo6;
-    private javax.swing.JLabel jl_titulo7;
-    private javax.swing.JLabel jl_titulo8;
+    private javax.swing.JPanel panelAlmuerzos;
+    private javax.swing.JPanel panelCenas;
+    private javax.swing.JPanel panelSuperior;
     // End of variables declaration//GEN-END:variables
 }

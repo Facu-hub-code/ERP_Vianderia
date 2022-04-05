@@ -91,4 +91,29 @@ public class PedidoRepository implements Repository<PedidoEntidad> {
             HibernateUtil.closeSession();
         }
     }
+
+    public int getCantAlmuerzos() {
+        Session sesion = HibernateUtil.getSession();
+        try {
+            CriteriaBuilder cb = sesion.getCriteriaBuilder();
+            CriteriaQuery<PedidoEntidad> cq = cb.createQuery(PedidoEntidad.class);
+            Root<PedidoEntidad> rootEntry = cq.from(PedidoEntidad.class);
+            CriteriaQuery<PedidoEntidad> all = cq.select(rootEntry);
+
+            Predicate tipo1 = cb.equal(rootEntry.get("tipo"), "ALMUERZO");
+            Predicate tipo2 = cb.equal(rootEntry.get("tipo"), "ALMUERZOCARNE");
+            Predicate tipo3 = cb.equal(rootEntry.get("tipo"), "ALMUERZOPESCADO");
+            Predicate almuerzo = cb.and(tipo1, tipo2, tipo3);
+            cq.where(almuerzo);
+
+            TypedQuery<PedidoEntidad> allQuery = sesion.createQuery(all);
+            ArrayList<PedidoEntidad> pedidos = (ArrayList<PedidoEntidad>) allQuery.getResultList();
+            return pedidos.size();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        } finally {
+            HibernateUtil.closeSession();
+        }
+    }
 }

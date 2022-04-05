@@ -1,6 +1,7 @@
 package Logica;
 
 import Entidad.PedidoEntidad;
+import Interfaz.TableroInterfaz;
 import Repository.PedidoRepository;
 
 import java.time.DayOfWeek;
@@ -57,10 +58,7 @@ public class PedidoLogica {
         return pedidoRepository.findbyID(id);
     }
 
-    public static int contarPedidos(DayOfWeek day) {
-        ArrayList<PedidoEntidad> pedidos = getPedidos(day);
-        return pedidos.size();
-    }
+
 
     public static boolean delete(PedidoEntidad pedido) {
         try{

@@ -12,9 +12,10 @@ public class Main {
 //    }
 public static void main(String[] args) {
     LoginLogica.validarIngreso("root", "toor");
-    new SistemaPrincipalInterfaz();
+    //new SistemaPrincipalInterfaz();
     //new ClientesInterfaz();
     //new ViandasInterfaz();
-    new PedidosInterfaz();
+    //new PedidosInterfaz();
+    new TableroInterfaz();
 }
 }
