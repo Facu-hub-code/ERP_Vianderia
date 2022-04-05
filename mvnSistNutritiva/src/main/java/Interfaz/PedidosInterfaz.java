@@ -437,8 +437,8 @@ public class PedidosInterfaz extends javax.swing.JFrame {
 
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        deletePedido();
-        update();
+        if(deletePedido())
+            update();
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void buscadorClientes(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorClientes
@@ -604,15 +604,21 @@ public class PedidosInterfaz extends javax.swing.JFrame {
         }
     }
 
-    private void deletePedido() {
-        if(idPedidoVigente < 0)
+    private boolean deletePedido() {
+        if(idPedidoVigente < 0) { //Si no se selecciono un pedido
             JOptionPane.showMessageDialog(null, "Debe seleccionar un pedido para eliminar");
-        else{
-            PedidoEntidad pedido = PedidoLogica.getPedido(idPedidoVigente);
-            if(PedidoLogica.delete(pedido))
-                JOptionPane.showMessageDialog(null, "Pedido eliminado con exito");
-            else
-                JOptionPane.showMessageDialog(null, "Error: al intentar eliminar el pedido");
+            return false;
+        }
+
+        PedidoEntidad pedido = PedidoLogica.getPedido(idPedidoVigente);
+
+        if(PedidoLogica.delete(pedido)) {
+            JOptionPane.showMessageDialog(null, "Pedido eliminado con exito");
+            return true;
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Error: al intentar eliminar el pedido");
+            return false;
         }
     }
 
