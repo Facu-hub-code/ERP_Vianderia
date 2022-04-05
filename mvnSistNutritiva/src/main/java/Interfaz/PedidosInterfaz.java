@@ -464,7 +464,7 @@ public class PedidosInterfaz extends javax.swing.JFrame {
     private void jtable_lunesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_lunesMouseClicked
         int filaSelec = jtable_lunes.rowAtPoint(evt.getPoint());
         jt_cliente.setText(jtable_lunes.getValueAt(filaSelec, 1).toString());
-        jt_vianda.setText(jtable_viandas.getValueAt(filaSelec, 2).toString());
+        jt_vianda.setText(jtable_lunes.getValueAt(filaSelec, 2).toString());
         idPedidoVigente = (int) jtable_lunes.getValueAt(filaSelec, 0);
     }//GEN-LAST:event_jtable_lunesMouseClicked
 
@@ -735,7 +735,7 @@ public class PedidosInterfaz extends javax.swing.JFrame {
             };
         }
 
-        jtable_lunes.setModel(new DefaultTableModel(objetosArray, columnas) {
+        jtable_miercoles.setModel(new DefaultTableModel(objetosArray, columnas) {
             Class[] types = tipos;
 
             @Override
@@ -773,7 +773,7 @@ public class PedidosInterfaz extends javax.swing.JFrame {
             };
         }
 
-        jtable_lunes.setModel(new DefaultTableModel(objetosArray, columnas) {
+        jtable_martes.setModel(new DefaultTableModel(objetosArray, columnas) {
             Class[] types = tipos;
 
             @Override
