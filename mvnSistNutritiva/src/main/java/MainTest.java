@@ -14,7 +14,7 @@ public class MainTest {
 //        new LoginInterfaz();
 //    }
 public static void main(String[] args) {
-    LoginLogica.validarIngreso("root", "toor");
+    LoginLogica.validarIngreso("root", "Facu4813");
     //new SistemaPrincipalInterfaz();
     //new ClientesInterfaz();
     //new ViandasInterfaz();

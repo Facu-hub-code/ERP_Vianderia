@@ -92,7 +92,7 @@ public class PedidoRepository implements Repository<PedidoEntidad> {
         }
     }
 
-    public int getCantAlmuerzos() {
+    public ArrayList<PedidoEntidad> findAlmuerzos() {
         Session sesion = HibernateUtil.getSession();
         try {
             CriteriaBuilder cb = sesion.getCriteriaBuilder();
@@ -100,18 +100,45 @@ public class PedidoRepository implements Repository<PedidoEntidad> {
             Root<PedidoEntidad> rootEntry = cq.from(PedidoEntidad.class);
             CriteriaQuery<PedidoEntidad> all = cq.select(rootEntry);
 
+            Predicate anulado = cb.equal(rootEntry.get("anulado"), false);
             Predicate tipo1 = cb.equal(rootEntry.get("tipo"), "ALMUERZO");
             Predicate tipo2 = cb.equal(rootEntry.get("tipo"), "ALMUERZOCARNE");
             Predicate tipo3 = cb.equal(rootEntry.get("tipo"), "ALMUERZOPESCADO");
-            Predicate almuerzo = cb.and(tipo1, tipo2, tipo3);
+            Predicate almuerzo = cb.and(tipo1, tipo2, tipo3, anulado);
             cq.where(almuerzo);
 
             TypedQuery<PedidoEntidad> allQuery = sesion.createQuery(all);
             ArrayList<PedidoEntidad> pedidos = (ArrayList<PedidoEntidad>) allQuery.getResultList();
-            return pedidos.size();
+            return pedidos;
         } catch (Exception e) {
             e.printStackTrace();
-            return 0;
+            return null;
+        } finally {
+            HibernateUtil.closeSession();
+        }
+    }
+
+    public ArrayList<PedidoEntidad> findCenas() {
+        Session sesion = HibernateUtil.getSession();
+        try {
+            CriteriaBuilder cb = sesion.getCriteriaBuilder();
+            CriteriaQuery<PedidoEntidad> cq = cb.createQuery(PedidoEntidad.class);
+            Root<PedidoEntidad> rootEntry = cq.from(PedidoEntidad.class);
+            CriteriaQuery<PedidoEntidad> all = cq.select(rootEntry);
+
+            Predicate anulado = cb.equal(rootEntry.get("anulado"), false);
+            Predicate tipo1 = cb.equal(rootEntry.get("tipo"), "CENA");
+            Predicate tipo2 = cb.equal(rootEntry.get("tipo"), "CENACARNE");
+            Predicate tipo3 = cb.equal(rootEntry.get("tipo"), "CENAPESCADO");
+            Predicate almuerzo = cb.and(tipo1, tipo2, tipo3, anulado);
+            cq.where(almuerzo);
+
+            TypedQuery<PedidoEntidad> allQuery = sesion.createQuery(all);
+            ArrayList<PedidoEntidad> pedidos = (ArrayList<PedidoEntidad>) allQuery.getResultList();
+            return pedidos;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         } finally {
             HibernateUtil.closeSession();
         }

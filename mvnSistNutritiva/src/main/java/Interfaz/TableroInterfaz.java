@@ -21,17 +21,8 @@ public class TableroInterfaz extends javax.swing.JFrame {
         initComponents();
         initComponentsFacu();
         setVisible(true);
-        writeLabels();
-    }
-
-    private void writeLabels() {
-        jl_almuerzos.setText("ALMUERZOS: " + TableroLogica.getCantAlmuerzos());
-        jl_cenas.setText("CENAS: " + TableroLogica.getCantCenas());
-        jl_almuerzo_lunes.setText("LUNES: " + TableroLogica.getAlmuerzosLunes());
-        jl_almuerzo_martes.setText("MARTES: " + TableroLogica.getAlmuerzosMartes());
-        jl_almuerzo_miercoles.setText("MIERCOLES: " + TableroLogica.getAlmuerzosMiercoles());
-        jl_almuerzo_jueves.setText("JUEVES: " + TableroLogica.getAlmuerzosJueves());
-        jl_almuerzo_viernes.setText("VIERNES: " + TableroLogica.getAlmuerzosViernes());
+        TableroLogica.writeDinners(this);
+        TableroLogica.writeLunches(this);
     }
 
     /**
@@ -572,4 +563,50 @@ public class TableroInterfaz extends javax.swing.JFrame {
     private javax.swing.JPanel panelCenas;
     private javax.swing.JPanel panelSuperior;
     // End of variables declaration//GEN-END:variables
+
+    public void setAlmuerzosLunes(int cant){
+        jl_almuerzo_lunes.setText("Lunes: " + cant);
+    }
+    public void setAlmuerzosMartes(int cant){
+        jl_almuerzo_martes.setText("Martes: " + cant);
+    }
+    public void setAlmuerzosMiercoles(int cant){
+        jl_almuerzo_miercoles.setText("Miercoles: " + cant);
+    }
+    public void setAlmuerzosJueves(int cant){
+        jl_almuerzo_jueves.setText("Jueves: " + cant);
+    }
+    public void setAlmuerzosViernes(int cant){
+        jl_almuerzo_viernes.setText("Viernes: " + cant);
+    }
+    public void setAlmuerzoMiercolesCarne(int cant){
+        jl_almuerzo_carne_miercoles.setText(""+cant);
+    }
+    public void setAlmuerzoMiercolesPescado(int cant){
+        jl_almuerzo_pescado_miercoles.setText(""+cant);
+    }
+
+    public void setCenasLunes(int cant){
+        jl_cenas_lunes.setText("Lunes: " + cant);
+    }
+    public void setCenasMartes(int cant){
+        jl_cena_martes.setText("Martes: " + cant);
+    }
+    public void setCenasMiercoles(int cant){
+        jl_cena_miercoles.setText("Miercoles: " + cant);
+    }
+    public void setCenasJueves(int cant){
+        jl_cena_jueves.setText("Jueves: " + cant);
+    }
+    public void setCenasViernes(int cant){
+        jl_cena_viernes.setText("Viernes: " + cant);
+    }
+    public void setCenaMiercolesCarne(int cant){
+        jl_cenas_carne_miercoles.setText(""+cant);
+    }
+    public void setCenasMiercolesPescado(int cant){
+        jl_cenas_pescado_miercoles.setText(""+cant);
+    }
+
+
 }
