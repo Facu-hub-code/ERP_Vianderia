@@ -104,8 +104,9 @@ public class PedidoRepository implements Repository<PedidoEntidad> {
             Predicate tipo1 = cb.equal(rootEntry.get("tipo"), "ALMUERZO");
             Predicate tipo2 = cb.equal(rootEntry.get("tipo"), "ALMUERZOCARNE");
             Predicate tipo3 = cb.equal(rootEntry.get("tipo"), "ALMUERZOPESCADO");
-            Predicate almuerzo = cb.and(tipo1, tipo2, tipo3, anulado);
-            cq.where(almuerzo);
+            Predicate almuerzo = cb.or(tipo1, tipo2, tipo3);
+            Predicate predicate = cb.and(almuerzo, anulado);
+            cq.where(predicate);
 
             TypedQuery<PedidoEntidad> allQuery = sesion.createQuery(all);
             ArrayList<PedidoEntidad> pedidos = (ArrayList<PedidoEntidad>) allQuery.getResultList();
@@ -130,8 +131,9 @@ public class PedidoRepository implements Repository<PedidoEntidad> {
             Predicate tipo1 = cb.equal(rootEntry.get("tipo"), "CENA");
             Predicate tipo2 = cb.equal(rootEntry.get("tipo"), "CENACARNE");
             Predicate tipo3 = cb.equal(rootEntry.get("tipo"), "CENAPESCADO");
-            Predicate almuerzo = cb.and(tipo1, tipo2, tipo3, anulado);
-            cq.where(almuerzo);
+            Predicate cena = cb.or(tipo1, tipo2, tipo3);
+            Predicate predicate = cb.and(cena, anulado);
+            cq.where(predicate);
 
             TypedQuery<PedidoEntidad> allQuery = sesion.createQuery(all);
             ArrayList<PedidoEntidad> pedidos = (ArrayList<PedidoEntidad>) allQuery.getResultList();
