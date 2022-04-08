@@ -36,7 +36,6 @@ public class VentasInterfaz extends javax.swing.JFrame {
         initComponents();
         setUp();
         setVisible(true);
-        update();
     }
 
     /**
@@ -255,22 +254,29 @@ public class VentasInterfaz extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setTitle("Gestion de ventas");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        limpiarCampos();
+        llenarTablaPedidos();
+        llenarTablaVentas();
+        idPedidoVigente = -1;
+        idVentaVigente = -1;
     }
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
         if(idPedidoVigente < 0)
             JOptionPane.showMessageDialog(null, "Primero debe seleccionar un pedido para vender");
-        else
-            addVenta(idPedidoVigente);
-        update();
+        else {
+            if(addVenta(idPedidoVigente))
+                update();
+        }
     }//GEN-LAST:event_btn_agregarActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         if(idVentaVigente < 0)
             JOptionPane.showMessageDialog(null, "Priero debe seleccionar una venta a cancelar");
-        else
-            deleteVenta(idVentaVigente);
-        update();
+        else {
+            if(deleteVenta(idVentaVigente))
+                update();
+        }
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void buscadorClientes(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorClientes
@@ -323,12 +329,13 @@ public class VentasInterfaz extends javax.swing.JFrame {
 
     /**
      * Se anula el movimiento correspondiente, se desanula el pedido, se cancela la venta
-     * @param idVentaVigente
      * @param idPedidoVigente
+     * @param idVentaVigente
+     * @return
      */
-    public void deleteVenta(int idVentaVigente){
+    public boolean deleteVenta(int idVentaVigente){ //todo: revisar
         VentaEntidad venta = VentasLogica.getVenta(idVentaVigente);
-        venta.getMovimiento().setAnulado(true);
+        VentasLogica.delete(venta);
         CajaLogica.updateMovimiento(venta.getMovimiento());
         venta.getPedido().setAnulado(false);
         PedidoLogica.updatePedido(venta.getPedido());
@@ -337,37 +344,44 @@ public class VentasInterfaz extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Venta eliminada con exito");
         else
             JOptionPane.showMessageDialog(null, "Error: al intentar eliminar la venta");
+        return false;
     }
 
 
     /**
-     * Se anula el pedido vigente, se agrega una entidad movimiento a la caja y se agrega una entidad venta al final
+     * Se anula el pedido vigente, se agrega una entidad movimiento a la caja y por ultimo se agrega una entidad venta.
+     * @return
      */
-    public void addVenta(int idPedidoVigente){
+    public boolean addVenta(int idPedidoVigente){
         Date hoy = new java.sql.Date(new java.util.Date().getTime());
-        PedidoEntidad pedido = PedidoLogica.getPedido(idPedidoVigente); pedido.setAnulado(true);
-        PedidoLogica.updatePedido(pedido);
-        String observacion = crearObservacion(pedido);
+        PedidoEntidad pedido = PedidoLogica.getPedido(idPedidoVigente);
         boolean efectivo = (jcbBox_modoPago.getSelectedItem().toString().equals("Efectivo"));
-        MovimientoEntidad movimiento = new MovimientoEntidad(pedido.getVianda().getPrecio(), observacion, hoy, efectivo);
-        CajaLogica.addMovimiento(movimiento);
+        MovimientoEntidad movimiento = new MovimientoEntidad(pedido.getVianda().getPrecio(), null, hoy, efectivo);
+        try{
+            CajaLogica.addMovimiento(movimiento);
+            PedidoLogica.anularPedido(pedido);
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
         VentaEntidad venta = new VentaEntidad(hoy, pedido, movimiento);
-        if(VentasLogica.addVenta(venta))
+        if(VentasLogica.addVenta(venta)) {
             JOptionPane.showMessageDialog(null, "Venta agregada con exito");
-        else
+            return true;
+        }
+        else{
             JOptionPane.showMessageDialog(null, "Error: al intentar agregar la venta");
+            return false;
+        }
     }
 
-    private String crearObservacion(PedidoEntidad pedido) {
+    private String crearObservacion(PedidoEntidad pedido) { //todo: implementar para addVenta
         return null;
     }
 
     private void update() {
-        limpiarCampos();
-        llenarTablaPedidos();
-        llenarTablaVentas();
-        idPedidoVigente = -1;
-        idVentaVigente = -1;
+        this.dispose();
+        new VentasInterfaz();
     }
 
     private void limpiarCampos() {
@@ -397,7 +411,7 @@ public class VentasInterfaz extends javax.swing.JFrame {
                     ventas.get(i).getPedido().getVianda().getNombre(),
                     ventas.get(i).getFecha(),
                     tipo,
-                    //ventas.get(i).getMonto()
+                    ventas.get(i).getPedido().getVianda().getPrecio()
             };
         }
 
