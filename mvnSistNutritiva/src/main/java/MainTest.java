@@ -1,6 +1,7 @@
 import Entidad.ClienteEntidad;
 import Entidad.PedidoEntidad;
 import Entidad.ViandaEntidad;
+import Interfaz.SistemaPrincipalInterfaz;
 import Interfaz.TableroInterfaz;
 import Interfaz.VentasInterfaz;
 import Logica.ClienteLogica;
@@ -20,6 +21,8 @@ public class MainTest {
                "faculoren7@gmail.com", "3585098671", "Hipolito Yrigoyen 485");
         ClienteLogica.addClient(cliente);
         PedidoEntidad lunes = new PedidoEntidad(cliente, vianda, Date.valueOf("2022-04-11"), "CENA");
+        PedidoLogica.addPedido(lunes);
+        new SistemaPrincipalInterfaz();
         new VentasInterfaz();
     }
 }
