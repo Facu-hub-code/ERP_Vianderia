@@ -7,7 +7,6 @@ package Interfaz;
 
 import Entidad.MovimientoEntidad;
 import Logica.CajaLogica;
-import Logica.VentasLogica;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -30,7 +29,6 @@ public class CajaInterfaz extends javax.swing.JFrame {
         initComponents();
         setUp();
         setVisible(true);
-        update();
     }
 
     /**
@@ -282,29 +280,32 @@ public class CajaInterfaz extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setTitle("Gestion de caja");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        llenarTablaMovimientos();
+        escribirSaldos();
+        limpiarCampos();
     }
 
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
-        addMovimiento();
-        update();
+        if(addMovimiento())
+            update();
     }//GEN-LAST:event_btn_agregarActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        deleteMovimiento();
-        update();
+        if(deleteMovimiento())
+            update();
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void jcbBox_modoPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbBox_modoPagoActionPerformed
-        //addFilter(jtable_movimientosDiarios, jcbBox_modoPago.getSelectedItem().toString(), 3);
+        //addFilter(jtable_movimientosDiarios, jcbBox_modoPago.getSelectedItem().toString(), 3); //todo: hacer
     }//GEN-LAST:event_jcbBox_modoPagoActionPerformed
 
     private void btn_buscarPorFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarPorFechaActionPerformed
-        // TODO add your handling code here:
+        // TODO hacer
     }//GEN-LAST:event_btn_buscarPorFechaActionPerformed
 
     private void jtble_movimientosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtble_movimientosMouseClicked
-        int filaSelec = jtble_movimientos.getSelectedRow();
+        int filaSelec = jtble_movimientos.getSelectedRow(); //todo: revisar index
         jt_monto.setText(jtble_movimientos.getValueAt(filaSelec, 1).toString());
         idMovmientoVigente = (int) jtble_movimientos.getValueAt(filaSelec, 0);
     }//GEN-LAST:event_jtble_movimientosMouseClicked
@@ -329,18 +330,19 @@ public class CajaInterfaz extends javax.swing.JFrame {
     private javax.swing.JTable jtble_movimientos;
     // End of variables declaration//GEN-END:variables
 
-    private void deleteMovimiento() {
+    private boolean deleteMovimiento() { //todo: revisar
         if (idMovmientoVigente < 0)
             JOptionPane.showMessageDialog(null, "Debe seleccionar un movimiento");
         else{
-            if(CajaLogica.deleteMovimiento(CajaLogica.getMovimiento(idMovmientoVigente)))
+            if(CajaLogica.anularMovimiento(CajaLogica.getMovimiento(idMovmientoVigente)))
                 JOptionPane.showMessageDialog(null, "Movimiento eliminado con exito");
             else
                 JOptionPane.showMessageDialog(null, "Error: al intentar eliminar el movimiento");
         }
+        return false;
     }
 
-    private void addMovimiento() {
+    private boolean addMovimiento() { //todo: revisar
         if(jt_monto.equals(""))
             JOptionPane.showMessageDialog(null, "Debe especificar un monto");
         else{
@@ -355,12 +357,12 @@ public class CajaInterfaz extends javax.swing.JFrame {
             else
                 JOptionPane.showMessageDialog(null, "Error: al intentar agregar el movimiento");
         }
+        return false;
     }
 
     private void update() {
-        llenarTablaMovimientos();
-        escribirSaldos();
-        limpiarCampos();
+        this.dispose();
+        new CajaInterfaz();
     }
 
     private void escribirSaldos() {
@@ -376,7 +378,7 @@ public class CajaInterfaz extends javax.swing.JFrame {
         jt_observaciones.setText("");
     }
 
-    private void llenarTablaMovimientos() {
+    private void llenarTablaMovimientos() { //todo: revisar
         String[] columnas = new String[]{"ID", "Monto", "Observacion", "Fecha", "Efectivo"};
         Class[] tipos = {Integer.class, Double.class, String.class, Date.class, Boolean.class};
 

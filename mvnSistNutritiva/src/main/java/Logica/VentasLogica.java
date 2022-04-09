@@ -41,10 +41,15 @@ public class VentasLogica {
         return ventasRepository.findbyID(idVentaVigente);
     }
 
-    public static void delete(VentaEntidad venta) {
-        venta.setAnulado(true);
-        VentasRepository ventasRepository = new VentasRepository();
-        ventasRepository.update(venta);
+    public static boolean delete(VentaEntidad venta) {
+        try {
+            venta.setAnulado(true);
+            VentasRepository ventasRepository = new VentasRepository();
+            ventasRepository.update(venta);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 
 }

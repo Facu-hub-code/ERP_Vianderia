@@ -333,20 +333,24 @@ public class VentasInterfaz extends javax.swing.JFrame {
      * @param idVentaVigente
      * @return
      */
-    public boolean deleteVenta(int idVentaVigente){ //todo: revisar
+    public boolean deleteVenta(int idVentaVigente){
         VentaEntidad venta = VentasLogica.getVenta(idVentaVigente);
-        VentasLogica.delete(venta);
-        CajaLogica.updateMovimiento(venta.getMovimiento());
-        venta.getPedido().setAnulado(false);
-        PedidoLogica.updatePedido(venta.getPedido());
-        venta.setAnulado(true);
-        if(VentasLogica.updateVenta(venta))
-            JOptionPane.showMessageDialog(null, "Venta eliminada con exito");
-        else
-            JOptionPane.showMessageDialog(null, "Error: al intentar eliminar la venta");
-        return false;
-    }
+        try{
+            CajaLogica.anularMovimiento(venta.getMovimiento());
+            PedidoLogica.habilitarPedido(venta.getPedido());
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
 
+        if(VentasLogica.delete(venta)) {
+            JOptionPane.showMessageDialog(null, "Venta eliminada con exito");
+            return true;
+        }else{
+            JOptionPane.showMessageDialog(null, "Error: al intentar eliminar la venta");
+            return false;
+        }
+    }
 
     /**
      * Se anula el pedido vigente, se agrega una entidad movimiento a la caja y por ultimo se agrega una entidad venta.

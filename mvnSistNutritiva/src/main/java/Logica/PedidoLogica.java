@@ -82,4 +82,15 @@ public class PedidoLogica {
             return false;
         }
     }
+
+    public static boolean habilitarPedido(PedidoEntidad pedido) {
+        try {
+            pedido.setAnulado(false);
+            PedidoRepository pedidoRepository = new PedidoRepository();
+            return pedidoRepository.update(pedido);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

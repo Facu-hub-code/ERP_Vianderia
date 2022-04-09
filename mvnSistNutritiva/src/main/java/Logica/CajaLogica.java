@@ -40,7 +40,7 @@ public class CajaLogica {
         return movimiento;
     }
 
-    public static boolean deleteMovimiento(MovimientoEntidad movimientoEntidad) {
+    public static boolean anularMovimiento(MovimientoEntidad movimientoEntidad) {
         try{
             movimientoEntidad.setAnulado(true);
             CajaRepository cajaRepository = new CajaRepository();
