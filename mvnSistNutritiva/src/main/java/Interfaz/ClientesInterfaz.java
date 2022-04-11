@@ -323,6 +323,7 @@ public class ClientesInterfaz extends javax.swing.JFrame {
         jt_nombre.setText(jtable_clientes.getValueAt(filaSelec, 1).toString());
         jt_apellido.setText(jtable_clientes.getValueAt(filaSelec, 2).toString());
         jt_dni.setText(jtable_clientes.getValueAt(filaSelec, 3).toString());
+        jt_email.setText(jtable_clientes.getValueAt(filaSelec, 4).toString());
         jt_direccion.setText(jtable_clientes.getValueAt(filaSelec, 6).toString());
         jt_telefono.setText(jtable_clientes.getValueAt(filaSelec, 5).toString());
     }//GEN-LAST:event_jtable_clientesMouseClicked

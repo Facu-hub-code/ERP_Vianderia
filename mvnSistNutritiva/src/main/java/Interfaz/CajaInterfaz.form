@@ -76,7 +76,8 @@
                   </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jScrollPane_general" min="-2" pref="965" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="jl_total" min="-2" pref="200" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -84,7 +85,6 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jl_banco" min="-2" pref="200" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jScrollPane_general" min="-2" pref="965" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="22" max="32767" attributes="0"/>
           </Group>
@@ -124,15 +124,15 @@
                   <Component id="jScrollPane_general" alignment="1" min="-2" pref="469" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btn_eliminar" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btn_eliminar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
                       <Component id="jl_total" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                       <Component id="jl_efectivo" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                       <Component id="jl_banco" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

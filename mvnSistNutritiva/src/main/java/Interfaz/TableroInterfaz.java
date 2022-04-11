@@ -83,7 +83,7 @@ public class TableroInterfaz extends javax.swing.JFrame {
         panelSuperior.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jl_titulo.setBackground(new java.awt.Color(49, 28, 28));
-        jl_titulo.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
+        jl_titulo.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
         jl_titulo.setForeground(new java.awt.Color(255, 253, 118));
         jl_titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jl_titulo.setText("TABLERO DE COMIDAS");
@@ -96,14 +96,14 @@ public class TableroInterfaz extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSuperiorLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(295, 295, 295))
+                .addGap(294, 294, 294))
         );
         panelSuperiorLayout.setVerticalGroup(
             panelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSuperiorLayout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
+            .addGroup(panelSuperiorLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
                 .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         panelAlmuerzos.setBackground(new java.awt.Color(49, 28, 28));
