@@ -242,8 +242,7 @@ public class ViandasInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_buscadorNombre
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        deleteVianda();
-        update();
+        if(deleteVianda()) update();
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
@@ -265,14 +264,18 @@ public class ViandasInterfaz extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private boolean updateVianda() {
-        if (jt_nombre.getText().isEmpty() || jt_precio.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Los campos nombre y precio son obligatorios");
+        if (jt_nombre.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo nombre es obligatorio");
+            return false;
+        }else if(jt_precio.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo precio es obligatorio");
             return false;
         }
         else if(idVigente < 0) {
-            JOptionPane.showMessageDialog(null, "Debe seleccionar alguna vianda");
+            JOptionPane.showMessageDialog(null, "Debe seleccionar alguna vianda para modificar");
             return false;
         }
+
         ViandaEntidad vianda = ViandasLogica.getVianda(idVigente);
         vianda.setNombre(jt_nombre.getText());
         vianda.setPrecio(Double.valueOf(jt_precio.getText()));
@@ -287,16 +290,15 @@ public class ViandasInterfaz extends javax.swing.JFrame {
     }
 
     private boolean addVianda() {
-        String nombre = ""; double precio = 0.0; //defino las variables que voy a usar
-
-        if (jt_nombre.getText().isEmpty() || jt_precio.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Los campos nombre y precio son obligatorios");
+        if (jt_nombre.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El nombre es obligatorio");
+            return false;
+        }else if(jt_precio.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El precio es obligatorio");
             return false;
         }
-        nombre = jt_nombre.getText();
-        precio = Double.valueOf(jt_precio.getText());
 
-        ViandaEntidad vianda = new ViandaEntidad(nombre, precio);
+        ViandaEntidad vianda = new ViandaEntidad(jt_nombre.getText(), Double.valueOf(jt_precio.getText()));
 
         if (ViandasLogica.addVianda(vianda)) {
             JOptionPane.showMessageDialog(null, "Vianda " + vianda.getNombre() + " agregada con exito");
@@ -308,6 +310,11 @@ public class ViandasInterfaz extends javax.swing.JFrame {
         }
     }
 
+    private void update() {
+        this.dispose();
+        new ViandasInterfaz();
+    }
+
     private boolean deleteVianda() {
         if(idVigente < 0){
             JOptionPane.showMessageDialog(null, "Debe seleccionar alguna vianda");
@@ -315,19 +322,13 @@ public class ViandasInterfaz extends javax.swing.JFrame {
         }
         ViandaEntidad vianda = ViandasLogica.getVianda(idVigente);
         if(ViandasLogica.delete(vianda)) {
-            JOptionPane.showMessageDialog(null, "Vianda " + vianda.getNombre() + " eliminada con exito");
+            JOptionPane.showMessageDialog(null, "Vianda: " + vianda.getNombre() + " eliminada con exito");
             return true;
         }
-        else {
+        else{
             JOptionPane.showMessageDialog(null, "Error: al intentar eliminar la vianda");
             return false;
         }
-    }
-
-
-    private void update() {
-        this.dispose();
-        new ViandasInterfaz();
     }
 
     private void llenarTabla() {

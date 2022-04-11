@@ -41,9 +41,9 @@ public class ViandasLogica {
 
     public static boolean delete(ViandaEntidad vianda) {
         try{
-            //vianda.setAnulado(true);
+            vianda.setAnulado(true);
             ViandasRepository viandasRepository = new ViandasRepository();
-            return viandasRepository.delete(vianda);
+            return viandasRepository.update(vianda);
         }catch (Exception e){
             e.printStackTrace();
             return false;

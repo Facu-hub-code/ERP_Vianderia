@@ -1,5 +1,6 @@
 package Repository;
 
+import Entidad.ClienteEntidad;
 import Entidad.ViandaEntidad;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -62,13 +63,13 @@ public class ViandasRepository implements Repository<ViandaEntidad>{
             CriteriaQuery<ViandaEntidad> cq = cb.createQuery(ViandaEntidad.class);
             Root<ViandaEntidad> rootEntry = cq.from(ViandaEntidad.class);
             CriteriaQuery<ViandaEntidad> all = cq.select(rootEntry);
-            TypedQuery<ViandaEntidad> allQuery = sesion.createQuery(all);
 
-            Predicate anulada = cb.equal(rootEntry.get("anulado"), false);
+            Predicate anulado = cb.equal(rootEntry.get("anulado"), false);
             Predicate identificacion = cb.equal(rootEntry.get("id"), id);
-            Predicate predicate = cb.and(anulada, identificacion);
+            Predicate predicate = cb.and(anulado, identificacion);
             cq.where(predicate);
 
+            TypedQuery<ViandaEntidad> allQuery = sesion.createQuery(all);
             ArrayList<ViandaEntidad> viandas = (ArrayList<ViandaEntidad>) allQuery.getResultList();
             return viandas.get(0);
         } catch (Exception e) {
@@ -94,22 +95,5 @@ public class ViandasRepository implements Repository<ViandaEntidad>{
         } finally {
             HibernateUtil.closeSession();
         }
-    }
-
-    public boolean delete(ViandaEntidad viandaEntidad){
-        Session session = HibernateUtil.getSession();
-        Transaction transaction = session.beginTransaction();
-        try{
-            session.delete(viandaEntidad);
-            transaction.commit();
-            return true;
-        }catch (Exception e){
-            if (transaction != null) transaction.rollback();
-            e.printStackTrace();
-            return false;
-        }finally {
-            HibernateUtil.closeSession();
-        }
-
     }
 }
