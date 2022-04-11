@@ -6,13 +6,21 @@
 package Interfaz;
 
 import Entidad.MovimientoEntidad;
+import Entidad.VentaEntidad;
 import Logica.CajaLogica;
+import Logica.VentasLogica;
+import Repository.VentasRepository;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import java.awt.Color;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.PatternSyntaxException;
 
 /**
  * @company FK-SOFT
@@ -297,15 +305,23 @@ public class CajaInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void jcbBox_modoPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbBox_modoPagoActionPerformed
-        //addFilter(jtable_movimientosDiarios, jcbBox_modoPago.getSelectedItem().toString(), 3); //todo: hacer
+        //No es la forma correcta de mapear pero anda
+        boolean flag = jcbBox_modoPago.getSelectedItem().toString().equals("Efectivo");
+        String flagString = "";
+        if(flag)
+            flagString = "true";
+        else
+            flagString = "false";
+        addFilter(jtble_movimientos, flagString, 4);
     }//GEN-LAST:event_jcbBox_modoPagoActionPerformed
 
     private void btn_buscarPorFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarPorFechaActionPerformed
-        // TODO hacer
+        Date fecha = new Date(jdate_fecha.getDate().getTime());
+        addFilter(jtble_movimientos, fecha.toString(), 3);
     }//GEN-LAST:event_btn_buscarPorFechaActionPerformed
 
     private void jtble_movimientosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtble_movimientosMouseClicked
-        int filaSelec = jtble_movimientos.getSelectedRow(); //todo: revisar index
+        int filaSelec = jtble_movimientos.getSelectedRow();
         jt_monto.setText(jtble_movimientos.getValueAt(filaSelec, 1).toString());
         idMovmientoVigente = (int) jtble_movimientos.getValueAt(filaSelec, 0);
     }//GEN-LAST:event_jtble_movimientosMouseClicked
@@ -330,34 +346,90 @@ public class CajaInterfaz extends javax.swing.JFrame {
     private javax.swing.JTable jtble_movimientos;
     // End of variables declaration//GEN-END:variables
 
-    private boolean deleteMovimiento() { //todo: revisar
-        if (idMovmientoVigente < 0)
-            JOptionPane.showMessageDialog(null, "Debe seleccionar un movimiento");
-        else{
-            if(CajaLogica.anularMovimiento(CajaLogica.getMovimiento(idMovmientoVigente)))
-                JOptionPane.showMessageDialog(null, "Movimiento eliminado con exito");
-            else
-                JOptionPane.showMessageDialog(null, "Error: al intentar eliminar el movimiento");
+    public void addFilter(JTable tbl, String txt, Integer SearchColumnIndex) {
+
+        DefaultTableModel model = (DefaultTableModel) tbl.getModel();
+
+        final TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        tbl.setRowSorter(sorter);
+        if (txt.length() == 0) {
+            sortearFecha();
+        } else {
+            try {
+                sorter.setRowFilter(RowFilter.regexFilter("(?i)" + txt, SearchColumnIndex));
+            } catch (PatternSyntaxException pse) {
+                System.out.println("Bad regex pattern");
+            }
         }
-        return false;
     }
 
-    private boolean addMovimiento() { //todo: revisar
-        if(jt_monto.equals(""))
-            JOptionPane.showMessageDialog(null, "Debe especificar un monto");
-        else{
-            boolean efectivo = (jcbBox_modoPago.getSelectedItem().equals("Efectivo"));
-            MovimientoEntidad movimientoEntidad = new MovimientoEntidad(
-                    Double.valueOf(jt_monto.getText()), //monto
-                    jt_observaciones.getText(), new java.sql.Date(new java.util.Date().getTime()), //fecha
-                    efectivo //booleano efectivo
-            );
-            if(CajaLogica.addMovimiento(movimientoEntidad))
-                JOptionPane.showMessageDialog(null, "Movimiento agregado con exito");
-            else
-                JOptionPane.showMessageDialog(null, "Error: al intentar agregar el movimiento");
+    private void setDefaultSorter(JTable tabla, int columna, SortOrder sortOrder) {
+        TableRowSorter<TableModel> sorter = new TableRowSorter<>(tabla.getModel());
+        tabla.setRowSorter(sorter);
+        List<RowSorter.SortKey> sortKeys = new ArrayList<>();
+        sortKeys.add(new RowSorter.SortKey(columna, sortOrder));
+
+        sorter.setSortKeys(sortKeys);
+        sorter.sort();
+    }
+
+    public void sortearFecha() {
+        setDefaultSorter(jtble_movimientos, 1, SortOrder.DESCENDING); //revisar columna
+    }
+
+    private boolean deleteMovimiento() {
+        if (idMovmientoVigente < 0) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un movimiento");
+            return false;
         }
-        return false;
+        if(checkLinkWithVentas(idMovmientoVigente)){
+            JOptionPane.showMessageDialog(null, "Este movimiento esta asociado a una venta");
+            return false;
+        }
+        if(CajaLogica.anularMovimiento(CajaLogica.getMovimiento(idMovmientoVigente))) {
+            JOptionPane.showMessageDialog(null, "Movimiento elimnado con exito");
+            return true;
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Error: al intentar eliminar el movimiento");
+            return false;
+        }
+    }
+
+    /**
+     * Si no se encuentra ninguna venta, no hay link del movimiento sobre la venta
+     * @param idMovmiento
+     * @return true if the link exist.
+     */
+    private boolean checkLinkWithVentas(int idMovmiento) {
+        VentasRepository ventasRepository = new VentasRepository();
+        if(ventasRepository.finbyMovimiento(CajaLogica.getMovimiento(idMovmiento)).equals(null))
+            return false;
+        else
+            return true;
+    }
+
+    private boolean addMovimiento() {
+        if(jt_monto.equals("")) {
+            JOptionPane.showMessageDialog(null, "Debe especificar un monto");
+            return false;
+        }
+
+        MovimientoEntidad movimientoEntidad = new MovimientoEntidad(
+                Double.valueOf(jt_monto.getText()),
+                jt_observaciones.getText(),
+                java.sql.Date.valueOf(LocalDate.now()),
+                jcbBox_modoPago.getSelectedItem().equals("Efectivo")
+        );
+
+        if(CajaLogica.addMovimiento(movimientoEntidad)) {
+            JOptionPane.showMessageDialog(null, "Movimiento agregado con exito");
+            return true;
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Error: al intentar agregar el movimiento");
+            return false;
+        }
     }
 
     private void update() {
@@ -378,7 +450,7 @@ public class CajaInterfaz extends javax.swing.JFrame {
         jt_observaciones.setText("");
     }
 
-    private void llenarTablaMovimientos() { //todo: revisar
+    private void llenarTablaMovimientos() {
         String[] columnas = new String[]{"ID", "Monto", "Observacion", "Fecha", "Efectivo"};
         Class[] tipos = {Integer.class, Double.class, String.class, Date.class, Boolean.class};
 
