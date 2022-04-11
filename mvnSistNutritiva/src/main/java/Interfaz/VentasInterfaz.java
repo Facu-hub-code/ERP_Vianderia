@@ -296,17 +296,12 @@ public class VentasInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_jtable_ventasMouseClicked
 
     private void btn_buscarPorFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarPorFechaActionPerformed
-        JOptionPane.showMessageDialog(null, "Esta funcionalidad aun no esta testeada");
-//        System.out.println(jdate_fecha.toString());
-//        System.out.println(jdate_fecha.getDateFormatString());
-//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
-//        simpleDateFormat.format(jdate_fecha.getDate());
-//        addFilter(jtable_pedidos, jdate_fecha.getDate().toString(),1);
-//        addFilter(jtable_ventas, jdate_fecha.getDateFormatString(), 3);
+        Date fecha = new Date(jdate_fecha.getDate().getTime());
+        addFilter(jtable_ventas, fecha.toString(), 3);
     }//GEN-LAST:event_btn_buscarPorFechaActionPerformed
 
     private void jcbBox_modoPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbBox_modoPagoActionPerformed
-        //addFilter(jtable_movimientosDiarios, jcbBox_modoPago.getSelectedItem().toString(), 3);
+        //addFilter(jtable_ventas, jcbBox_modoPago.getSelectedItem().toString(), 3);
     }//GEN-LAST:event_jcbBox_modoPagoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -377,10 +372,6 @@ public class VentasInterfaz extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error: al intentar agregar la venta");
             return false;
         }
-    }
-
-    private String crearObservacion(PedidoEntidad pedido) { //todo: implementar para addVenta
-        return null;
     }
 
     private void update() {

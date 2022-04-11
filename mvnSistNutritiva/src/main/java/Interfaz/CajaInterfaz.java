@@ -441,7 +441,7 @@ public class CajaInterfaz extends javax.swing.JFrame {
         double efectivo = CajaLogica.getSaldoEfectivo(), banco = CajaLogica.getSaldoBanco();
         jl_banco.setText("Banco: " + banco);
         jl_efectivo.setText("Efectivo: " + efectivo);
-        jl_total.setText("Total: " + efectivo + banco);
+        jl_total.setText("Total: " + (efectivo+banco));
     }
 
     private void limpiarCampos() {

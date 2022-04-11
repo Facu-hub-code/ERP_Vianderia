@@ -10,6 +10,6 @@ public class MainTest {
     public static void main(String[] args) {
         LoginLogica.validarIngreso("root", "toor");
 
-        new ViandasInterfaz();
+        new SistemaPrincipalInterfaz();
     }
 }

@@ -280,7 +280,7 @@ public class ViandasInterfaz extends javax.swing.JFrame {
         vianda.setNombre(jt_nombre.getText());
         vianda.setPrecio(Double.valueOf(jt_precio.getText()));
         if (ViandasLogica.updateVianda(vianda)) {
-            JOptionPane.showMessageDialog(null, "Vianda " + vianda.getNombre() + " modificada con exito");
+            JOptionPane.showMessageDialog(null, "Vianda: " + vianda.getNombre() + " modificada con exito");
             return true;
         }
         else {
@@ -301,7 +301,7 @@ public class ViandasInterfaz extends javax.swing.JFrame {
         ViandaEntidad vianda = new ViandaEntidad(jt_nombre.getText(), Double.valueOf(jt_precio.getText()));
 
         if (ViandasLogica.addVianda(vianda)) {
-            JOptionPane.showMessageDialog(null, "Vianda " + vianda.getNombre() + " agregada con exito");
+            JOptionPane.showMessageDialog(null, "Vianda: " + vianda.getNombre() + " agregada con exito");
             return true;
         }
         else {

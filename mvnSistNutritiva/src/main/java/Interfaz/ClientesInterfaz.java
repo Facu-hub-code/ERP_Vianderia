@@ -330,8 +330,6 @@ public class ClientesInterfaz extends javax.swing.JFrame {
 
     private void buscadorNombre(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorNombre
         addFilter(jtable_clientes, jt_nombre.getText(), 1);
-//        if(evt.getKeyCode() ==  KeyEvent.VK_SHIFT || evt.getKeyCode() ==  KeyEvent.VK_TAB) todo: implementar el tabulador
-//            jt_apellido.requestFocus();
     }//GEN-LAST:event_buscadorNombre
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
