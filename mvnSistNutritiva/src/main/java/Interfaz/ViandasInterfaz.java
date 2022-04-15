@@ -5,11 +5,7 @@
  */
 package Interfaz;
 
-import Entidad.ClienteEntidad;
 import Entidad.ViandaEntidad;
-import Hibernate.ClienteRepository;
-import Hibernate.ViandasRepository;
-import Logica.ClienteLogica;
 import Logica.ViandasLogica;
 
 import javax.swing.*;
@@ -34,9 +30,8 @@ public class ViandasInterfaz extends javax.swing.JFrame {
      */
     public ViandasInterfaz() {
         initComponents();
-        initComponentsFacu();
+        setUp();
         setVisible(true);
-        actualizar();
     }
 
     /**
@@ -53,6 +48,7 @@ public class ViandasInterfaz extends javax.swing.JFrame {
         jl_precio = new javax.swing.JLabel();
         jt_nombre = new javax.swing.JTextField();
         jt_precio = new javax.swing.JTextField();
+        btn_actualizar = new javax.swing.JButton();
         btn_agregar = new javax.swing.JButton();
         btn_modificar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
@@ -99,6 +95,16 @@ public class ViandasInterfaz extends javax.swing.JFrame {
         jt_precio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jt_precio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
 
+        btn_actualizar.setBackground(new java.awt.Color(255, 253, 118));
+        btn_actualizar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btn_actualizar.setText("Actualizar");
+        btn_actualizar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_actualizarActionPerformed(evt);
+            }
+        });
+
         btn_agregar.setBackground(new java.awt.Color(255, 253, 118));
         btn_agregar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btn_agregar.setText("Agregar");
@@ -130,15 +136,15 @@ public class ViandasInterfaz extends javax.swing.JFrame {
         });
 
         jtable_viandas.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][]{
-                        {},
-                        {},
-                        {},
-                        {}
-                },
-                new String[]{
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
 
-                }
+            }
         ));
         jtable_viandas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -150,76 +156,84 @@ public class ViandasInterfaz extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(btn_agregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(jl_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(jl_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                        .addComponent(jt_precio, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                                                        .addComponent(jt_nombre, javax.swing.GroupLayout.Alignment.TRAILING)))
-                                        .addComponent(btn_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btn_eliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(18, 18, 18)
-                                .addComponent(jscrollpane_general, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE)
-                                .addContainerGap())
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(59, 59, 59)
-                                .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_agregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jl_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jt_precio, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                            .addComponent(jt_nombre, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addComponent(btn_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_eliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_actualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jscrollpane_general, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(jt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(jl_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(jt_precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(jl_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(btn_agregar)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(btn_modificar)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(btn_eliminar))
-                                        .addComponent(jscrollpane_general, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE))
-                                .addGap(22, 22, 22))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jt_precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_actualizar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_agregar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_modificar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_eliminar))
+                    .addComponent(jscrollpane_general, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE))
+                .addGap(22, 22, 22))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void initComponentsFacu() {
+    private void setUp() {
         getContentPane().setBackground(new Color(49, 28, 28));
         setLocationRelativeTo(null);
         setTitle("Gestion de viandas");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        limpiarCampos();
+        llenarTabla();
+        idVigente = -1;
     }
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
-        agregarVianda();
+        if(addVianda())
+            update();
     }//GEN-LAST:event_btn_agregarActionPerformed
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
-        modificarVianda();
+        if(updateVianda())
+            update();
     }//GEN-LAST:event_btn_modificarActionPerformed
 
     private void jtable_viandasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_viandasMouseClicked
         int filaSelec = jtable_viandas.rowAtPoint(evt.getPoint());
         jt_nombre.setText(jtable_viandas.getValueAt(filaSelec, 1).toString());
-        jt_precio.setText("$ "+jtable_viandas.getValueAt(filaSelec, 2).toString());
+        jt_precio.setText(jtable_viandas.getValueAt(filaSelec, 2).toString());
         idVigente = (int) jtable_viandas.getValueAt(filaSelec, 0);
     }//GEN-LAST:event_jtable_viandasMouseClicked
 
@@ -228,10 +242,15 @@ public class ViandasInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_buscadorNombre
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        // TODO: agregar bit de eliminado
+        if(deleteVianda()) update();
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
+    private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
+        update();
+    }//GEN-LAST:event_btn_actualizarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_actualizar;
     private javax.swing.JButton btn_agregar;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_modificar;
@@ -244,56 +263,72 @@ public class ViandasInterfaz extends javax.swing.JFrame {
     private javax.swing.JTable jtable_viandas;
     // End of variables declaration//GEN-END:variables
 
-    private void modificarVianda() {
-        String nombre = "";
-        double precio = 0.0;
-        if (checkCampos()) {
-            nombre = jt_nombre.getText();
-            precio = Double.valueOf(jt_precio.getText());
-            ViandaEntidad vianda = new ViandaEntidad(nombre, precio);
-            boolean flag = ViandasLogica.modificarVianda(vianda);
-            if (flag)
-                JOptionPane.showMessageDialog(null, "Vianda " + vianda.getNombre() + " agregada con exito");
-            else
-                JOptionPane.showMessageDialog(null, "Error: al intentar agregar la vianda");
+    private boolean updateVianda() {
+        if (jt_nombre.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo nombre es obligatorio");
+            return false;
+        }else if(jt_precio.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo precio es obligatorio");
+            return false;
         }
-    }
-
-    private void agregarVianda() {
-        String nombre = "";
-        double precio = 0.0;
-        if (checkCampos()) {
-            nombre = jt_nombre.getText();
-            precio = Double.valueOf(jt_precio.getText());
-            ViandaEntidad vianda = new ViandaEntidad(nombre, precio);
-            boolean flag = ViandasLogica.agregarVianda(vianda);
-            if (flag)
-                JOptionPane.showMessageDialog(null, "Vianda " + vianda.getNombre() + " agregada con exito");
-            else
-                JOptionPane.showMessageDialog(null, "Error: al intentar agregar la vianda");
+        else if(idVigente < 0) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar alguna vianda para modificar");
+            return false;
         }
-    }
 
-    /**
-     *
-     * @return boolean
-     * @throws NullPointerException cuando falta completar algun campo
-     */
-    private boolean checkCampos() { //todo: probar metodo
-        try{
-            jt_nombre.getText();
-            jt_precio.getText();
-            if(jl_nombre.getText().equals("") || jt_precio.getText().equals(""))
-                return false;
+        ViandaEntidad vianda = ViandasLogica.getVianda(idVigente);
+        vianda.setNombre(jt_nombre.getText());
+        vianda.setPrecio(Double.valueOf(jt_precio.getText()));
+        if (ViandasLogica.updateVianda(vianda)) {
+            JOptionPane.showMessageDialog(null, "Vianda: " + vianda.getNombre() + " modificada con exito");
             return true;
-        }catch (NullPointerException e){
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Error: al intentar modificar la vianda");
             return false;
         }
     }
 
-    private void actualizar() {
-        llenarTabla();
-        limpiarCampos();
+    private boolean addVianda() {
+        if (jt_nombre.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El nombre es obligatorio");
+            return false;
+        }else if(jt_precio.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El precio es obligatorio");
+            return false;
+        }
+
+        ViandaEntidad vianda = new ViandaEntidad(jt_nombre.getText(), Double.valueOf(jt_precio.getText()));
+
+        if (ViandasLogica.addVianda(vianda)) {
+            JOptionPane.showMessageDialog(null, "Vianda: " + vianda.getNombre() + " agregada con exito");
+            return true;
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Al intentar agregar la vianda", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
+
+    private void update() {
+        this.dispose();
+        new ViandasInterfaz();
+    }
+
+    private boolean deleteVianda() {
+        if(idVigente < 0){
+            JOptionPane.showMessageDialog(null, "Debe seleccionar alguna vianda");
+            return false;
+        }
+        ViandaEntidad vianda = ViandasLogica.getVianda(idVigente);
+        if(ViandasLogica.delete(vianda)) {
+            JOptionPane.showMessageDialog(null, "Vianda: " + vianda.getNombre() + " eliminada con exito");
+            return true;
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Error: al intentar eliminar la vianda");
+            return false;
+        }
     }
 
     private void llenarTabla() {

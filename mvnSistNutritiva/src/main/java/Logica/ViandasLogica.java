@@ -1,31 +1,27 @@
 package Logica;
 
-import Entidad.ClienteEntidad;
 import Entidad.ViandaEntidad;
-import Hibernate.ClienteRepository;
-import Hibernate.ViandasRepository;
-import Interfaz.ViandasInterfaz;
+import Repository.ViandasRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ViandasLogica {
-    public static boolean agregarVianda(ViandaEntidad vianda) {
+
+    public static boolean addVianda(ViandaEntidad vianda) {
         try{
             ViandasRepository viandasRepository = new ViandasRepository();
-            viandasRepository.save(vianda);
-            return true;
+            return viandasRepository.save(vianda);
         }catch (Exception e){
             e.printStackTrace();
             return false;
         }
     }
 
-    public static boolean modificarVianda(ViandaEntidad vianda) {
+    public static boolean updateVianda(ViandaEntidad vianda) {
         try{
             ViandasRepository viandasRepository = new ViandasRepository();
-            viandasRepository.update(vianda);
-            return true;
+            return viandasRepository.update(vianda);
         }catch (Exception e){
             e.printStackTrace();
             return false;
@@ -35,13 +31,22 @@ public class ViandasLogica {
     public static ArrayList<ViandaEntidad> getViandas() {
         ViandasRepository viandasRepository = new ViandasRepository();
         List<ViandaEntidad> viandasList = viandasRepository.findAll();
-        ArrayList<ViandaEntidad> viandas = new ArrayList<>(viandasList);
-        return viandas;
+        return new ArrayList<>(viandasList);
     }
 
     public static ViandaEntidad getVianda(int id) {
         ViandasRepository viandasRepository = new ViandasRepository();
-        ViandaEntidad vianda = viandasRepository.findbyID(id);
-        return vianda;
+        return viandasRepository.findbyID(id);
+    }
+
+    public static boolean delete(ViandaEntidad vianda) {
+        try{
+            vianda.setAnulado(true);
+            ViandasRepository viandasRepository = new ViandasRepository();
+            return viandasRepository.update(vianda);
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
 }

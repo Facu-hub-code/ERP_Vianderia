@@ -1,7 +1,8 @@
 package Logica;
 
 import Entidad.PedidoEntidad;
-import Hibernate.PedidoRepository;
+import Interfaz.TableroInterfaz;
+import Repository.PedidoRepository;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -9,22 +10,20 @@ import java.util.*;
 
 public class PedidoLogica {
 
-    public static boolean agregarPedido(PedidoEntidad pedido) {
+    public static boolean addPedido(PedidoEntidad pedido) {
         try {
             PedidoRepository pedidoRepository = new PedidoRepository();
-            pedidoRepository.save(pedido);
-            return true;
+            return pedidoRepository.save(pedido);
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
     }
 
-    public static boolean modificarPedido(PedidoEntidad pedido) {
+    public static boolean updatePedido(PedidoEntidad pedido) {
         try {
             PedidoRepository pedidoRepository = new PedidoRepository();
-            pedidoRepository.update(pedido);
-            return true;
+            return pedidoRepository.update(pedido);
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -39,44 +38,59 @@ public class PedidoLogica {
 
         for (PedidoEntidad pedido : pedidos) {
             LocalDate diaPedido =
-                    LocalDate.of(pedido.getFecha().getYear() + 1900 //no se porque el metodo le resta 1900
-                            , pedido.getFecha().getMonth() + 1 //no se porque le resta 1
+                    LocalDate.of(pedido.getFecha().getYear() + 1900 //por algun motivo el metodo le resta 1900
+                            , pedido.getFecha().getMonth() + 1 //por algun motivo le resta 1
                             , pedido.getFecha().getDate());
-            if (diaPedido.getDayOfWeek() == day) {
+            if (diaPedido.getDayOfWeek() == day)
                 pedidosDia.add(pedido);
-            }
         }
         return pedidosDia;
     }
 
     public static ArrayList<PedidoEntidad> getPedidos() {
-        PedidoRepository repo = new PedidoRepository();
-        List<PedidoEntidad> pedidoList = repo.findAll(); //guardo todos los pedidos
-        ArrayList<PedidoEntidad> pedidos = new ArrayList<>(pedidoList); //casteo Array
-        return pedidos;
+        PedidoRepository pedidoRepository = new PedidoRepository();
+        List<PedidoEntidad> pedidoList = pedidoRepository.findAll();
+        return new ArrayList<>(pedidoList);
     }
 
     public static PedidoEntidad getPedido(int id) {
         PedidoRepository pedidoRepository = new PedidoRepository();
-        PedidoEntidad pedido = pedidoRepository.findbyID(id);
-        return pedido;
+        return pedidoRepository.findbyID(id);
     }
 
-    public static boolean eliminarPedido(int idPedidoVigente) {
-        try {
-            PedidoRepository pedidoRepository = new PedidoRepository();
-            PedidoEntidad pedido = pedidoRepository.findbyID(idPedidoVigente);
+
+
+    public static boolean delete(PedidoEntidad pedido) {
+        try{
             pedido.setAnulado(true);
+            PedidoRepository pedidoRepository = new PedidoRepository();
             pedidoRepository.update(pedido);
             return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean anularPedido(PedidoEntidad pedido) {
+        try {
+            pedido.setAnulado(true);
+            PedidoRepository pedidoRepository = new PedidoRepository();
+            return pedidoRepository.update(pedido);
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
     }
 
-    public static int contarPedidos(DayOfWeek day) {
-        ArrayList<PedidoEntidad> pedidos = getPedidos(day);
-        return pedidos.size();
+    public static boolean habilitarPedido(PedidoEntidad pedido) {
+        try {
+            pedido.setAnulado(false);
+            PedidoRepository pedidoRepository = new PedidoRepository();
+            return pedidoRepository.update(pedido);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

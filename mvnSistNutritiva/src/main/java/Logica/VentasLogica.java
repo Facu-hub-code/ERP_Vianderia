@@ -1,13 +1,10 @@
 package Logica;
 
-import Entidad.PedidoEntidad;
 import Entidad.VentaEntidad;
-import Hibernate.PedidoRepository;
-import Hibernate.VentasRepository;
+import Repository.VentasRepository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 public class VentasLogica {
     public static ArrayList<VentaEntidad> getVentas() {
@@ -17,7 +14,7 @@ public class VentasLogica {
         return ventas;
     }
 
-    public static boolean modificarVenta(VentaEntidad venta) {
+    public static boolean updateVenta(VentaEntidad venta) {
         try {
             VentasRepository ventasRepository = new VentasRepository();
             ventasRepository.update(venta);
@@ -28,7 +25,7 @@ public class VentasLogica {
         }
     }
 
-    public static boolean agregar(VentaEntidad venta) {
+    public static boolean addVenta(VentaEntidad venta) {
         try {
             VentasRepository ventasRepository = new VentasRepository();
             ventasRepository.save(venta);
@@ -38,4 +35,21 @@ public class VentasLogica {
             return false;
         }
     }
+
+    public static VentaEntidad getVenta(int idVentaVigente) {
+        VentasRepository ventasRepository = new VentasRepository();
+        return ventasRepository.findbyID(idVentaVigente);
+    }
+
+    public static boolean delete(VentaEntidad venta) {
+        try {
+            venta.setAnulado(true);
+            VentasRepository ventasRepository = new VentasRepository();
+            ventasRepository.update(venta);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
 }

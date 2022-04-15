@@ -5,6 +5,7 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "ventas", indexes = {
+        @Index(name = "fk_ventas_movimientos1_idx", columnList = "movimientos_idmovimientos"),
         @Index(name = "fk_ventas_pedidos1_idx", columnList = "pedidos_idpedidos")
 })
 public class VentaEntidad {
@@ -13,27 +14,43 @@ public class VentaEntidad {
     @Column(name = "idventas", nullable = false)
     private Integer id;
 
-    @Column(name = "monto", nullable = false)
-    private Double monto;
-
     @Column(name = "fecha", nullable = false)
     private Date fecha;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "pedidos_idpedidos", nullable = false)
     private PedidoEntidad pedido;
 
+    @OneToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "movimientos_idmovimientos", nullable = false)
+    private MovimientoEntidad movimiento;
+
     @Column(name = "anulado", nullable = false)
-    private boolean anulado;
+    private Boolean anulado = false;
 
     public VentaEntidad() {
     }
 
-    public VentaEntidad(Double monto, Date fecha, PedidoEntidad pedido) {
-        this.monto = monto;
+    public VentaEntidad(Date fecha, PedidoEntidad pedidosIdpedidos, MovimientoEntidad movimiento) {
         this.fecha = fecha;
-        this.pedido = pedido;
-        anulado = false;
+        this.pedido = pedidosIdpedidos;
+        this.movimiento = movimiento;
+    }
+
+    public Boolean getAnulado() {
+        return anulado;
+    }
+
+    public void setAnulado(Boolean anulado) {
+        this.anulado = anulado;
+    }
+
+    public MovimientoEntidad getMovimiento() {
+        return movimiento;
+    }
+
+    public void setMovimiento(MovimientoEntidad movimientosIdmovimientos) {
+        this.movimiento = movimientosIdmovimientos;
     }
 
     public PedidoEntidad getPedido() {
@@ -52,27 +69,11 @@ public class VentaEntidad {
         this.fecha = fecha;
     }
 
-    public Double getMonto() {
-        return monto;
-    }
-
-    public void setMonto(Double monto) {
-        this.monto = monto;
-    }
-
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public boolean isAnulado() {
-        return anulado;
-    }
-
-    public void setAnulado(boolean anulado) {
-        this.anulado = anulado;
     }
 }

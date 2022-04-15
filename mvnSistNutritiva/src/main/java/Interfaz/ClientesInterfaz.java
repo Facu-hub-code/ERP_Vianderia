@@ -6,14 +6,13 @@
 package Interfaz;
 
 import Entidad.ClienteEntidad;
-import Hibernate.ClienteRepository;
 import Logica.ClienteLogica;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-import java.awt.Color;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.PatternSyntaxException;
@@ -30,7 +29,10 @@ public class ClientesInterfaz extends javax.swing.JFrame {
         initComponents();
         initComponentsFacu();
         setVisible(true);
-        actualizar();
+    }
+
+    private void Seticon(){
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("resources/Images/logo_login-modified.ico")));
     }
 
     /**
@@ -58,6 +60,7 @@ public class ClientesInterfaz extends javax.swing.JFrame {
         btn_actualizar = new javax.swing.JButton();
         btn_agregar = new javax.swing.JButton();
         btn_modificar = new javax.swing.JButton();
+        btn_eliminar = new javax.swing.JButton();
         jscrollpane_general = new javax.swing.JScrollPane();
         jtable_clientes = new javax.swing.JTable();
 
@@ -179,6 +182,16 @@ public class ClientesInterfaz extends javax.swing.JFrame {
             }
         });
 
+        btn_eliminar.setBackground(new java.awt.Color(255, 253, 118));
+        btn_eliminar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btn_eliminar.setText("Eliminar");
+        btn_eliminar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarActionPerformed(evt);
+            }
+        });
+
         jtable_clientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -216,7 +229,8 @@ public class ClientesInterfaz extends javax.swing.JFrame {
                                     .addComponent(jt_apellido, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
                                     .addComponent(jt_nombre, javax.swing.GroupLayout.Alignment.TRAILING)))
                             .addComponent(btn_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_actualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btn_actualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_eliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -275,7 +289,9 @@ public class ClientesInterfaz extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btn_agregar)
                         .addGap(18, 18, 18)
-                        .addComponent(btn_modificar))
+                        .addComponent(btn_modificar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_eliminar))
                     .addComponent(jscrollpane_general, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
         );
@@ -283,20 +299,25 @@ public class ClientesInterfaz extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void initComponentsFacu(){
+    private void initComponentsFacu() {
         getContentPane().setBackground(new Color(49, 28, 28));
         setLocationRelativeTo(null);
-        setTitle("Gestion de clientes");       
+        setTitle("Gestion de clientes");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        limpiarCampos();
+        llenarTabla();
+        idVigente = -1;
     }
 
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
-        agregarCliente();
+        if(addCliente()) //si se agrego el cliente, actualizo la interfaz
+            update();
     }//GEN-LAST:event_btn_agregarActionPerformed
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
-        modificarCliente();
+        if(updateCliente())
+            update();
     }//GEN-LAST:event_btn_modificarActionPerformed
 
     private void jtable_clientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_clientesMouseClicked
@@ -305,7 +326,8 @@ public class ClientesInterfaz extends javax.swing.JFrame {
         jt_nombre.setText(jtable_clientes.getValueAt(filaSelec, 1).toString());
         jt_apellido.setText(jtable_clientes.getValueAt(filaSelec, 2).toString());
         jt_dni.setText(jtable_clientes.getValueAt(filaSelec, 3).toString());
-        jt_direccion.setText(jtable_clientes.getValueAt(filaSelec, 4).toString());
+        jt_email.setText(jtable_clientes.getValueAt(filaSelec, 4).toString());
+        jt_direccion.setText(jtable_clientes.getValueAt(filaSelec, 6).toString());
         jt_telefono.setText(jtable_clientes.getValueAt(filaSelec, 5).toString());
     }//GEN-LAST:event_jtable_clientesMouseClicked
 
@@ -314,14 +336,18 @@ public class ClientesInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_buscadorNombre
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
-        actualizar();
+        update();
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
-
+    private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
+        if(deleteCliente())
+            update();
+    }//GEN-LAST:event_btn_eliminarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_actualizar;
     private javax.swing.JButton btn_agregar;
+    private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_modificar;
     private javax.swing.JLabel jl_apellido;
     private javax.swing.JLabel jl_dni;
@@ -340,17 +366,20 @@ public class ClientesInterfaz extends javax.swing.JFrame {
     private javax.swing.JTable jtable_clientes;
     // End of variables declaration//GEN-END:variables
 
-    private void actualizar() {
-        limpiarCampos();
-        llenarTabla();
+    private void update() {
+        this.dispose();
+        new ClientesInterfaz();
     }
 
-    private void llenarTabla() {
-        String[] columnas = new String[]{"ID", "Nombre", "Apellido", "Email", "DNI", "Direccion", "Telefono"};
-        Class[] tipos = {Integer.class, String.class, String.class, String.class,String.class, String.class, String.class};
+    private boolean llenarTabla() {
+        String[] columnas = new String[]{"ID", "Nombre", "Apellido", "DNI", "Email", "Telefono", "Direccion"};
+        Class[] tipos = {Integer.class, String.class, String.class, String.class, String.class, String.class, String.class};
 
         ArrayList<ClienteEntidad> clientes = ClienteLogica.getClientes();
         Object[][] objetosArray = new Object[clientes.size()][columnas.length];
+
+        if (clientes.size() == 0)
+            return false;
 
         for (int i = 0; i < clientes.size(); i++) {
             objetosArray[i] = new Object[]{
@@ -371,11 +400,13 @@ public class ClientesInterfaz extends javax.swing.JFrame {
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
+
             @Override
-            public Class getColumnClass(int columnindex){
+            public Class getColumnClass(int columnindex) {
                 return this.types[columnindex];
             }
         });
+        return true;
     }
 
     public void addFilter(JTable tbl, String txt, Integer SearchColumnIndex) {
@@ -395,7 +426,7 @@ public class ClientesInterfaz extends javax.swing.JFrame {
         }
     }
 
-    private void setDefaultSorter(JTable tabla, int columna, SortOrder sortOrder){
+    private void setDefaultSorter(JTable tabla, int columna, SortOrder sortOrder) {
         TableRowSorter<TableModel> sorter = new TableRowSorter<>(tabla.getModel());
         tabla.setRowSorter(sorter);
         List<RowSorter.SortKey> sortKeys = new ArrayList<>();
@@ -405,7 +436,7 @@ public class ClientesInterfaz extends javax.swing.JFrame {
         sorter.sort();
     }
 
-    public void sortearFecha(){
+    public void sortearFecha() {
         setDefaultSorter(jtable_clientes, 1, SortOrder.DESCENDING); //revisar columna
     }
 
@@ -418,50 +449,84 @@ public class ClientesInterfaz extends javax.swing.JFrame {
         jt_email.setText("");
     }
 
-    private void agregarCliente() {
-        String nombre = jt_nombre.getText(), apellido = "", direccion = "", dni = "", telefono = "", email = "";
-        if (!nombre.equals("")){ //Check que no sea ni nulo ni vacio
-            try{
-                nombre = jt_nombre.getText();
-                apellido = jt_apellido.getText();
-                direccion = jt_dni.getText();
-                dni = jt_dni.getText();
-                telefono = jt_telefono.getText();
-                email = jt_email.getText();
-            }catch (NullPointerException e){
-                System.out.println("Habia algun campo nulo");
-                e.printStackTrace();
-            }
-            ClienteEntidad cliente = new ClienteEntidad(nombre, apellido, dni, email, telefono, direccion);
-            boolean flag = ClienteLogica.agregarCliente(cliente);
-            if (flag)
-                JOptionPane.showMessageDialog(null, "Cliente "+cliente.getNombre()+" agregado con exito");
-            else
-                JOptionPane.showMessageDialog(null, "Error: al intentar agregar el cliente");
+    public boolean addCliente() {
+        String nombre = jt_nombre.getText(), apellido = "", direccion = "", dni = "", telefono = "", email = ""; //defino los campos
+        if (nombre.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El nombre no puede estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        apellido = jt_apellido.getText();
+        direccion = jt_dni.getText();
+        dni = jt_dni.getText();
+        telefono = jt_telefono.getText();
+        email = jt_email.getText();
+
+        ClienteEntidad cliente = new ClienteEntidad(nombre, apellido, dni, email, telefono, direccion);
+
+        if (ClienteLogica.addClient(cliente)) {
+            JOptionPane.showMessageDialog(null, "Cliente " + cliente.getNombre() + " agregado con exito");
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, "contactese con el administrador", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
     }
 
-    private void modificarCliente() {
-        String nombre = jt_nombre.getText(), apellido = "", direccion = "", dni = "", telefono = "", email = "";
-        if (!nombre.equals(null) || !nombre.equals("")){
-            try{
-                nombre = jt_nombre.getText();
-                apellido = jt_apellido.getText();
-                direccion = jt_dni.getText();
-                dni = jt_dni.getText();
-                telefono = jt_telefono.getText();
-                email = jt_email.getText();
-            }catch (NullPointerException e){
-                System.out.println("Habia algun campo nulo");
-                e.printStackTrace();
-            }
-            ClienteEntidad cliente = ClienteLogica.getCliente(idVigente);
-            boolean flag = ClienteLogica.modificarCliente(cliente);
-            if (flag)
-                JOptionPane.showMessageDialog(null, "Cliente "+cliente.getNombre()+" modificado con exito");
-            else
-                JOptionPane.showMessageDialog(null, "Error: al intentar modificar el cliente");
+    protected boolean updateCliente() {
+        String nombre = jt_nombre.getText();
+        if (nombre.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El nombre no puede estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if (idVigente < 0) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar algun cliente", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        //Los hardcodeo porque es mas practico que revisar que campos fueron cambiados
+        //Si hay campos vacios se guardan vacios, el metodo getText() ya castea los NullPointerException
+        ClienteEntidad cliente = ClienteLogica.getCliente(idVigente);
+        cliente.setNombre(nombre);
+        cliente.setApellido(jt_apellido.getText());
+        cliente.setDni(jt_dni.getText());
+        cliente.setEmail(jt_email.getText());
+        cliente.setTelefono(jt_telefono.getText());
+        cliente.setDireccion(jt_direccion.getText());
+
+        if (ClienteLogica.updateCliente(cliente)) {
+            JOptionPane.showMessageDialog(null, "Cliente " + cliente.getNombre() + " modificado con exito");
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, "", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
     }
 
+    public boolean deleteCliente() {
+        if (idVigente < 0) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar algun cliente");
+            return false;
+        }
+        ClienteEntidad cliente = ClienteLogica.getCliente(idVigente);
+        if (ClienteLogica.delete(cliente)) {
+            JOptionPane.showMessageDialog(null, "Cliente: " + cliente.getNombre() + " eliminado con exito");
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, "Al intentar eliminar el cliente", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="Codigo para testing">
+    public void setNombre(String nombre) {
+        jt_nombre.setText(nombre);
+    }
+
+    public void setIdVigente(int idVigente) {
+        ClientesInterfaz.idVigente = idVigente;
+    }
+    // </editor-fold>
+    
 }
+
